@@ -16,10 +16,10 @@ Change Log
 
 First release of the HLU Tool as an ArcGIS Pro add-in. Requires ArcGIS Pro 3.4 or later and Microsoft .NET 8 or later.
 
-    * :guilabel:`New` Rebuilt as an ArcGIS Pro add-in — complete rewrite from a standalone ArcMap/MapInfo desktop application to an ArcGIS Pro dockable pane
-    * :guilabel:`New` Fully async UI — navigation, GIS selection, SQL queries and export operations are all async/await, preventing UI freezing
+    * :guilabel:`New` Rebuilt as an ArcGIS Pro add-in â€” complete rewrite from a standalone ArcMap/MapInfo desktop application to an ArcGIS Pro dockable pane
+    * :guilabel:`New` Fully async UI â€” navigation, GIS selection, SQL queries and export operations are all async/await, preventing UI freezing
     * :guilabel:`New` Reason and Process controls moved to the ArcGIS Pro ribbon, freeing space in the dockable pane
-    * :guilabel:`New` Active layer selector on the ribbon — users can switch HLU layers without reopening the tool; handles layers being added or removed dynamically
+    * :guilabel:`New` Active layer selector on the ribbon â€” users can switch HLU layers without reopening the tool; handles layers being added or removed dynamically
     * :guilabel:`New` Preferred primary habitat codes shown at the top of the Primary list with a visual separator from non-preferred codes
     * :guilabel:`New` Mandatory and optional secondary codes displayed separately as aids when selecting habitats
     * :guilabel:`New` Configurable area and distance display units shown in the dockpane and in history entries
@@ -37,7 +37,7 @@ First release of the HLU Tool as an ArcGIS Pro add-in. Requires ArcGIS Pro 3.4 o
     * :guilabel:`Removed` Microsoft Access backend (incompatible with ArcGIS Pro)
     * :guilabel:`Removed` ODBC and OLE DB connection types
     * :guilabel:`Removed` Standalone window management options (side-by-side GIS window, keep on top, reset tool window, preferred GIS selection)
-    * :guilabel:`Fixed` Rollback of both database and GIS layer on update error — previously only one side was rolled back
+    * :guilabel:`Fixed` Rollback of both database and GIS layer on update error â€” previously only one side was rolled back
     * :guilabel:`Fixed` Physical split now creates history records for all split features
     * :guilabel:`Fixed` Area and length are now included in the history table for attribute updates
 
