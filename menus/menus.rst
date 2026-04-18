@@ -125,7 +125,7 @@ The **Mode** group controls which editing mode is currently active. Only one mod
 |update| Update
 ---------------
 
-Activates **Update** mode — the normal editing mode for viewing and updating the attributes of individual INCIDs one at a time.
+Activates **Update** mode â€” the normal editing mode for viewing and updating the attributes of individual INCIDs one at a time.
 
 .. note::
 	This is the default mode when the tool is first opened. To enable editing, the user details must be configured in the database (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details) and the HLU layer must be editable in ArcGIS Pro.

@@ -10,5 +10,6 @@ docs/_build
 MANIFEST
 .noseids
 .*.swp
+*.py
 
 old/
