@@ -94,6 +94,9 @@ Glossary
 	Reject
 		Reject the proposed outstanding Ordnance Survey MasterMap update for the current INCID. See :ref:`review_osmm_window` for more information.
 
+	Skip
+		Skip the proposed outstanding Ordnance Survey MasterMap update for the current INCID so it can be reviewed again later. See :ref:`review_osmm_window` for more information.
+
 	Source
 		A dataset, document or reference used as the source of habitat or land use information. Up to three sources can be defined for each INCID. See :ref:`source_tab` for more details.
 

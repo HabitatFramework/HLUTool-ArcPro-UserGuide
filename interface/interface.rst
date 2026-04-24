@@ -2,6 +2,10 @@
 	:height: 16px
 	:width: 16px
 
+.. |addsh| image:: ../icons/AddSecondaryHabitat.png
+	:height: 16px
+	:width: 16px
+
 .. |export| image:: ../icons/FileExport.png
 	:height: 16px
 	:width: 16px
@@ -24,7 +28,7 @@ Interfaces
 Main Window
 ===========
 
-Once the HLU Tool add-in has been configured, clicking the :guilabel:`HLU Tool` button on the ArcGIS Pro ribbon will open the HLU Tool dockpane as shown in the figure :ref:`figUIMW`.
+Once the HLU Tool add-in has been installed, clicking the :guilabel:`HLU Tool` button on the ArcGIS Pro 'Tool' ribbon will load the HLU Tool dockpane as shown in the figure :ref:`figUIMW`. It will also add the 'HLU Tool' ribbon which will appear whenever the tool is loaded.
 
 .. _figUIMW:
 
@@ -38,29 +42,12 @@ Once the HLU Tool add-in has been configured, clicking the :guilabel:`HLU Tool` 
 
 	\newpage
 
-Records can be viewed or updated through the main window of the HLU Tool. Missing or invalid fields are highlighted in red and the relevant tab is also highlighted. The 'Apply' button will be active when edit mode is active and all required fields have been completed and are valid on all tabs.
+Records can be viewed or updated through the HLU Tool dockpane. Missing or invalid fields are highlighted in red and the relevant tab will also be highlighted. The 'Apply' button will be active when edit mode is active, when a reason and process have been selected in the ribbon, and when all required fields have been completed and are valid on all dockpane tabs.
 
-The following sections summarise the different sections of the main window.
+The following sections summarise the different sections of the dockpane.
 
 .. note::
 	The dockpane header displays **[READONLY]** when the tool is in read-only mode. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
-
-.. _reason_section:
-
-Reason and Process
-------------------
-
-The **Reason** and **Process** drop-down lists are located in the :ref:`edit_group` of the HLU Tool ribbon tab. These fields are required values for all update actions (attribute updates, splits, merges and bulk updates) and are recorded in the History table to indicate **why** the record was updated. The selected values are **sticky** — they are retained for all subsequent actions in the current session until changed.
-
-.. seealso::
-	See :ref:`edit_group` for details of the Reason and Process controls.
-
-
-Reason
-	The underlying explanation for the change in habitat or land use. It may be as a result of known changes in the habitat (such as habitat restoration), because new information indicates the existing data is wrong or because there has been a change but the underlying the cause is unknown.
-
-Process
-	The activity being undertaken that has lead to applying this change to the spatial or attribute data of the current INCID. It may relate to a specific project, an ongoing process or an adhoc update.
 
 .. _osmm_update_section:
 
@@ -144,51 +131,194 @@ Click on :guilabel:`Habitats` to display the Habitats tab as shown in the figure
 	Main Window - Habitats Tab
 
 
+.. _habitats_tab:
+
+Habitats Tab
+------------
+
+Click on :guilabel:`Habitats` to display the Habitats tab as shown in
+the figure :ref:`figUIHT`. The Habitats tab displays the UKHab primary
+and secondary codes and the legacy habitat for the current INCID record.
+It also assists attribute updates when the original survey source(s) are
+not using UKHab by providing translations from a range of habitat
+classifications (e.g. JNCC Phase 1, IHS and NVC) to UKHab.
+
+.. _figUIHT:
+
+.. figure:: figures/UserInterfaceHabitatsTab.png
+	:align: center
+	:scale: 85
+
+	Main Window - Habitats Tab
+
+.. _habitats_classification_overview:
+
+Understanding the Habitat Classification System
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Habitats tab uses a three-level structure to describe the habitat
+of each INCID. Each level filters or refines the choices available in
+the level below it:
+
+1. **Habitat Type** — the broad habitat classification type used (e.g.
+   a specific UKHab level-1 category). Selected using the **Class** and
+   **Type** drop-down lists.
+2. **Primary Habitat** — the single main UKHab habitat code assigned to
+   the INCID. Selected using the **Primary** drop-down list.
+3. **Secondary Habitats** — one or more additional UKHab codes that
+   refine or qualify the primary habitat. Added using the **Group**,
+   **Code** drop-down lists and |addsh| button and stored in the secondary habitats
+   table.
+
+The diagram below summarises how the levels relate to each other:
+
+.. code-block:: none
+
+	Habitat Class
+	    └── Habitat Type
+	            ├── Primary Habitat (one per INCID)
+	            │       ├── NVC Codes         (read-only hint)
+	            │       ├── Suggested Codes   (read-only hint)
+	            │       └── Habitat Tips      (read-only hint)
+	            └── Secondary Habitats (zero or more per INCID)
+	                    ├── Mandatory secondary codes
+	                    └── Optional secondary codes
+
+.. note::
+	Selecting a habitat type filters which primary codes are shown in
+	the **Primary** drop-down list. Selecting a primary code then
+	determines which secondary groups and codes are available, which
+	codes are mandatory, and which are suggested. The **Class** and
+	**Type** selections themselves are **not** saved to the database —
+	they are only used to assist code selection. Use the
+	:ref:`source_tab` if you wish to record the source habitat
+	classification and type.
+
+**Mandatory and Optional secondary codes** are determined by the
+selected habitat type (from the lookup tables). The **Suggested** codes
+are an additional hint derived from the combination of the selected
+habitat type and primary code, and represent codes commonly paired with
+that primary habitat. Suggested codes are hints only — they do not
+restrict which secondary codes can be selected.
+
+.. tip::
+	If the source survey data is already in UKHab and no habitat
+	classification translation is needed, the **Class** and **Type**
+	drop-down lists can be hidden via **Show Source Habitat** in the
+	:ref:`options_interface`.
+
 Class
-	Drop-down list of habitat classifications used to filter the 'Type' drop-down list to a specific habitat class. The contents in the list are based on entries in the lut_habitat_class table. [7]_
+	Drop-down list of habitat classifications used to filter the
+	**Type** drop-down list to a specific habitat class. The contents
+	in the list are based on entries in the lut_habitat_class
+	table. [7]_
 
 Type
-	Drop-down list of habitat classification types used to filter the 'Primary' drop-down list to relevant codes. The contents in the list are based on entries in the lut_habitat_type table that relate to the selected Class (above). [7]_
- 
-	.. note::
-		The entries in these fields are only used to assist the user to select the most appropriate Primary codes. They are **not** saved to the database. Use Sources if you wish to record the source habitat classification and type in the database (see :ref:`source_tab` for more details).
+	Drop-down list of habitat classification types used to filter the
+	**Primary** drop-down list to relevant codes. The contents in the
+	list are based on entries in the lut_habitat_type table that
+	relate to the selected Class (above). [7]_
 
-.. [7] The habitat 'Class' and 'Type' list contents are based only on entries in the relevant lookup tables where the 'is_local' flag is set to True (-1). See 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details of how to update lookup table entries.
+	.. note::
+		The entries in these fields are only used to assist the user
+		to select the most appropriate Primary codes. They are **not**
+		saved to the database. Use Sources if you wish to record the
+		source habitat classification and type in the database (see
+		:ref:`source_tab` for more details).
+
+.. [7] The habitat **Class** and **Type** list contents are based only
+   on entries in the relevant lookup tables where the ``is_local`` flag
+   is set to True (-1). See 'Lookup Tables' in the HLU Tool Technical
+   Guide at
+   `readthedocs.org/projects/hlutool-arcpro-technicalguide
+   <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_
+   for details of how to update lookup table entries.
 
 Primary
-	Drop-down list allowing users to select the desired UKHab primary code. The contents of the list will vary and relate directly to the selected Class and Type (above) and entries in the lut_habitat_type_primary table. [8]_
+	Drop-down list allowing users to select the desired UKHab primary
+	code. The contents of the list will vary and relate directly to
+	the selected Class and Type (above) and entries in the
+	lut_habitat_type_primary table. [8]_
+
+	Codes that are **preferred** for the selected habitat type are
+	shown in **bold** at the top of the list, separated from the
+	remaining valid codes by a divider line.
 
 NVC Codes
-	[Read only]. Displays a list of any NVC Codes related to the UKHab primary code selected in the preceding drop-down list. This field can be displayed or hidden in the user options as required.
+	[Read only]. Displays a list of any NVC Codes related to the
+	UKHab primary code selected in the preceding drop-down list. This
+	field can be displayed or hidden in the user options as required
+	(see :ref:`options_interface`).
 
 Mandatory
-	[Read only]. A comma-separated list of any UKHab secondary codes that **must** be added along with the selected primary habitat into the table below according to the UKHab documentation.
+	[Read only]. A comma-separated list of any UKHab secondary codes
+	that **must** be added along with the selected primary habitat
+	into the table below according to the UKHab documentation.
+
+	.. note::
+		Missing mandatory secondary codes are flagged as warnings or
+		errors depending on the validation settings (see
+		:ref:`options_validation`).
 
 Optional
-	[Read only]. A comma-separated list of any UKHab secondary codes that **may optionally** be added along with the selected primary habitat.
+	[Read only]. A comma-separated list of any UKHab secondary codes
+	that **may optionally** be added along with the selected primary
+	habitat.
 
 Suggested
-	[Read only]. A comma-separated list of any UKHab secondary codes that are **suggested** based on the selected source habitat type and the primary habitat. This field can be shown or hidden in the user options as required.
+	[Read only]. A comma-separated list of any UKHab secondary codes
+	that are **suggested** based on the selected source habitat type
+	and the primary habitat. This field can be shown or hidden in the
+	user options as required (see :ref:`options_interface`).
+
+	.. note::
+		Suggested codes are hints only — they do not restrict which
+		secondary codes can be selected or added.
 
 Group
-	Drop-down list allowing users to select a subset of secondary codes. The contents of the list will vary and relate directly to the selected primary habitat and entries in the lut_secondary_group and lut_primary_secondary tables. [8]_
+	Drop-down list allowing users to select a subset of secondary
+	codes. The contents of the list will vary and relate directly to
+	the selected primary habitat and entries in the
+	lut_secondary_group and lut_primary_secondary tables. [8]_
+
+	Selecting :guilabel:`<All>` shows all valid secondary codes for
+	the current primary habitat regardless of group. Selecting
+	:guilabel:`<All Essentials>` restricts the list to the most
+	commonly used codes.
 
 Code
-	Drop-down list allowing users to select a secondary code. The contents of the list will vary and relate directly to the selected primary habitat and entries in the lut_secondary and lut_primary_secondary tables. [8]_
+	Drop-down list allowing users to select a secondary code. The
+	contents of the list will vary and relate directly to the selected
+	Group (above) and entries in the lut_secondary and
+	lut_primary_secondary tables. [8]_
 
 Add Secondary Habitat
-	A button to add the selected secondary code to the table below. Duplicate codes already in the table will be ignored.
+	A button to add the selected secondary code to the table below.
+	Duplicate codes already in the table will be ignored.
 
 Add Secondary Habitats from List
-	A button to open a list of all secondary codes applicable to the current primary habitat, from which multiple codes can be selected and added to the table in one operation.
+	A button to open a list of all secondary codes applicable to the
+	current primary habitat, from which multiple codes can be selected
+	and added to the table in one operation.
 
 Summary
-	[Read only]. Automatically generated sorted and concatenation string of the UKHab secondary codes present in the table above.
+	[Read only]. Automatically generated sorted and concatenated
+	string of the UKHab secondary codes present in the table above.
+	This field can be shown or hidden in the user options as required
+	(see :ref:`options_interface`).
 
 Legacy Habitat
-	Drop-down list allowing users to view and maintain a legacy habitat definition (if required). The contents of the list are based on entries in the lut_legacy_habitat table.
+	Drop-down list allowing users to view and maintain a legacy
+	habitat definition (if required). The contents of the list are
+	based on entries in the lut_legacy_habitat table.
 
-.. [8] The primary and secondary group/code list contents are based only on entries in the relevant lookup tables where the 'is_local' flag is set to True (-1). See 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details of how to update lookup table entries.
+.. [8] The primary and secondary group/code list contents are based
+   only on entries in the relevant lookup tables where the ``is_local``
+   flag is set to True (-1). See 'Lookup Tables' in the HLU Tool
+   Technical Guide at
+   `readthedocs.org/projects/hlutool-arcpro-technicalguide
+   <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_
+   for details of how to update lookup table entries.
 
 .. raw:: latex
 
@@ -199,7 +329,7 @@ Legacy Habitat
 IHS Tab
 -------
 
-Click on :guilabel:`IHS` to display the IHS tab as shown in the figure :ref:`figUIIT`. The IHS tab displays the former Integrated Habitat System (IHS) details for the current INCID record.
+Click on :guilabel:`IHS` to display the IHS tab as shown in the figure :ref:`figUIIT`. The IHS tab displays the former Integrated Habitat System (IHS) details for the current INCID record. All fields are read only.
 
 .. _figUIIT:
 
@@ -239,6 +369,7 @@ Click on :guilabel:`Priority` to display the Priority tab as shown in the figure
 	Main Window - Priority Tab
 
 Priority Habitats
+~~~~~~~~~~~~~~~~~
 	Automatically added based upon the Habitat and multiplex codes selected on the :ref:`habitats_tab`. For new priority habitats, 'Determination Quality' and 'Interpretation Quality' must be entered.
 
 Determination
@@ -253,6 +384,7 @@ Interpretation Comments
 	Click |zoomtable| to open the Priority Habitats window.
 
 Potential Priority Habitats
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Allows users to define other priority habitats that may also be present in the future given appropriate management or restoration. An INCID may have one or more potential priority habitats even if no priority habitats are present.
 
 Determination
@@ -895,404 +1027,6 @@ Habitat Interpretation Quality
 
 	\newpage
 
-.. index::
-	single: Windows; Options Window
-	single: Options
-
-.. _options_window:
-
-Options Window
-==============
-
-Allows users to configure the HLU Tool. The Options window is organised into two categories in a navigation sidebar:
-
-* **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults).
-* **User** — settings specific to the current user (interface, GIS, updates, SQL, history, export).
-
-.. |options| image:: ../icons/Options.png
-	:height: 16px
-	:width: 16px
-
-Click |options| **Options** in the :ref:`info_group` of the HLU Tool ribbon to open the Options window.
-
-.. index::
-	single: Options; Database
-
-.. _options_database:
-
-Database Options
-----------------
-
-The following options relate to how the HLU Tool interacts with the underlying database.
-
-.. _figOWD:
-
-.. figure:: figures/OptionsWindowDatabase.png
-	:align: center
-	:scale: 90
-
-	Options Window - Database
-
-Timeout
-	Sets the amount of time the tool will wait (in seconds) for the database to respond. The default value is 15. This value should be increased if an error occurs such as 'The connection to the database timed out' or if the network and/or database connection is known to be slow.
-
-Incid Table Page Size
-	Sets how many rows are retrieved from the database and stored in memory. The default value is 100. Increasing this value can improve performance when browsing records, however this will increase the amount of RAM required by the application and significant increases in the page size value could cause the tool to stop responding.
-
-.. index::
-	single: Options; GIS
-
-.. _options_gis:
-
-GIS Options (User)
-------------------
-
-The following options relate to how the HLU Tool interacts with ArcGIS Pro. These are user-specific settings found under **User > GIS** in the Options navigation.
-
-.. _figOWGIS:
-
-.. figure:: figures/OptionsWindowGIS.png
-	:align: center
-	:scale: 90
-
-	Options Window - GIS
-
-Auto Zoom To Selection
-	Sets when the map view should automatically zoom to the features associated with the current INCID whenever the INCID selection changes. Choices are 'Off', 'When out of view' and 'Always'.
-
-Minimum Auto Zoom
-	The minimum map scale (e.g. 1000) at which the auto-zoom function activates. Lower values zoom in closer; higher values zoom out further.
-
-Display Area Units
-	Sets the units used to display the area of the current INCID in the dockpane and in history records (e.g. hectares or square metres).
-
-Display Distance Units
-	Sets the units used to display the perimeter length of the current INCID in the dockpane and in history records (e.g. metres or kilometres).
-
-Warn Before Selecting Features
-	Sets the maximum number of features that may be selected in ArcGIS Pro before a warning is shown, as large selections may take some time. Set to zero to disable warnings.
-
-Working File Geodatabase Directory
-	Sets the folder path for a working File Geodatabase used when performing large or complex GIS queries.
-
-.. index::
-	single: Options; Export
-
-.. _options_export:
-
-Export Options (User)
----------------------
-
-The following options relate to exporting data. These are user-specific settings found under **User > Export** in the Options navigation.
-
-.. _figOWExport:
-
-.. figure:: figures/OptionsWindowExport.png
-	:align: center
-	:scale: 90
-
-	Options Window - Export
-
-Default Export Directory
-	Sets the default destination folder path used when exporting data (see :ref:`export_window` for more details). A different path can still be selected during the export process.
-
-Warning Before Exporting Features
-	Sets the number of features above which a warning is shown before starting an export, as the operation may take some time. Set to zero to disable the warning.
-
-.. index::
-	single: Options; History
-
-.. _options_history:
-
-History Options (User)
-----------------------
-
-The following options relate to how history records are displayed in the HLU Tool dockpane. These are user-specific settings found under **User > History** in the Options navigation.
-
-.. _figOWH:
-
-.. figure:: figures/OptionsWindowHistory.png
-	:align: center
-	:scale: 90
-
-	Options Window - History
-
-History Display Columns
-	Allows users to select which additional columns from the GIS layer are displayed in the History tab for each update. If the checkbox for a column is ticked, the column will be displayed.
-
-Display History Rows
-	Sets the number of entries displayed in the 'History' tab of the main window. For more details on the 'History' tab see :ref:`history_tab`.
-
-
-.. index::
-	single: Options; Interface
-
-.. _options_interface:
-
-Interface Options (User)
-------------------------
-
-The following options relate to how the HLU Tool dockpane appears. These are user-specific settings found under **User > Interface** in the Options navigation.
-
-.. _figOWI:
-
-.. figure:: figures/OptionsWindowInterface.png
-	:align: center
-	:scale: 90
-
-	Options Window - Interface
-
-Show Group Headers
-	Allows the user to choose if section headers will be shown or hidden in the dockpane (to reduce the height of the interface).
-
-Show IHS Tab
-	Allows the user to choose if the IHS tab will be shown or hidden in the dockpane.
-
-Show Source Habitat
-	Allows the user to choose if the Source Habitat group, containing the Habitat Class and Habitat Type lists, will be shown or hidden in the dockpane. The group can be hidden if the source habitat data is in UKHab and primary and secondary habitats are being entered directly without any need to assist the user with translating from other habitat classifications.
-
-Show Secondary Suggestions
-	Allows the user to choose if any suggested secondary habitats related to the source habitat type and selected primary habitat are shown.
-
-Show NVC Codes
-	Allows the user to choose if a list of any potential NVC Codes related to the selected primary habitat will be shown.
-
-Show Habitat Summary
-	Allows the user to choose if the summary of the primary and secondary codes will be shown or hidden in the dockpane (to reduce the height of the interface).
-
-Show OSMM Update Attributes
-	Allows the user to choose when Ordnance Survey MasterMap (OSMM) updates should be shown (see :Ref:`osmm_update_section` for more details). The available options are:
-
-		* Never - **Never** show the OSMM Updates section.
-		* When Outstanding - Only show the OSMM Updates section when the update is **outstanding** (the status is 'Proposed' or 'Pending').
-		* Always - **Always** show the OSMM Updates section.
-
-.. index::
-	single: Options; Validation
-
-.. _options_validation:
-
-Validation Options (Application)
----------------------------------
-
-The following options relate to data validation rules applied when attribute updates are made. These are application-wide settings found under **Application > Validation** in the Options navigation.
-
-.. _figOWVal:
-
-.. figure:: figures/OptionsWindowValidation.png
-	:align: center
-	:scale: 90
-
-	Options Window - Validation
-
-Habitat/Secondary Validation
-	Allows users to select whether mandatory secondary codes for the selected source habitat type are validated, i.e. have been added to the secondary table, and if the missing codes are considered as errors or just warnings. The available actions are:
-
-		* Ignore - Missing mandatory secondary codes for the selected source habitat type are **ignored**.
-		* Warning - Missing mandatory secondary codes for the selected source habitat type are flagged with a **warning**.
-		* Error - Missing mandatory secondary codes for the selected source habitat type are flagged with an **error**.
-
-Primary/Secondary Validation
-	Allows users to select whether secondary codes for the selected primary habitat are validated, i.e. have been added to the secondary table. The available actions are:
-
-		* Ignore - Missing secondary codes for the selected primary habitat are **ignored**.
-		* Error - Missing secondary codes for the selected primary habitat are flagged with an **error**.
-
-Determination And Interpretation Quality Validation
-	Allows users to select whether entering determination and interpretation values to reflect the quality of the selected primary and secondary habitats. The available actions are:
-
-		* Optional - Determination and interpretation quality are **optional** for every INCID.
-		* Mandatory - Determination and interpretation quality are **mandatory** for every INCID.
-
-Potential Priority Habitat Determination Quality Validation
-	Allows users to select whether the determination quality value for potential priority habitats is validated. The available actions are:
-
-		* Ignore - The determination quality value for potential priority habitats is **ignored** (i.e. is not validated).
-		* Error - Invalid determination quality values for potential priority habitats are flagged with an **error**.
-
-	.. note::
-		Ignoring the validation for potential priority habitats enables the user to select determination quality values that indicate that the habitat **is** or **probably is** in the associated polygon(s). Otherwise determination quality values can **ONLY** be 'Not present but close to definition' or 'Previously present, but may no longer exist'.
-
-.. index::
-	single: Options; Updates
-
-.. _options_updates:
-
-Update Options (Application)
------------------------------
-
-The following options relate to what happens when attribute updates are applied. These are application-wide settings found under **Application > Updates** in the Options navigation.
-
-.. _figOWU:
-
-.. figure:: figures/OptionsWindowUpdates.png
-	:align: center
-	:scale: 90
-
-	Options Window - Updates
-
-Action to Take When Updating Subset
-	Allows users to select what action to take if they attempt to apply attribute changes to only a subset of features for an INCID (see :ref:`attribute_update` for more details). The available actions are:
-
-		* Prompt - Always **prompt** the user when attempting to update a subset of INCID features (see :ref:`attribute_update` for an example of the prompt dialog).
-		* Split - Always perform a **logical split** before applying the attribute updates.
-		* All - Always apply the attribute update to **all** features belonging to the INCID regardless of which features of the INCID are currently selected.
-
-When To Clear IHS Codes After Update
-	Allows users to select when existing IHS Codes should be cleared when attribute updates are applied. The available options are:
-
-		* Do not clear - **Do not clear** any existing IHS habitat and multiplex codes following an attribute update.
-		* Clear on change in primary code only - Clear any existing IHS habitat and multiplex codes **only** following a change to the primary habitat code.
-		* Clear on change in primary or secondary codes only - Clear any existing IHS habitat and multiplex codes following a change to **either** the primary or secondary habitat codes.
-		* Clear on any change - Clear any existing IHS habitat and multiplex codes following **any** change in an attribute update.
-
-Reset Pending OSMM Update Status On Manual Update
-	Allows the user to choose if the status of any pending OSMM Updates for the current INCID should be reset to 'Ignored' when an **attribute update** is applied.
-
-Secondary Code Delimiter
-	Allows users to choose the delimiter characters (e.g. '.' or ', ') that are used to separate any secondary habitat codes in the Summary field. Up to 2 non-alphanumeric characters can be entered.
-
-	.. warning::
-		This option will also affect the concatenated secondary codes summary saved in the active HLU layer so changes should be applied with caution.
-
-.. index::
-	single: Options; User Updates
-
-.. _options_user_updates:
-
-Update Options (User)
----------------------
-
-The following options relate to default values and preferences for update operations. These are user-specific settings found under **User > Updates** in the Options navigation.
-
-.. _figOWUUser:
-
-.. figure:: figures/OptionsWindowUserUpdates.png
-	:align: center
-	:scale: 90
-
-	Options Window - User Updates
-
-Default Reason
-	Sets the default reason that is pre-selected in the :ref:`edit_group` of the ribbon each time the HLU Tool is opened.
-
-Default Process
-	Sets the default process that is pre-selected in the :ref:`edit_group` of the ribbon each time the HLU Tool is opened.
-
-Default Habitat Class
-	Allows the user to choose which Habitat Class in the Habitats tab (see :ref:`habitats_tab` for more details) is automatically selected each time the HLU Tool is opened.
-
-Default Secondary Group
-	Allows the user to choose which Secondary Group in the Habitats tab (see :ref:`habitats_tab` for more details) is automatically selected each time the HLU Tool is opened.
-
-Secondary Table Order
-	Allows the user to choose the order that any secondary habitats appear in the secondary table.
-
-Notify After Completing Split/Merge
-	Allows users to specify if a pop-up message should be displayed following the completion of any of the split or merge operations.
-
-.. index::
-	single: Options; SQL
-	single: Options; Filter
-
-.. _options_filter:
-
-SQL Options (User)
-------------------
-
-The following options relate to the advanced query builder used to filter INCID records. These are user-specific settings found under **User > SQL** in the Options navigation.
-
-.. _figOWF:
-
-.. figure:: figures/OptionsWindowSQL.png
-	:align: center
-	:scale: 90
-
-	Options Window - SQL
-
-Get Values Count
-	Allows the user to select the maximum number of unique field values that will be retrieved each time the :guilabel:`Get Values` button is pressed when using the 'Advanced Query Builder' (see :ref:`advanced_query_builder_window` for details). The maximum number of rows that can be retrieved at any time cannot exceed 100,000. This number should be reduced if performance issues are experienced when the :guilabel:`Get Values` button is pressed or when the drop-down list is used on the 'Advanced Query Builder'.
-
-Default Query Directory
-	Enables users to set a default folder path that will be used when saving or loading queries with the 'Advanced Query Builder' (see :ref:`advanced_query_builder_window` for details). A different path to the default can also be selected during the save and load process.
-
-.. note::
-	The threshold for warning before selecting features in ArcGIS Pro is now configured in the **GIS Options** (see :ref:`options_gis`).
-
-.. index::
-	single: Options; Dates
-
-.. _options_dates:
-
-Dates Options (Application)
-----------------------------
-
-The following options relate to the formatting of vague dates used in the sources section of the dockpane. These are application-wide settings found under **Application > Dates** in the Options navigation.
-
-.. _figOWDa:
-
-.. figure:: figures/OptionsWindowDates.png
-	:align: center
-	:scale: 90
-
-	Options Window - Dates
-
-
-Seasons
-	These fields allow users to define how seasonal dates, such as 'Spring 2009' or 'Winter 2010', are entered so that they can be converted to dates in the HLU database.
-
-Vague Date Delimiter
-	This field allow users to define how date ranges, such as 'Spring 2010-Autumn 2010' or '1989-2010', are entered so that they can be converted to dates in the HLU database.
-
-	.. note::
-		The default value for the 'Vague Date Delimiter' is a hyphen ( - ). This can be altered to any character, however, it must not be the same delimiter used by the computer to enter precise dates, such as 01/04/2010. The default delimiter used by Windows for English-format dates is a forward slash ( / ).
-
-.. index::
-	single: Options; Bulk Update
-
-.. _options_bulk_update:
-
-Bulk Update Options (Application)
-----------------------------------
-
-The following options relate to the **default** values to use when applying bulk updates and OSMM bulk updates (see :ref:`bulk_update` for details). All options can be amended during the bulk update process. These are application-wide settings found under **Application > Bulk Updates** in the Options navigation.
-
-.. _figOWBU:
-
-.. figure:: figures/OptionsWindowBulkUpdate.png
-	:align: center
-	:scale: 90
-
-	Options Window - Bulk Update
-
-Delete Orphan Priority Habitats
-	The default option for whether existing priority habitats (those automatically associated with the current primary and secondary habitats) that are **orphaned** (i.e. not associated with the new primary and secondary habitats) should be deleted following a change to the primary habitat during a bulk update. If unchecked, any existing priority habitats are converted to potential priority habitats with the determination quality changed to 'Previous present, by may no longer exist'.
-
-Delete Potential Priority Habitats
-	The default option for whether existing potential priority habitats (those added manually by a user) should be deleted following during a bulk update. If unchecked, any existing potential priority habitats will be retained.
-
-Delete Existing IHS Codes
-	The default option for whether existing IHS habitat and multiplex (matrix, formation, management and complex) codes should be deleted following a change to the habitat during a bulk update. If checked, any existing multiplex codes will be deleted, otherwise they will be retained.
-
-Delete Existing Secondary Codes
-	The default option for whether existing secondary codes should be deleted following a change to the primary habitat during a bulk update. If checked, any existing secondary codes will be deleted, otherwise they will be retained and may not be compatible with the new primary habitat (see :ref:`options_updates` for more details).
-
-Create History Records
-	The default option for whether history records will be created when a bulk update is applied.
-
-Priority Determination Quality
-	The default option for which determination quality to apply to any new priority habitats (those automatically associated with the new primary habitat) following a change to the primary habitat during an OSMM bulk update.
-
-Priority Interpretation Quality
-	The default option for which interpretation quality to apply to any new priority habitats (those automatically associated with the new primary habitat) following a change to the primary habitat during an OSMM bulk update.
-
-OSMM Source Name
-	The default option for which Ordnance Survey MasterMap source name to use when automatically adding a new source record during an OSMM bulk update.
-
-.. raw:: latex
-
-	\newpage
-
 .. _filter_Windows:
 
 Filter Windows
@@ -1376,13 +1110,12 @@ Cancel
 	\newpage
 
 .. index::
-	single: Windows; Filter by Incid Window
 	single: Filter; Filter by Incid
 
-.. _filter_by_incid_window:
+.. _filter_by_incid:
 
-Filter by Incid Window
-----------------------
+Filter by Incid
+---------------
 
 Users can also filter the INCID records that appear in the user interface, and correspondingly which features are selected in the active GIS layer, by entering a single INCID.
 
@@ -1393,17 +1126,7 @@ Enter an INCID value directly into the **Find Incid** text box in the :ref:`filt
 .. figure:: figures/FilterByIncid.png
 	:align: center
 
-	Filter By Incid Window
-
-
-Enter Incid to filter by
-	Enter the full value of the INCID that is sought in this field (e.g. '0200:0001234').
-
-OK
-	Click :guilabel:`OK` to execute the query and close the query window. The button will only be enabled when an INCID value has been entered.
-
-Cancel
-	Click :guilabel:`Cancel` to close the query window without applying a new filter.
+	Filter By Incid
 
 .. raw:: latex
 
@@ -1437,6 +1160,9 @@ Export Format
 
 	.. seealso::
 		For details on defining export formats see 'Configuring Exports' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+Output Type
+	Allows the user to select the required output type; a file geodatabase feature class or a shaepfile.
 
 Selected Only
 	Allows the user to choose if only the selected features in the active GIS layer will be exported or if all features from the active GIS layer associated with the INCIDs in the active filter will be exported.

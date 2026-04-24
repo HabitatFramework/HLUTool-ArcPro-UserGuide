@@ -1,16 +1,16 @@
-.. |update| image:: ../icons/Update16.png
+.. |update| image:: ../icons/Update.png
 	:height: 16px
 	:width: 16px
 
-.. |bulkupdate| image:: ../icons/BulkUpdate16.png
+.. |bulkupdate| image:: ../icons/BulkUpdate.png
 	:height: 16px
 	:width: 16px
 
-.. |osmmreview| image:: ../icons/OSMMReview16.png
+.. |osmmreview| image:: ../icons/OSMMReview.png
 	:height: 16px
 	:width: 16px
 
-.. |osmmBulkupdate| image:: ../icons/OSMMBulkUpdate16.png
+.. |osmmBulkupdate| image:: ../icons/OSMMBulkUpdate.png
 	:height: 16px
 	:width: 16px
 
@@ -26,15 +26,23 @@
 	:height: 16px
 	:width: 16px
 
+.. |getmapselection| image:: ../icons/GetMapSelection.png
+	:height: 16px
+	:width: 16px
+
+.. |split| image:: ../icons/Split.png
+	:height: 16px
+	:width: 16px
+
+.. |merge| image:: ../icons/Merge.png
+	:height: 16px
+	:width: 16px
+
 .. |logicalsplit| image:: ../icons/LogicalSplit.png
 	:height: 16px
 	:width: 16px
 
 .. |logicalmerge| image:: ../icons/LogicalMerge.png
-	:height: 16px
-	:width: 16px
-
-.. |getmapselection| image:: ../icons/GetMapSelection.png
 	:height: 16px
 	:width: 16px
 
@@ -65,15 +73,15 @@ Functions
 Attribute Updates
 =================
 
-Attribute Updates are the main mechanism for updating existing INCID details. Attributes can be changed at any time in the dockpane, even when the HLU layer is not editable, but they can only be applied when the layer is editable in ArcGIS Pro.
+Attribute Updates are the main mechanism for updating existing INCID details. Attributes can be changed at any time in the dockpane, even when the active HLU layer is not editable, but they can only be applied when the layer is editable in ArcGIS Pro.
 
 .. note::
 	For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 To update the attributes of an INCID:
 
-* Ensure that the active HLU layer is editable — on the ArcGIS Pro **Edit** tab click :guilabel:`Edit` to enable editing, or verify that editing is already active.
-* Select the feature or features to be updated in the map.
+* Ensure that the active HLU layer is editable.
+* Select the feature or features to be updated in the active map.
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Make the required changes to the INCID attributes, ensuring that any fields highlighted as missing or in error are addressed.
 * Click |apply|. The INCID will be updated and details will be added to the History tab.
@@ -83,6 +91,7 @@ To update the attributes of an INCID:
 	The :guilabel:`Apply` button will only be displayed if:
 		* The user is listed in the lut_user table.
 		* The active HLU layer is editable in ArcGIS Pro.
+        * A Reason and Process have both been selected in the HLU Tool ribbon
 		* The user has made one or more changes to the current INCID.
 		* There are no fields in error.
 
@@ -106,7 +115,7 @@ To update the attributes of an INCID:
 Split Features
 ==============
 
-Features can be split logically or physically depending upon the filter active in the tool. If one or more features from a single INCID are present in the current filter then the tool will allow a logical split to be performed. If two or more fragments from the same TOID and with the same TOID_Fragment_Id are present in the current filter then the tool will allow a physical split to be performed.
+Features can be split logically or physically depending upon the filter active in the tool. If one or more features from a single INCID are present in the current filter then the tool will allow a logical split to be performed. If two or more fragments from the same TOID and with the same FragID are present in the current filter then the tool will allow a physical split to be performed.
 
 .. raw:: latex
 
@@ -128,8 +137,8 @@ Logical split is used to create a new INCID in the database based upon a subset 
 To perform a logical split:
 
 * Select the subset of features to be split in the GIS layer as shown in the **right** part of the figure :ref:`figFLSFD`.
-* Return to the HLU Tool window and click |getmapselection| :guilabel:`Get Map Selection`.
-* Click |logicalsplit| :guilabel:`Logical Split`. A new INCID will be created and displayed as the current record and details will be added to the History tab for the INCID.
+* Click |getmapselection| :guilabel:`Get Map Selection`.
+* Click |split| :guilabel:`Split` and then |logicalsplit| :guilabel:`Logical Split`. A new INCID will be created and displayed as the current record and details of the split will be added to the History tab for the INCID.
 
 .. _figFLSFD:
 
@@ -142,8 +151,10 @@ To perform a logical split:
 To display all the features in the INCID of a given feature:
 
 * Select the feature of interest in the GIS layer.
-* Return to the HLU main window and click |getmapselection| :guilabel:`Get Map Selection`.
-* Click |selectonmap| :guilabel:`Select Current INCID on Map`. All the features associated with the current INCID will be displayed as shown in the **left** part of the figure :ref:`figFLSFD`.
+* Click |getmapselection| :guilabel:`Get Map Selection`.
+* Click |selectonmap| :guilabel:`Select Current INCID on Map`.
+
+All the features associated with the current INCID will be displayed as shown in the **left** part of the figure :ref:`figFLSFD`.
 
 
 .. raw:: latex
@@ -158,26 +169,22 @@ To display all the features in the INCID of a given feature:
 Physical Split
 --------------
 
-Physical split is used to create one or more new TOID fragments in the database based upon a single TOID that has already been split in the ArcGIS Pro map. Physically splitting a feature into fragments allows the fragments to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
+Physical split is used to create one or more new fragments in the database based upon a single TOID that has already been split in the ArcGIS Pro map. Physically splitting a feature into fragments allows the fragments to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
 
 .. note::
 
 	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
 	* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
-	* Ensure that the physical split is completed in the database prior to commencing any other operations such as 'Select by attributes …' to avoid database synchronisation issues.
+	* Ensure that the physical split is completed in the database prior to commencing any other operations to avoid database synchronisation issues.
 
 .. tip::
-	If two or more fragments from the same TOID and with the same TOID_Fragment_Id are selected in the map and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split in the map and will **automatically** perform a physical split before displaying the attributes.
+	If two or more fragments from the same TOID and with the same FragID are selected in the map and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split in the map and will inform the user that a physical split is possible.
 
 To perform a physical split in ArcGIS Pro:
 
-* Ensure the active HLU layer is editable — on the ArcGIS Pro **Edit** tab click :guilabel:`Edit` to enable editing.
+* Ensure the active HLU layer is editable.
 * Select the feature to be split.
 * On the HLU Tool ribbon click :guilabel:`Split` in the :ref:`map_tools_group` to activate the ArcGIS Pro Split tool, then draw a cut line through the feature.
-
-	.. tip::
-		It is not necessary to **Save Edits** after splitting the feature in the map because the changes will be saved automatically once the split has been completed with the HLU Tool.
-
 * The feature will be split but both parts will remain selected as shown in the figure :ref:`figFArcSFD`. At this stage both features will still have the same fragment ID.
 
 .. _figFArcSFD:
@@ -185,9 +192,10 @@ To perform a physical split in ArcGIS Pro:
 .. figure:: figures/ArcGISSplitFeaturesDiagram.png
 	:align: center
 
-	Split Features (ArcGIS Pro)
+	Split Features
 
-* Return to the HLU Tool dockpane and click |getmapselection| :guilabel:`Get Map Selection`. The feature will be split into separate fragments with unique fragment IDs and details will be added to the History tab for the INCID.
+* Click |getmapselection| :guilabel:`Get Map Selection`.
+* Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new FragID will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
 
 
 .. raw:: latex
@@ -199,7 +207,7 @@ To perform a physical split in ArcGIS Pro:
 Merge Features
 ==============
 
-Merge features will performs two types of merge depending upon the filter active in the tool. If two or more features from multiple INCIDs are present in the current filter then the tool will allow a logical merge to be performed. If two or more fragments from the same TOID and with different TOID_Fragment_Ids are present in the current filter then the tool will allow a physical merge to be performed.
+Merge features will performs two types of merge depending upon the filter active in the tool. If two or more features from multiple INCIDs are present in the current filter then the tool will allow a logical merge to be performed. If two or more fragments from the same TOID and with different FragIDs are present in the current filter then the tool will allow a physical merge to be performed.
 
 .. index::
 	single: Merge Features; Logical Merge
@@ -209,14 +217,13 @@ Merge features will performs two types of merge depending upon the filter active
 Logical Merge
 -------------
 
-Logical merge combines all the features selected in the GIS into a single INCID chosen from the selected features. This assigns the attributes from the chosen INCID to all the other selected features and logically groups the features into a single INCID so that they can be updated together in the future.
+Logical merge combines all the features selected in the GIS into a single INCID to be chosen from the selected features. This assigns the attributes from the chosen INCID to all the other selected features and logically groups the features into a single INCID so that they can be updated together in the future.
 
 To perform a logical merge:
 
-* Select the features to be merged and a feature from the INCID they are to be merged with in the map.
-* Return to the HLU Tool dockpane and click |getmapselection| :guilabel:`Get Map Selection`.
-* Select one of the options in the **Process** list in the :ref:`edit_group`.
-* Click |logicalmerge| :guilabel:`Logical Merge`. A list of INCIDs will be displayed as shown in the figure :ref:`figFLMD`.
+* Select the features to be merged in the map.
+* Click |getmapselection| :guilabel:`Get Map Selection`.
+* Click |merge| :guilabel:`Merge` and then |logicalmerge| :guilabel:`Logical Merge`. A list of INCIDs will be displayed as shown in the figure :ref:`figFLMD`.
 
 .. _figFLMD:
 
@@ -225,11 +232,11 @@ To perform a logical merge:
 
 	Select INCID to Keep Dialog
 
-* Click on the grey box to the left of the row to select an INCID. Any features with the selected INCID will be highlighted in the map.
-* Click :guilabel:`OK`. The selected features will be assigned to the selected INCID and details added to the History tab for the INCID.
+* Click on the row to chose the INCID that the other features will be merged with. Any features for the selected INCID will be flashed in the map.
+* Click :guilabel:`OK`. The other selected features in the map will be assigned to the chosen INCID and details of the merge will be added to the History tab for the INCID.
 
 .. note::
-	If the merged features are all fragments of the same TOID the user will then be given the option to perform a physical merge.
+	If the merged features are all fragments of the same TOID then a message will be diplayed informing the user that a physical merge is possible.
 
 
 .. raw:: latex
@@ -244,17 +251,16 @@ To perform a logical merge:
 Physical Merge
 --------------
 
-Physical merge combines fragments of a single TOID into a single, larger, feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but the boundaries between adjacent features will be removed.
+Physical merge combines fragments from the same TOID into a single, larger, feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but any shared boundaries between adjacent features will be removed.
 
 .. note::
 	Only fragments belonging to the same TOID can be merged in a single operation. If fragments for several TOIDs need to be merged, the operation must be repeated for each TOID.
 
 To perform a physical merge:
 
-* Select two or more fragments from one TOID in the map as shown in the **left** part of the figure :ref:`figFPMD`.
-* Return to the HLU Tool dockpane and click |getmapselection| :guilabel:`Get Map Selection`.
-* Select one of the options in the **Process** list in the :ref:`edit_group`.
-* Click |physicalmerge| :guilabel:`Physical Merge`. The features will be combined in the map as shown in the **right** part of the figure :ref:`figFPMD` and details will be added to the History tab for the INCID.
+* Select two or more fragments from the same TOID in the map as shown in the **left** part of the figure :ref:`figFPMD`.
+* Click |getmapselection| :guilabel:`Get Map Selection`.
+* Click |merge| :guilabel:`Merge` and then |physicalmerge| :guilabel:`Physical Merge`. The features will be combined in the map as shown in the **right** part of the figure :ref:`figFPMD` and details of the merge will be added to the History tab for the INCID.
 
 .. _figFPMD:
 
@@ -269,14 +275,14 @@ To perform a physical merge:
 	\newpage
 
 .. index::
-	see: Filter by Attributes; Query Builder
+	see: Filter by Attributes; Advanced Query Builder
 
 .. _filter_by_attributes:
 
 Filter by Attributes
 ====================
 
-Users can select which INCID records appear in the dockpane, and correspondingly which features are selected in the active HLU layer, by applying a filter. The filter is performed by building a SQL query that selects one or more INCIDs based on a chosen set of criteria, or by entering a single INCID value using the **Find Incid** text box in the :ref:`filter_incids_group`.
+Users can select which subset of INCID records are available for display in the dockpane, and correspondingly which features are selected in the active HLU layer, by applying a filter. The filter is performed by building a SQL query that selects one or more INCIDs based on a chosen set of criteria, or by entering a single INCID value using the **Find Incid** text box in the :ref:`filter_incids_group`.
 
 .. index::
 	single: Filter; Advanced Query Builder
@@ -303,7 +309,12 @@ To apply a filter using the advanced query filter:
 .. note::
 	The last query executed will appear next time the Advanced Query Builder window is opened (whilst the tool remains running).
 
-Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before executing the query if the expected number of features to be selected exceeds the configured threshold.
+To **save** an advanced query:
+
+* Click |filterbyattr| **Filter by Attributes** to open the Advanced Query Builder window.
+* Create a valid query as above.
+* Before executing the query click :guilabel:`Save`. A save dialog will open prompting you to select a folder and file name.
+* Select a destination folder, enter a suitable file name and click :guilabel:`Save`. The query will be saved.
 
 To **save** an advanced query:
 
@@ -349,6 +360,47 @@ To filter by a single INCID:
 	\newpage
 
 .. index::
+	single: Select; Select INCIDs
+
+.. _select_incids:
+
+Select INCIDs
+=============
+
+Users can select
+
+
+.. index::
+	single: Select; Select current INCID
+
+.. _select_current_incid:
+
+Select Current Incid
+--------------------
+
+
+
+.. note::
+	Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before executing the query if the expected number of features to be selected exceeds the configured threshold.
+
+
+.. index::
+	single: Select; Select all filtered INCIDs
+
+.. _select_all_filtered_incids:
+
+Select All Filtered INCIDs
+--------------------------
+
+
+
+
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
 	single: Bulk Updates; Apply
 	single: Updates; Bulk Updates
 
@@ -357,11 +409,16 @@ To filter by a single INCID:
 Bulk Updates
 ============
 
-Users can update the attributes for multiple INCID database records, and associated features in the active HLU layer, by performing a bulk update. Bulk updates can only be applied to a subset of INCID records by applying a filter. Attribute updates applied in bulk update mode will be applied to all INCIDs in the active filter.
+Users can update the attributes for multiple INCID records, and associated features in the active HLU layer, by performing a bulk update. Bulk updates can only be applied to a subset of INCID records by applying a filter. Attribute updates applied in bulk update mode will be applied to all INCIDs in the active filter.
+
+.. warning::
+
+    * Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
+
 
 .. note::
 
-	* Bulk update mode can only be started once a filter is applied to the INCID records and the active HLU layer is editable in ArcGIS Pro.
+    * Bulk update mode can only be started once a filter is applied to the INCID records and the active HLU layer is editable in ArcGIS Pro.
 	* Bulk update mode is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 .. _figFUIBU:
@@ -397,7 +454,7 @@ To bulk apply updates:
 
 To cancel bulk update mode:
 
-* Click :guilabel:`Cancel` or click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
+* Click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
 
 
 .. raw:: latex
@@ -467,7 +524,7 @@ Once all the INCIDs in the active filter have been processed a message will appe
 
 To cancel Review OSMM Updates mode:
 
-* Click :guilabel:`Cancel` or click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
+* Click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
 
 
 .. raw:: latex
@@ -484,6 +541,10 @@ Bulk Apply OSMM Updates
 =======================
 
 Once proposed OSMM updates have been accepted they become 'Pending' and must be bulk processed in order to apply them.
+
+.. warning::
+
+    * As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
 
 .. note::
 
@@ -543,7 +604,7 @@ To bulk apply OSMM updates:
 
 To cancel Bulk Apply OSMM Updates mode:
 
-* Click :guilabel:`Cancel` or click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
+* Click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
 
 
 .. raw:: latex
@@ -569,16 +630,17 @@ Exporting allows users to combine spatial geometries from a HLU GIS layer and at
 
 To perform an export:
 
-	* Select the required INCID and GIS features to be exported (either by selecting the features in the map and clicking :guilabel:`Get Map Selection` or performing a **Filter by Attributes**).
+	* Select the required INCID and GIS features to be exported (either by selecting the features in the map and clicking :guilabel:`Get Map Selection`, or by performing a **Filter by Attributes**) and then clicking :guilabel:`Select All Filtered INCIDs`.
 	* Click |export| **Export** in the :ref:`export_group` of the HLU Tool ribbon to open the Export window.
 	* Select one of the pre-defined export formats from the 'Export Format' drop-down list.
+    * Select the required output format in the 'Output Type' drop-down list.
 	* Tick the 'Selected only' checkbox to export **only** the selected features or clear the checkbox to export **all** of the features in the active HLU layer as required.
 
 	.. note::
 		If a filter is active based on the features selected in the active HLU layer then the 'Selected only' checkbox is automatically ticked and the number of selected features is shown (as seen in :ref:`figFED`). Only the selected INCIDs and associated features will be exported. Untick this checkbox to export all records. For details on how to filter records see :ref:`filter_by_attributes`.
 
 	* Click :guilabel:`Ok` to start the export. Select a destination folder and suitable file name for the new GIS layer when prompted.
-	* A pop-up message will appear informing when the export has completed and prompting if the new GIS layer should be loaded into the active ArcGIS Pro map.
+	* A pop-up message will appear informing when the export has completed and informing the user that the exported layer has been loaded to the active ArcGIS Pro map.
 
 .. note::
 	The default export folder destination can be set in the Export Options (see :ref:`options_export` for more details).
@@ -590,4 +652,3 @@ During the export process checks and validation are performed to avoid potential
 
 .. seealso::
 	For details on defining export formats see 'Configuring Exports' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
-

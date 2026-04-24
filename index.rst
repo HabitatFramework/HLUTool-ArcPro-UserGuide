@@ -31,9 +31,10 @@ Contents
    preface/preface
    introduction/introduction
    concepts/concepts
-   menus/menus
+   toolbar/toolbar
    interface/interface
    functions/functions
+   options/options
    FAQ <faq/faq>
    glossary/glossary
    appendix/appendix

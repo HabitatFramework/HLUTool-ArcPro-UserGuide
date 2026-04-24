@@ -6,7 +6,7 @@ Concepts
 	single: Concepts; MasterMap Framework
 	single: MasterMap Framework, Concept
 	see: Topographical identifier; TOID
-	see: Fragment; TOID_Fragment_ID
+	see: Fragment; FragID
 
 .. _data_structure:
 
@@ -205,19 +205,19 @@ For example, a group of adjacent permanent pasture features, each represented by
 Physical Split
 --------------
 
-Physical split is use to create one or more new TOID fragments in the database based upon a single TOID that has already been split in the GIS layer. Physically splitting a feature into fragments allows the fragments to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
+Physical split is use to create one or more new fragments in the database based upon a single TOID that has already been split in the GIS layer. Physically splitting a feature into fragments allows them to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
 
 For example, a woodland may appear in OS MasterMap as a single feature, but compartments within the woodland may be managed differently and/or may have different characteristics. By physically splitting the woodland feature along the compartment boundaries each compartment can then be assigned to it's own INCID (by performing a logical_split) so that they can be assigned different matrix, formation and management codes.
 
 .. note::
 
-	* Only if two or more fragments from the same TOID and with the same TOID_Fragment_Id are present in the current filter will the tool allow a physical split to be performed.
+	* Only if two or more fragments from the same TOID and with the same FragID are present in the current filter will the tool allow a physical split to be performed.
 	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues. 
 	* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
 	* Ensure that the physical split is completed in the database prior to commencing any other operations such as 'Select by attributes …' to avoid database synchronisation issues.
 
-.. warning::
-	If two or more fragments from the same TOID and with the same TOID_Fragment_Id are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and will **automatically** perform a physical split before displaying the attributes.
+.. note::
+	If two or more fragments from the same TOID and with the same FragID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and advise the user that a physical split can be performed.
 
 .. _merge:
 
