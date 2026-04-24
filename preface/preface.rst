@@ -42,11 +42,13 @@ This Preface explains a little about the HLU Tool, the community of people who d
 
 :doc:`../concepts/concepts` \ is a brief outline of the key concepts of the HLU Tool.
 
-:doc:`../menus/menus` \ describes all the user interface menu items and buttons on the HLU Tool.
+:doc:`../toolbar/toolbar` \ describes all the toolbar items on the HLU Tool toolbar.
 
 :doc:`../interface/interface` \ describes all the user interface windows and components of the HLU Tool.
 
 :doc:`../functions/functions` \ demonstrates how to perform the common functions of the HLU Tool.
+
+:doc:`../options/options` \ describes all the application and user options for the HLU Tool.
 
 :doc:`FAQ <../faq/faq>` \ has a list of commonly asked questions and their answers.
 

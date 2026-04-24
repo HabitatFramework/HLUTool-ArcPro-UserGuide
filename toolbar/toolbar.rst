@@ -1,8 +1,4 @@
-	.. |copy| image:: ../icons/EditCopy.png
-	:height: 16px
-	:width: 16px
-
-	.. |update| image:: ../icons/Update.png
+.. |update| image:: ../icons/Update.png
 	:height: 16px
 	:width: 16px
 
@@ -46,7 +42,7 @@
 	:height: 16px
 	:width: 16px
 
-.. |autoselect| image:: ../icons/AutoSelect16.png
+.. |autoselect| image:: ../icons/AutoSelect.png
 	:height: 16px
 	:width: 16px
 
