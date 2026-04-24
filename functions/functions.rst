@@ -99,7 +99,7 @@ To update the attributes of an INCID:
 	The :guilabel:`Apply` button will only be displayed if:
 		* The user is listed in the lut_user table.
 		* The active HLU layer is editable in ArcGIS Pro.
-        * A Reason and Process have both been selected in the HLU Tool ribbon
+        * A Reason and Process have both been selected in the HLU Tool ribbon.
 		* The user has made one or more changes to the current INCID.
 		* There are no fields in error.
 
@@ -682,7 +682,7 @@ To perform an export:
 	* Select the required INCID and GIS features to be exported (either by selecting the features in the map and clicking :guilabel:`Get Map Selection`, or by performing a **Filter by Attributes**) and then clicking :guilabel:`Select All Filtered INCIDs`.
 	* Click |export| **Export** in the :ref:`export_group` of the HLU Tool ribbon to open the Export window.
 	* Select one of the pre-defined export formats from the 'Export Format' drop-down list.
-    * Select the required output format in the 'Output Type' drop-down list.
+	* Select the required output format in the 'Output Type' drop-down list.
 	* Tick the 'Selected only' checkbox to export **only** the selected features or clear the checkbox to export **all** of the features in the active HLU layer as required.
 
 	.. note::
