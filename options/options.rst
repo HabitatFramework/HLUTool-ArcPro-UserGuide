@@ -37,7 +37,7 @@ The following options relate to how the HLU Tool interacts with the underlying d
 
 .. _figOWD:
 
-.. figure:: figures/OptionsWindowDatabase.png
+.. figure:: figures/OptionsWindowAppDatabase.png
 	:align: center
 	:scale: 90
 
@@ -64,7 +64,7 @@ The following options relate to the formatting of vague dates used in the source
 
 .. _figOWDa:
 
-.. figure:: figures/OptionsWindowDates.png
+.. figure:: figures/OptionsWindowAppDates.png
 	:align: center
 	:scale: 90
 
@@ -92,7 +92,7 @@ The following options relate to data validation rules applied when attribute upd
 
 .. _figOWVal:
 
-.. figure:: figures/OptionsWindowValidation.png
+.. figure:: figures/OptionsWindowAppValidation.png
 	:align: center
 	:scale: 90
 
@@ -138,7 +138,7 @@ The following options relate to what happens when attribute updates are applied.
 
 .. _figOWU:
 
-.. figure:: figures/OptionsWindowUpdates.png
+.. figure:: figures/OptionsWindowAppUpdates.png
 	:align: center
 	:scale: 90
 
@@ -180,7 +180,7 @@ The following options relate to the **default** values to use when applying bulk
 
 .. _figOWBU:
 
-.. figure:: figures/OptionsWindowBulkUpdate.png
+.. figure:: figures/OptionsWindowAppBulkUpdates.png
 	:align: center
 	:scale: 90
 
@@ -230,7 +230,7 @@ The following options relate to how the HLU Tool dockpane appears. These are use
 
 .. _figOWI:
 
-.. figure:: figures/OptionsWindowInterface.png
+.. figure:: figures/OptionsWindowUserInterface.png
 	:align: center
 	:scale: 90
 
@@ -273,7 +273,7 @@ The following options relate to how the HLU Tool interacts with ArcGIS Pro. Thes
 
 .. _figOWGIS:
 
-.. figure:: figures/OptionsWindowGIS.png
+.. figure:: figures/OptionsWindowUserGIS.png
 	:align: center
 	:scale: 90
 
@@ -346,7 +346,7 @@ The following options relate to the advanced query builder used to filter INCID 
 
 .. _figOWF:
 
-.. figure:: figures/OptionsWindowSQL.png
+.. figure:: figures/OptionsWindowUserSQL.png
 	:align: center
 	:scale: 90
 
@@ -373,7 +373,7 @@ The following options relate to how history records are displayed in the HLU Too
 
 .. _figOWH:
 
-.. figure:: figures/OptionsWindowHistory.png
+.. figure:: figures/OptionsWindowUserHistory.png
 	:align: center
 	:scale: 90
 
@@ -397,7 +397,7 @@ The following options relate to exporting data. These are user-specific settings
 
 .. _figOWExport:
 
-.. figure:: figures/OptionsWindowExport.png
+.. figure:: figures/OptionsWindowUserExport.png
 	:align: center
 	:scale: 90
 

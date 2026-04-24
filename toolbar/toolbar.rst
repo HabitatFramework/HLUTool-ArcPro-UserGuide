@@ -1,17 +1,20 @@
-.. |copy| image:: ../icons/EditCopy.png
-	.. |update| image:: ../icons/Update16.png
+	.. |copy| image:: ../icons/EditCopy.png
 	:height: 16px
 	:width: 16px
 
-.. |bulkupdate| image:: ../icons/BulkUpdate16.png
+	.. |update| image:: ../icons/Update.png
 	:height: 16px
 	:width: 16px
 
-.. |osmmreview| image:: ../icons/OSMMReview16.png
+.. |bulkupdate| image:: ../icons/BulkUpdate.png
 	:height: 16px
 	:width: 16px
 
-.. |osmmBulkupdate| image:: ../icons/OSMMBulkUpdate16.png
+.. |osmmreview| image:: ../icons/OSMMReview.png
+	:height: 16px
+	:width: 16px
+
+.. |osmmBulkupdate| image:: ../icons/OSMMBulkUpdate.png
 	:height: 16px
 	:width: 16px
 
@@ -47,11 +50,11 @@
 	:height: 16px
 	:width: 16px
 
-.. |split| image:: ../icons/Split16.png
+.. |split| image:: ../icons/Split.png
 	:height: 16px
 	:width: 16px
 
-.. |merge| image:: ../icons/Merge16.png
+.. |merge| image:: ../icons/Merge.png
 	:height: 16px
 	:width: 16px
 
@@ -79,7 +82,7 @@
 	:height: 16px
 	:width: 16px
 
-.. |about| image:: ../icons/About16.png
+.. |about| image:: ../icons/About.png
 	:height: 16px
 	:width: 16px
 
@@ -92,7 +95,7 @@ The HLU Tool is an ArcGIS Pro add-in. All of its functions are accessed through 
 
 .. _figUITab:
 
-.. figure:: figures/UserInterfaceToolbar.png
+.. figure:: figures/Toolbar.png
 	:align: center
 
 	HLU Tool Ribbon Tab
@@ -115,7 +118,7 @@ Mode Group
 
 .. _figUIGMode:
 
-.. figure:: figures/UserInterfaceModeGroup.png
+.. figure:: figures/ToolbarModeGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Mode Group
@@ -169,7 +172,7 @@ Edit Group
 
 .. _figUIGEdit:
 
-.. figure:: figures/UserInterfaceEditGroup.png
+.. figure:: figures/ToolbarEditGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Edit Group
@@ -214,7 +217,7 @@ Copy/Paste Group
 
 .. _figUIGCopyPaste:
 
-.. figure:: figures/UserInterfaceCopyPasteGroup.png
+.. figure:: figures/ToolbarCopyPasteGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Copy/Paste Group
@@ -259,7 +262,7 @@ Map Tools Group
 
 .. _figUIGMapTools:
 
-.. figure:: figures/UserInterfaceMapToolsGroup.png
+.. figure:: figures/ToolbarMapToolsGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Map Tools Group
@@ -296,7 +299,7 @@ Filter INCIDs Group
 
 .. _figUIGFilterIncids:
 
-.. figure:: figures/UserInterfaceFilterIncidsGroup.png
+.. figure:: figures/ToolbarFilterIncidsGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Filter INCIDs Group
@@ -339,7 +342,7 @@ Select INCIDs Group
 
 .. _figUIGSelectIncids:
 
-.. figure:: figures/UserInterfaceSelectIncidsGroup.png
+.. figure:: figures/ToolbarSelectIncidsGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Select INCIDs Group
@@ -387,7 +390,7 @@ Split/Merge Group
 
 .. _figUIGSplitMerge:
 
-.. figure:: figures/UserInterfaceSplitMergeGroup.png
+.. figure:: figures/ToolbarSplitMergeGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Split/Merge Group
@@ -448,7 +451,7 @@ Export Group
 
 .. _figUIGExport:
 
-.. figure:: figures/UserInterfaceExportGroup.png
+.. figure:: figures/ToolbarExportGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Export Group
@@ -479,7 +482,7 @@ Info Group
 
 .. _figUIGInfo:
 
-.. figure:: figures/UserInterfaceInfoGroup.png
+.. figure:: figures/ToolbarInfoGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Info Group

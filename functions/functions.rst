@@ -22,11 +22,19 @@
 	:height: 16px
 	:width: 16px
 
+.. |autoselect| image:: ../icons/AutoSelect.png
+	:height: 16px
+	:width: 16px
+
 .. |selectonmap| image:: ../icons/SelectOnMap.png
 	:height: 16px
 	:width: 16px
 
 .. |getmapselection| image:: ../icons/GetMapSelection.png
+	:height: 16px
+	:width: 16px
+
+.. |selectallonmap| image:: ../icons/SelectAllOnMap.png
 	:height: 16px
 	:width: 16px
 
@@ -316,13 +324,6 @@ To **save** an advanced query:
 * Before executing the query click :guilabel:`Save`. A save dialog will open prompting you to select a folder and file name.
 * Select a destination folder, enter a suitable file name and click :guilabel:`Save`. The query will be saved.
 
-To **save** an advanced query:
-
-* Click |filterbyattr| **Filter by Attributes** to open the Advanced Query Builder window.
-* Create a valid query as above.
-* Before executing the query click :guilabel:`Save`. A save dialog will open prompting you to select a folder and file name.
-* Select a destination folder, enter a suitable file name and click :guilabel:`Save`. The query will be saved.
-
 To **load** a previously saved advanced query:
 
 * Click |filterbyattr| **Filter by Attributes** to open the Advanced Query Builder window.
@@ -367,22 +368,38 @@ To filter by a single INCID:
 Select INCIDs
 =============
 
-Users can select
+Users can select features in the active HLU layer based on the current INCID filter, or load INCID records into the dockpane based on a map selection, using the buttons in the :ref:`select_incids_group` of the HLU Tool ribbon.
 
+.. index::
+	single: Select; Get Map Selection
+
+.. _get_map_selection:
+
+Get Map Selection
+-----------------
+
+To filter the database records based on features selected in the map:
+
+* Select one or more features in the active HLU layer in ArcGIS Pro.
+* Click |getmapselection| :guilabel:`Get Map Selection`. The INCID records associated with the selected features will be loaded into the dockpane and the number of selected features for the current INCID will be shown in the INCID Status section.
+
+.. tip::
+	If features from more than one INCID are selected, all associated INCID records will be loaded into the active filter and can be browsed using the navigation buttons. Click |selectonmap| :guilabel:`Select Current INCID` to expand the selection to include all features belonging to the current INCID.
 
 .. index::
 	single: Select; Select current INCID
 
 .. _select_current_incid:
 
-Select Current Incid
+Select Current INCID
 --------------------
 
+To select all features associated with the current INCID in the active HLU layer:
 
+* Click |selectonmap| :guilabel:`Select Current INCID on Map`. All features for the current INCID will be selected in the active HLU layer.
 
 .. note::
 	Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before executing the query if the expected number of features to be selected exceeds the configured threshold.
-
 
 .. index::
 	single: Select; Select all filtered INCIDs
@@ -392,9 +409,43 @@ Select Current Incid
 Select All Filtered INCIDs
 --------------------------
 
+To select all features associated with every INCID in the active filter:
 
+* Apply a filter using :ref:`filter_by_attributes` or select features in the map and click |getmapselection| :guilabel:`Get Map Selection`.
+* Click |selectallonmap| :guilabel:`Select All Filtered INCIDs`. All features associated with every INCID in the active filter will be selected in the active HLU layer.
 
+.. warning::
+	This process may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message will appear before the selection is made, as shown in the figure :ref:`figFGSWD`, if the expected number of features to be selected exceeds the configured threshold.
 
+.. _figFGSWD:
+
+.. figure:: figures/GISSelectionWarningDialog.png
+	:align: center
+
+	GIS Selection Warning Dialog
+
+.. index::
+	single: Select; Auto Select
+
+.. _auto_select:
+
+Auto Select
+-----------
+
+The |autoselect| :guilabel:`Auto Select` button in the :ref:`select_incids_group` of the HLU Tool ribbon toggles automatic selection of all features associated with the current INCID in the active HLU layer whenever the INCID changes in the dockpane.
+
+When **Auto Select** is active:
+
+* Moving to a different INCID using the navigation buttons, or entering a record number directly in the INCID Status section, will automatically select all features associated with that INCID in the active HLU layer.
+* The button appears highlighted to indicate that auto-selection is enabled.
+
+When **Auto Select** is inactive:
+
+* Changing the current INCID in the dockpane does not change the map selection.
+* Use |getmapselection| :guilabel:`Get Map Selection` or |selectonmap| :guilabel:`Select Current INCID on Map` to update the selection manually.
+
+.. note::
+	Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before each automatic selection if the expected number of features to be selected exceeds the configured threshold.
 
 .. raw:: latex
 
@@ -412,8 +463,7 @@ Bulk Updates
 Users can update the attributes for multiple INCID records, and associated features in the active HLU layer, by performing a bulk update. Bulk updates can only be applied to a subset of INCID records by applying a filter. Attribute updates applied in bulk update mode will be applied to all INCIDs in the active filter.
 
 .. warning::
-
-    * Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
+    Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
 
 
 .. note::
@@ -543,8 +593,7 @@ Bulk Apply OSMM Updates
 Once proposed OSMM updates have been accepted they become 'Pending' and must be bulk processed in order to apply them.
 
 .. warning::
-
-    * As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
+    As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
 
 .. note::
 

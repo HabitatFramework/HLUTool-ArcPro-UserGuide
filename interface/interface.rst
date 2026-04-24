@@ -46,8 +46,15 @@ Records can be viewed or updated through the HLU Tool dockpane. Missing or inval
 
 The following sections summarise the different sections of the dockpane.
 
+.. _figUITB:
+
+.. figure:: figures/UserInterfaceTitleBar.png
+	:align: center
+
+	Main Window - Dockpane Title Bar
+
 .. note::
-	The dockpane header displays **[READONLY]** when the tool is in read-only mode. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
+	The dockpane header displays **[READONLY]** when the tool is in read-only mode, as shown in the figure :ref:`figUITB`. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
 
 .. _osmm_update_section:
 
@@ -114,22 +121,6 @@ Modified/By
 .. raw:: latex
 
 	\newpage
-
-.. _habitats_tab:
-
-Habitats Tab
-------------
-
-Click on :guilabel:`Habitats` to display the Habitats tab as shown in the figure :ref:`figUIHT`. The Habitats tab displays the UKHab primary and secondary codes and the legacy habitat for the current INCID record. It also assists attribute updates when the original survey source(s) are not using UKHab by providing translations from a range of habitat classifications (e.g. JNCC Phase 1, IHS and NVC) to UKHab.
-
-.. _figUIHT:
-
-.. figure:: figures/UserInterfaceHabitatsTab.png
-	:align: center
-	:scale: 85
-
-	Main Window - Habitats Tab
-
 
 .. _habitats_tab:
 
@@ -512,9 +503,9 @@ Habitat Imp.
 History Tab
 -----------
 
-Click on :guilabel:`History` to display the History tab as shown in the figure :ref:`figUIHT`. The History tab displays a list of previous modifications made to the current INCID and the associated TOIDs. 
+Click on :guilabel:`History` to display the History tab as shown in the figure :ref:`figUIHistT`. The History tab displays a list of previous modifications made to the current INCID and the associated TOIDs. 
 
-.. _figUIHT:
+.. _figUIHistT:
 
 .. figure:: figures/UserInterfaceHistoryTab.png
 	:align: center
@@ -529,7 +520,7 @@ Each entry details what modifications were made, when and by whom. Entries are s
 INCID Status Section
 --------------------
 
-The 'INCID Status' section contains navigation buttons (:guilabel:`First`, :guilabel:`Previous`, :guilabel:`Next`, :guilabel:`Last`) and a record number text box to enable users to move between INCID records. It displays the current record position and the total number of records in the active filter (or the total number of INCID records in the database if there is no active filter). It also displays the number of TOIDs and TOID fragments selected in the active HLU layer for the current INCID when the filter was applied, as well as the total number of TOIDs and TOID fragments related to the current INCID in the database.
+The 'INCID Status' section contains navigation buttons (:guilabel:`First`, :guilabel:`Previous`, :guilabel:`Next`, :guilabel:`Last`) and a record number text box to enable users to move between INCID records **within the currently active filter**. It displays the current record position and the total number of records available for navigation (or the total number of INCID records in the database if there is no active filter). It also displays the number of TOIDs and TOID fragments selected in the active HLU layer for the current INCID when the filter was applied, as well as the total number of TOIDs and TOID fragments related to the current INCID in the database.
 
 .. _figUIISS:
 
@@ -551,6 +542,7 @@ This section also contains the :guilabel:`Apply` button which is used to apply a
 
 		* The user is listed in the lut_user table.
 		* The active HLU layer is editable in ArcGIS Pro.
+		* A Reason and Process have both been selected in the HLU Tool ribbon.
 		* The user has made one or more changes to the current INCID.
 		* There are no fields in error.
 
@@ -1112,12 +1104,12 @@ Cancel
 .. index::
 	single: Filter; Filter by Incid
 
-.. _filter_by_incid:
+.. _filter_by_incid_window:
 
 Filter by Incid
 ---------------
 
-Users can also filter the INCID records that appear in the user interface, and correspondingly which features are selected in the active GIS layer, by entering a single INCID.
+Users can also filter the INCID records that appear in the user interface
 
 Enter an INCID value directly into the **Find Incid** text box in the :ref:`filter_incids_group` of the HLU Tool ribbon and press :kbd:`Enter` to filter to that record, or open the dedicated window as described below.
 
@@ -1175,6 +1167,38 @@ Selected Only
 	\newpage
 
 .. index::
+	single: Reason
+	single: Process
+	single: Windows; Reason and Process
+
+.. _reason_section:
+
+Reason and Process
+==================
+
+The **Reason** and **Process** drop-down lists in the :ref:`edit_group` of the HLU Tool ribbon must both be selected before any update, split, merge or bulk update operation can be applied. The selected values are recorded in the history table to indicate why and how the INCID record was changed.
+
+.. _figUIRPS:
+
+.. figure:: figures/UserInterfaceReasonProcessSection.png
+	:align: center
+
+	HLU Tool Ribbon - Reason and Process
+
+Reason
+	A drop-down list for selecting the reason for the updates about to be made.
+
+Process
+	A drop-down list for selecting the process associated with the updates about to be made.
+
+.. note::
+	The selected Reason and Process values are **sticky** — they are retained across all update operations in the current session until changed. Default values for both can be pre-configured in the user options (see :ref:`options_user_updates` for more details).
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
 	single: Active Layer
 	single: Switch GIS Layer
 	single: Windows; Active Layer
@@ -1184,7 +1208,14 @@ Selected Only
 Active Layer
 ============
 
-The **Active Layer** drop-down list in the :ref:`edit_group` of the HLU Tool ribbon allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on.
+The **Active Layer** drop-down list in the :ref:`edit_group` of the HLU Tool ribbon allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on, as shown in the figure :ref:`figUIAL`.
+
+.. _figUIAL:
+
+.. figure:: figures/SwitchGISLayerDialog.png
+	:align: center
+
+	Active Layer Drop-down List
 
 .. note::
 	Only valid HLU layers present in the current ArcGIS Pro map (i.e. layers with the correct attribute names and formats) will appear in the list.
