@@ -310,7 +310,10 @@ Splits the currently selected feature at a digitised line using the standard Arc
 Merge
 -----
 
-Merges two or more selected features into a single feature using the standard ArcGIS Pro :guilabel:`Merge` editing command. Use this to physically combine features before recording the merge in the database using :ref:`physical_merge_button`.
+Merges two or more selected features into a single feature using the standard ArcGIS Pro :guilabel:`Merge` editing command.
+
+.. warning::
+	Only use this button to physically combine features that already have the same INCID, Toid and FragID values otherwise you may cause database synchronisation issues.
 
 Edit Vertices
 -------------
