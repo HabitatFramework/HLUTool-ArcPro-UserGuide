@@ -99,7 +99,7 @@ To update the attributes of an INCID:
 	The :guilabel:`Apply` button will only be displayed if:
 		* The user is listed in the lut_user table.
 		* The active HLU layer is editable in ArcGIS Pro.
-        * A Reason and Process have both been selected in the HLU Tool ribbon.
+	        * A Reason and Process have both been selected in the HLU Tool ribbon.
 		* The user has made one or more changes to the current INCID.
 		* There are no fields in error.
 
@@ -290,7 +290,7 @@ To perform a physical merge:
 Filter by Attributes
 ====================
 
-Users can select which subset of INCID records are available for display in the dockpane, and correspondingly which features are selected in the active HLU layer, by applying a filter. The filter is performed by building a SQL query that selects one or more INCIDs based on a chosen set of criteria, or by entering a single INCID value using the **Find Incid** text box in the :ref:`filter_incids_group`.
+Users can select which subset of INCID records are available for display in the dockpane, and correspondingly which features are selected in the active HLU layer, by applying a filter. The filter is performed by building a SQL query that selects one or more INCIDs based on a chosen set of criteria, or by entering a single INCID value using the **Find Incid** text box in the :ref:`filter_group`.
 
 .. index::
 	single: Filter; Advanced Query Builder
@@ -307,7 +307,7 @@ Advanced Query Filter
 
 To apply a filter using the advanced query filter:
 
-* Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_incids_group` of the HLU Tool ribbon to open the Advanced Query Builder window.
+* Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` of the HLU Tool ribbon to open the Advanced Query Builder window.
 * Select a Table in the list and click :guilabel:`Add` to add it to the 'SELECT DISTINCT incid FROM' field and WHERE field.
 * Select a Column, Operator and Value in a similar way to build up a SQL clause.
 * Add further criteria as required by selecting values and adding them to the SQL clause.
@@ -353,7 +353,7 @@ Filter by Incid
 
 To filter by a single INCID:
 
-* Enter or paste a valid INCID into the **Find Incid** text box in the :ref:`filter_incids_group` of the HLU Tool ribbon and press :kbd:`Enter`. The INCID will be selected in the dockpane.
+* Enter or paste a valid INCID into the **Find Incid** text box in the :ref:`filter_group` of the HLU Tool ribbon and press :kbd:`Enter`. The INCID will be selected in the dockpane.
 
 
 .. raw:: latex
@@ -368,7 +368,7 @@ To filter by a single INCID:
 Select INCIDs
 =============
 
-Users can select features in the active HLU layer based on the current INCID filter, or load INCID records into the dockpane based on a map selection, using the buttons in the :ref:`select_incids_group` of the HLU Tool ribbon.
+Users can select features in the active HLU layer based on the current INCID filter, or load INCID records into the dockpane based on a map selection, using the buttons in the :ref:`selection_group` of the HLU Tool ribbon.
 
 .. index::
 	single: Select; Get Map Selection
@@ -432,7 +432,7 @@ To select all features associated with every INCID in the active filter:
 Auto Select
 -----------
 
-The |autoselect| :guilabel:`Auto Select` button in the :ref:`select_incids_group` of the HLU Tool ribbon toggles automatic selection of all features associated with the current INCID in the active HLU layer whenever the INCID changes in the dockpane.
+The |autoselect| :guilabel:`Auto Select` button in the :ref:`selection_group` of the HLU Tool ribbon toggles automatic selection of all features associated with the current INCID in the active HLU layer whenever the INCID changes in the dockpane.
 
 When **Auto Select** is active:
 
@@ -537,9 +537,9 @@ To filter proposed OSMM Updates:
 * Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
 
 .. note::
-	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_incids_group` to re-open the OSMM Updates Filter window.
+			To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
-.. _figFUIOU:
+	.. _figFUIOU:
 
 .. figure:: figures/UserInterfaceReviewOSMMUpdates.png
 	:align: center
@@ -558,6 +558,7 @@ To process proposed OSMM Updates:
 * Click :guilabel:`Skip` to skip the proposed update for the current INCID. It can then be reviewed again at a later time.
 * Click :guilabel:`Reject` to reject the proposed update for the current INCID. It will no longer be available for reviewing or applying.
 * Click :guilabel:`Accept` to accept the proposed update for the current INCID. The update will now be 'Pending' and must be applied by bulk applying OSMM Updates (see :ref:`bulk_osmm_update` for details).
+* Click :guilabel:`Adopt` to accept the proposed update for the current INCID **and** immediately apply it in a single step, without needing to perform a separate bulk apply operation.
 
 .. note::
 	Holding down the :guilabel:`Ctrl` key changes the :guilabel:`Reject` and :guilabel:`Accept` buttons to :guilabel:`Reject All` and :guilabel:`Accept All` thereby allowing the user to Reject or Accept all remaining INCIDs in the active filter.
@@ -615,9 +616,9 @@ To filter pending OSMM Updates:
 * Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
 
 .. note::
-	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_incids_group` to re-open the OSMM Updates Filter window.
+			To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
-.. _figFUIBOU:
+	.. _figFUIBOU:
 
 .. figure:: figures/UserInterfaceBulkOSMMUpdate.png
 	:align: center
@@ -697,7 +698,7 @@ To perform an export:
 .. warning::
 	Exporting all features or a large number of features can take a long time depending upon the number of features and the configuration of the HLU Tool and database system.
 
-During the export process checks and validation are performed to avoid potential errors. As a result a warning may appear if the export contains a large number of INCIDs and hence may take a long time to complete, or if a shapefile export format is used and the format contains field names that exceed 10 characters (as this will result in the field names being automatically truncated or renamed by ArcGIS Pro).
+During the export process checks and validation are performed to avoid potential errors. The selected export format is validated before the export begins — if no valid format is selected an error will be shown and the export will not proceed. A warning may also appear if the export contains a large number of INCIDs and hence may take a long time to complete, or if a shapefile export format is used and the format contains field names that exceed 10 characters (as this will result in the field names being automatically truncated or renamed by ArcGIS Pro).
 
 .. seealso::
 	For details on defining export formats see 'Configuring Exports' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.

@@ -158,27 +158,27 @@ Activates **OSMM Bulk Update** mode, which allows all accepted (pending) OSMM up
 	\newpage
 
 .. index::
-	single: Toolbar; Edit Group
-	see: Edit Group; Toolbar
+	single: Toolbar; Updates Group
+	see: Updates Group; Toolbar
 
-.. _edit_group:
+.. _updates_group:
 
-Edit Group
-==========
+Updates Group
+=============
 
-.. _figUIGEdit:
+.. _figUIGUpdates:
 
-.. figure:: figures/ToolbarEditGroup.png
+.. figure:: figures/ToolbarUpdatesGroup.png
 	:align: center
 
-	HLU Tool Ribbon - Edit Group
+	HLU Tool Ribbon - Updates Group
 
-The **Edit** group provides controls for configuring the active layer and recording the reason and process for any attribute changes.
+The **Updates** group provides controls for configuring the active layer and recording the reason and process for any attribute changes.
 
 .. note::
 	The reason and process fields are required values for all update actions (attribute updates, splits, merges and bulk updates) and are recorded in the History table to indicate **why** the record was updated. The selected values are **sticky** — they are retained for all subsequent actions in the current session until changed.
 
-The **Edit** group contains the following controls:
+The **Updates** group contains the following controls:
 
 Active Layer
 ------------
@@ -275,32 +275,69 @@ Clear Selection
 
 Clears the current feature selection in the active HLU layer (standard ArcGIS Pro :guilabel:`Clear` button).
 
-Split
------
+Zoom To
+-------
 
-Splits the currently selected feature at a digitised line using the standard ArcGIS Pro :guilabel:`Split` editing command. Use this to physically divide a feature before recording the split in the database using :ref:`physical_split_button`.
+Zooms to the selected features of all layers in the active map (standard ArcGIS Pro :guilabel:`Zoom To` button).
 
 .. raw:: latex
 
 	\newpage
 
 .. index::
-	single: Toolbar; Filter INCIDs Group
-	see: Filter INCIDs Group; Toolbar
+	single: Toolbar; Geometry Group
+	see: Geometry Group; Toolbar
 
-.. _filter_incids_group:
+.. _geometry_group:
 
-Filter INCIDs Group
-===================
+Geometry Group
+==============
 
-.. _figUIGFilterIncids:
+.. _figUIGGeometry:
 
-.. figure:: figures/ToolbarFilterIncidsGroup.png
+.. figure:: figures/ToolbarGeometryGroup.png
 	:align: center
 
-	HLU Tool Ribbon - Filter INCIDs Group
+	HLU Tool Ribbon - Geometry Group
 
-The **Filter INCIDs** group provides controls for filtering the INCID records displayed in the dockpane. It contains the following controls:
+The **Geometry** group exposes standard ArcGIS Pro tools used in conjunction with the HLU Tool. It contains the following controls:
+
+Split
+-----
+
+Splits the currently selected feature at a digitised line using the standard ArcGIS Pro :guilabel:`Split` editing command. Use this to physically divide a feature before recording the split in the database using :ref:`physical_split_button`.
+
+Merge
+-----
+
+Merges two or more selected features into a single feature using the standard ArcGIS Pro :guilabel:`Merge` editing command. Use this to physically combine features before recording the merge in the database using :ref:`physical_merge_button`.
+
+Edit Vertices
+-------------
+
+Edits the vertices of the currently selected feature using the standard ArcGIS Pro :guilabel:`Edit Vertices` command.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Toolbar; Filter Group
+	see: Filter Group; Toolbar
+
+.. _filter_group:
+
+Filter Group
+============
+
+.. _figUIGFilter:
+
+.. figure:: figures/ToolbarFilterGroup.png
+	:align: center
+
+	HLU Tool Ribbon - Filter Group
+
+The **Filter** group provides controls for filtering the INCID records displayed in the dockpane. It contains the following controls:
 
 |filterbyattr| Filter by Attributes
 ------------------------------------
@@ -328,22 +365,22 @@ A text box for filtering the records to a single INCID. Enter an INCID value in 
 	\newpage
 
 .. index::
-	single: Toolbar; Select INCIDs Group
-	see: Select INCIDs Group; Toolbar
+	single: Toolbar; Selection Group
+	see: Selection Group; Toolbar
 
-.. _select_incids_group:
+.. _selection_group:
 
-Select INCIDs Group
-===================
+Selection Group
+===============
 
-.. _figUIGSelectIncids:
+.. _figUIGSelection:
 
-.. figure:: figures/ToolbarSelectIncidsGroup.png
+.. figure:: figures/ToolbarSelectionGroup.png
 	:align: center
 
-	HLU Tool Ribbon - Select INCIDs Group
+	HLU Tool Ribbon - Selection Group
 
-The **Select INCIDs** group provides controls for selecting features on the map based on the INCID filter and vice versa. It contains the following buttons:
+The **Selection** group provides controls for selecting features on the map based on the INCID filter and vice versa. It contains the following buttons:
 
 |getmapselection| Get Map Selection
 ------------------------------------
@@ -376,25 +413,25 @@ Toggles automatic selection of all features associated with the current INCID re
 	\newpage
 
 .. index::
-	single: Toolbar; Split/Merge Group
-	see: Split/Merge Group; Toolbar
+	single: Toolbar; Topology Group
+	see: Topology Group; Toolbar
 
-.. _split_merge_group:
+.. _topology_group:
 
-Split/Merge Group
-=================
+Topology Group
+==============
 
-.. _figUIGSplitMerge:
+.. _figUIGTopology:
 
-.. figure:: figures/ToolbarSplitMergeGroup.png
+.. figure:: figures/ToolbarTopologyGroup.png
 	:align: center
 
-	HLU Tool Ribbon - Split/Merge Group
+	HLU Tool Ribbon - Topology Group
 
 .. note::
-	All buttons in this group are disabled until database records have been filtered and a **Reason** and **Process** have been selected in the **Edit** group. For details see :ref:`edit_group`.
+	All buttons in this group are disabled until database records have been filtered and a **Reason** and **Process** have been selected in the **Updates** group. For details see :ref:`updates_group`.
 
-The **Split/Merge** group contains two drop-down menus:
+The **Topology** group contains two drop-down menus:
 
 |split| Split
 -------------
@@ -468,22 +505,22 @@ Opens the Export window, allowing users to export data from the HLU database to 
 	\newpage
 
 .. index::
-	single: Toolbar; Info Group
-	see: Info Group; Toolbar
+	single: Toolbar; Help Group
+	see: Help Group; Toolbar
 
-.. _info_group:
+.. _help_group:
 
-Info Group
+Help Group
 ==========
 
 .. _figUIGInfo:
 
-.. figure:: figures/ToolbarInfoGroup.png
+.. figure:: figures/ToolbarHelpGroup.png
 	:align: center
 
-	HLU Tool Ribbon - Info Group
+	HLU Tool Ribbon - Help Group
 
-The **Info** group provides access to tool configuration and version information:
+The **Help** group provides access to tool configuration and version information:
 
 |options| Options
 -----------------

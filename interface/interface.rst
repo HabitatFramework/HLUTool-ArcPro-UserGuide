@@ -77,6 +77,11 @@ The 'OSMM Updates' section displays summary information of any proposed or pendi
 
 For a description of the fields see :ref:`review_osmm_section`.
 
+When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section. Clicking :guilabel:`Adopt` immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+
+.. note::
+	The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
+
 .. raw:: latex
 
 	\newpage
@@ -855,7 +860,18 @@ The Review OSMM Updates 'INCID Status' section shows the total number of INCIDs 
 
 For example, figure :ref:`figUIOUIS` indicates that the active filter currently contains 13 INCIDs and the current INCID consists of 1 TOID with 1 fragment.
 
-Holding down the :guilabel:`Ctrl` key changes the :guilabel:`Reject` and :guilabel:`Accept` buttons to :guilabel:`Reject All` and :guilabel:`Accept All` thereby allowing the user to Reject or Accept **all** remaining INCIDs in the active filter.
+The INCID Status section provides the following action buttons for processing each proposed OSMM update in turn:
+
+:guilabel:`Skip`
+	Skips the proposed update for the current INCID and moves to the next one. The skipped INCID retains its 'Proposed' status and can be reviewed again at a later time.
+
+:guilabel:`Reject`
+	Rejects the proposed update for the current INCID and moves to the next one. The update status is set to 'Rejected' and it will no longer be available for reviewing or applying.
+
+:guilabel:`Accept`
+	Accepts the proposed update for the current INCID and moves to the next one. The update status is set to 'Pending' and the update must subsequently be applied using OSMM Bulk Update mode (see :ref:`bulk_osmm_update_window` for more details).
+
+Holding down the :guilabel:`Ctrl` key changes the :guilabel:`Reject` and :guilabel:`Accept` buttons to :guilabel:`Reject All` and :guilabel:`Accept All` thereby allowing the user to Reject or Accept **all** remaining INCIDs in the active filter in a single action.
 
 .. _figUIOUIS2:
 
@@ -919,7 +935,7 @@ Cancel
 .. note::
 	The user can change the filter at any time when in Review OSMM Updates mode by clicking:
 
-		* |filterbyattr| **Filter by Attributes** in the :ref:`filter_incids_group` to open the OSMM Updates Filter window.
+		* |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to open the OSMM Updates Filter window.
 		* :guilabel:`Filter by Attributes - Advanced` to open the Advanced Query Builder window.
 
 .. tip::
@@ -939,7 +955,7 @@ As an alternative to the OSMM Updates Filter window that first appears when the 
 To open the advanced filter window:
 
 	* Close the standard OSMM Updates Filter window.
-	* Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_incids_group` and then select the advanced option to open the Advanced Query Builder window.
+	* Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` and then select the advanced option to open the Advanced Query Builder window.
 
 .. raw:: latex
 
@@ -1037,7 +1053,7 @@ Advanced Query Builder Window
 
 Allows users to filter the database records using the advanced query builder shown in the figure :ref:`figAQB`.
 
-Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_incids_group` of the HLU Tool ribbon to open the window.
+Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` of the HLU Tool ribbon to open the window.
 
 .. _figAQB:
 
@@ -1111,7 +1127,7 @@ Filter by Incid
 
 Users can also filter the INCID records that appear in the user interface
 
-Enter an INCID value directly into the **Find Incid** text box in the :ref:`filter_incids_group` of the HLU Tool ribbon and press :kbd:`Enter` to filter to that record, or open the dedicated window as described below.
+Enter an INCID value directly into the **Find Incid** text box in the :ref:`filter_group` of the HLU Tool ribbon and press :kbd:`Enter` to filter to that record, or open the dedicated window as described below.
 
 .. _figFBI:
 
@@ -1176,7 +1192,7 @@ Selected Only
 Reason and Process
 ==================
 
-The **Reason** and **Process** drop-down lists in the :ref:`edit_group` of the HLU Tool ribbon must both be selected before any update, split, merge or bulk update operation can be applied. The selected values are recorded in the history table to indicate why and how the INCID record was changed.
+The **Reason** and **Process** drop-down lists in the :ref:`updates_group` of the HLU Tool ribbon must both be selected before any update, split, merge or bulk update operation can be applied. The selected values are recorded in the history table to indicate why and how the INCID record was changed.
 
 .. _figUIRPS:
 
@@ -1208,7 +1224,7 @@ Process
 Active Layer
 ============
 
-The **Active Layer** drop-down list in the :ref:`edit_group` of the HLU Tool ribbon allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on, as shown in the figure :ref:`figUIAL`.
+The **Active Layer** drop-down list in the :ref:`updates_group` of the HLU Tool ribbon allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on, as shown in the figure :ref:`figUIAL`.
 
 .. _figUIAL:
 

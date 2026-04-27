@@ -20,7 +20,7 @@ Allows users to configure the HLU Tool. The Options window is organised into two
 	:height: 16px
 	:width: 16px
 
-Click |options| **Options** in the :ref:`info_group` of the HLU Tool ribbon to open the Options window.
+Click |options| **Options** in the :ref:`help_group` of the HLU Tool ribbon to open the Options window.
 
 .. index::
 	single: Options; Application Options
@@ -51,6 +51,9 @@ Incid Table Page Size
 
 Reset Database Connection
 	Clears the saved database connection settings. You will be prompted to choose a new connection the next time the HLU Tool is loaded. Use this option if the database server has moved, the database name has changed, or the connection is no longer valid.
+
+	.. note::
+		When the HLU Tool connects to the database it validates the database version against the minimum required version. If the database version is below the minimum, a warning will be displayed and the tool will not load until the database has been upgraded.
 
 .. index::
 	single: Options; Dates
@@ -297,6 +300,9 @@ Warn Before Selecting Features
 Working File Geodatabase Directory
 	Sets the folder path for a working File Geodatabase used when performing large or complex GIS queries.
 
+	.. note::
+		The path is validated when the Options window is closed. If the specified folder does not exist or is not accessible, an error will be shown and the setting will not be saved until a valid path is provided.
+
 .. index::
 	single: Options; User Updates
 
@@ -316,10 +322,10 @@ The following options relate to default values and preferences for update operat
 	Options Window - User Updates
 
 Default Reason
-	Sets the default reason that is pre-selected in the :ref:`edit_group` of the ribbon each time the HLU Tool is opened.
+	Sets the default reason that is pre-selected in the :ref:`updates_group` of the ribbon each time the HLU Tool is opened.
 
 Default Process
-	Sets the default process that is pre-selected in the :ref:`edit_group` of the ribbon each time the HLU Tool is opened.
+	Sets the default process that is pre-selected in the :ref:`updates_group` of the ribbon each time the HLU Tool is opened.
 
 Default Habitat Class
 	Allows the user to choose which Habitat Class in the Habitats tab (see :ref:`habitats_tab` for more details) is automatically selected each time the HLU Tool is opened.
