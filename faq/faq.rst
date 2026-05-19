@@ -26,11 +26,19 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 **Can I use data that isn't snapped to OS MasterMap?**
 
-	Technically you could but only by providing dummy unique TOID values to every feature in your data. This is because the tool is designed to use the TOID to determine when a physical split or merge is to be performed and to manage the FragIDs. Without dummy unique TOIDs the tool would assume all the features in your data are fragments of the same 'blank' TOID which would heavily impact on performance. However, integrating habitat data with OS MasterMap also brings other benefits such as providing spatial accuracy to your data and providing a framework within which more recent or comprehensive habitat and land use data can be applied. See :ref:`habitat_framework` for more details.
+	Yes. TOIDs are now **optional** — features do not need to originate from or be aligned with OS MasterMap. New features can be drawn directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function (see :ref:`function_insert_feature`). Fragment identifiers are still assigned to all features, but they relate to the INCID rather than a TOID. Using OS MasterMap still brings benefits such as improved positional accuracy and a consistent national framework, but it is no longer a requirement. See :ref:`habitat_framework` and :ref:`insert_feature` for more details.
 
 **How do I convert my existing data into the required format?**
 
-	The conversion of one or more existing habitat layers into a state that can be used with the HLU Tool is not simple, but the process brings all the benefits of having an OS MasterMap framework, and once completed the benefits of using the HLU Tool. There are up to 3 steps required to convert existing habitat layer(s) so that it can be used by the HLU Tool:
+	There are two approaches depending on whether you wish to work with or without an OS MasterMap framework:
+
+	**Without an OS MasterMap framework (direct digitising)**
+
+	Features can be created directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function. Each registered feature is assigned a new INCID and fragment identifier and can then be attributed in the dockpane. This approach is simpler to set up but does not bring the positional accuracy or topology benefits of an OS MasterMap framework. See :ref:`function_insert_feature` for details.
+
+	**With an OS MasterMap framework**
+
+	The conversion of one or more existing habitat layers into a state that can be used with the HLU Tool via an OS MasterMap framework is not simple, but the process brings all the benefits of having an OS MasterMap framework, and once completed the benefits of using the HLU Tool. There are up to 3 steps required to convert existing habitat layer(s) so that it can be used by the HLU Tool:
 
 		1. Create an OS MasterMap framework for your habitat data.
 		2. Assign the OS MasterMap framework the required attributes to format them to match the required data standards.
@@ -96,9 +104,12 @@ It is essential that the following guidelines are followed to ensure that the to
 
 	* :strong:`DO` use a file geodatabase to store the HLU GIS layers rather than shapefiles.
 	* :strong:`DO` ensure the HLU layer is in an editable state in ArcGIS Pro before attempting to apply any updates, splits or merges.
+	* :strong:`DO` use the **Insert Feature** function to register any newly drawn features against the database before attempting to attribute them (see :ref:`function_insert_feature`).
+	* :strong:`DO` complete a physical split operation in the database immediately after performing it in the map, before commencing any other operations.
 
 **DO NOT's:**
 
 	* :strong:`DO NOT` remove the HLU layers from the map while the tool is running.
 	* :strong:`DO NOT` switch to a different ArcGIS Pro project while the tool is running.
 	* :strong:`DO NOT` use a shapefile as the HLU layer as this affects performance and imposes field name length restrictions.
+	* :strong:`DO NOT` attempt to apply **Physical Split** or **Physical Merge** on a point layer — these operations are only available for line and polygon layers.

@@ -127,7 +127,7 @@ Potential Priority Habitat Determination Quality Validation
 		* Error - Invalid determination quality values for potential priority habitats are flagged with an **error**.
 
 	.. note::
-		Ignoring the validation for potential priority habitats enables the user to select determination quality values that indicate that the habitat **is** or **probably is** in the associated polygon(s). Otherwise determination quality values can **ONLY** be 'Not present but close to definition' or 'Previously present, but may no longer exist'.
+		Ignoring the validation for potential priority habitats enables the user to select determination quality values that indicate that the habitat **is** or **probably is** in the associated feature(s). Otherwise determination quality values can **ONLY** be 'Not present but close to definition' or 'Previously present, but may no longer exist'.
 
 .. index::
 	single: Options; Updates

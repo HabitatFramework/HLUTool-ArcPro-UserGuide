@@ -70,6 +70,18 @@
 	:height: 16px
 	:width: 16px
 
+.. |insertfeature| image:: ../icons/InsertFeature.png
+	:height: 16px
+	:width: 16px
+
+.. |insertfeaturesameincid| image:: ../icons/InsertFeatureSameIncid.png
+	:height: 16px
+	:width: 16px
+
+.. |insertfeatureseparateincid| image:: ../icons/InsertFeatureSeparateIncid.png
+	:height: 16px
+	:width: 16px
+
 .. |export| image:: ../icons/FileExport.png
 	:height: 16px
 	:width: 16px
@@ -300,12 +312,30 @@ Geometry Group
 
 	HLU Tool Ribbon - Geometry Group
 
-The **Geometry** group exposes standard ArcGIS Pro tools used in conjunction with the HLU Tool. It contains the following controls:
+The **Geometry** group exposes standard ArcGIS Pro editing tools used in conjunction with the HLU Tool. It contains the following controls:
+
+Create Features
+---------------
+
+Opens the ArcGIS Pro **Create Features** pane, allowing new features to be drawn in the active HLU layer using the standard ArcGIS Pro editing tools. New features drawn this way will not initially have an INCID or fragment identifier assigned — use the :ref:`feature_insert_group` to register them against the database.
+
+Modify Features
+---------------
+
+Opens the ArcGIS Pro **Modify Features** pane, providing access to editing tools for modifying existing feature geometry.
+
+Edit Vertices
+-------------
+
+Edits the vertices of the currently selected feature using the standard ArcGIS Pro :guilabel:`Edit Vertices` command.
 
 Split
 -----
 
 Splits the currently selected feature at a digitised line using the standard ArcGIS Pro :guilabel:`Split` editing command. Use this to physically divide a feature before recording the split in the database using :ref:`physical_split_button`.
+
+.. note::
+	The ArcGIS Pro **Split** command operates on the geometry only and does not update the database. Always follow a geometry split immediately with :ref:`physical_split_button` in the :ref:`topology_group` to register the split in the database. Not applicable to point layers.
 
 Merge
 -----
@@ -313,12 +343,7 @@ Merge
 Merges two or more selected features into a single feature using the standard ArcGIS Pro :guilabel:`Merge` editing command.
 
 .. warning::
-	Only use this button to physically combine features that already have the same INCID, Toid and FragID values otherwise you may cause database synchronisation issues.
-
-Edit Vertices
--------------
-
-Edits the vertices of the currently selected feature using the standard ArcGIS Pro :guilabel:`Edit Vertices` command.
+	Only use this button to physically combine features that already have the same INCID and Fragment ID values otherwise you may cause database synchronisation issues. Not applicable to point layers.
 
 .. raw:: latex
 
@@ -444,7 +469,10 @@ Opens the **Split** drop-down menu, which contains:
 .. _physical_split_button:
 
 |physicalsplit| Physical Split
-	Sub-divides a single feature, that has already been split in the ArcGIS Pro map using the **Split** tool in the :ref:`map_tools_group`, into one or more new TOID fragments in the database by assigning new fragment identifiers. The fragments can then be assigned different attributes once they have been logically split from one another.
+	Sub-divides a single feature, that has already been split in the ArcGIS Pro map using the **Split** tool in the :ref:`geometry_group`, into one or more new fragments in the database by assigning new fragment identifiers. The fragments can then be assigned different attributes once they have been logically split from one another.
+
+	.. note::
+		Not available for point layers.
 
 	.. seealso::
 		See :ref:`physical_split` for more information.
@@ -461,7 +489,10 @@ Opens the **Split** drop-down menu, which contains:
 Opens the **Merge** drop-down menu, which contains:
 
 |physicalmerge| Physical Merge
-	Combines two or more fragments of a single TOID, that are associated with the same INCID, into a single merged feature in the ArcGIS Pro map and assigns them to the same fragment identifier.
+	Combines two or more fragments of a single feature, that are associated with the same INCID, into a single merged feature in the ArcGIS Pro map and assigns them to the same fragment identifier.
+
+	.. note::
+		Not available for point layers.
 
 	.. seealso::
 		See :ref:`physical_merge` for more information.
@@ -471,6 +502,46 @@ Opens the **Merge** drop-down menu, which contains:
 
 	.. seealso::
 		See :ref:`logical_merge` for more information.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Toolbar; Feature Insert Group
+	see: Feature Insert Group; Toolbar
+
+.. _feature_insert_group:
+
+Feature Insert Group
+====================
+
+.. _figUIGFeatureInsert:
+
+.. figure:: figures/ToolbarFeatureInsertGroup.png
+	:align: center
+
+	HLU Tool Ribbon - Feature Insert Group
+
+.. note::
+	All buttons in this group are disabled until a **Reason** and **Process** have been selected in the **Updates** group and the selected features have no INCID assigned. For details see :ref:`updates_group`.
+
+|insertfeature| Insert Feature
+------------------------------
+
+Opens the **Insert Feature** drop-down menu, which contains:
+
+|insertfeaturesameincid| Same INCID
+	Registers all currently selected new features (features with no INCID assigned) under a single new INCID. Use this when the drawn features represent multiple fragments of the same habitat record.
+
+	.. seealso::
+		See :ref:`function_insert_feature_same_incid` for more information.
+
+|insertfeatureseparateincid| Separate INCIDs
+	Registers each currently selected new feature under its own individual new INCID. Use this when each drawn feature represents a distinct, independent habitat record.
+
+	.. seealso::
+		See :ref:`function_insert_feature_separate_incids` for more information.
 
 .. raw:: latex
 
