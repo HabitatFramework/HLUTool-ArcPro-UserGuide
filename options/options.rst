@@ -8,10 +8,7 @@ Options
 
 .. _options_window:
 
-Options Window
-==============
-
-Allows users to configure the HLU Tool. The Options window is organised into two categories in a navigation sidebar:
+The Options window allows users to configure the HLU Tool. The window is organised into two categories in a navigation sidebar:
 
 * **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults).
 * **User** — settings specific to the current user (interface, GIS, updates, SQL, history, export).
@@ -22,8 +19,12 @@ Allows users to configure the HLU Tool. The Options window is organised into two
 
 Click |options| **Options** in the :ref:`help_group` of the HLU Tool ribbon to open the Options window.
 
+
 .. index::
 	single: Options; Application Options
+
+Application Options
+===================
 
 .. index::
 	single: Options; Database
@@ -220,6 +221,9 @@ OSMM Source Name
 
 .. index::
 	single: Options; User Options
+
+User Options
+============
 
 .. index::
 	single: Options; Interface

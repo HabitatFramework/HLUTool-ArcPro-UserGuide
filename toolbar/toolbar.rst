@@ -106,7 +106,7 @@ The HLU Tool is an ArcGIS Pro add-in. All of its functions are accessed through 
 .. figure:: figures/Toolbar.png
 	:align: center
 
-	HLU Tool Ribbon Tab
+	HLU Tool Ribbon - Tab
 
 .. note::
 	The **HLU Tool** tab is only visible when a map view is open and the add-in has been activated. To open the HLU Tool dockpane click the :guilabel:`HLU Tool` button on the **HLU Tool** group of the ArcGIS Pro **Data** tab.
@@ -171,6 +171,10 @@ Activates **OSMM Bulk Update** mode, which allows all accepted (pending) OSMM up
 
 .. index::
 	single: Toolbar; Updates Group
+	single: Active Layer
+	single: Switch GIS Layer
+	single: Reason
+	single: Process
 	see: Updates Group; Toolbar
 
 .. _updates_group:
@@ -195,7 +199,13 @@ The **Updates** group contains the following controls:
 Active Layer
 ------------
 
-A drop-down list for selecting the active HLU feature layer in the current ArcGIS Pro map. Only valid HLU layers present in the map are listed.
+A drop-down list for selecting the active HLU feature layer in the current ArcGIS Pro map. Allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on, as shown in the figure :ref:`figUIGUpdates`.
+
+.. note::
+	Only valid HLU layers present in the current ArcGIS Pro map (i.e. layers with the correct attribute names and formats) will appear in the list.
+
+.. tip::
+	The currently active layer is automatically selected in the drop-down list when the HLU Tool is opened or when the map contents change.
 
 .. seealso::
 	See :ref:`switch_layer_window` for more information.
@@ -209,6 +219,12 @@ Process
 -------
 
 A drop-down list for selecting the process associated with the updates about to be made. A process must be selected before any updates can be saved.
+
+**Reason** and **Process** options must both be selected before any update, split, merge or bulk update operation can be applied. The selected values are recorded in the history table to indicate why and how the INCID record was changed.
+
+.. note::
+	The selected Reason and Process values are **sticky** — they are retained across all update operations in the current session until changed. Default values for both can be pre-configured in the user options (see :ref:`options_user_updates` for more details).
+
 
 .. raw:: latex
 

@@ -816,7 +816,7 @@ Once proposed OSMM updates have been accepted they become 'Pending' and must be 
 	:align: center
 	:scale: 85
 
-	Review OSMM Updates Filter Window
+	Bulk Apply OSMM Updates Filter Window
 
 To filter pending OSMM Updates:
 
