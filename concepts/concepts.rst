@@ -208,7 +208,7 @@ For example, a group of adjacent permanent pasture features may be 'logically' g
 Physical Split
 --------------
 
-Physical split is used to create one or more new fragments in the database based upon a single feature that has already been split in the GIS layer. Physically splitting a feature into fragments allows them to be updated independently of each other (once they have also been assigned to different INCIDs — see :ref:`logical_split`.)
+Physical split is used to create one or more new fragments in the database based upon a single feature that has already been split in the GIS layer. Physically splitting a feature into fragments allows them to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
 
 For example, a woodland may appear as a single feature, but compartments within the woodland may be managed differently and/or may have different characteristics. By physically splitting the woodland feature along the compartment boundaries each compartment can then be assigned to its own INCID (by performing a :ref:`logical_split`) so that they can be assigned different matrix, formation and management codes.
 
