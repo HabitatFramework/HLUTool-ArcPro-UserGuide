@@ -92,7 +92,7 @@ Glossary
 		Habitats identified as requiring action in the UK Biodiversity Action Plan (UK BAP) and continue to be regarded as conservation priorities in the UK Post-2010 Biodiversity Framework.
 
 	Process
-		The activity being undertaken that has lead to applying this change to the spatial or attribute data of the current INCID. See :ref:`reason_section` for more details.
+		The activity being undertaken that has lead to applying this change to the spatial or attribute data of the current INCID. See :ref:`process_section` for more details.
 
 	Process Flag
 		For outstanding Ordnance Survey updates this represents the type of change in the primary habitat group from the original incid feature to the new incid feature, as well as the number of sources assigned to the original incid feature.  See :ref:`review_osmm_section` for more details.
