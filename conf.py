@@ -56,7 +56,7 @@ copyright = u'2011 HBIC, 2013-14, 2016 TVERC, 2014-15 SxBRC, 2019 LaSER, 2019-22
 # built documents.
 #
 # The short X.Y version.
-version = '1.0'
+version = '1.1'
 # The full version, including alpha/beta/rc tags.
 release = '1.1.0'
 
