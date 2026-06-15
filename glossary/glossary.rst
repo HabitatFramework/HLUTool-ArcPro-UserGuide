@@ -35,7 +35,7 @@ Glossary
 		Combines spatial data for the selected features from the active HLU layer with the associated attribute data from the database into a single new GIS layer based upon a pre-defined export format. See :ref:`export_window` and :ref:`export_function` for more details.
 
 	Feature Insert
-		The process of registering one or more newly drawn GIS features — features that exist in the active HLU layer but have not yet been assigned an INCID — against new database records. Two modes are available: **Same INCID** (all selected features share a single new INCID) and **Separate INCIDs** (each selected feature receives its own new INCID). See :ref:`function_insert_feature` and :ref:`feature_insert_group` for more details.
+		The process of registering one or more newly drawn GIS features - features that exist in the active HLU layer but have not yet been assigned an INCID - against new database records. Two modes are available: **Same INCID** (all selected features share a single new INCID) and **Separate INCIDs** (each selected feature receives its own new INCID). See :ref:`function_insert_feature` and :ref:`feature_insert_group` for more details.
 
 	Fragment ID
 		An incremental number used as a unique reference to individual features (fragments) within a single INCID. Where a feature has been physically split, each resulting fragment is assigned a unique fragment identifier so that the fragments can be independently updated. See :ref:`habitat_framework` for more details.
@@ -129,4 +129,3 @@ Glossary
 
 	Vague Date
 		A specific date, range of dates or imprecise date that can be specified in a variety of formats (e.g. '23 Mar 1987', 'Mar 1987 - Jun 1987', 'Spring 1987').
-

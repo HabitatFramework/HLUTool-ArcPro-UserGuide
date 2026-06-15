@@ -26,7 +26,7 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 **Can I use data that isn't snapped to OS MasterMap?**
 
-	Yes. TOIDs are now **optional** — features do not need to originate from or be aligned with OS MasterMap. New features can be drawn directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function (see :ref:`function_insert_feature`). Fragment identifiers are still assigned to all features, but they relate to the INCID rather than a TOID. Using OS MasterMap still brings benefits such as improved positional accuracy and a consistent national framework, but it is no longer a requirement. See :ref:`habitat_framework` and :ref:`insert_feature` for more details.
+	Yes, TOIDs are now **optional** - features do not need to originate from or be aligned with OS MasterMap. New features can be drawn directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function (see :ref:`function_insert_feature`). Fragment identifiers are still assigned to all features, but they relate to the INCID rather than a TOID. Using OS MasterMap still brings benefits such as improved positional accuracy and a consistent national framework, but it is no longer a requirement. See :ref:`habitat_framework` and :ref:`insert_feature` for more details.
 
 **How do I convert my existing data into the required format?**
 
@@ -112,4 +112,4 @@ It is essential that the following guidelines are followed to ensure that the to
 	* :strong:`DO NOT` remove the HLU layers from the map while the tool is running.
 	* :strong:`DO NOT` switch to a different ArcGIS Pro project while the tool is running.
 	* :strong:`DO NOT` use a shapefile as the HLU layer as this affects performance and imposes field name length restrictions.
-	* :strong:`DO NOT` attempt to apply **Physical Split** or **Physical Merge** on a point layer — these operations are only available for line and polygon layers.
+	* :strong:`DO NOT` attempt to apply **Physical Split** or **Physical Merge** on a point layer - these operations are only available for line and polygon layers.
