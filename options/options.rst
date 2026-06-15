@@ -1,3 +1,5 @@
+.. _options_window:
+
 *******
 Options
 *******
@@ -5,8 +7,6 @@ Options
 .. index::
 	single: Windows; Options Window
 	single: Options
-
-.. _options_window:
 
 The Options window allows users to configure the HLU Tool. The window is organised into two categories in a navigation sidebar:
 
