@@ -299,212 +299,212 @@ To perform a physical merge:
 .. figure:: figures/PhysicalMergeDiagram.png
 	:align: center
 
-			  Physical Merge – Before (left) and After (right)
+	  Physical Merge – Before (left) and After (right)
 
 
-		 .. raw:: latex
+ .. raw:: latex
 
-			 \newpage
+	 \newpage
 
-		 .. _function_insert_feature:
+ .. _function_insert_feature:
 
-		 Insert Feature
-		 ==============
+ Insert Feature
+ ==============
 
-		 The **Insert Feature** function is used to register newly drawn GIS features — features that exist in the active HLU layer but have not yet been assigned an INCID — against new database records. Two modes are available depending on whether the drawn features represent a single habitat record or multiple independent records.
+ The **Insert Feature** function is used to register newly drawn GIS features — features that exist in the active HLU layer but have not yet been assigned an INCID — against new database records. Two modes are available depending on whether the drawn features represent a single habitat record or multiple independent records.
 
-		 Before using either mode:
+ Before using either mode:
 
-		 * Ensure the active HLU layer is editable in ArcGIS Pro.
-		 * Create one or more new features in the active HLU layer using the standard ArcGIS Pro editing tools. The new features will initially have no INCID assigned.
-		 * Optionally, populate the ``habprimary``, ``habsecond``, ``determqty`` and/or ``interpqty`` attribute columns on the new features before selecting them (see :ref:`insert_feature_gis_attributes` for details).
-		 * Select the new features in the map.
-		 * Ensure that a **Reason** and **Process** have been selected in the :ref:`updates_group` of the HLU Tool ribbon.
+ * Ensure the active HLU layer is editable in ArcGIS Pro.
+ * Create one or more new features in the active HLU layer using the standard ArcGIS Pro editing tools. The new features will initially have no INCID assigned.
+ * Optionally, populate the ``habprimary``, ``habsecond``, ``determqty`` and/or ``interpqty`` attribute columns on the new features before selecting them (see :ref:`insert_feature_gis_attributes` for details).
+ * Select the new features in the map.
+ * Ensure that a **Reason** and **Process** have been selected in the :ref:`updates_group` of the HLU Tool ribbon.
 
-		 .. note::
-			 Both buttons in the **Feature Insert** group are disabled unless all selected features have no INCID assigned. If any selected feature already has an INCID the buttons will remain disabled.
+ .. note::
+	 Both buttons in the **Feature Insert** group are disabled unless all selected features have no INCID assigned. If any selected feature already has an INCID the buttons will remain disabled.
 
-		 .. index::
-			 single: Insert Feature; Same INCID
+ .. index::
+	 single: Insert Feature; Same INCID
 
-		 .. _function_insert_feature_same_incid:
+ .. _function_insert_feature_same_incid:
 
-		 Same INCID
-		 ----------
+ Same INCID
+ ----------
 
-		 Registers all selected new features under a single new INCID. Each feature is assigned a unique fragment identifier within that INCID. Use this when the drawn features represent multiple fragments of the same habitat record.
+ Registers all selected new features under a single new INCID. Each feature is assigned a unique fragment identifier within that INCID. Use this when the drawn features represent multiple fragments of the same habitat record.
 
-		 .. note::
-			 All features being inserted under the **Same INCID** mode must carry identical values in the ``habprimary``, ``habsecond``, ``determqty`` and ``interpqty`` GIS columns. If any feature has different attribute values the insert will be cancelled and an error message will appear. Correct the attribute values or use **Separate INCIDs** mode instead.
+ .. note::
+	 All features being inserted under the **Same INCID** mode must carry identical values in the ``habprimary``, ``habsecond``, ``determqty`` and ``interpqty`` GIS columns. If any feature has different attribute values the insert will be cancelled and an error message will appear. Correct the attribute values or use **Separate INCIDs** mode instead.
 
-		 To insert new features under the same INCID:
+ To insert new features under the same INCID:
 
-		 * Draw and select the new features in the active HLU layer as described above.
-		 * Click |insertfeaturesameincid| :guilabel:`Same INCID` from the **Insert Feature** drop-down in the :ref:`feature_insert_group` of the HLU Tool ribbon.
-		 * A new INCID will be created and all selected features will be registered against it with sequential fragment identifiers. The new INCID will be displayed as the current record in the dockpane and details of the insert will be added to the History tab.
+ * Draw and select the new features in the active HLU layer as described above.
+ * Click |insertfeaturesameincid| :guilabel:`Same INCID` from the **Insert Feature** drop-down in the :ref:`feature_insert_group` of the HLU Tool ribbon.
+ * A new INCID will be created and all selected features will be registered against it with sequential fragment identifiers. The new INCID will be displayed as the current record in the dockpane and details of the insert will be added to the History tab.
 
-		 .. seealso::
-			 See :ref:`feature_insert_group` for toolbar details.
+ .. seealso::
+	 See :ref:`feature_insert_group` for toolbar details.
 
-		 .. index::
-			 single: Insert Feature; Separate INCIDs
+ .. index::
+	 single: Insert Feature; Separate INCIDs
 
-		 .. _function_insert_feature_separate_incids:
+ .. _function_insert_feature_separate_incids:
 
-		 Separate INCIDs
-		 ---------------
+ Separate INCIDs
+ ---------------
 
-		 Registers each selected new feature under its own individual new INCID. Use this when each drawn feature represents a distinct, independent habitat record.
+ Registers each selected new feature under its own individual new INCID. Use this when each drawn feature represents a distinct, independent habitat record.
 
-		 To insert new features each under a separate INCID:
+ To insert new features each under a separate INCID:
 
-		 * Draw and select the new features in the active HLU layer as described above.
-		 * Click |insertfeatureseparateincid| :guilabel:`Separate INCIDs` from the **Insert Feature** drop-down in the :ref:`feature_insert_group` of the HLU Tool ribbon.
-		 * A new INCID will be created for each selected feature. The first new INCID will be displayed as the current record in the dockpane and details of all inserts will be added to the History tab.
+ * Draw and select the new features in the active HLU layer as described above.
+ * Click |insertfeatureseparateincid| :guilabel:`Separate INCIDs` from the **Insert Feature** drop-down in the :ref:`feature_insert_group` of the HLU Tool ribbon.
+ * A new INCID will be created for each selected feature. The first new INCID will be displayed as the current record in the dockpane and details of all inserts will be added to the History tab.
 
-		 .. seealso::
-			 See :ref:`feature_insert_group` for toolbar details.
+ .. seealso::
+	 See :ref:`feature_insert_group` for toolbar details.
 
-		 .. index::
-			 single: Insert Feature; GIS Attribute Columns
+ .. index::
+	 single: Insert Feature; GIS Attribute Columns
 
-		 .. _function_insert_feature_gis_attributes:
+ .. _function_insert_feature_gis_attributes:
 
-		 GIS Attribute Columns
-		 ---------------------
+ GIS Attribute Columns
+ ---------------------
 
-		 The HLU layer supports a set of optional attribute columns that can be pre-populated before registering new features. When present and populated, the values are read from the GIS layer and used to initialise the corresponding database attributes for the new INCID record, reducing the amount of manual data entry required afterwards.
+ The HLU layer supports a set of optional attribute columns that can be pre-populated before registering new features. When present and populated, the values are read from the GIS layer and used to initialise the corresponding database attributes for the new INCID record, reducing the amount of manual data entry required afterwards.
 
-		 The following columns are recognised:
+ The following columns are recognised:
 
-		 .. tabularcolumns:: |L|L|L|
+ .. tabularcolumns:: |L|L|L|
 
-		 .. table:: GIS attribute columns read during Feature Insert
+ .. table:: GIS attribute columns read during Feature Insert
 
-			 +-------------+---------------------------------+--------------------------------------------------+
-			 | GIS Column  | Attribute                       | Notes                                            |
-			 +=============+=================================+==================================================+
-			 | habprimary  | Primary Habitat code            | Must be a valid UKHab primary code for the       |
-			 |             |                                 | active layer geometry type (polygon, line or     |
-			 |             |                                 | point).                                          |
-			 +-------------+---------------------------------+--------------------------------------------------+
-			 | habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by        |
-			 |             |                                 | spaces, commas or full-stops. Each code must be  |
-			 |             |                                 | a valid secondary code for the active layer      |
-			 |             |                                 | geometry type. Cannot be provided without a      |
-			 |             |                                 | valid primary code.                              |
-			 +-------------+---------------------------------+--------------------------------------------------+
-			 | determqty   | Determination Quality           | Must be a recognised determination quality code  |
-			 |             |                                 | (see :ref:`insert_feature_determination_quality_values`). |
-			 +-------------+---------------------------------+--------------------------------------------------+
-			 | interpqty   | Interpretation Quality          | Must be a recognised interpretation quality code |
-			 |             |                                 | (see :ref:`insert_feature_interpretation_quality_values`). |
-			 +-------------+---------------------------------+--------------------------------------------------+
+	 +-------------+---------------------------------+------------------------------------------------------------+
+	 | GIS Column  | Attribute                       | Notes                                                      |
+	 +=============+=================================+============================================================+
+	 | habprimary  | Primary Habitat code            | Must be a valid UKHab primary code for the                 |
+	 |             |                                 | active layer geometry type (polygon, line or               |
+	 |             |                                 | point).                                                    |
+	 +-------------+---------------------------------+------------------------------------------------------------+
+	 | habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by                  |
+	 |             |                                 | spaces, commas or full-stops. Each code must be            |
+	 |             |                                 | a valid secondary code for the active layer                |
+	 |             |                                 | geometry type. Cannot be provided without a                |
+	 |             |                                 | valid primary code.                                        |
+	 +-------------+---------------------------------+------------------------------------------------------------+
+	 | determqty   | Determination Quality           | Must be a recognised determination quality code            |
+	 |             |                                 | (see :ref:`insert_feature_determination_quality_values`).  |
+	 +-------------+---------------------------------+------------------------------------------------------------+
+	 | interpqty   | Interpretation Quality          | Must be a recognised interpretation quality code           |
+	 |             |                                 | (see :ref:`insert_feature_interpretation_quality_values`). |
+	 +-------------+---------------------------------+------------------------------------------------------------+
 
-		 All four columns are **optional**. If a column is absent from the GIS layer, or its value is left blank, the corresponding attribute is simply left unpopulated in the new INCID record.
+ All four columns are **optional**. If a column is absent from the GIS layer, or its value is left blank, the corresponding attribute is simply left unpopulated in the new INCID record.
 
-		 .. note::
-			 A secondary habitat code (``habsecond``) cannot be provided without a valid primary habitat code (``habprimary``). If a secondary code is supplied without a valid primary code it will be silently ignored.
+ .. note::
+	 A secondary habitat code (``habsecond``) cannot be provided without a valid primary habitat code (``habprimary``). If a secondary code is supplied without a valid primary code it will be silently ignored.
 
-		 .. _function_insert_feature_validation:
+ .. _function_insert_feature_validation:
 
-		 Validation
-		 ----------
+ Validation
+ ----------
 
-		 Before the attributes are written to the database the tool validates each value:
+ Before the attributes are written to the database the tool validates each value:
 
-		 * The **primary habitat code** is checked to ensure it is a recognised UKHab code applicable to the geometry type of the active layer. An unrecognised or geometry-incompatible code is treated as if no primary code was supplied.
-		 * Each **secondary habitat code** is checked individually against the list of codes valid for the active layer geometry type. Any unrecognised or inapplicable code is silently discarded; only the remaining valid codes are used.
-		 * The **determination quality** and **interpretation quality** codes are each checked against their respective lookup tables. An unrecognised code is treated as if no value was supplied.
+ * The **primary habitat code** is checked to ensure it is a recognised UKHab code applicable to the geometry type of the active layer. An unrecognised or geometry-incompatible code is treated as if no primary code was supplied.
+ * Each **secondary habitat code** is checked individually against the list of codes valid for the active layer geometry type. Any unrecognised or inapplicable code is silently discarded; only the remaining valid codes are used.
+ * The **determination quality** and **interpretation quality** codes are each checked against their respective lookup tables. An unrecognised code is treated as if no value was supplied.
 
-		 .. _function_insert_feature_gis_update:
+ .. _function_insert_feature_gis_update:
 
-		 GIS Column Update on Success
-		 ----------------------------
+ GIS Column Update on Success
+ ----------------------------
 
-		 After a successful insert, the tool writes back to the GIS layer to ensure the attribute columns reflect only the values that were actually stored in the database. Any value that failed validation is replaced with a blank in the GIS layer. The ``habsecond`` column is rewritten as a delimiter-separated list containing only the secondary codes that were accepted; discarded codes are removed.
+ After a successful insert, the tool writes back to the GIS layer to ensure the attribute columns reflect only the values that were actually stored in the database. Any value that failed validation is replaced with a blank in the GIS layer. The ``habsecond`` column is rewritten as a delimiter-separated list containing only the secondary codes that were accepted; discarded codes are removed.
 
-		 This write-back ensures that the GIS layer remains consistent with the database and prevents stale or invalid attribute values being left in the layer.
+ This write-back ensures that the GIS layer remains consistent with the database and prevents stale or invalid attribute values being left in the layer.
 
-		 .. _function_insert_feature_determination_quality_values:
+ .. _function_insert_feature_determination_quality_values:
 
-		 Determination Quality Values
-		 ----------------------------
+ Determination Quality Values
+ ----------------------------
 
-		 .. tabularcolumns:: |L|L|
+ .. tabularcolumns:: |L|L|
 
-		 .. table:: Valid Determination Quality codes
+ .. table:: Valid Determination Quality codes
 
-			 +------+----------------------------------------------------------+
-			 | Code | Description                                              |
-			 +======+==========================================================+
-			 | DI   | Definitely is this habitat                               |
-			 +------+----------------------------------------------------------+
-			 | HI   | Habitat is in polygon, but not accurately mappable       |
-			 +------+----------------------------------------------------------+
-			 | HP   | Habitat probably in polygon, but not accurately mappable |
-			 +------+----------------------------------------------------------+
-			 | PI   | Probably is, but some uncertainty                        |
-			 +------+----------------------------------------------------------+
-			 | NP   | Not present but close to definition                      |
-			 +------+----------------------------------------------------------+
-			 | PP   | Previously present, but may no longer exist              |
-			 +------+----------------------------------------------------------+
+	 +------+----------------------------------------------------------+
+	 | Code | Description                                              |
+	 +======+==========================================================+
+	 | DI   | Definitely is this habitat                               |
+	 +------+----------------------------------------------------------+
+	 | HI   | Habitat is in polygon, but not accurately mappable       |
+	 +------+----------------------------------------------------------+
+	 | HP   | Habitat probably in polygon, but not accurately mappable |
+	 +------+----------------------------------------------------------+
+	 | PI   | Probably is, but some uncertainty                        |
+	 +------+----------------------------------------------------------+
+	 | NP   | Not present but close to definition                      |
+	 +------+----------------------------------------------------------+
+	 | PP   | Previously present, but may no longer exist              |
+	 +------+----------------------------------------------------------+
 
-		 .. _function_insert_feature_interpretation_quality_values:
+ .. _function_insert_feature_interpretation_quality_values:
 
-		 Interpretation Quality Values
-		 -----------------------------
+ Interpretation Quality Values
+ -----------------------------
 
-		 .. tabularcolumns:: |L|L|
+ .. tabularcolumns:: |L|L|
 
-		 .. table:: Valid Interpretation Quality codes
+ .. table:: Valid Interpretation Quality codes
 
-			 +------+-------------+
-			 | Code | Description |
-			 +======+=============+
-			 | G1   | Good        |
-			 +------+-------------+
-			 | A1   | Average     |
-			 +------+-------------+
-			 | P1   | Poor        |
-			 +------+-------------+
-			 | H1   | High (1)    |
-			 +------+-------------+
-			 | M2   | Medium (2)  |
-			 +------+-------------+
-			 | M3   | Medium (3)  |
-			 +------+-------------+
-			 | M4   | Medium (4)  |
-			 +------+-------------+
-			 | L5   | Low (5)     |
-			 +------+-------------+
-			 | L6   | Low (6)     |
-			 +------+-------------+
-			 | L7   | Low (7)     |
-			 +------+-------------+
+	 +------+-------------+
+	 | Code | Description |
+	 +======+=============+
+	 | G1   | Good        |
+	 +------+-------------+
+	 | A1   | Average     |
+	 +------+-------------+
+	 | P1   | Poor        |
+	 +------+-------------+
+	 | H1   | High (1)    |
+	 +------+-------------+
+	 | M2   | Medium (2)  |
+	 +------+-------------+
+	 | M3   | Medium (3)  |
+	 +------+-------------+
+	 | M4   | Medium (4)  |
+	 +------+-------------+
+	 | L5   | Low (5)     |
+	 +------+-------------+
+	 | L6   | Low (6)     |
+	 +------+-------------+
+	 | L7   | Low (7)     |
+	 +------+-------------+
 
-		 .. _function_insert_feature_post_insert:
+ .. _function_insert_feature_post_insert:
 
-		 Completing Attributes After Insert
-		 -----------------------------------
+ Completing Attributes After Insert
+ -----------------------------------
 
-		 The Feature Insert operation creates a minimal INCID record using only the attributes that could be read from the GIS layer columns. The new record will typically require further editing in the dockpane to complete all required and recommended attributes. After inserting, navigate to the new INCID and review the following sections:
+ The Feature Insert operation creates a minimal INCID record using only the attributes that could be read from the GIS layer columns. The new record will typically require further editing in the dockpane to complete all required and recommended attributes. After inserting, navigate to the new INCID and review the following sections:
 
-		* **Primary and Secondary Habitats** (:ref:`habitats_tab`) — confirm or add the primary and secondary UKHab codes, and check that any automatically added priority habitats are correct and attributed with the correct determination and interpretation quality values.
-		* **Priority Habitats** (:ref:`priority_tab`) — review and complete any priority habitat and potential priority habitat entries, including their determination and interpretation quality values.
-		* **Boundary and Digitisation** — the boundary base map and digitisation base map values default to 'Unknown' but should be updated to reflect the source of the spatial data for the new feature(s).
-		* **Site Reference and Name** — enter the site reference and site name if known.
-		* **Condition Details** — add condition assessment information if available.
-		* **General Comments** — add any free-text comments relevant to the new feature(s).
-		* **Sources** (:ref:`details_tab`) — add one or more habitat survey sources to document the origin of the habitat information.
+* **Primary and Secondary Habitats** (:ref:`habitats_tab`) — confirm or add the primary and secondary UKHab codes, and check that any automatically added priority habitats are correct and attributed with the correct determination and interpretation quality values.
+* **Priority Habitats** (:ref:`priority_tab`) — review and complete any priority habitat and potential priority habitat entries, including their determination and interpretation quality values.
+* **Boundary and Digitisation** — the boundary base map and digitisation base map values default to 'Unknown' but should be updated to reflect the source of the spatial data for the new feature(s).
+* **Site Reference and Name** — enter the site reference and site name if known.
+* **Condition Details** — add condition assessment information if available.
+* **General Comments** — add any free-text comments relevant to the new feature(s).
+* **Sources** (:ref:`details_tab`) — add one or more habitat survey sources to document the origin of the habitat information.
 
-		 .. raw:: latex
+ .. raw:: latex
 
-			 \newpage
+	 \newpage
 
-		 .. index::
-			 see: Filter by Attributes; Advanced Query Builder
+ .. index::
+	 see: Filter by Attributes; Advanced Query Builder
 
 .. _filter_by_attributes:
 
