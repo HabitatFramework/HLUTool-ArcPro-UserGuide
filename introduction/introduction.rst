@@ -33,7 +33,7 @@ Data structure
 Spatial data
 ------------
 
-The Habitat and Land Use (HLU) spatial data consists of one or more GIS layers containing features (points, lines or polygons). These features are combined with Ordnance Survey (OS) MasterMap features so that each HLU feature is aligned with the points, lines and boundaries of OS MasterMap. Features may not extend across or beyond OS MasterMap lines or boundaries but they can sub-divide features by splitting them into smaller fragments. A unique reference to the original OS MasterMap feature, known as a TOID (see :ref:`habitat_framework`) is assigned to every HLU feature so that the original lines or boundaries of the OS MasterMap features can be re-established by merging features with the same TOID.
+The Habitat and Land Use (HLU) spatial data consists of one or more GIS layers containing features (points, lines or polygons). These features may optionally be combined with Ordnance Survey (OS) MasterMap features so that each HLU feature is aligned with the points, lines and boundaries of OS MasterMap. Where the OS MasterMap framework is used, features may not extend across or beyond OS MasterMap lines or boundaries but they can sub-divide features by splitting them into smaller fragments. A unique reference to the original OS MasterMap feature, known as a TOID (see :ref:`habitat_framework`) can be assigned to HLU features so that the original lines or boundaries of the OS MasterMap features can be re-established by merging features with the same TOID. TOIDs are optional — features can also be created directly by users without reference to OS MasterMap and registered against the database using the **Insert Feature** function (see :ref:`insert_feature`).
 
 Whilst there are benefits to splitting the HLU features by OS MasterMap, such as ensuring polygon boundaries are accurate and do not overlap, the splitting process significantly increases the volume of data. The example in the table below indicates the effect of splitting on a 500 feature GIS layer. [1]_
 
@@ -92,7 +92,7 @@ Benefits of the HLU Tool
 The tool provides a user-friendly and efficient interface enabling users to search, display and update the complex set of habitat and land use attributes held in the relational database whilst the spatial features are displayed in ArcGIS Pro. It provides a number of direct benefits and indirect benefits, including:
 
 1. Ensuring that all attributes selected by users are valid and compatible (e.g. IHS complex codes are relevant for the selected habitat code).
-2. Maintaining a brief but comprehensive history of all changes made to every habitat polygon.
+2. Maintaining a brief but comprehensive history of all changes made to every habitat feature.
 3. Enabling management queries and statistics to be produced for a range of purposes using the relational database (e.g. the extent and reason for all priority habitat gains/losses in the last financial year).
 4. Storing the data in a relational structure to reduce GIS data volumes and provide access efficiencies and flexibility.
 5. Enabling data to be extracted in an number of formats, including the National Inventory dataset format, as broad habitat layers or as priority habitat layers.

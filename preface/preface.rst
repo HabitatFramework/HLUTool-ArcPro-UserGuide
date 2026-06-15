@@ -77,16 +77,20 @@ Useful links
 Related community links:
 
 Users
-	For announcements, bug reports, user Q&A and feature discussions see `khub.net/group/association-of-local-environmental-records-centres/group-forum <https://khub.net/group/association-of-local-environmental-records-centres/group-forum>`_
+	For announcements, bug reports, user Q&A and feature discussions see:
+		`khub.net/group/association-of-local-environmental-records-centres/group-forum <https://khub.net/group/association-of-local-environmental-records-centres/group-forum>`_
 
 Administrators
-	For release notes and add-in installers for ArcGIS Pro see `github.com/HabitatFramework/HLUTool-ArcPro/releases <https://github.com/HabitatFramework/HLUTool-ArcPro/releases>`_
+	For release notes and add-in installers for ArcGIS Pro see:
+		`github.com/HabitatFramework/HLUTool-ArcPro/releases <https://github.com/HabitatFramework/HLUTool-ArcPro/releases>`_
 
 Developers
-	For the source code for the HLU Tool ArcGIS Pro add-in see `github.com/HabitatFramework/HLUTool-ArcPro <https://github.com/HabitatFramework/HLUTool-ArcPro>`_
+	For the source code for the HLU Tool ArcGIS Pro add-in see:
+		`github.com/HabitatFramework/HLUTool-ArcPro <https://github.com/HabitatFramework/HLUTool-ArcPro>`_
 
 Issues
-	For details of any known issues and proposed change requests see `github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_
+	For details of any known issues and proposed change requests see:
+		`github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_
 
 .. index::
 	single: Acknowledgements
@@ -94,7 +98,7 @@ Issues
 Acknowledgements
 ================
 
-Many thanks are due to all the LERCs in the south-east of England and their staff who have, and continue to, fund and contribute to the HLU Tool.  It takes a small army of developers, testers and users to build a truly useful tool.
+Many thanks are due to all the LERCs in the south-east of England and their staff who have, and continue to, fund and contribute to the HLU Tool.
 
 .. raw:: latex
 

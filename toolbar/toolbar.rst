@@ -70,6 +70,18 @@
 	:height: 16px
 	:width: 16px
 
+.. |insertfeature| image:: ../icons/InsertFeature.png
+	:height: 16px
+	:width: 16px
+
+.. |insertfeaturesameincid| image:: ../icons/InsertFeatureSameIncid.png
+	:height: 16px
+	:width: 16px
+
+.. |insertfeatureseparateincid| image:: ../icons/InsertFeatureSeparateIncid.png
+	:height: 16px
+	:width: 16px
+
 .. |export| image:: ../icons/FileExport.png
 	:height: 16px
 	:width: 16px
@@ -94,7 +106,7 @@ The HLU Tool is an ArcGIS Pro add-in. All of its functions are accessed through 
 .. figure:: figures/Toolbar.png
 	:align: center
 
-	HLU Tool Ribbon Tab
+	HLU Tool Ribbon - Tab
 
 .. note::
 	The **HLU Tool** tab is only visible when a map view is open and the add-in has been activated. To open the HLU Tool dockpane click the :guilabel:`HLU Tool` button on the **HLU Tool** group of the ArcGIS Pro **Data** tab.
@@ -159,6 +171,10 @@ Activates **OSMM Bulk Update** mode, which allows all accepted (pending) OSMM up
 
 .. index::
 	single: Toolbar; Updates Group
+	single: Active Layer
+	single: Switch GIS Layer
+	single: Reason
+	single: Process
 	see: Updates Group; Toolbar
 
 .. _updates_group:
@@ -183,7 +199,13 @@ The **Updates** group contains the following controls:
 Active Layer
 ------------
 
-A drop-down list for selecting the active HLU feature layer in the current ArcGIS Pro map. Only valid HLU layers present in the map are listed.
+A drop-down list for selecting the active HLU feature layer in the current ArcGIS Pro map. Allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on, as shown in the figure :ref:`figUIGUpdates`.
+
+.. note::
+	Only valid HLU layers present in the current ArcGIS Pro map (i.e. layers with the correct attribute names and formats) will appear in the list.
+
+.. tip::
+	The currently active layer is automatically selected in the drop-down list when the HLU Tool is opened or when the map contents change.
 
 .. seealso::
 	See :ref:`switch_layer_window` for more information.
@@ -197,6 +219,12 @@ Process
 -------
 
 A drop-down list for selecting the process associated with the updates about to be made. A process must be selected before any updates can be saved.
+
+**Reason** and **Process** options must both be selected before any update, split, merge or bulk update operation can be applied. The selected values are recorded in the history table to indicate why and how the INCID record was changed.
+
+.. note::
+	The selected Reason and Process values are **sticky** — they are retained across all update operations in the current session until changed. Default values for both can be pre-configured in the user options (see :ref:`options_user_updates` for more details).
+
 
 .. raw:: latex
 
@@ -300,12 +328,30 @@ Geometry Group
 
 	HLU Tool Ribbon - Geometry Group
 
-The **Geometry** group exposes standard ArcGIS Pro tools used in conjunction with the HLU Tool. It contains the following controls:
+The **Geometry** group exposes standard ArcGIS Pro editing tools used in conjunction with the HLU Tool. It contains the following controls:
+
+Create Features
+---------------
+
+Opens the ArcGIS Pro **Create Features** pane, allowing new features to be drawn in the active HLU layer using the standard ArcGIS Pro editing tools. New features drawn this way will not initially have an INCID or fragment identifier assigned — use the :ref:`feature_insert_group` to register them against the database.
+
+Modify Features
+---------------
+
+Opens the ArcGIS Pro **Modify Features** pane, providing access to editing tools for modifying existing feature geometry.
+
+Edit Vertices
+-------------
+
+Edits the vertices of the currently selected feature using the standard ArcGIS Pro :guilabel:`Edit Vertices` command.
 
 Split
 -----
 
 Splits the currently selected feature at a digitised line using the standard ArcGIS Pro :guilabel:`Split` editing command. Use this to physically divide a feature before recording the split in the database using :ref:`physical_split_button`.
+
+.. note::
+	The ArcGIS Pro **Split** command operates on the geometry only and does not update the database. Always follow a geometry split immediately with :ref:`physical_split_button` in the :ref:`topology_group` to register the split in the database. Not applicable to point layers.
 
 Merge
 -----
@@ -313,12 +359,7 @@ Merge
 Merges two or more selected features into a single feature using the standard ArcGIS Pro :guilabel:`Merge` editing command.
 
 .. warning::
-	Only use this button to physically combine features that already have the same INCID, Toid and FragID values otherwise you may cause database synchronisation issues.
-
-Edit Vertices
--------------
-
-Edits the vertices of the currently selected feature using the standard ArcGIS Pro :guilabel:`Edit Vertices` command.
+	Only use this button to physically combine features that already have the same INCID and Fragment ID values otherwise you may cause database synchronisation issues. Not applicable to point layers.
 
 .. raw:: latex
 
@@ -444,7 +485,10 @@ Opens the **Split** drop-down menu, which contains:
 .. _physical_split_button:
 
 |physicalsplit| Physical Split
-	Sub-divides a single feature, that has already been split in the ArcGIS Pro map using the **Split** tool in the :ref:`map_tools_group`, into one or more new TOID fragments in the database by assigning new fragment identifiers. The fragments can then be assigned different attributes once they have been logically split from one another.
+	Sub-divides a single feature, that has already been split in the ArcGIS Pro map using the **Split** tool in the :ref:`geometry_group`, into one or more new fragments in the database by assigning new fragment identifiers. The fragments can then be assigned different attributes once they have been logically split from one another.
+
+	.. note::
+		Not available for point layers.
 
 	.. seealso::
 		See :ref:`physical_split` for more information.
@@ -461,7 +505,10 @@ Opens the **Split** drop-down menu, which contains:
 Opens the **Merge** drop-down menu, which contains:
 
 |physicalmerge| Physical Merge
-	Combines two or more fragments of a single TOID, that are associated with the same INCID, into a single merged feature in the ArcGIS Pro map and assigns them to the same fragment identifier.
+	Combines two or more fragments of a single feature, that are associated with the same INCID, into a single merged feature in the ArcGIS Pro map and assigns them to the same fragment identifier.
+
+	.. note::
+		Not available for point layers.
 
 	.. seealso::
 		See :ref:`physical_merge` for more information.
@@ -471,6 +518,46 @@ Opens the **Merge** drop-down menu, which contains:
 
 	.. seealso::
 		See :ref:`logical_merge` for more information.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Toolbar; Feature Insert Group
+	see: Feature Insert Group; Toolbar
+
+.. _feature_insert_group:
+
+Feature Insert Group
+====================
+
+.. _figUIGFeatureInsert:
+
+.. figure:: figures/ToolbarFeatureInsertGroup.png
+	:align: center
+
+	HLU Tool Ribbon - Feature Insert Group
+
+.. note::
+	All buttons in this group are disabled until a **Reason** and **Process** have been selected in the **Updates** group and the selected features have no INCID assigned. For details see :ref:`updates_group`.
+
+|insertfeature| Insert Feature
+------------------------------
+
+Opens the **Insert Feature** drop-down menu, which contains:
+
+|insertfeaturesameincid| Same INCID
+	Registers all currently selected new features (features with no INCID assigned) under a single new INCID. Use this when the drawn features represent multiple fragments of the same habitat record.
+
+	.. seealso::
+		See :ref:`function_insert_feature_same_incid` for more information.
+
+|insertfeatureseparateincid| Separate INCIDs
+	Registers each currently selected new feature under its own individual new INCID. Use this when each drawn feature represents a distinct, independent habitat record.
+
+	.. seealso::
+		See :ref:`function_insert_feature_separate_incids` for more information.
 
 .. raw:: latex
 

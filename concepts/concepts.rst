@@ -6,7 +6,7 @@ Concepts
 	single: Concepts; MasterMap Framework
 	single: MasterMap Framework, Concept
 	see: Topographical identifier; TOID
-	see: Fragment; FragID
+	see: Fragment; Fragment ID
 
 .. _data_structure:
 
@@ -48,6 +48,9 @@ One solution to these problems is to integrate all the habitat layers into a sin
 All OS MasterMap features have a TOpographic IDentity or 'TOID' that uniquely identifies each object. OS MasterMap Topographic Area features also have a number of attributes (chiefly the Descriptive Group and Descriptive Term) that provide information about the real world object that the feature represents and these can provide basic habitat and land use information that can supplment any available habitat survey data.
 
 Apart from the spatial representation of the features, the habitat framework only retains the TOID from OS MasterMap because all other attributes can be retrieved using this if necessary. Where OS MasterMap features need to be sub-divided into smaller units in order to represent habitat survey details that are not already shown these still retain the original TOID but are also assigned a fragment identifier so that each fragment can be uniquely identified.
+
+.. note::
+	TOIDs are **optional**. Features can be added directly to the active HLU layer by users (drawn using ArcGIS Pro editing tools) without reference to OS MasterMap. Such features will have a blank TOID and must be **registered** using the **Insert Feature** function (see :ref:`insert_feature`) before they can be assigned habitat attributes. Fragment identifiers are still assigned to these features and relate to their INCID rather than a TOID.
 
 .. index::
 	single: Concepts; INCID
@@ -187,9 +190,9 @@ There are two ways to split features depending upon the filter active in the too
 Logical Split
 -------------
 
-Logical split is used to create a new INCID in the database based upon a subset of features selected from a single INCID in the GIS layer. Logically splitting one or more features assigns them to a different INCID than the other features in the current INCID which then allows them to be updated independently of the remaining features in the original INCID. 
+Logical split is used to create a new INCID in the database based upon a subset of features selected from a single INCID in the GIS layer. Logically splitting one or more features assigns them to a different INCID than the other features in the current INCID which then allows them to be updated independently of the remaining features in the original INCID.
 
-For example, a group of adjacent permanent pasture features, each represented by a separate OS MasterMap feature, may be 'logically' grouped by being assigned to the same INCID because they share a common set of UKHab primary and secondary codes, sources and other attributes. However, it may be later recognised that one or more of the features are actually being managed differently to the remaining features. By logically splitting those features from the original INCID to form a new INCID those features can then be assigned a different management secondary code.
+For example, a group of adjacent permanent pasture features may be 'logically' grouped by being assigned to the same INCID because they share a common set of UKHab primary and secondary codes, sources and other attributes. However, it may be later recognised that one or more of the features are actually being managed differently to the remaining features. By logically splitting those features from the original INCID to form a new INCID those features can then be assigned a different management secondary code.
 
 .. note::
 
@@ -205,19 +208,20 @@ For example, a group of adjacent permanent pasture features, each represented by
 Physical Split
 --------------
 
-Physical split is use to create one or more new fragments in the database based upon a single TOID that has already been split in the GIS layer. Physically splitting a feature into fragments allows them to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
+Physical split is used to create one or more new fragments in the database based upon a single feature that has already been split in the GIS layer. Physically splitting a feature into fragments allows them to be updated independently of each other (once they have also been assigned to different INCIDs — see :ref:`logical_split`.)
 
-For example, a woodland may appear in OS MasterMap as a single feature, but compartments within the woodland may be managed differently and/or may have different characteristics. By physically splitting the woodland feature along the compartment boundaries each compartment can then be assigned to it's own INCID (by performing a logical_split) so that they can be assigned different matrix, formation and management codes.
+For example, a woodland may appear as a single feature, but compartments within the woodland may be managed differently and/or may have different characteristics. By physically splitting the woodland feature along the compartment boundaries each compartment can then be assigned to its own INCID (by performing a :ref:`logical_split`) so that they can be assigned different matrix, formation and management codes.
 
 .. note::
 
-	* Only if two or more fragments from the same TOID and with the same FragID are present in the current filter will the tool allow a physical split to be performed.
-	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues. 
+	* Only if two or more fragments from the same INCID with the same Fragment ID are present in the current filter will the tool allow a physical split to be performed.
+	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
 	* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
 	* Ensure that the physical split is completed in the database prior to commencing any other operations such as 'Select by attributes …' to avoid database synchronisation issues.
+	* Physical split is not available for **point** layers, as a single point feature cannot be geometrically subdivided.
 
 .. note::
-	If two or more fragments from the same TOID and with the same FragID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and advise the user that a physical split can be performed.
+	If two or more fragments from the same INCID and with the same Fragment ID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and advise the user that a physical split can be performed.
 
 .. _merge:
 
@@ -246,10 +250,13 @@ Logical merge combines all the features selected in the GIS into a single INCID 
 Physical Merge
 --------------
 
-Physical merge combines fragments of a single TOID into a single, larger, feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but the boundaries between adjacent features will be removed.
+Physical merge combines fragments of a single feature, that share the same INCID, into a single larger feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but the boundaries between adjacent features will be removed.
 
 .. note::
-	Only fragments belonging to the same TOID can be merged in a single operation. If fragments for several TOIDs need to be merged, the operation must be repeated for each TOID.
+
+	* Only fragments belonging to the same INCID can be merged in a single physical merge operation.
+	* If fragments for several groups need to be merged, the operation must be repeated for each group.
+	* Physical merge is not available for **point** layers.
 
 .. index::
 	single: Concepts; Attribute Updates
@@ -275,6 +282,26 @@ Attribute updates can also be applied in bulk to multiple INCID records at the s
 
 .. note::
 	This function is only available to users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+.. index::
+	single: Concepts; Feature Insert
+	single: Feature Insert, Concept
+
+.. _insert_feature:
+
+Feature Insert
+==============
+
+New features can be added to the active HLU layer at any time using the standard ArcGIS Pro editing tools. Newly drawn features do not initially have an INCID or fragment identifier assigned to them — they must be **registered** against the database before they can be attributed.
+
+TOIDs are **optional**. Features do not need to originate from or be aligned with OS MasterMap. Once drawn and selected, new features are registered using the **Insert Feature** function in the :ref:`feature_insert_group` of the HLU Tool ribbon, which creates new INCID and fragment identifier records in the database. Two modes are available:
+
+* **Same INCID** — all selected new features are assigned to a single new INCID, each with a sequential fragment identifier. Use this when the features represent multiple fragments of the same habitat record.
+* **Separate INCIDs** — each selected new feature receives its own new INCID. Use this when each feature represents a distinct, independent habitat record.
+
+The HLU layer supports a set of optional attribute columns (``habprimary``, ``habsecond``, ``determqty`` and ``interpqty``) that can be pre-populated before registering new features. When present and valid, the tool reads these columns and uses their values to initialise the corresponding database attributes for the new INCID record, reducing the amount of manual data entry required afterwards. Any values that fail validation are ignored and the GIS columns are updated on success to remove them. Further attributes — such as priority habitats, boundary and digitisation details, site reference, condition, comments and sources — will typically need to be completed in the dockpane after the insert.
+
+See :ref:`function_insert_feature` for full details and step-by-step instructions.
 
 .. index::
 	single: Concepts; OSMM Updates

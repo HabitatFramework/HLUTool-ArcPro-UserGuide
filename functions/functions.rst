@@ -62,6 +62,14 @@
 	:height: 16px
 	:width: 16px
 
+.. |insertfeaturesameincid| image:: ../icons/InsertFeatureSameIncid.png
+	:height: 16px
+	:width: 16px
+
+.. |insertfeatureseparateincid| image:: ../icons/InsertFeatureSeparateIncid.png
+	:height: 16px
+	:width: 16px
+
 .. |apply| image:: ../icons/Apply.png
 	:height: 23px
 	:width: 58px
@@ -104,7 +112,7 @@ To update the attributes of an INCID:
 		* There are no fields in error.
 
 .. warning::
-	If changes are made to an INCID and applied when only a subset of the TOIDs or fragments for that INCID are selected in the map the user may be notified (depending upon their user Options) as shown in the figure :ref:`figFAUWD`. See :ref:`options_user_updates` for more details.
+	If changes are made to an INCID and applied when only a subset of the features for that INCID are selected in the map the user may be notified (depending upon their user Options) as shown in the figure :ref:`figFAUWD`. See :ref:`options_user_updates` for more details.
 
 .. _figFAUWD:
 
@@ -123,7 +131,7 @@ To update the attributes of an INCID:
 Split Features
 ==============
 
-Features can be split logically or physically depending upon the filter active in the tool. If one or more features from a single INCID are present in the current filter then the tool will allow a logical split to be performed. If two or more fragments from the same TOID and with the same FragID are present in the current filter then the tool will allow a physical split to be performed.
+Features can be split logically or physically depending upon the filter active in the tool. If one or more features from a single INCID are present in the current filter then the tool will allow a logical split to be performed. If two or more fragments from the same INCID and with the same Fragment ID are present in the current filter then the tool will allow a physical split to be performed.
 
 .. raw:: latex
 
@@ -177,16 +185,17 @@ All the features associated with the current INCID will be displayed as shown in
 Physical Split
 --------------
 
-Physical split is used to create one or more new fragments in the database based upon a single TOID that has already been split in the ArcGIS Pro map. Physically splitting a feature into fragments allows the fragments to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
+Physical split is used to create one or more new fragments in the database based upon a single feature that has already been split in the ArcGIS Pro map. Physically splitting a feature into fragments allows the fragments to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
 
 .. note::
 
 	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
 	* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
 	* Ensure that the physical split is completed in the database prior to commencing any other operations to avoid database synchronisation issues.
+	* Physical split is not available for **point** layers.
 
 .. tip::
-	If two or more fragments from the same TOID and with the same FragID are selected in the map and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split in the map and will inform the user that a physical split is possible.
+	If two or more fragments from the same INCID and with the same Fragment ID are selected in the map and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split in the map and will inform the user that a physical split is possible.
 
 To perform a physical split in ArcGIS Pro:
 
@@ -203,7 +212,7 @@ To perform a physical split in ArcGIS Pro:
 	Split Features
 
 * Click |getmapselection| :guilabel:`Get Map Selection`.
-* Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new FragID will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
+* Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new fragment identifier will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
 
 
 .. raw:: latex
@@ -215,7 +224,7 @@ To perform a physical split in ArcGIS Pro:
 Merge Features
 ==============
 
-Merge features will performs two types of merge depending upon the filter active in the tool. If two or more features from multiple INCIDs are present in the current filter then the tool will allow a logical merge to be performed. If two or more fragments from the same TOID and with different FragIDs are present in the current filter then the tool will allow a physical merge to be performed.
+Merge features will performs two types of merge depending upon the filter active in the tool. If two or more features from multiple INCIDs are present in the current filter then the tool will allow a logical merge to be performed. If two or more fragments from the same INCID and with different Fragment IDs are present in the current filter then the tool will allow a physical merge to be performed.
 
 .. index::
 	single: Merge Features; Logical Merge
@@ -244,7 +253,7 @@ To perform a logical merge:
 * Click :guilabel:`OK`. The other selected features in the map will be assigned to the chosen INCID and details of the merge will be added to the History tab for the INCID.
 
 .. note::
-	If the merged features are all fragments of the same TOID then a message will be diplayed informing the user that a physical merge is possible.
+	If the merged features are all fragments of the same INCID then a message will be displayed informing the user that a physical merge is possible.
 
 
 .. raw:: latex
@@ -259,14 +268,17 @@ To perform a logical merge:
 Physical Merge
 --------------
 
-Physical merge combines fragments from the same TOID into a single, larger, feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but any shared boundaries between adjacent features will be removed.
+Physical merge combines fragments of a single feature, that are associated with the same INCID, into a single larger feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but any shared boundaries between adjacent features will be removed.
 
 .. note::
-	Only fragments belonging to the same TOID can be merged in a single operation. If fragments for several TOIDs need to be merged, the operation must be repeated for each TOID.
+
+	* Only fragments belonging to the same INCID can be merged in a single physical merge operation.
+	* If fragments for several groups need to be merged, the operation must be repeated for each group.
+	* Physical merge is not available for **point** layers.
 
 To perform a physical merge:
 
-* Select two or more fragments from the same TOID in the map as shown in the **left** part of the figure :ref:`figFPMD`.
+* Select two or more fragments from the same INCID in the map as shown in the **left** part of the figure :ref:`figFPMD`.
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |merge| :guilabel:`Merge` and then |physicalmerge| :guilabel:`Physical Merge`. The features will be combined in the map as shown in the **right** part of the figure :ref:`figFPMD` and details of the merge will be added to the History tab for the INCID.
 
@@ -275,15 +287,212 @@ To perform a physical merge:
 .. figure:: figures/PhysicalMergeDiagram.png
 	:align: center
 
-	Physical Merge – Before (left) and After (right)
+			  Physical Merge – Before (left) and After (right)
 
 
-.. raw:: latex
+		 .. raw:: latex
 
-	\newpage
+			 \newpage
 
-.. index::
-	see: Filter by Attributes; Advanced Query Builder
+		 .. _function_insert_feature:
+
+		 Insert Feature
+		 ==============
+
+		 The **Insert Feature** function is used to register newly drawn GIS features — features that exist in the active HLU layer but have not yet been assigned an INCID — against new database records. Two modes are available depending on whether the drawn features represent a single habitat record or multiple independent records.
+
+		 Before using either mode:
+
+		 * Ensure the active HLU layer is editable in ArcGIS Pro.
+		 * Create one or more new features in the active HLU layer using the standard ArcGIS Pro editing tools. The new features will initially have no INCID assigned.
+		 * Optionally, populate the ``habprimary``, ``habsecond``, ``determqty`` and/or ``interpqty`` attribute columns on the new features before selecting them (see :ref:`insert_feature_gis_attributes` for details).
+		 * Select the new features in the map.
+		 * Ensure that a **Reason** and **Process** have been selected in the :ref:`updates_group` of the HLU Tool ribbon.
+
+		 .. note::
+			 Both buttons in the **Feature Insert** group are disabled unless all selected features have no INCID assigned. If any selected feature already has an INCID the buttons will remain disabled.
+
+		 .. index::
+			 single: Insert Feature; Same INCID
+
+		 .. _function_insert_feature_same_incid:
+
+		 Same INCID
+		 ----------
+
+		 Registers all selected new features under a single new INCID. Each feature is assigned a unique fragment identifier within that INCID. Use this when the drawn features represent multiple fragments of the same habitat record.
+
+		 .. note::
+			 All features being inserted under the **Same INCID** mode must carry identical values in the ``habprimary``, ``habsecond``, ``determqty`` and ``interpqty`` GIS columns. If any feature has different attribute values the insert will be cancelled and an error message will appear. Correct the attribute values or use **Separate INCIDs** mode instead.
+
+		 To insert new features under the same INCID:
+
+		 * Draw and select the new features in the active HLU layer as described above.
+		 * Click |insertfeaturesameincid| :guilabel:`Same INCID` from the **Insert Feature** drop-down in the :ref:`feature_insert_group` of the HLU Tool ribbon.
+		 * A new INCID will be created and all selected features will be registered against it with sequential fragment identifiers. The new INCID will be displayed as the current record in the dockpane and details of the insert will be added to the History tab.
+
+		 .. seealso::
+			 See :ref:`feature_insert_group` for toolbar details.
+
+		 .. index::
+			 single: Insert Feature; Separate INCIDs
+
+		 .. _function_insert_feature_separate_incids:
+
+		 Separate INCIDs
+		 ---------------
+
+		 Registers each selected new feature under its own individual new INCID. Use this when each drawn feature represents a distinct, independent habitat record.
+
+		 To insert new features each under a separate INCID:
+
+		 * Draw and select the new features in the active HLU layer as described above.
+		 * Click |insertfeatureseparateincid| :guilabel:`Separate INCIDs` from the **Insert Feature** drop-down in the :ref:`feature_insert_group` of the HLU Tool ribbon.
+		 * A new INCID will be created for each selected feature. The first new INCID will be displayed as the current record in the dockpane and details of all inserts will be added to the History tab.
+
+		 .. seealso::
+			 See :ref:`feature_insert_group` for toolbar details.
+
+		 .. index::
+			 single: Insert Feature; GIS Attribute Columns
+
+		 .. _function_insert_feature_gis_attributes:
+
+		 GIS Attribute Columns
+		 ---------------------
+
+		 The HLU layer supports a set of optional attribute columns that can be pre-populated before registering new features. When present and populated, the values are read from the GIS layer and used to initialise the corresponding database attributes for the new INCID record, reducing the amount of manual data entry required afterwards.
+
+		 The following columns are recognised:
+
+		 .. tabularcolumns:: |L|L|L|
+
+		 .. table:: GIS attribute columns read during Feature Insert
+
+			 +-------------+---------------------------------+--------------------------------------------------+
+			 | GIS Column  | Attribute                       | Notes                                            |
+			 +=============+=================================+==================================================+
+			 | habprimary  | Primary Habitat code            | Must be a valid UKHab primary code for the       |
+			 |             |                                 | active layer geometry type (polygon, line or     |
+			 |             |                                 | point).                                          |
+			 +-------------+---------------------------------+--------------------------------------------------+
+			 | habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by        |
+			 |             |                                 | spaces, commas or full-stops. Each code must be  |
+			 |             |                                 | a valid secondary code for the active layer      |
+			 |             |                                 | geometry type. Cannot be provided without a      |
+			 |             |                                 | valid primary code.                              |
+			 +-------------+---------------------------------+--------------------------------------------------+
+			 | determqty   | Determination Quality           | Must be a recognised determination quality code  |
+			 |             |                                 | (see :ref:`insert_feature_determination_quality_values`). |
+			 +-------------+---------------------------------+--------------------------------------------------+
+			 | interpqty   | Interpretation Quality          | Must be a recognised interpretation quality code |
+			 |             |                                 | (see :ref:`insert_feature_interpretation_quality_values`). |
+			 +-------------+---------------------------------+--------------------------------------------------+
+
+		 All four columns are **optional**. If a column is absent from the GIS layer, or its value is left blank, the corresponding attribute is simply left unpopulated in the new INCID record.
+
+		 .. note::
+			 A secondary habitat code (``habsecond``) cannot be provided without a valid primary habitat code (``habprimary``). If a secondary code is supplied without a valid primary code it will be silently ignored.
+
+		 .. _function_insert_feature_validation:
+
+		 Validation
+		 ----------
+
+		 Before the attributes are written to the database the tool validates each value:
+
+		 * The **primary habitat code** is checked to ensure it is a recognised UKHab code applicable to the geometry type of the active layer. An unrecognised or geometry-incompatible code is treated as if no primary code was supplied.
+		 * Each **secondary habitat code** is checked individually against the list of codes valid for the active layer geometry type. Any unrecognised or inapplicable code is silently discarded; only the remaining valid codes are used.
+		 * The **determination quality** and **interpretation quality** codes are each checked against their respective lookup tables. An unrecognised code is treated as if no value was supplied.
+
+		 .. _function_insert_feature_gis_update:
+
+		 GIS Column Update on Success
+		 ----------------------------
+
+		 After a successful insert, the tool writes back to the GIS layer to ensure the attribute columns reflect only the values that were actually stored in the database. Any value that failed validation is replaced with a blank in the GIS layer. The ``habsecond`` column is rewritten as a delimiter-separated list containing only the secondary codes that were accepted; discarded codes are removed.
+
+		 This write-back ensures that the GIS layer remains consistent with the database and prevents stale or invalid attribute values being left in the layer.
+
+		 .. _function_insert_feature_determination_quality_values:
+
+		 Determination Quality Values
+		 ----------------------------
+
+		 .. tabularcolumns:: |L|L|
+
+		 .. table:: Valid Determination Quality codes
+
+			 +------+----------------------------------------------------------+
+			 | Code | Description                                              |
+			 +======+==========================================================+
+			 | DI   | Definitely is this habitat                               |
+			 +------+----------------------------------------------------------+
+			 | HI   | Habitat is in polygon, but not accurately mappable       |
+			 +------+----------------------------------------------------------+
+			 | HP   | Habitat probably in polygon, but not accurately mappable |
+			 +------+----------------------------------------------------------+
+			 | PI   | Probably is, but some uncertainty                        |
+			 +------+----------------------------------------------------------+
+			 | NP   | Not present but close to definition                      |
+			 +------+----------------------------------------------------------+
+			 | PP   | Previously present, but may no longer exist              |
+			 +------+----------------------------------------------------------+
+
+		 .. _function_insert_feature_interpretation_quality_values:
+
+		 Interpretation Quality Values
+		 -----------------------------
+
+		 .. tabularcolumns:: |L|L|
+
+		 .. table:: Valid Interpretation Quality codes
+
+			 +------+-------------+
+			 | Code | Description |
+			 +======+=============+
+			 | G1   | Good        |
+			 +------+-------------+
+			 | A1   | Average     |
+			 +------+-------------+
+			 | P1   | Poor        |
+			 +------+-------------+
+			 | H1   | High (1)    |
+			 +------+-------------+
+			 | M2   | Medium (2)  |
+			 +------+-------------+
+			 | M3   | Medium (3)  |
+			 +------+-------------+
+			 | M4   | Medium (4)  |
+			 +------+-------------+
+			 | L5   | Low (5)     |
+			 +------+-------------+
+			 | L6   | Low (6)     |
+			 +------+-------------+
+			 | L7   | Low (7)     |
+			 +------+-------------+
+
+		 .. _function_insert_feature_post_insert:
+
+		 Completing Attributes After Insert
+		 -----------------------------------
+
+		 The Feature Insert operation creates a minimal INCID record using only the attributes that could be read from the GIS layer columns. The new record will typically require further editing in the dockpane to complete all required and recommended attributes. After inserting, navigate to the new INCID and review the following sections:
+
+		* **Primary and Secondary Habitats** (:ref:`habitats_tab`) — confirm or add the primary and secondary UKHab codes, and check that any automatically added priority habitats are correct and attributed with the correct determination and interpretation quality values.
+		* **Priority Habitats** (:ref:`priority_tab`) — review and complete any priority habitat and potential priority habitat entries, including their determination and interpretation quality values.
+		* **Boundary and Digitisation** — the boundary base map and digitisation base map values default to 'Unknown' but should be updated to reflect the source of the spatial data for the new feature(s).
+		* **Site Reference and Name** — enter the site reference and site name if known.
+		* **Condition Details** — add condition assessment information if available.
+		* **General Comments** — add any free-text comments relevant to the new feature(s).
+		* **Sources** (:ref:`details_tab`) — add one or more habitat survey sources to document the origin of the habitat information.
+
+		 .. raw:: latex
+
+			 \newpage
+
+		 .. index::
+			 see: Filter by Attributes; Advanced Query Builder
 
 .. _filter_by_attributes:
 
@@ -487,7 +696,7 @@ Users can update the attributes for multiple INCID records, and associated featu
 To bulk apply updates:
 
 * Filter the database records using **Filter by Attributes** or select features in the map and click :guilabel:`Get Map Selection`. For details on filtering records see :ref:`filter_by_attributes`.
-* Click |bulkupdate| :guilabel:`Bulk Update` in the :ref:`mode_group` of the HLU Tool ribbon to enter bulk update mode. An empty form is displayed as shown in the figure :ref:`figFUIBU` and the 'Bulk Update' section displays the number of INCIDs, TOIDs and fragments affected by the update.
+* Click |bulkupdate| :guilabel:`Bulk Update` in the :ref:`mode_group` of the HLU Tool ribbon to enter bulk update mode. An empty form is displayed as shown in the figure :ref:`figFUIBU` and the 'Bulk Update' section displays the number of INCIDs and fragments affected by the update.
 * Enter the update details in the Habitats, Priority, Details, and Sources tabs, then click :guilabel:`Apply`. The Bulk Update confirmation window will appear as shown in the figure :ref:`figFUIBUC`.
 * Select the required options for the bulk update and click :guilabel:`OK`. The INCIDs in the active filter will be updated.
 
@@ -554,7 +763,7 @@ To filter proposed OSMM Updates:
 
 To process proposed OSMM Updates:
 
-* Once a filter has been applied the main interface appears as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs, TOIDs and fragments that will be affected by the update.
+* Once a filter has been applied the main interface appears as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
 * Click :guilabel:`Skip` to skip the proposed update for the current INCID. It can then be reviewed again at a later time.
 * Click :guilabel:`Reject` to reject the proposed update for the current INCID. It will no longer be available for reviewing or applying.
 * Click :guilabel:`Accept` to accept the proposed update for the current INCID. The update will now be 'Pending' and must be applied by bulk applying OSMM Updates (see :ref:`bulk_osmm_update` for details).
@@ -607,7 +816,7 @@ Once proposed OSMM updates have been accepted they become 'Pending' and must be 
 	:align: center
 	:scale: 85
 
-	Review OSMM Updates Filter Window
+	Bulk Apply OSMM Updates Filter Window
 
 To filter pending OSMM Updates:
 
@@ -633,7 +842,7 @@ To filter pending OSMM Updates:
 
 To bulk apply OSMM updates:
 
-* Once a filter has been applied an empty form is displayed as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs, TOIDs and fragments that will be affected by the update.
+* Once a filter has been applied an empty form is displayed as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
 * The Habitats tab will be disabled as changes to the habitat attributes are determined by the pending OSMM update for each INCID.
 * Enter any required update details in the Details and Sources tabs, then click :guilabel:`Apply`. The Bulk Update confirmation window will appear as shown in the figure :ref:`figFUIBOUC`.
 * Select the required options for the bulk update and click :guilabel:`OK`. The INCIDs in the active filter will be updated.

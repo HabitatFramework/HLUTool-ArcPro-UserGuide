@@ -106,10 +106,10 @@ INCID
 	The unique reference for the current record.
 
 Area
-	The total area of all the selected features for the current INCID.
+	The total area of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. For line and point layers this field shows the total length or a count respectively.
 
 Length
-	The total perimeter length of all the selected features for the current INCID.
+	The total perimeter length of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. Not shown for point layers.
 
 Created/By
 	The date the current INCID was first created and the name of the user that created it. For most INCIDs this will relate to when the data was first loaded into the framework. For INCIDs that have been created as a result of a logical split this relate to when the split was performed.
@@ -240,6 +240,9 @@ Primary
 	shown in **bold** at the top of the list, separated from the
 	remaining valid codes by a divider line.
 
+	.. note::
+		The primary code list is filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown.
+
 NVC Codes
 	[Read only]. Displays a list of any NVC Codes related to the
 	UKHab primary code selected in the preceding drop-down list. This
@@ -296,6 +299,9 @@ Add Secondary Habitats from List
 	A button to open a list of all secondary codes applicable to the
 	current primary habitat, from which multiple codes can be selected
 	and added to the table in one operation.
+
+.. note::
+	To delete an existing secondary habitat code click on the grey box to the left of the secondary habitat row to select it, then press the keyboard :kbd:`Delete` key to remove it.
 
 Summary
 	[Read only]. Automatically generated sorted and concatenated
@@ -508,7 +514,7 @@ Habitat Imp.
 History Tab
 -----------
 
-Click on :guilabel:`History` to display the History tab as shown in the figure :ref:`figUIHistT`. The History tab displays a list of previous modifications made to the current INCID and the associated TOIDs. 
+Click on :guilabel:`History` to display the History tab as shown in the figure :ref:`figUIHistT`. The History tab displays a list of previous modifications made to the current INCID.
 
 .. _figUIHistT:
 
@@ -525,7 +531,7 @@ Each entry details what modifications were made, when and by whom. Entries are s
 INCID Status Section
 --------------------
 
-The 'INCID Status' section contains navigation buttons (:guilabel:`First`, :guilabel:`Previous`, :guilabel:`Next`, :guilabel:`Last`) and a record number text box to enable users to move between INCID records **within the currently active filter**. It displays the current record position and the total number of records available for navigation (or the total number of INCID records in the database if there is no active filter). It also displays the number of TOIDs and TOID fragments selected in the active HLU layer for the current INCID when the filter was applied, as well as the total number of TOIDs and TOID fragments related to the current INCID in the database.
+The 'INCID Status' section contains navigation buttons (:guilabel:`First`, :guilabel:`Previous`, :guilabel:`Next`, :guilabel:`Last`) and a record number text box to enable users to move between INCID records **within the currently active filter**. It displays the current record position and the total number of records available for navigation (or the total number of INCID records in the database if there is no active filter). It also displays the number of features selected in the active HLU layer for the current INCID when the filter was applied, as well as the total number of features related to the current INCID in the database.
 
 .. _figUIISS:
 
@@ -535,7 +541,7 @@ The 'INCID Status' section contains navigation buttons (:guilabel:`First`, :guil
 
 	Main Window - INCID Status Section
 
-For example, figure :ref:`figUIISS` indicates that the interface is currently displaying record 4 of the 6 records in the active filter, and also shows that 2 TOIDs and 2 fragments from those TOIDs were selected in the active HLU layer out of a total of 3 TOIDs with 3 fragments associated with the current INCID. Hence, only a **subset** of the TOIDs or fragments associated with the current INCID are selected in the layer.
+For example, figure :ref:`figUIISS` indicates that the interface is currently displaying record 4 of the 6 records in the active filter, and also shows that 2 features were selected in the active HLU layer out of a total of 3 features associated with the current INCID. Hence, only a **subset** of the features associated with the current INCID are selected in the layer.
 
 .. note::
 	All INCIDs in the active filter will always be retrieved in INCID order, so using the navigation buttons will always select the previous or next available INCID from those in the filter. A specific record can also be jumped to by typing its number directly into the record number text box and pressing :kbd:`Enter`.
@@ -676,12 +682,6 @@ Database INCIDs
 Map INCIDs
 	Displays the number of INCIDs for features selected in the active GIS layer that the bulk update will be applied to.
 
-Database TOIDs
-	Displays the number of TOIDs in the database for the active filter that the bulk update will be applied to.
-
-Map TOIDs
-	Displays the number of TOIDs for features selected in the active GIS layer that the bulk update will be applied to.
-
 Database Fragments
 	Displays the number of fragments in the database for the active filter.
 
@@ -689,12 +689,12 @@ Map Fragments
 	Displays the number of fragments/features selected in the active GIS layer that the bulk update will be applied to.
 
 .. note::
-	Any discrepancies between the **Database** and **Map** counts will be highlighted with warning messages. This indicates that not all INCIDs, TOIDs or Fragments in the database are held within the active GIS layer.
+	Any discrepancies between the **Database** and **Map** counts will be highlighted with warning messages. This indicates that not all INCIDs or fragments in the database are held within the active GIS layer.
 
 INCID Status Section
 --------------------
 
-The Bulk Update 'INCID Status' section shows the total number of INCIDs, TOIDs and Fragments in the active filter.
+The Bulk Update 'INCID Status' section shows the total number of INCIDs and fragments in the active filter.
 
 .. _figUIBUSS:
 
@@ -704,7 +704,7 @@ The Bulk Update 'INCID Status' section shows the total number of INCIDs, TOIDs a
 
 	Bulk Update Window - INCID Status Section
 
-For example, figure :ref:`figUIBUS` indicates that the active filter currently contains 47 INCIDs, 58 TOIDs and 58 fragments from those TOIDs.
+For example, figure :ref:`figUIBUS` indicates that the active filter currently contains 47 INCIDs and 58 fragments.
 
 .. raw:: latex
 
@@ -1177,64 +1177,3 @@ Selected Only
 
 	.. note::
 		If the database records have been filtered the 'Selected only' checkbox is automatically ticked and the number of selected GIS features is shown (as seen in :ref:`figED`). Only the records related to the selected INCIDs and associated GIS features from the active GIS layer will be exported. Untick this checkbox to export all features from the active GIS layer associated with the INCIDs in the active filter. For details on how to filter records see :ref:`filter_by_attributes`.
-
-.. raw:: latex
-
-	\newpage
-
-.. index::
-	single: Reason
-	single: Process
-	single: Windows; Reason and Process
-
-.. _reason_section:
-
-Reason and Process
-==================
-
-The **Reason** and **Process** drop-down lists in the :ref:`updates_group` of the HLU Tool ribbon must both be selected before any update, split, merge or bulk update operation can be applied. The selected values are recorded in the history table to indicate why and how the INCID record was changed.
-
-.. _figUIRPS:
-
-.. figure:: figures/UserInterfaceReasonProcessSection.png
-	:align: center
-
-	HLU Tool Ribbon - Reason and Process
-
-Reason
-	A drop-down list for selecting the reason for the updates about to be made.
-
-Process
-	A drop-down list for selecting the process associated with the updates about to be made.
-
-.. note::
-	The selected Reason and Process values are **sticky** — they are retained across all update operations in the current session until changed. Default values for both can be pre-configured in the user options (see :ref:`options_user_updates` for more details).
-
-.. raw:: latex
-
-	\newpage
-
-.. index::
-	single: Active Layer
-	single: Switch GIS Layer
-	single: Windows; Active Layer
-
-.. _switch_layer_window:
-
-Active Layer
-============
-
-The **Active Layer** drop-down list in the :ref:`updates_group` of the HLU Tool ribbon allows users to select which HLU feature layer in the current ArcGIS Pro map is being worked on, as shown in the figure :ref:`figUIAL`.
-
-.. _figUIAL:
-
-.. figure:: figures/SwitchGISLayerDialog.png
-	:align: center
-
-	Active Layer Drop-down List
-
-.. note::
-	Only valid HLU layers present in the current ArcGIS Pro map (i.e. layers with the correct attribute names and formats) will appear in the list.
-
-.. tip::
-	The currently active layer is automatically selected in the drop-down list when the HLU Tool is opened or when the map contents change.
