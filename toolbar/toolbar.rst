@@ -207,13 +207,14 @@ A drop-down list for selecting the active HLU feature layer in the current ArcGI
 .. tip::
 	The currently active layer is automatically selected in the drop-down list when the HLU Tool is opened or when the map contents change.
 
-.. seealso::
-	See :ref:`switch_layer_window` for more information.
+.. _reason_section:
 
 Reason
 ------
 
 A drop-down list for selecting the reason for the updates about to be made. A reason must be selected before any updates can be saved.
+
+.. _process_section:
 
 Process
 -------

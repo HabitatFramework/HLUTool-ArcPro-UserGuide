@@ -287,14 +287,14 @@ To perform a physical merge:
 .. figure:: figures/PhysicalMergeDiagram.png
 	:align: center
 
-	Physical Merge – Before (left) and After (right)
+	Physical Merge - Before (left) and After (right)
 
 
- .. raw:: latex
+.. raw:: latex
 
-	 \newpage
+	\newpage
 
- .. _function_insert_feature:
+.. _function_insert_feature:
 
 Insert Feature
 ==============
@@ -305,7 +305,7 @@ Before using either mode:
 
 * Ensure the active HLU layer is editable in ArcGIS Pro.
 * Create one or more new features in the active HLU layer using the standard ArcGIS Pro editing tools. The new features will initially have no INCID assigned.
-* Optionally, populate the ``habprimary``, ``habsecond``, ``determqty`` and/or ``interpqty`` attribute columns on the new features before selecting them (see :ref:`insert_feature_gis_attributes` for details).
+* Optionally, populate the ``habprimary``, ``habsecond``, ``determqty`` and/or ``interpqty`` attribute columns on the new features before selecting them (see :ref:`function_insert_feature_gis_attributes` for details).
 * Select the new features in the map.
 * Ensure that a **Reason** and **Process** have been selected in the :ref:`updates_group` of the HLU Tool ribbon.
 
@@ -369,25 +369,25 @@ The following columns are recognised:
 
 .. table:: GIS attribute columns read during Feature Insert
 
-	+-------------+---------------------------------+------------------------------------------------------------+
-	| GIS Column  | Attribute                       | Notes                                                      |
-	+=============+=================================+============================================================+
-	| habprimary  | Primary Habitat code            | Must be a valid UKHab primary code for the                 |
-	|             |                                 | active layer geometry type (polygon, line or               |
-	|             |                                 | point).                                                    |
-	+-------------+---------------------------------+------------------------------------------------------------+
-	| habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by                  |
-	|             |                                 | spaces, commas or full-stops. Each code must be            |
-	|             |                                 | a valid secondary code for the active layer                |
-	|             |                                 | geometry type. Cannot be provided without a                |
-	|             |                                 | valid primary code.                                        |
-	+-------------+---------------------------------+------------------------------------------------------------+
-	| determqty   | Determination Quality           | Must be a recognised determination quality code            |
-	|             |                                 | (see :ref:`insert_feature_determination_quality_values`).  |
-	+-------------+---------------------------------+------------------------------------------------------------+
-	| interpqty   | Interpretation Quality          | Must be a recognised interpretation quality code           |
-	|             |                                 | (see :ref:`insert_feature_interpretation_quality_values`). |
-	+-------------+---------------------------------+------------------------------------------------------------+
+	+-------------+---------------------------------+--------------------------------------------------------------+
+	| GIS Column  | Attribute                       | Notes                                                        |
+	+=============+=================================+==============================================================+
+	| habprimary  | Primary Habitat code            | Must be a valid UKHab primary code for the                   |
+	|             |                                 | active layer geometry type (polygon, line or                 |
+	|             |                                 | point).                                                      |
+	+-------------+---------------------------------+--------------------------------------------------------------+
+	| habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by                    |
+	|             |                                 | spaces, commas or full-stops. Each code must be              |
+	|             |                                 | a valid secondary code for the active layer                  |
+	|             |                                 | geometry type. Cannot be provided without a                  |
+	|             |                                 | valid primary code.                                          |
+	+-------------+---------------------------------+--------------------------------------------------------------+
+	| determqty   | Determination Quality           | Must be a recognised determination quality code              |
+	|             |                                 | (see :ref:`function_insert_feature_determination_quality`).  |
+	+-------------+---------------------------------+--------------------------------------------------------------+
+	| interpqty   | Interpretation Quality          | Must be a recognised interpretation quality code             |
+	|             |                                 | (see :ref:`function_insert_feature_interpretation_quality`). |
+	+-------------+---------------------------------+--------------------------------------------------------------+
 
 All four columns are **optional**. If a column is absent from the GIS layer, or its value is left blank, the corresponding attribute is simply left unpopulated in the new INCID record.
 
@@ -414,7 +414,7 @@ After a successful insert, the tool writes back to the GIS layer to ensure the a
 
 This write-back ensures that the GIS layer remains consistent with the database and prevents stale or invalid attribute values being left in the layer.
 
-.. _function_insert_feature_determination_quality_values:
+.. _function_insert_feature_determination_quality:
 
 Determination Quality Values
 ----------------------------
@@ -439,7 +439,7 @@ Determination Quality Values
 	| PP   | Previously present, but may no longer exist              |
 	+------+----------------------------------------------------------+
 
-.. _function_insert_feature_interpretation_quality_values:
+.. _function_insert_feature_interpretation_quality:
 
 Interpretation Quality Values
 -----------------------------
