@@ -10,8 +10,8 @@ Options
 
 The Options window allows users to configure the HLU Tool. The window is organised into two categories in a navigation sidebar:
 
-* **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults).
-* **User** — settings specific to the current user (interface, GIS, updates, SQL, history, export).
+* **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults, reassign rules).
+* **User** — settings specific to the current user (interface, GIS, updates, bulk load, SQL, history, export).
 
 .. |options| image:: ../icons/Options.png
 	:height: 16px
@@ -220,6 +220,54 @@ OSMM Source Name
 	\newpage
 
 .. index::
+	single: Options; Reassign
+
+.. _options_reassign:
+
+Reassign Options
+----------------
+
+The following options relate to configuring rules for the Reassign Features function. These are application-wide settings found under **Application > Reassign** in the Options navigation.
+
+Reassign Features moves features from the active HLU layer to one or more target HLU layers based on configurable rules. Each rule consists of a descriptive name and a SQL WHERE clause that determines which features should be moved.
+
+.. note::
+	Reassign rules are processed in order from top to bottom. Once a feature matches a rule and is moved, it will not be available for subsequent rules.
+
+To add a new reassign rule:
+
+* Click on the last row to create a new empty rule row.
+* Enter a descriptive **Rule Name** for the rule (e.g., "Water Layer").
+* Enter a SQL **WHERE Clause** that selects the features to be moved (e.g., ``habprimary LIKE 'r%'`` to select all features with primary habitat codes starting with 'r').
+* The rule will be saved automatically when you navigate away from it or close the Options window.
+
+To edit an existing reassign rule:
+
+* Click on the rule row you wish to edit.
+* Modify the **Rule Name** or **WHERE Clause** as required.
+* The changes will be saved automatically when you navigate away from the rule or close the Options window.
+
+To delete a reassign rule:
+
+* Select the rule row you wish to delete.
+* Click the **Delete** button or press the :kbd:`Delete` key.
+* The rule will be removed from the list.
+
+To reorder reassign rules:
+
+* Select the rule row you wish to move.
+* Use the **Move Up** and **Move Down** buttons to change the order of the rules.
+* Remember that rules are processed in order from top to bottom, so the order matters.
+
+.. seealso::
+	For details on using the Reassign Features function see :ref:`reassign_features_function`.
+
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
 	single: Options; User Options
 
 User Options
@@ -418,3 +466,33 @@ Default Export Directory
 
 Warning Before Exporting Features
 	Sets the number of features above which a warning is shown before starting an export, as the operation may take some time. Set to zero to disable the warning.
+
+.. index::
+	single: Options; Bulk Load
+
+.. _options_bulk_load:
+
+Bulk Load Options (User)
+-------------------------
+
+The following options relate to the Bulk Load function. These are user-specific settings found under **User > Bulk Load** in the Options navigation.
+
+.. _figOWBulkLoad:
+
+.. figure:: figures/OptionsWindowUserBulkLoad.png
+	:align: center
+	:scale: 90
+
+	Options Window - Bulk Load
+
+Default Staging Layer Directory
+	Sets the default folder path where the staging layer will be created during the bulk load process. The staging layer is a temporary layer used to stage features before they are moved to a permanent HLU layer. A different path can still be selected during the bulk load process.
+
+	.. note::
+		The path is validated when the folder path window is closed. If the specified folder does not exist or is not accessible, an error will be shown and the setting will not be saved until a valid path is provided.
+
+Default Staging Layer Name
+	Sets the default name for the staging layer that will be created during the bulk load process. This name will be used to create the staging layer in the configured staging layer directory. A different name can still be selected during the bulk load process.
+
+.. seealso::
+	For details on using the Bulk Load function see :ref:`bulk_load_function`.

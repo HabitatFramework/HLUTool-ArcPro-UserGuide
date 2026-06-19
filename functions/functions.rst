@@ -70,6 +70,18 @@
 	:height: 16px
 	:width: 16px
 
+.. |bulkload| image:: ../icons/BulkLoad.png
+	:height: 16px
+	:width: 16px
+
+.. |bulkunload| image:: ../icons/BulkUnload.png
+	:height: 16px
+	:width: 16px
+
+.. |reassign| image:: ../icons/Reassign.png
+	:height: 16px
+	:width: 16px
+
 .. |apply| image:: ../icons/Apply.png
 	:height: 23px
 	:width: 58px
@@ -911,3 +923,148 @@ During the export process checks and validation are performed to avoid potential
 
 .. seealso::
 	For details on defining export formats see 'Configuring Exports' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Bulk Unload
+	single: OSMM Bulk Unload
+
+.. _bulk_unload_function:
+
+Bulk Unload
+===========
+
+Bulk Unload removes selected registered features from the active HLU layer and cleans up their associated database records. This function is used to unload features that were incorrectly loaded or will replaced by new features added during a bulk load.
+
+.. note::
+	* Bulk unload can only be performed when the active HLU layer is editable in ArcGIS Pro.
+	* Only features that are currently selected in the active HLU layer will be unloaded.
+	* The unload process removes both the features from the GIS layer and their associated INCID records from the database.
+
+To perform a bulk unload:
+
+* Select the features to be unloaded in the active HLU layer.
+* Click |bulkunload| :guilabel:`Bulk Unload` from the **Bulk Load** drop-down menu in the HLU Tool ribbon.
+* A confirmation window will appear showing the number of features and INCIDs that will be unloaded.
+* Review the selection and click :guilabel:`OK` to proceed with the unload, or :guilabel:`Cancel` to abort.
+* The selected features will be removed from the GIS layer and their associated database records will be cleaned up.
+
+.. warning::
+	Bulk unload permanently removes features and their database records. This operation cannot be undone. Ensure you have selected the correct features before proceeding.
+
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Bulk Load
+	single: OSMM Bulk Load
+
+.. _bulk_load_function:
+
+Bulk Load
+=========
+
+Bulk Load registers new GIS features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is automatically assigned its own INCID based on habitat codes derived from OSMM descriptive attributes (Make, Descriptive Group, Descriptive Term, Theme, and Feature Code).
+
+.. note::
+	* Bulk load can only be performed when a layer containing features with OSMM descriptive attributes is present in the active map.
+	* The input layer must contain the OSMM descriptive attributes that will be matched against the cross-reference table.
+	* Each feature in the input layer will be assigned to its own new INCID.
+
+To perform a bulk load:
+
+* Ensure you have a layer containing features with OSMM descriptive attributes (Make, Descriptive Group, Descriptive Term, Theme, and Feature Code).
+* Click |bulkload| :guilabel:`Bulk Load` from the **Bulk Load** drop-down menu in the HLU Tool ribbon.
+* The Bulk Load window will appear as shown in the figure below.
+* Select the input layer from the 'Layer' drop-down list.
+* Map each of the OSMM attribute fields from your input layer to the corresponding lookup attributes:
+
+	* **TOID Field** — the field containing the TOID (optional, can be set to <None>)
+	* **Make Field** — the field containing the Make attribute
+	* **Descriptive Group Field** — the field containing the Descriptive Group attribute
+	* **Descriptive Term Field** — the field containing the Descriptive Term attribute
+	* **Theme Field** — the field containing the Theme attribute
+	* **Feature Code Field** — the field containing the Feature Code attribute
+
+* Select the output layer type (File Geodatabase Feature Class or Shapefile).
+* Choose whether to load only selected features or all features from the input layer.
+* Click :guilabel:`OK` to start the bulk load process.
+
+The bulk load process will:
+
+1. Create a staging layer in the configured staging directory with the configured staging layer name (see :ref:`options_bulk_load` for default configuration details).
+2. Copy the selected features from the input layer to the staging layer.
+3. Match the OSMM attributes against the cross-reference table to determine the appropriate habitat codes.
+4. Create new INCID records in the database for each feature with the matched habitat codes.
+5. Update the staging layer features with the new INCID and fragment identifiers.
+
+.. note::
+	* The match between the OSMM attributes and the cross-reference table can be saved as a CSV file to assist with updating and populating the cross-reference table.
+	* The default staging layer directory and staging layer name can be configured in the Bulk Load Options (see :ref:`options_bulk_load` for more details).
+	* The staging layer will be added to the current map after the bulk load process is complete.
+
+.. warning::
+	* Features that cannot be matched against the OSMM cross-reference table will still be loaded to the staging layer but their habitat attributes will be null.
+	* The bulk load process may take a long time depending upon the number of features being loaded.
+
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Reassign Features
+	single: Move Features Between Layers
+
+.. _reassign_features_function:
+
+Reassign Features
+=================
+
+Reassign Features moves features from the active HLU layer to one or more target HLU layers based on configurable rules that match primary and secondary habitat codes. Each rule consists of a rule name and a SQL WHERE clause that selects which features should be moved. This function is used to ensure features are stored in the correct layer after habitat attribute updates or bulk loads.
+
+.. note::
+	* Reassign features can only be performed when the active HLU layer is editable in ArcGIS Pro.
+	* Target layers must also be present in the current map and be editable.
+	* Reassign rules are configured in the application options (see :ref:`options_reassign` for configuration details).
+
+To perform a feature reassignment:
+
+* Select the active HLU layer from which features will be reassigned.
+* Ensure that all target HLU layers are present in the current map and are editable.
+* Click |reassign| :guilabel:`Reassign Features` in the HLU Tool ribbon.
+* The Reassign Features window will appear showing all configured reassign rules.
+* For each rule, the window displays:
+
+	* **Rule Name** — the descriptive name of the rule
+	* **WHERE Clause** — the SQL WHERE clause that selects features for this rule
+	* **Feature Count** — the number of features in the active layer that match the WHERE clause (calculated asynchronously)
+	* **Target Layer** — a drop-down list to select the target layer for matched features, or <Skip> to skip this rule
+
+* Review each rule and select the appropriate target layer for the features that match the rule, or select <Skip> to ignore the rule.
+* The window also displays the total number of source features in the active layer.
+* Click :guilabel:`OK` to proceed with the reassignment, or :guilabel:`Cancel` to abort.
+
+The reassignment process will:
+
+1. For each rule (in order) that is not set to <Skip>:
+
+	a. Select all features in the active layer that match the rule's WHERE clause.
+	b. Copy the selected features to the target layer.
+	c. Delete the selected features from the active layer.
+
+2. Display a summary of how many features were reassigned and how many rules were applied.
+
+.. note::
+	* Features are processed in rule order from top to bottom.
+	* Once a feature is moved by one rule, it is no longer available for subsequent rules.
+	* Features that do not match any rule remain in the active layer.
+
+.. seealso::
+	For details on configuring reassign rules see :ref:`options_reassign`.

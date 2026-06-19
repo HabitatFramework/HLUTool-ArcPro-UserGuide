@@ -14,17 +14,28 @@ Change Log
 **1.1.0**
 (TBD)
 
+    * :guilabel:`New` Added **Bulk Load/Unload** dynamic menu button to the HLU Tool tab with two commands:
+
+        * **Bulk Unload** — removes selected registered features from the active HLU layer and cleans up their database records. Use this to unload features that were incorrectly loaded or will be replacted during a bulk load operation.
+        * **Bulk Load** — registers new features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is assigned its own INCID based on habitat codes derived from OSMM descriptive attributes.
+
+    * :guilabel:`New` Added **Reassign Features** button to the HLU Tool tab — reassigns features from the active HLU layer to target layers based on configurable rules that match primary and secondary habitat codes. Use this to move features that belong in different layers after habitat updates
+    * :guilabel:`New` Added **Bulk Load Options** to user options — configure default staging layer directory and default staging layer name used during bulk load operations
+    * :guilabel:`New` Added **Reassign Options** to application options — configure reassign rules that determine which features should be moved to which target layers based on SQL WHERE clauses
+
+**1.1.0**
+(TBD)
+
     * :guilabel:`New` Added support for polyline and point GIS layers in addition to the existing polygon layer support
     * :guilabel:`New` Added **Insert Feature** ribbon group to the HLU Tool tab with two new commands:
 
         * **Same INCID** — registers all selected newly created features (features with no INCID assigned) under a single new INCID. Use this when the new features represent fragments of the same habitat record.
         * **Separate INCIDs** — registers each selected newly created feature under its own new INCID. Use this when each new feature represents a distinct habitat record.
 
-    * :guilabel:`New` Added ``Feature Insert`` operation to the history log when new features are added
     * :guilabel:`New` Primary code list is now filtered by geometry type (polygon, line, or point) so only codes applicable to the active layer type are shown
     * :guilabel:`New` Area and length statistics are now calculated as per geometry type
     * :guilabel:`New` Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
-    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle  where features do not have OS TOID references
+    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle where features do not have OS TOID references
     * :guilabel:`Improved` Merge and split operations now support line and point geometry types in addition to polygons
     * :guilabel:`Improved` Split operation now correctly updates history rows when a logical split reassigns (incid, toid, fragid) keys, replacing behaviour previously dependent on database-level constraints
     * :guilabel:`Fixed` The ``No`` button in the ``Warn on Subset Update`` dialog no longer incorrectly splits the subset features regardless

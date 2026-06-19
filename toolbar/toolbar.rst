@@ -564,6 +564,78 @@ Opens the **Insert Feature** drop-down menu, which contains:
 	\newpage
 
 .. index::
+	single: Toolbar; Bulk Load/Unload Group
+	see: Bulk Load/Unload Group; Toolbar
+
+.. _bulk_load_unload_group:
+
+Bulk Load/Unload Group
+======================
+
+.. _figUIGBulkLoadUnload:
+
+.. figure:: figures/ToolbarBulkLoadUnloadGroup.png
+	:align: center
+
+	HLU Tool Ribbon - Bulk Load/Unload Group
+
+The **Bulk Load/Unload** group provides functions for bulk unloading and loading OSMM features.
+
+|bulkload| Bulk Load
+-------------------
+
+Opens the **Bulk Load/Unload** drop-down menu, which contains:
+
+|bulkunload| Bulk Unload
+	Removes selected registered features from the active HLU layer and cleans up their database records. Use this to unload features that were incorrectly loaded or will be replaced during a bulk load operation.
+
+	.. seealso::
+		See :ref:`bulk_unload_function` for more information.
+
+|bulkload| Bulk Load
+	Registers new features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is assigned its own INCID based on habitat codes derived from OSMM descriptive attributes.
+
+	.. seealso::
+		See :ref:`bulk_load_function` for more information.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Toolbar; Reassign Group
+	see: Reassign Group; Toolbar
+
+.. _reassign_group:
+
+Reassign Group
+==============
+
+.. _figUIGReassign:
+
+.. figure:: figures/ToolbarReassignGroup.png
+	:align: center
+
+	HLU Tool Ribbon - Reassign Group
+
+|reassign| Reassign Features
+----------------------------
+
+Opens the Reassign Features window, allowing users to move features from the active HLU layer to one or more target HLU layers based on configurable rules.
+
+.. note::
+	* Available only when **Update** mode is active.
+	* The active HLU layer and all target layers must be editable in ArcGIS Pro.
+	* Reassign rules are configured in the application options (see :ref:`options_reassign`).
+
+.. seealso::
+	See :ref:`reassign_features_function` for more information.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
 	single: Toolbar; Export Group
 	see: Export Group; Toolbar
 

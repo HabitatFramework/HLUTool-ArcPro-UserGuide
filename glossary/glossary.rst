@@ -19,6 +19,12 @@ Glossary
 	Bulk Update
 		Enables updates to the attributes for multiple selected INCIDs simultaneously. See :ref:`bulk_update_window` and :ref:`bulk_updates` for more details.
 
+	Bulk Load
+		Registers new GIS features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is automatically assigned its own INCID based on habitat codes derived from OSMM descriptive attributes (Make, Descriptive Group, Descriptive Term, Theme, and Feature Code). See :ref:`bulk_load_function` for more details.
+
+	Bulk Unload
+		Removes selected registered features from the active HLU layer and cleans up their associated database records. Used to remove features that were incorrectly loaded or will be replaced during a bulk load operation. See :ref:`bulk_unload_function` for more details.
+
 	Change Flag
 		For outstanding Ordnance Survey MasterMap updates this indicates whether the proposed habitat category (e.g. 'WB') is the same as the original habitat category and whether it is a higher or lower level in the habitat hierarchy. See :ref:`review_osmm_section` for more details.
 
@@ -93,6 +99,9 @@ Glossary
 
 	Reason
 		The underlying explanation for the change in habitat or land use. See :ref:`reason_section` for more details.
+
+	Reassign Features
+		Moves features from the active HLU layer to one or more target HLU layers based on configurable rules that match primary and secondary habitat codes. Each rule consists of a rule name and a SQL WHERE clause that selects which features should be moved. Used to ensure features are stored in the correct layer after habitat attribute updates. See :ref:`reassign_features_function` for more details.
 
 	Registration
 		The process of linking a newly created GIS feature (one with no INCID assigned) to a new record in the database. Registration assigns a new INCID and fragment identifier to the feature so that it becomes a fully managed habitat record. See :ref:`function_insert_feature` for more details.
