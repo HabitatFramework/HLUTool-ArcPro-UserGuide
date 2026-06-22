@@ -771,8 +771,8 @@ Delete Existing Source Rows
 Create History Records
 	Whether history records will be created when a bulk update is applied.
 
-	.. note::
-		The default values for all of the above fields (except for *Delete Existing Source Rows*) can be set in the options (see :ref:`options_bulk_update` for more details).
+.. note::
+	The default values for all of the above fields (except for *Delete Existing Source Rows*) can be set in the options (see :ref:`options_bulk_update` for more details).
 
 .. raw:: latex
 
