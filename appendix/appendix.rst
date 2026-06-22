@@ -12,7 +12,7 @@ Change Log
 ==========
 
 **1.1.0**
-(TBD)
+(30th June 2026)
 
     * :guilabel:`New` Added support for polyline and point GIS layers in addition to the existing polygon layer support
     * :guilabel:`New` Added **Insert Feature** ribbon group to the HLU Tool tab with two new commands:
@@ -23,10 +23,9 @@ Change Log
     * :guilabel:`New` Added ``Feature Insert`` operation to the history log when new features are added
     * :guilabel:`Changed` Only INCIDs with feature geometry types the same as in the active layer are now shown in the INCID selector
     * :guilabel:`Changed` Primary code list is now filtered by geometry type (polygon, line, or point) so only codes applicable to the active layer type are shown
-    * :guilabel:`Changed` Area and length statistics are now calculated as per geometry type
-    * :guilabel:`Changed` Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
-    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle  where features do not have Ordnance Survey TOID references
-    * :guilabel:`Improved` Merge and split operations now support line and point geometry types in addition to polygons
+    * :guilabel:`Changed` Area and length metrics are now calculated as per geometry type
+    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle where features do not have Ordnance Survey TOID references
+    * :guilabel:`Improved` Merge and split operations now support line and point geometry types in addition to polygons. Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
     * :guilabel:`Fixed` The ``No`` button in the ``Warn on Subset Update`` dialog no longer incorrectly splits the subset features regardless
 
 **1.0.1**
