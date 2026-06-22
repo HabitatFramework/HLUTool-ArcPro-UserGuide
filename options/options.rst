@@ -105,27 +105,27 @@ The following options relate to data validation rules applied when attribute upd
 Habitat/Secondary Validation
 	Allows users to select whether mandatory secondary codes for the selected source habitat type are validated, i.e. have been added to the secondary table, and if the missing codes are considered as errors or just warnings. The available actions are:
 
-		* Ignore - Missing mandatory secondary codes for the selected source habitat type are **ignored**.
-		* Warning - Missing mandatory secondary codes for the selected source habitat type are flagged with a **warning**.
-		* Error - Missing mandatory secondary codes for the selected source habitat type are flagged with an **error**.
+	* **Ignore** - Missing mandatory secondary codes for the selected source habitat type are ignored.
+	* **Warning** - Missing mandatory secondary codes for the selected source habitat type are flagged with a warning.
+	* **Error** - Missing mandatory secondary codes for the selected source habitat type are flagged with an error.
 
 Primary/Secondary Validation
 	Allows users to select whether secondary codes for the selected primary habitat are validated, i.e. have been added to the secondary table. The available actions are:
 
-		* Ignore - Missing secondary codes for the selected primary habitat are **ignored**.
-		* Error - Missing secondary codes for the selected primary habitat are flagged with an **error**.
+	* **Ignore** - Missing secondary codes for the selected primary habitat are ignored.
+	* **Error** - Missing secondary codes for the selected primary habitat are flagged with an error.
 
 Determination And Interpretation Quality Validation
 	Allows users to select whether entering determination and interpretation values to reflect the quality of the selected primary and secondary habitats. The available actions are:
 
-		* Optional - Determination and interpretation quality are **optional** for every INCID.
-		* Mandatory - Determination and interpretation quality are **mandatory** for every INCID.
+	* **Optional** - Determination and interpretation quality are optional for every INCID.
+	* **Mandatory** - Determination and interpretation quality are mandatory for every INCID.
 
 Potential Priority Habitat Determination Quality Validation
 	Allows users to select whether the determination quality value for potential priority habitats is validated. The available actions are:
 
-		* Ignore - The determination quality value for potential priority habitats is **ignored** (i.e. is not validated).
-		* Error - Invalid determination quality values for potential priority habitats are flagged with an **error**.
+	* **Ignore** - The determination quality value for potential priority habitats is ignored (i.e. is not validated).
+	* **Error** - Invalid determination quality values for potential priority habitats are flagged with an error.
 
 	.. note::
 		Ignoring the validation for potential priority habitats enables the user to select determination quality values that indicate that the habitat **is** or **probably is** in the associated feature(s). Otherwise determination quality values can **ONLY** be 'Not present but close to definition' or 'Previously present, but may no longer exist'.
@@ -151,17 +151,17 @@ The following options relate to what happens when attribute updates are applied.
 Action to Take When Updating Subset
 	Allows users to select what action to take if they attempt to apply attribute changes to only a subset of features for an INCID (see :ref:`attribute_update` for more details). The available actions are:
 
-		* Prompt - Always **prompt** the user when attempting to update a subset of INCID features (see :ref:`attribute_update` for an example of the prompt dialog).
-		* Split - Always perform a **logical split** before applying the attribute updates.
-		* All - Always apply the attribute update to **all** features belonging to the INCID regardless of which features of the INCID are currently selected.
+	* **Prompt** - Always prompt the user when attempting to update a subset of INCID features (see :ref:`attribute_update` for an example of the prompt dialog).
+	* **Split** - Always perform a logical split before applying the attribute updates.
+	* **All** - Always apply the attribute update to **all** features belonging to the INCID regardless of which features of the INCID are currently selected.
 
 When To Clear IHS Codes After Update
 	Allows users to select when existing IHS Codes should be cleared when attribute updates are applied. The available options are:
 
-		* Do not clear - **Do not clear** any existing IHS habitat and multiplex codes following an attribute update.
-		* Clear on change in primary code only - Clear any existing IHS habitat and multiplex codes **only** following a change to the primary habitat code.
-		* Clear on change in primary or secondary codes only - Clear any existing IHS habitat and multiplex codes following a change to **either** the primary or secondary habitat codes.
-		* Clear on any change - Clear any existing IHS habitat and multiplex codes following **any** change in an attribute update.
+	* **Do not clear** - Do not clear any existing IHS habitat and multiplex codes following an attribute update.
+	* **Clear on change in primary code only** - Clear any existing IHS habitat and multiplex codes **only** following a change to the primary habitat code.
+	* **Clear on change in primary or secondary codes only** - Clear any existing IHS habitat and multiplex codes following a change to **either** the primary or secondary habitat codes.
+	* **Clear on any change** - Clear any existing IHS habitat and multiplex codes following **any** change in an attribute update.
 
 Reset Pending OSMM Update Status On Manual Update
 	Allows the user to choose if the status of any pending OSMM Updates for the current INCID should be reset to 'Ignored' when an **attribute update** is applied.
@@ -191,7 +191,7 @@ The following options relate to the **default** values to use when applying bulk
 	Options Window - Bulk Update
 
 Delete Orphan Priority Habitats
-	The default option for whether existing priority habitats (those automatically associated with the current primary and secondary habitats) that are **orphaned** (i.e. not associated with the new primary and secondary habitats) should be deleted following a change to the primary habitat during a bulk update. If unchecked, any existing priority habitats are converted to potential priority habitats with the determination quality changed to 'Previous present, by may no longer exist'.
+	The default option for whether existing priority habitats (those automatically associated with the current primary and secondary habitats) that are rphaned (i.e. not associated with the new primary and secondary habitats) should be deleted following a change to the primary habitat during a bulk update. If unchecked, any existing priority habitats are converted to potential priority habitats with the determination quality changed to 'Previous present, by may no longer exist'.
 
 Delete Potential Priority Habitats
 	The default option for whether existing potential priority habitats (those added manually by a user) should be deleted following during a bulk update. If unchecked, any existing potential priority habitats will be retained.
@@ -213,7 +213,6 @@ Priority Interpretation Quality
 
 OSMM Source Name
 	The default option for which Ordnance Survey MasterMap source name to use when automatically adding a new source record during an OSMM bulk update.
-
 
 .. raw:: latex
 
@@ -298,7 +297,7 @@ Show IHS Tab
 	Allows the user to choose if the IHS tab will be shown or hidden in the dockpane.
 
 Show Source Habitat
-	Allows the user to choose if the Source Habitat group, containing the Habitat Class and Habitat Type lists, will be shown or hidden in the dockpane. The group can be hidden if the source habitat data is in UKHab and primary and secondary habitats are being entered directly without any need to assist the user with translating from other habitat classifications.
+	Allows the user to choose if the Source Habitat group, containing the Habitat Class and Habitat Type lists, will be shown or hidden in the dockpane. The group can be hidden if the source habitat data is in the same classification system as the target, so primary and secondary habitats are being entered directly without any need to assist the user with translating from other classifications.
 
 Show Secondary Suggestions
 	Allows the user to choose if any suggested secondary habitats related to the source habitat type and selected primary habitat are shown.
@@ -312,9 +311,9 @@ Show Habitat Summary
 Show OSMM Update Attributes
 	Allows the user to choose when Ordnance Survey MasterMap (OSMM) updates should be shown (see :Ref:`osmm_update_section` for more details). The available options are:
 
-		* Never - **Never** show the OSMM Updates section.
-		* When Outstanding - Only show the OSMM Updates section when the update is **outstanding** (the status is 'Proposed' or 'Pending').
-		* Always - **Always** show the OSMM Updates section.
+	* **Never** - Never show the OSMM Updates section.
+	* **When Outstanding** - Only show the OSMM Updates section when the update is outstanding (the status is 'Proposed' or 'Pending').
+	* **Always** - Always show the OSMM Updates section.
 
 .. index::
 	single: Options; GIS

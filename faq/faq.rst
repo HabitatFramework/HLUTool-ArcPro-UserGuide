@@ -62,7 +62,6 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 	Please check the existing known issues and change requests on GitHub at `github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_ before reporting/proposing new issues or changes. New issues or proposed changes can be posted on the Knowledge Hub forum at `khub.net/group/association-of-local-environmental-records-centres/group-forum <https://khub.net/group/association-of-local-environmental-records-centres/group-forum>`_
 
-
 .. raw:: latex
 
 	\newpage
@@ -83,7 +82,6 @@ What Happened?
 * The Bulk Update tool errors and fails to create history if the bulk update is applied to database records which do not have corresponding features in the acive HLU layer.
 
 	* Ensure that the database and HLU layer are kept in sync so this situation does not occur.
-
 
 .. raw:: latex
 

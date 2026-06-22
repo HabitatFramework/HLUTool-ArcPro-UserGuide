@@ -50,7 +50,7 @@ All OS MasterMap features have a TOpographic IDentity or 'TOID' that uniquely id
 Apart from the spatial representation of the features, the habitat framework only retains the TOID from OS MasterMap because all other attributes can be retrieved using this if necessary. Where OS MasterMap features need to be sub-divided into smaller units in order to represent habitat survey details that are not already shown these still retain the original TOID but are also assigned a fragment identifier so that each fragment can be uniquely identified.
 
 .. note::
-	TOIDs are **optional**. Features can be added directly to the active HLU layer by users (drawn using ArcGIS Pro editing tools) without reference to OS MasterMap. Such features will have a blank TOID and must be **registered** using the **Insert Feature** function (see :ref:`insert_feature`) before they can be assigned habitat attributes. Fragment identifiers are still assigned to these features and relate to their INCID rather than a TOID.
+	TOIDs are now **optional**. Features can be added directly to the active HLU layer by users (drawn using ArcGIS Pro editing tools) without reference to OS MasterMap. Such features will have a blank TOID and must be **registered** using the **Insert Feature** function (see :ref:`insert_feature`) before they can be assigned habitat attributes. Fragment identifiers are still assigned to these features and relate to their INCID rather than a TOID.
 
 .. index::
 	single: Concepts; INCID
@@ -195,9 +195,10 @@ Logical split is used to create a new INCID in the database based upon a subset 
 For example, a group of adjacent permanent pasture features may be 'logically' grouped by being assigned to the same INCID because they share a common set of UKHab primary and secondary codes, sources and other attributes. However, it may be later recognised that one or more of the features are actually being managed differently to the remaining features. By logically splitting those features from the original INCID to form a new INCID those features can then be assigned a different management secondary code.
 
 .. note::
+	Logical split rules
 
-	* Only if one or more features from a single INCID are present in the current filter will the tool allow a logical split to be performed.
-	* The selected features must all belong to the same INCID.
+		* Only if one or more features from a single INCID are present in the current filter will the tool allow a logical split to be performed.
+		* The selected features must all belong to the same INCID.
 
 .. index::
 	single: Concepts; Physical Split
@@ -213,15 +214,16 @@ Physical split is used to create one or more new fragments in the database based
 For example, a woodland may appear as a single feature, but compartments within the woodland may be managed differently and/or may have different characteristics. By physically splitting the woodland feature along the compartment boundaries each compartment can then be assigned to its own INCID (by performing a :ref:`logical_split`) so that they can be assigned different matrix, formation and management codes.
 
 .. note::
+	Physical split rules
 
-	* Only if two or more fragments from the same INCID with the same Fragment ID are present in the current filter will the tool allow a physical split to be performed.
-	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
-	* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
-	* Ensure that the physical split is completed in the database prior to commencing any other operations such as 'Select by attributes …' to avoid database synchronisation issues.
-	* Physical split is not available for **point** layers, as a single point feature cannot be geometrically subdivided.
+		* Only if two or more fragments from the same INCID with the same Fragment ID are present in the current filter will the tool allow a physical split to be performed.
+		* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
+		* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
+		* Ensure that the physical split is completed in the database prior to commencing any other operations such as 'Select by attributes …' to avoid database synchronisation issues.
+		* Physical split is not available for **point** layers, as a single point feature cannot be geometrically subdivided.
 
 .. note::
-	If two or more fragments from the same INCID and with the same Fragment ID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and advise the user that a physical split can be performed.
+	If two or more fragments from the same INCID and with the same Fragment ID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and will inform the user that a physical split can be performed.
 
 .. _merge:
 
@@ -253,10 +255,11 @@ Physical Merge
 Physical merge combines fragments of a single feature, that share the same INCID, into a single larger feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but the boundaries between adjacent features will be removed.
 
 .. note::
+	Physical merge rules
 
-	* Only fragments belonging to the same INCID can be merged in a single physical merge operation.
-	* If fragments for several groups need to be merged, the operation must be repeated for each group.
-	* Physical merge is not available for **point** layers.
+		* Only fragments belonging to the same INCID can be merged in a single physical merge operation.
+		* If fragments for several groups need to be merged, the operation must be repeated for each group.
+		* Physical merge is not available for **point** layers.
 
 .. index::
 	single: Concepts; Attribute Updates
