@@ -61,7 +61,7 @@ The following sections summarise the different sections of the dockpane.
 OSMM Updates Section
 --------------------
 
-The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new UKHab primary and secondary codes as shown in the figure :ref:`figUIOUS`.
+The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
 
 .. note::
 	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
@@ -133,11 +133,11 @@ Habitats Tab
 ------------
 
 Click on :guilabel:`Habitats` to display the Habitats tab as shown in
-the figure :ref:`figUIHT`. The Habitats tab displays the UKHab primary
+the figure :ref:`figUIHT`. The Habitats tab displays the primary
 and secondary codes and the legacy habitat for the current INCID record.
 It also assists attribute updates when the original survey source(s) are
-not using UKHab by providing translations from a range of habitat
-classifications (e.g. JNCC Phase 1, IHS and NVC) to UKHab.
+based on a different classification system by providing translations
+from a range of habitat classifications (e.g. JNCC Phase 1, IHS and NVC).
 
 .. _figUIHT:
 
@@ -152,26 +152,27 @@ classifications (e.g. JNCC Phase 1, IHS and NVC) to UKHab.
 Understanding the Habitat Classification System
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Habitats tab uses a three-level structure to describe the habitat
-of each INCID. Each level filters or refines the choices available in
-the level below it:
+The Habitats tab is used to describe the habitat of each INCID. There are
+two components to defining the habitat of each INCID record:
 
-1. **Habitat Type** — the broad habitat classification type used (e.g.
-   a specific UKHab level-1 category). Selected using the **Class** and
-   **Type** drop-down lists.
-2. **Primary Habitat** — the single main UKHab habitat code assigned to
+2. **Primary Habitat** — the single main habitat code assigned to
    the INCID. Selected using the **Primary** drop-down list.
-3. **Secondary Habitats** — one or more additional UKHab codes that
+3. **Secondary Habitats** — one or more additional codes that
    refine or qualify the primary habitat. Added using the **Group**,
    **Code** drop-down lists and |addsh| button and stored in the secondary habitats
    table.
+
+In addition, the tool provides assistance to users when the original survey
+source(s) are not the same as the target habitat type by providing recommended
+translations from a range of habitat classifications (e.g. JNCC Phase 1, IHS and
+NVC).
 
 The diagram below summarises how the levels relate to each other:
 
 .. code-block:: none
 
-	Habitat Class
-	    └── Habitat Type
+	Habitat Class (source data)
+	    └── Habitat Type (source data)
 	            ├── Primary Habitat (one per INCID)
 	            │       ├── NVC Codes         (read-only hint)
 	            │       ├── Suggested Codes   (read-only hint)
@@ -181,13 +182,15 @@ The diagram below summarises how the levels relate to each other:
 	                    └── Optional secondary codes
 
 .. note::
-	Selecting a habitat type filters which primary codes are shown in
-	the **Primary** drop-down list. Selecting a primary code then
-	determines which secondary groups and codes are available, which
-	codes are mandatory, and which are suggested. The **Class** and
-	**Type** selections themselves are **not** saved to the database —
-	they are only used to assist code selection. Use the
-	:ref:`source_tab` if you wish to record the source habitat
+	Selecting a habitat class and then habitat type filters which
+	primary codes are shown in the **Primary** drop-down list. Selecting
+	a primary code then determines which secondary groups and codes are
+	available, which codes are mandatory, and which are suggested.
+
+.. note::
+	The **Class** and **Type** selections themselves are **not** saved
+	to the database — they are only used to assist code selection. Use
+	the :ref:`source_tab` if you wish to record the source habitat
 	classification and type.
 
 **Mandatory and Optional secondary codes** are determined by the
@@ -198,10 +201,9 @@ that primary habitat. Suggested codes are hints only — they do not
 restrict which secondary codes can be selected.
 
 .. tip::
-	If the source survey data is already in UKHab and no habitat
-	classification translation is needed, the **Class** and **Type**
-	drop-down lists can be hidden via **Show Source Habitat** in the
-	:ref:`options_interface`.
+	If no habitat classification translation is needed, the **Class**
+	and **Type** drop-down lists can be hidden via **Show Source Habitat**
+	in the :ref:`options_interface`.
 
 Class
 	Drop-down list of habitat classifications used to filter the
@@ -231,7 +233,7 @@ Type
    for details of how to update lookup table entries.
 
 Primary
-	Drop-down list allowing users to select the desired UKHab primary
+	Drop-down list allowing users to select the desired primary
 	code. The contents of the list will vary and relate directly to
 	the selected Class and Type (above) and entries in the
 	lut_habitat_type_primary table. [8]_
@@ -241,18 +243,18 @@ Primary
 	remaining valid codes by a divider line.
 
 	.. note::
-		The primary code list is filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown.
+		The primary code list is also filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown.
 
 NVC Codes
 	[Read only]. Displays a list of any NVC Codes related to the
-	UKHab primary code selected in the preceding drop-down list. This
+	primary code selected in the preceding drop-down list. This
 	field can be displayed or hidden in the user options as required
 	(see :ref:`options_interface`).
 
 Mandatory
-	[Read only]. A comma-separated list of any UKHab secondary codes
+	[Read only]. A comma-separated list of any secondary codes
 	that **must** be added along with the selected primary habitat
-	into the table below according to the UKHab documentation.
+	into the table below according to the official documentation.
 
 	.. note::
 		Missing mandatory secondary codes are flagged as warnings or
@@ -260,12 +262,12 @@ Mandatory
 		:ref:`options_validation`).
 
 Optional
-	[Read only]. A comma-separated list of any UKHab secondary codes
+	[Read only]. A comma-separated list of any secondary codes
 	that **may optionally** be added along with the selected primary
 	habitat.
 
 Suggested
-	[Read only]. A comma-separated list of any UKHab secondary codes
+	[Read only]. A comma-separated list of any secondary codes
 	that are **suggested** based on the selected source habitat type
 	and the primary habitat. This field can be shown or hidden in the
 	user options as required (see :ref:`options_interface`).
@@ -291,28 +293,33 @@ Code
 	Group (above) and entries in the lut_secondary and
 	lut_primary_secondary tables. [8]_
 
+	.. note::
+		The secondary code list is also filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown or valid.
+
 Add Secondary Habitat
 	A button to add the selected secondary code to the table below.
 	Duplicate codes already in the table will be ignored.
 
 Add Secondary Habitats from List
-	A button to open a list of all secondary codes applicable to the
-	current primary habitat, from which multiple codes can be selected
-	and added to the table in one operation.
+	A button to open a window allowing users to enter a list of secondary codes applicable to the
+	current primary habitat, separated by commas, spaces or full stops, in one operation.
+
+	.. note::
+		Only secondary codes valid for the current primary code and for the geometry type of the active HLU layer (polygon, line, or point), and not already present in the table, are added from the list.
 
 .. note::
-	To delete an existing secondary habitat code click on the grey box to the left of the secondary habitat row to select it, then press the keyboard :kbd:`Delete` key to remove it.
+	To delete an existing secondary habitat code click on the grey box to the left of the secondary habitat to select the row, then press the keyboard :kbd:`Delete` key to remove it.
 
 Summary
 	[Read only]. Automatically generated sorted and concatenated
-	string of the UKHab secondary codes present in the table above.
+	string of the primary and secondary codes present in the table above.
 	This field can be shown or hidden in the user options as required
 	(see :ref:`options_interface`).
 
 Legacy Habitat
 	Drop-down list allowing users to view and maintain a legacy
 	habitat definition (if required). The contents of the list are
-	based on entries in the lut_legacy_habitat table.
+	based on existing entries in the lut_legacy_habitat table.
 
 .. [8] The primary and secondary group/code list contents are based
    only on entries in the relevant lookup tables where the ``is_local``
@@ -440,6 +447,9 @@ Site Name
 Condition
 	Drop-down list allowing users to select a condition assessment of the habitat parcel or select 'Unknown' if not known.
 
+	.. note::
+		If a condition assessment has been selected, the 'Qualifier' and 'Date' fields must also be completed.
+
 Qualifier
 	Drop-down list allowing users to select a qualifier for how the condition assessment was determined.
 
@@ -450,7 +460,7 @@ Determination
 	Drop-down list allowing the user to select the accuracy with which the primary and secondary habitats have been determined.
 
 Interpretation
-	Drop-down list allowing the user to select the quality of interpretation between the original survey source and the primary and secondary habitats, taking into account the age of the source data and the relationship between the source habitat classification and UKHab.
+	Drop-down list allowing the user to select the quality of interpretation between the original survey source and the primary and secondary habitats, taking into account the age of the source data and the relationship between the source habitat classification and the primary and secondary codes.
 
 Interpretation Comments
 	A free text field which allows the user to provide additional reasoning behind the habitat interpretation.
@@ -658,9 +668,10 @@ The main window will transform into the bulk update window when the bulk update 
 	Bulk Update Window
 
 .. note::
+	Bulk update mode can only be started when:
 
-	* Bulk update mode can only be started when the HLU layer is editable in ArcGIS Pro and a filter has been applied to the INCID records.
-	* This function is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+	* The HLU layer is editable in ArcGIS Pro and a filter has been applied to the INCID records.
+	* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 INCID Section
 -------------
@@ -787,9 +798,10 @@ The main window will transform into the OSMM review updates window when the revi
 	Review OSMM Updates Window
 
 .. note::
+	OSMM review update mode can only be started when:
 
-	* OSMM review update mode can only be started when there are proposed OSMM update records in the database.
-	* This function is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+		* There are proposed OSMM update records in the database.
+		* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 .. _review_osmm_section:
 
@@ -981,9 +993,10 @@ The main window will transform into the bulk OSMM update window when the bulk OS
 	Bulk OSMM Update Window
 
 .. note::
+	Bulk OSMM update mode can only be started when:
 
-	* Bulk OSMM update mode can only be started when the HLU layer is editable in ArcGIS Pro.
-	* This function is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+		* The HLU layer is editable in ArcGIS Pro.
+		* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 INCID Section
 -------------

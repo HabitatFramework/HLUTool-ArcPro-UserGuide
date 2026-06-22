@@ -104,7 +104,8 @@ To update the attributes of an INCID:
 
 
 .. note::
-	The :guilabel:`Apply` button will only be displayed if:
+	The :guilabel:`Apply` button will only be displayed when:
+
 		* The user is listed in the lut_user table.
 		* The active HLU layer is editable in ArcGIS Pro.
 	        * A Reason and Process have both been selected in the HLU Tool ribbon.
@@ -120,7 +121,6 @@ To update the attributes of an INCID:
 	:align: center
 
 	Attribute Update Warning Dialog
-
 
 .. raw:: latex
 
@@ -147,8 +147,8 @@ Logical Split
 
 Logical split is used to create a new INCID in the database based upon a subset of features selected from a single INCID in the GIS layer. Logically splitting one or more features assigns them to a different INCID than the other features in the current INCID which then allows them to be updated independently of the remaining features in the original INCID.
 
-	.. note::
-		All selected features must belong to the same INCID.
+.. note::
+	All selected features must belong to the same INCID.
 
 To perform a logical split:
 
@@ -172,7 +172,6 @@ To display all the features in the INCID of a given feature:
 
 All the features associated with the current INCID will be displayed as shown in the **left** part of the figure :ref:`figFLSFD`.
 
-
 .. raw:: latex
 
 	\newpage
@@ -188,11 +187,12 @@ Physical Split
 Physical split is used to create one or more new fragments in the database based upon a single feature that has already been split in the ArcGIS Pro map. Physically splitting a feature into fragments allows the fragments to be updated independently of each other (once they have also been assigned to different INCIDs - see :ref:`logical_split`.)
 
 .. note::
+	Physical split rules
 
-	* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
-	* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
-	* Ensure that the physical split is completed in the database prior to commencing any other operations to avoid database synchronisation issues.
-	* Physical split is not available for **point** layers.
+		* Only one feature should be split in a single operation. Splitting multiple features will cause database synchronisation issues.
+		* If several features have been split, select the fragments for one original feature and split using the tool. Repeat this operation for the remaining features.
+		* Ensure that the physical split is completed in the database prior to commencing any other operations to avoid database synchronisation issues.
+		* Physical split is not available for **point** layers.
 
 .. tip::
 	If two or more fragments from the same INCID and with the same Fragment ID are selected in the map and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split in the map and will inform the user that a physical split is possible.
@@ -213,7 +213,6 @@ To perform a physical split in ArcGIS Pro:
 
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new fragment identifier will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
-
 
 .. raw:: latex
 
@@ -255,7 +254,6 @@ To perform a logical merge:
 .. note::
 	If the merged features are all fragments of the same INCID then a message will be displayed informing the user that a physical merge is possible.
 
-
 .. raw:: latex
 
 	\newpage
@@ -271,10 +269,11 @@ Physical Merge
 Physical merge combines fragments of a single feature, that are associated with the same INCID, into a single larger feature in the GIS layer. As the fragments must already belong to the same INCID there are no attribute updates but any shared boundaries between adjacent features will be removed.
 
 .. note::
+	Physical merge rules
 
-	* Only fragments belonging to the same INCID can be merged in a single physical merge operation.
-	* If fragments for several groups need to be merged, the operation must be repeated for each group.
-	* Physical merge is not available for **point** layers.
+		* Only fragments belonging to the same INCID can be merged in a single physical merge operation.
+		* If fragments for several groups need to be merged, the operation must be repeated for each group.
+		* Physical merge is not available for **point** layers.
 
 To perform a physical merge:
 
@@ -289,7 +288,6 @@ To perform a physical merge:
 
 	Physical Merge - Before (left) and After (right)
 
-
 .. raw:: latex
 
 	\newpage
@@ -299,7 +297,7 @@ To perform a physical merge:
 Insert Feature
 ==============
 
-The **Insert Feature** function is used to register newly drawn GIS features — features that exist in the active HLU layer but have not yet been assigned an INCID — against new database records. Two modes are available depending on whether the drawn features represent a single habitat record or multiple independent records.
+The **Insert Feature** function is used to register newly drawn GIS features — features that exist in the active HLU layer but have not yet been assigned an INCID — against new database records. Two modes are available depending on whether the drawn features represent a single habitat record (**Same INCID**) or multiple independent records (**Separate INCIDs**).
 
 Before using either mode:
 
@@ -372,14 +370,12 @@ The following columns are recognised:
 	+-------------+---------------------------------+--------------------------------------------------------------+
 	| GIS Column  | Attribute                       | Notes                                                        |
 	+=============+=================================+==============================================================+
-	| habprimary  | Primary Habitat code            | Must be a valid UKHab primary code for the                   |
-	|             |                                 | active layer geometry type (polygon, line or                 |
-	|             |                                 | point).                                                      |
+	| habprimary  | Primary Habitat code            | Must be a valid primary code for the active layer geometry   |
+	|             |                                 | type (polygon, line or point).                               |
 	+-------------+---------------------------------+--------------------------------------------------------------+
-	| habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by                    |
-	|             |                                 | spaces, commas or full-stops. Each code must be              |
-	|             |                                 | a valid secondary code for the active layer                  |
-	|             |                                 | geometry type. Cannot be provided without a                  |
+	| habsecond   | Secondary Habitat code(s)       | One or more secondary codes, separated by spaces, commas or  |
+	|             |                                 | full-stops. Each code must be a valid secondary code for the |
+	|             |                                 | active layer geometry type. Cannot be provided without a     |
 	|             |                                 | valid primary code.                                          |
 	+-------------+---------------------------------+--------------------------------------------------------------+
 	| determqty   | Determination Quality           | Must be a recognised determination quality code              |
@@ -401,7 +397,7 @@ Validation
 
 Before the attributes are written to the database the tool validates each value:
 
-* The **primary habitat code** is checked to ensure it is a recognised UKHab code applicable to the geometry type of the active layer. An unrecognised or geometry-incompatible code is treated as if no primary code was supplied.
+* The **primary habitat code** is checked to ensure it is a recognised code applicable to the geometry type of the active layer. An unrecognised or geometry-incompatible code is treated as if no primary code was supplied.
 * Each **secondary habitat code** is checked individually against the list of codes valid for the active layer geometry type. Any unrecognised or inapplicable code is silently discarded; only the remaining valid codes are used.
 * The **determination quality** and **interpretation quality** codes are each checked against their respective lookup tables. An unrecognised code is treated as if no value was supplied.
 
@@ -479,7 +475,7 @@ Completing Attributes After Insert
 
 The Feature Insert operation creates a minimal INCID record using only the attributes that could be read from the GIS layer columns. The new record will typically require further editing in the dockpane to complete all required and recommended attributes. After inserting, navigate to the new INCID and review the following sections:
 
-* **Primary and Secondary Habitats** (:ref:`habitats_tab`) — confirm or add the primary and secondary UKHab codes, and check that any automatically added priority habitats are correct and attributed with the correct determination and interpretation quality values.
+* **Primary and Secondary Habitats** (:ref:`habitats_tab`) — confirm or add the primary and secondary codes, and check that any automatically added priority habitats are correct and attributed with the correct determination and interpretation quality values.
 * **Priority Habitats** (:ref:`priority_tab`) — review and complete any priority habitat and potential priority habitat entries, including their determination and interpretation quality values.
 * **Boundary and Digitisation** — the boundary base map and digitisation base map values default to 'Unknown' but should be updated to reflect the source of the spatial data for the new feature(s).
 * **Site Reference and Name** — enter the site reference and site name if known.
@@ -487,6 +483,8 @@ The Feature Insert operation creates a minimal INCID record using only the attri
 * **General Comments** — add any free-text comments relevant to the new feature(s).
 * **Sources** (:ref:`details_tab`) — add one or more habitat survey sources to document the origin of the habitat information.
 
+.. note::
+	It may be appropriate to perform a bulk update (see :ref:`bulk_update`) to complete some of the attributes for multiple new INCIDs created under the **Separate INCIDs** mode.
 
 .. raw:: latex
 
@@ -541,7 +539,6 @@ To **load** a previously saved advanced query:
 * Select the required file and click :guilabel:`Open`.
 * The query will be loaded into the query window. It can now be verified and then executed.
 
-
 .. raw:: latex
 
 	\newpage
@@ -559,12 +556,11 @@ Filter by Incid
 .. figure:: figures/FilterByIncid.png
 	:align: center
 
-	Filter By Incid Window
+	Filter By Incid textbox in the HLU Tool ribbon
 
 To filter by a single INCID:
 
-* Enter or paste a valid INCID into the **Find Incid** text box in the :ref:`filter_group` of the HLU Tool ribbon and press :kbd:`Enter`. The INCID will be selected in the dockpane.
-
+* Enter or paste a valid INCID into the **Filter by Incid** text box in the :ref:`filter_group` of the HLU Tool ribbon and press :kbd:`Enter`. The INCID will be selected in the dockpane.
 
 .. raw:: latex
 
@@ -675,11 +671,11 @@ Users can update the attributes for multiple INCID records, and associated featu
 .. warning::
     Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
 
-
 .. note::
+	Bulk update mode can only be started when:
 
-    * Bulk update mode can only be started once a filter is applied to the INCID records and the active HLU layer is editable in ArcGIS Pro.
-	* Bulk update mode is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+	    * A filter is applied to the INCID records and the active HLU layer is editable in ArcGIS Pro.
+		* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 .. _figFUIBU:
 
@@ -688,7 +684,6 @@ Users can update the attributes for multiple INCID records, and associated featu
 	:scale: 70
 
 	Main window - Bulk Update Mode
-
 
 .. raw:: latex
 
@@ -715,7 +710,6 @@ To bulk apply updates:
 To cancel bulk update mode:
 
 * Click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
-
 
 .. raw:: latex
 
@@ -747,7 +741,7 @@ To filter proposed OSMM Updates:
 * Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
 
 .. note::
-			To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
+	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
 	.. _figFUIOU:
 
@@ -756,7 +750,6 @@ To filter proposed OSMM Updates:
 	:scale: 60
 
 	Review OSMM Updates Window
-
 
 .. raw:: latex
 
@@ -787,7 +780,6 @@ To cancel Review OSMM Updates mode:
 
 * Click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
 
-
 .. raw:: latex
 
 	\newpage
@@ -807,9 +799,10 @@ Once proposed OSMM updates have been accepted they become 'Pending' and must be 
     As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
 
 .. note::
+	Bulk apply OSMM update mode can only be started when:
 
-	* Bulk apply OSMM update mode can only be started when the active HLU layer is editable in ArcGIS Pro.
-	* Bulk apply OSMM update mode is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+	* The active HLU layer is editable in ArcGIS Pro.
+	* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 .. _figFUIBOUF:
 
@@ -826,7 +819,7 @@ To filter pending OSMM Updates:
 * Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
 
 .. note::
-			To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
+	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
 	.. _figFUIBOU:
 
@@ -835,7 +828,6 @@ To filter pending OSMM Updates:
 	:scale: 60
 
 	Bulk OSMM Update Window
-
 
 .. raw:: latex
 
@@ -865,7 +857,6 @@ To bulk apply OSMM updates:
 To cancel Bulk Apply OSMM Updates mode:
 
 * Click |update| :guilabel:`Update` in the :ref:`mode_group` to return to normal Update mode.
-
 
 .. raw:: latex
 

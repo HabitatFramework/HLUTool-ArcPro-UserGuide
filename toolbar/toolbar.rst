@@ -226,7 +226,6 @@ A drop-down list for selecting the process associated with the updates about to 
 .. note::
 	The selected Reason and Process values are **sticky** — they are retained across all update operations in the current session until changed. Default values for both can be pre-configured in the user options (see :ref:`options_user_updates` for more details).
 
-
 .. raw:: latex
 
 	\newpage
@@ -271,6 +270,11 @@ Pastes the attributes copied by the **Copy** button into the same fields in the 
 
 .. note::
 	It is not possible to copy data from one field and paste it into a different field.
+
+Clicking :guilabel:`Paste` will overwrite the existing values in the selected fields of the current INCID record with the values copied from the previous INCID record. The changes will not be saved until the :guilabel:`Apply` button is clicked.
+
+.. note::
+	Only fields that are ticked in the user interface will be pasted into the current INCID record. Unticked fields will remain unchanged.
 
 .. raw:: latex
 

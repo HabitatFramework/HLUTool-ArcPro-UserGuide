@@ -21,12 +21,12 @@ Change Log
         * **Separate INCIDs** — registers each selected newly created feature under its own new INCID. Use this when each new feature represents a distinct habitat record.
 
     * :guilabel:`New` Added ``Feature Insert`` operation to the history log when new features are added
-    * :guilabel:`New` Primary code list is now filtered by geometry type (polygon, line, or point) so only codes applicable to the active layer type are shown
-    * :guilabel:`New` Area and length statistics are now calculated as per geometry type
-    * :guilabel:`New` Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
-    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle  where features do not have OS TOID references
+    * :guilabel:`Changed` Only INCIDs with feature geometry types the same as in the active layer are now shown in the INCID selector
+    * :guilabel:`Changed` Primary code list is now filtered by geometry type (polygon, line, or point) so only codes applicable to the active layer type are shown
+    * :guilabel:`Changed` Area and length statistics are now calculated as per geometry type
+    * :guilabel:`Changed` Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
+    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle  where features do not have Ordnance Survey TOID references
     * :guilabel:`Improved` Merge and split operations now support line and point geometry types in addition to polygons
-    * :guilabel:`Improved` Split operation now correctly updates history rows when a logical split reassigns (incid, toid, fragid) keys, replacing behaviour previously dependent on database-level constraints
     * :guilabel:`Fixed` The ``No`` button in the ``Warn on Subset Update`` dialog no longer incorrectly splits the subset features regardless
 
 **1.0.1**
