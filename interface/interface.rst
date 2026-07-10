@@ -106,7 +106,7 @@ INCID
 	The unique reference for the current record.
 
 Area
-	The total area of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. For line and point layers this field shows the total length or a count respectively.
+	The total area of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. For line layers this field shows the total length. Not shown for point layers.
 
 Length
 	The total perimeter length of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. Not shown for point layers.
@@ -243,7 +243,7 @@ Primary
 	remaining valid codes by a divider line.
 
 	.. note::
-		The primary code list is also filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown.
+		The primary code list is filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown.
 
 NVC Codes
 	[Read only]. Displays a list of any NVC Codes related to the
@@ -294,7 +294,7 @@ Code
 	lut_primary_secondary tables. [8]_
 
 	.. note::
-		The secondary code list is also filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown or valid.
+		The secondary code list is filtered by the geometry type of the active HLU layer (polygon, line, or point) so that only codes applicable to that geometry type are shown or valid.
 
 Add Secondary Habitat
 	A button to add the selected secondary code to the table below.
