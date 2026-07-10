@@ -11,6 +11,14 @@ Appendix
 Change Log
 ==========
 
+**1.1.1**
+(9th July 2026)
+
+    * :guilabel:`New` Added ``ihs_summary`` field to incid table to support IHS summary queries
+    * :guilabel:`Improved` Improved query performance when filtering and navigating INCID records
+    * :guilabel:`Fixed` Navigating to an invalid INCID number no longer causes the tool to display the incorrect record counter
+    * :guilabel:`Fixed` Primary habitat code is no longer incorrectly cleared when selecting a habitat type where the current code is still valid
+
 **1.1.0**
 (30th June 2026)
 

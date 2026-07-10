@@ -31,6 +31,9 @@ Application Options
 
 .. _options_database:
 
+.. note::
+	Application options are stored in a ``HLUTool.xml`` file in the same folder as the tool add-in ``.esriAddinX`` file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
+
 Database Options
 ----------------
 
@@ -228,6 +231,9 @@ User Options
 	single: Options; Interface
 
 .. _options_interface:
+
+.. note::
+	User options are stored in a ``user.config`` file in the user's roaming folder, e.g. ``%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]`` where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
 
 Interface Options
 -----------------
