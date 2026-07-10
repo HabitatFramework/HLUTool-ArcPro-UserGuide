@@ -64,7 +64,7 @@ OSMM Updates Section
 The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
 
 .. note::
-	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
+	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_window`.
 
 .. _figUIOUS:
 
@@ -203,7 +203,7 @@ restrict which secondary codes can be selected.
 .. tip::
 	If no habitat classification translation is needed, the **Class**
 	and **Type** drop-down lists can be hidden via **Show Source Habitat**
-	in the :ref:`options_interface`.
+	in the :ref:`options_window`.
 
 Class
 	Drop-down list of habitat classifications used to filter the
@@ -249,7 +249,7 @@ NVC Codes
 	[Read only]. Displays a list of any NVC Codes related to the
 	primary code selected in the preceding drop-down list. This
 	field can be displayed or hidden in the user options as required
-	(see :ref:`options_interface`).
+	(see :ref:`options_window`).
 
 Mandatory
 	[Read only]. A comma-separated list of any secondary codes
@@ -270,7 +270,7 @@ Suggested
 	[Read only]. A comma-separated list of any secondary codes
 	that are **suggested** based on the selected source habitat type
 	and the primary habitat. This field can be shown or hidden in the
-	user options as required (see :ref:`options_interface`).
+	user options as required (see :ref:`options_window`).
 
 	.. note::
 		Suggested codes are hints only — they do not restrict which
@@ -314,7 +314,7 @@ Summary
 	[Read only]. Automatically generated sorted and concatenated
 	string of the primary and secondary codes present in the table above.
 	This field can be shown or hidden in the user options as required
-	(see :ref:`options_interface`).
+	(see :ref:`options_window`).
 
 Legacy Habitat
 	Drop-down list allowing users to view and maintain a legacy
