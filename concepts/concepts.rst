@@ -69,6 +69,9 @@ Similarly, features from different INCIDs that are actually related and should s
 
 .. [3] Features in the same INCID do not have to be adjacent but it is recommended that they are at least spatially associated with one-another (e.g. they are within the same site or either side of the same road/railway).
 
+.. note::
+	An ``ihs_summary`` field is maintained in the INCID table containing a concatenated string of all IHS habitat and multiplex codes. This field enables efficient querying and filtering of INCIDs based on IHS classifications.
+
 .. raw:: latex
 
 	\newpage

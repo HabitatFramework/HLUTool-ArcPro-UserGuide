@@ -453,8 +453,8 @@ Display History Rows
 
 .. _options_export:
 
-Export Options (User)
----------------------
+Export Options
+--------------
 
 The following options relate to exporting data. These are user-specific settings found under **User > Export** in the Options navigation.
 
@@ -477,8 +477,8 @@ Warning Before Exporting Features
 
 .. _options_bulk_load:
 
-Bulk Load Options (User)
--------------------------
+Bulk Load Options
+-----------------
 
 The following options relate to the Bulk Load function. These are user-specific settings found under **User > Bulk Load** in the Options navigation.
 

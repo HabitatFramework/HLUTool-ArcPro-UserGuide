@@ -86,6 +86,18 @@
 	:height: 16px
 	:width: 16px
 
+.. |bulkload| image:: ../icons/BulkLoad.png
+	:height: 16px
+	:width: 16px
+
+.. |bulkunload| image:: ../icons/BulkUnload.png
+	:height: 16px
+	:width: 16px
+
+.. |reassign| image:: ../icons/ReassignFeatures.png
+	:height: 16px
+	:width: 16px
+
 .. |options| image:: ../icons/Options.png
 	:height: 16px
 	:width: 16px
