@@ -82,6 +82,10 @@
 	:height: 16px
 	:width: 16px
 
+.. |options| image:: ../icons/Options.png
+	:height: 16px
+	:width: 16px
+
 .. |apply| image:: ../icons/Apply.png
 	:height: 23px
 	:width: 58px
@@ -1132,16 +1136,14 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 **Example Rules:**
 
-```
-Rule Name: Water
-WHERE Clause: habprimary LIKE 'r%'
+	Rule Name: Water
+	WHERE Clause: habprimary LIKE 'r%'
 
-Rule Name: Woodland
-WHERE Clause: habprimary LIKE 'w%'
+	Rule Name: Woodland
+	WHERE Clause: habprimary LIKE 'w%'
 
-Rule Name: Grassland
-WHERE Clause: habprimary LIKE 'g%'
-```
+	Rule Name: Grassland
+	WHERE Clause: habprimary LIKE 'g%'
 
 .. tip::
     * When applying negative clauses to any fields (e.g. ``habsecond NOT LIKE '%827%'``) remember to include an IS NULL clause (e.g. ``(habsecond NOT LIKE '%827%' OR habsecond IS NULL)``). Otherwise only features with non-NULL values will be selected by the rule.

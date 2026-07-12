@@ -599,7 +599,7 @@ Bulk Load/Unload Group
 The **Bulk Load/Unload** group provides functions for bulk unloading and loading OSMM features.
 
 |bulkload| Bulk Load
--------------------
+--------------------
 
 Opens the **Bulk Load/Unload** drop-down menu, which contains:
 
