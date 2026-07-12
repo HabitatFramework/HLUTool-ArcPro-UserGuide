@@ -591,7 +591,7 @@ Bulk Load/Unload Group
 
 .. _figUIGBulkLoadUnload:
 
-.. figure:: figures/ToolbarBulkLoadUnloadGroup.png
+.. figure:: figures/ToolbarBulkLoadGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Bulk Load/Unload Group
