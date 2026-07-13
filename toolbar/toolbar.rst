@@ -22,6 +22,10 @@
 	:height: 16px
 	:width: 16px
 
+.. |reset| image:: ../icons/EditReset.png
+	:height: 16px
+	:width: 16px
+
 .. |filterbyattr| image:: ../icons/FilterByAttributes.png
 	:height: 16px
 	:width: 16px
@@ -152,6 +156,9 @@ Activates **Update** mode — the normal editing mode for viewing and updating t
 
 .. note::
 	This is the default mode when the tool is first opened. To enable editing, the user details must be configured in the database (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details) and the HLU layer must be editable in ArcGIS Pro.
+
+.. seealso::
+	See :ref:`main_window` for more information.
 
 |bulkupdate| Bulk Update
 ------------------------
@@ -287,6 +294,11 @@ Clicking :guilabel:`Paste` will overwrite the existing values in the selected fi
 
 .. note::
 	Only fields that are ticked in the user interface will be pasted into the current INCID record. Unticked fields will remain unchanged.
+
+|reset| Reset
+-------------
+
+Resets the attributes copied by the **Copy** button and clears all of the checkboxes from the user interface.
 
 .. raw:: latex
 

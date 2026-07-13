@@ -56,36 +56,6 @@ The following sections summarise the different sections of the dockpane.
 .. note::
 	The dockpane header displays **[READONLY]** when the tool is in read-only mode, as shown in the figure :ref:`figUITB`. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
 
-.. _osmm_update_section:
-
-OSMM Updates Section
---------------------
-
-The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
-
-.. note::
-	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_window`.
-
-.. _figUIOUS:
-
-.. figure:: figures/UserInterfaceOSMMUpdateSection.png
-	:align: center
-	:scale: 85
-
-	Main Window - OSMM Updates Section
-
-
-For a description of the fields see :ref:`review_osmm_section`.
-
-When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section. Clicking :guilabel:`Adopt` immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
-
-.. note::
-	The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
-
-.. raw:: latex
-
-	\newpage
-
 .. _incid_section:
 
 INCID Section
@@ -122,6 +92,36 @@ Modified/By
 
 .. note::
 	If the created or modified users are not configured, the 'By' fields will display their Windows login instead of their user name. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+.. raw:: latex
+
+	\newpage
+
+.. _osmm_update_section:
+
+OSMM Updates Section
+--------------------
+
+The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
+
+.. note::
+	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
+
+.. _figUIOUS:
+
+.. figure:: figures/UserInterfaceOSMMUpdateSection.png
+	:align: center
+	:scale: 85
+
+	Main Window - OSMM Updates Section
+
+
+For a description of the fields see :ref:`review_osmm_section`.
+
+When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section. Clicking :guilabel:`Adopt` immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+
+.. note::
+	The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
 
 .. raw:: latex
 
@@ -348,6 +348,8 @@ Click on :guilabel:`IHS` to display the IHS tab as shown in the figure :ref:`fig
 
 	Main Window - IHS Tab
 
+.. note::
+	The IHS details will be blank for features added since the conversion from IHS, or if the 'When To Clear IHS Codes After Update' option is set to clear when certain attribute updates are applied (see :ref:`options_updates`).
 
 Habitat
 	[Read only]. Displays the IHS Habitat code prior to conversion to UKHab.
@@ -854,8 +856,21 @@ Status
 		* Ignored = the INCID was manually updated when an OSMM update was still proposed or pending and hence the OSMM update was ignored
 		* Rejected = the OSMM update has been rejected
 
-Summary
-	Concatenation of the proposed primary and secondary habitat codes based on the new OSMM attributes.
+Primary
+	The proposed primary habitat code based on the new OSMM attributes.
+
+Secondary
+	Concatenation of the proposed secondary habitat codes based on the new OSMM attributes.
+
+Adopt
+	Immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+
+	.. note::
+		The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
+
+.. raw:: latex
+
+	\newpage
 
 INCID Status Section
 --------------------

@@ -331,8 +331,8 @@ Before using either mode:
 
 .. _function_insert_feature_same_incid:
 
-Same INCID
-----------
+Insert Feature - Same INCID
+---------------------------
 
 Registers all selected new features under a single new INCID. Each feature is assigned a unique fragment identifier within that INCID. Use this when the drawn features represent multiple fragments of the same habitat record.
 
@@ -353,8 +353,8 @@ To insert new features under the same INCID:
 
 .. _function_insert_feature_separate_incids:
 
-Separate INCIDs
----------------
+Insert Feature - Separate INCIDs
+--------------------------------
 
 Registers each selected new feature under its own individual new INCID. Use this when each drawn feature represents a distinct, independent habitat record.
 
@@ -637,7 +637,7 @@ To select all features associated with every INCID in the active filter:
 * Click |selectallonmap| :guilabel:`Select All Filtered INCIDs`. All features associated with every INCID in the active filter will be selected in the active HLU layer.
 
 .. warning::
-	This process may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message will appear before the selection is made, as shown in the figure :ref:`figFGSWD`, if the expected number of features to be selected exceeds the configured threshold.
+	This operation may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message will appear before the selection is made, as shown in the figure :ref:`figFGSWD`, if the expected number of features to be selected exceeds the configured threshold.
 
 .. _figFGSWD:
 
@@ -771,7 +771,7 @@ To filter proposed OSMM Updates:
 
 	\newpage
 
-To process proposed OSMM Updates:
+To apply proposed OSMM Updates:
 
 * Once a filter has been applied the main interface appears as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
 * Click :guilabel:`Skip` to skip the proposed update for the current INCID. It can then be reviewed again at a later time.
@@ -782,7 +782,7 @@ To process proposed OSMM Updates:
 .. note::
 	Holding down the :guilabel:`Ctrl` key changes the :guilabel:`Reject` and :guilabel:`Accept` buttons to :guilabel:`Reject All` and :guilabel:`Accept All` thereby allowing the user to Reject or Accept all remaining INCIDs in the active filter.
 
-Once all the INCIDs in the active filter have been processed a message will appear as shown in figure :ref:`figFUIOUW`. The user can apply another filter or cancel the review OSMM Updates mode.
+Once all the INCIDs in the active filter have been applied a message will appear as shown in figure :ref:`figFUIOUW`. The user can apply another filter or cancel the review OSMM Updates mode.
 
 .. _figFUIOUW:
 
@@ -809,7 +809,7 @@ To cancel Review OSMM Updates mode:
 Bulk Apply OSMM Updates
 =======================
 
-Once proposed OSMM updates have been accepted they become 'Pending' and must be bulk processed in order to apply them.
+Once proposed OSMM updates have been accepted they become 'Pending' and must be bulk applied in order to apply them.
 
 .. warning::
     As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
@@ -915,7 +915,7 @@ To perform an export:
 .. warning::
 	Exporting all features or a large number of features can take a long time depending upon the number of features and the configuration of the HLU Tool and database system.
 
-During the export process checks and validation are performed to avoid potential errors. The selected export format is validated before the export begins — if no valid format is selected an error will be shown and the export will not proceed. A warning may also appear if the export contains a large number of INCIDs and hence may take a long time to complete, or if a shapefile export format is used and the format contains field names that exceed 10 characters (as this will result in the field names being automatically truncated or renamed by ArcGIS Pro).
+During the export operation checks and validation are performed to avoid potential errors. The selected export format is validated before the export begins — if no valid format is selected an error will be shown and the export will not proceed. A warning may also appear if the export contains a large number of INCIDs and hence may take a long time to complete, or if a shapefile export format is used and the format contains field names that exceed 10 characters (as this will result in the field names being automatically truncated or renamed by ArcGIS Pro).
 
 .. seealso::
 	For details on defining export formats see 'Configuring Exports' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
@@ -946,14 +946,22 @@ The Bulk Unload function removes selected registered features from the active HL
 
 .. note::
 	* Only features that are currently selected in the active HLU layer will be unloaded.
-	* The unload process removes both the features from the GIS layer and their associated INCID records from the database (if not referenced by any remaining features).
+	* The unload operation removes both the features from the GIS layer and their associated INCID records from the database (if not referenced by any remaining features).
 
 **Steps:**
 
 1. Select the features you wish to unload in the active HLU layer
 2. Click the |bulkunload| :guilabel:`Bulk Unload` button in the HLU Tool ribbon
 3. Select **Bulk Unload** from the drop-down menu
-4. A Backup Reminder window will appear. Click **No** to perform a backup before the unload operation. Click **Yes** to proceed with the unload operation
+4. A Backup Reminder window will appear. Click :guilabel:`No` to perform a backup before the unload operation. Click :guilabel:`Yes` to proceed with the unload operation
+
+.. _figFBUBR:
+
+.. figure:: figures/BulkUnloadBackupReminder.png
+	:align: center
+
+	Bulk Unload - Backup Reminder Window
+
 5. In the Bulk Unload dialog:
 
    * Review the list of valid HLU layers and the number of features to be unloaded from each layer
@@ -961,6 +969,13 @@ The Bulk Unload function removes selected registered features from the active HL
 
 	.. note::
 		The active layer is pre-checked by default. Only layers with selected features can be checked
+
+.. _figFBUSL:
+
+.. figure:: figures/BulkUnloadSelectLayersDialog.png
+	:align: center
+
+	Bulk Unload - Select Layers Window
 
 6. Click :guilabel:`Ok` to proceed with the unload, or :guilabel:`Cancel` to abort.
 7. Wait for the operation to complete - a progress indicator will be shown
@@ -1016,63 +1031,89 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 1. Prepare your source data:
 
-   * Load the OSMM feature layer into the current ArcGIS Pro map
-   * Optionally select specific features to load (otherwise all features will be loaded)
+* Load the OSMM feature layer into the current ArcGIS Pro map
+* Optionally select specific features to load (otherwise all features will be loaded)
 
 2. Click the |bulkload| :guilabel:`Bulk Load` button in the HLU Tool ribbon
 3. Select **Bulk Load** from the drop-down menu
 4. In the Bulk Load Setup dialog:
 
-   **Step 1: Select Source Layer**
+.. _figFBLS:
 
-   * Choose the OSMM source layer from the **Layer** drop-down list
-   * The dialog shows the number of selected features and total features
+.. figure:: figures/BulkLoadSetupDialog.png
+	:align: center
 
-   **Step 2: Map Fields**
+	Bulk Load - Setup Window
 
-   * Map each OSMM attribute to the corresponding field in your source layer:
+	**Step 1: Select Source Layer**
 
-     * **TOID** - The topographic identifier (optional)
-     * **Make** - The OSMM Make attribute (required)
-     * **Descriptive Group** - The OSMM Descriptive Group attribute (required)
-     * **Descriptive Term** - The OSMM Descriptive Term attribute (required)
-     * **Theme** - The OSMM Theme attribute (optional)
-     * **Feature Code** - The OSMM Feature Code attribute (optional)
+	* Choose the OSMM source layer from the **Layer** drop-down list
+	* The dialog shows the number of selected features and total features
 
-   * Use ``<None>`` for optional fields if they are not available in your source layer
+	**Step 2: Map Fields**
 
-   **Step 3: Choose Options**
+	* Map each OSMM attribute to the corresponding field in your source layer:
 
-   * **Selected only** - Check to load only selected features, uncheck to load all features
-   * **Output Type** - Choose the staging layer format:
+		* **TOID** - The topographic identifier (optional)
+		* **Make** - The OSMM Make attribute (required)
+		* **Descriptive Group** - The OSMM Descriptive Group attribute (required)
+		* **Descriptive Term** - The OSMM Descriptive Term attribute (required)
+		* **Theme** - The OSMM Theme attribute (optional)
+		* **Feature Code** - The OSMM Feature Code attribute (optional)
 
-     * File Geodatabase Feature Class (recommended)
-     * Shapefile
+	* Use ``<None>`` for optional fields if they are not available in your source layer
 
-5. Click :guilabel:`Ok` to start the bulk load process
+	**Step 3: Choose Options**
+
+	* **Selected only** - Check to load only selected features, uncheck to load all features
+	* **Output Type** - Choose the staging layer format:
+
+		* File Geodatabase Feature Class (recommended)
+		* Shapefile
+
+5. Click :guilabel:`Ok` to start the bulk load operation
 6. When prompted, choose or confirm:
 
-   * **Staging Layer Directory** - Where the staging layer will be created
-   * **Staging Layer Name** - Name for the staging layer
+	* **Staging Layer Directory** - Where the staging layer will be created
+	* **Staging Layer Name** - Name for the staging layer
 
-7. The bulk load process will:
+.. _figFBLSLG:
 
-   * Create a staging layer in the specified location
-   * Copy the selected features from the input layer to the staging layer
-   * Match the OSMM attributes against the cross-reference table to determine the appropriate habitat codes
-   * Create new INCID records in the database for each feature with the matched habitat codes
-   * Update the staging layer features with the new INCID, fragment identifiers and habitat codes
+.. figure:: figures/BulkLoadStagingLayerGDBDialog.png
+	:align: center
+
+	Bulk Load - Staging Layer - Geodatabase Window
+
+.. _figFBLSLS:
+
+.. figure:: figures/BulkLoadStagingLayerShapefileDialog.png
+	:align: center
+
+	Bulk Load - Staging Layer - Shapefile Window
+
+7. The bulk load operation will:
+
+	* Create a staging layer in the specified location
+	* Copy the selected features from the input layer to the staging layer
+	* Match the OSMM attributes against the cross-reference table to determine the appropriate habitat codes
+	* Create new INCID records in the database for each feature with the matched habitat codes
+	* Update the staging layer features with the new INCID, fragment identifiers and habitat codes
 
 8. Monitor the progress indicator during the operation
 9. Review the completion message showing:
 
-   * Number of features successfully loaded
-   * Number of new INCIDs created
-   * Any errors or warnings
+	* Number of features successfully loaded
+	* Number of new INCIDs created
+	* Any errors or warnings
+
+10. Once the bulk load operation has finished you may choose to:
+
+	* Apply bulk updates (see :ref:`bulk_update`) to the new features in the staging layer, e.g. to set the boundary and digitisation maps, determination and interpretation qualities, and source(s)
+	* Reassign the new features from the staging layer to other layers (see :ref:`reassign_features_function` for details)
 
 **Understanding the OSMM Cross-Reference Table:**
 
-The bulk load process uses the ``lut_osmm_habitat_xref`` table to automatically determine habitat codes. This table contains mappings such as:
+The bulk load operation uses the ``lut_osmm_habitat_xref`` table to automatically determine habitat codes. This table contains mappings such as:
 
 * Make + Descriptive Group + Descriptive Term → Primary Habitat Code
 * Make + Descriptive Group + Descriptive Term + Theme → Primary Habitat Code + Secondary Habitat Code
@@ -1082,12 +1123,12 @@ The bulk Load operation matches your OSMM attributes against this table to autom
 
 .. warning::
 	* Features that cannot be matched against the OSMM cross-reference table will still be loaded to the staging layer but their habitat attributes will be null
-	* The bulk load process may take a long time depending upon the number of features being loaded
+	* The bulk load operation may take a long time depending upon the number of features being loaded
 
 .. note::
 	* The match between the OSMM attributes and the cross-reference table can be saved as a CSV file to assist with updating and populating the cross-reference table
 	* The default staging layer directory and staging layer name can be configured in the Bulk Load Options (see :ref:`options_bulk_load` for more details)
-	* The staging layer will be added to the current map after the bulk load process is complete
+	* The staging layer will be added to the current map after the bulk load operation is complete
 
 .. tip::
     * Features can be logically merged after loading if they should share the same INCID
@@ -1131,7 +1172,7 @@ Before using the Reassign Features operation, you must configure one or more rea
    * **Rule Name** - A descriptive name (e.g., "Woodland")
    * **WHERE Clause** - A SQL WHERE clause that selects features (e.g., ``habprimary LIKE 'w%'``)
 
-4. Order the rules from top to bottom in the sequence they should be processed
+4. Order the rules from top to bottom in the sequence they should be applied
 5. Click **OK** to save the rules
 
 **Example Rules:**
@@ -1154,7 +1195,24 @@ Before using the Reassign Features operation, you must configure one or more rea
 **Using Reassign Features:**
 
 1. Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon
+
+	If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear and the reassign operation cannot continue.
+
+.. _figFRW:
+
+.. figure:: figures/ReasignFeaturesWarning.png
+	:align: center
+
+	Reassign Features Warning
+
 2. In the Reassign Features dialog:
+
+.. _figFRF:
+
+.. figure:: figures/ReasignFeaturesDialog.png
+	:align: center
+
+	Reassign Features Window
 
    * The **Source Layer** shows the currently active HLU layer
    * Each configured rule is shown with:
@@ -1163,18 +1221,18 @@ Before using the Reassign Features operation, you must configure one or more rea
      * Feature count - number of features in the source layer matching this rule
      * Target layer - drop-down to select which layer matched features should be moved to
 
-   * Choose ``<Skip>`` for any rule you don't want to process in this operation
+   * Choose ``<Skip>`` for any rule you don't want to apply in this operation
 
 3. For each rule:
 
    * Review the feature count
    * Select the appropriate target layer from the drop-down
-   * Or select ``<Skip>`` to not process this rule
+   * Or select ``<Skip>`` to not apply this rule
 
-4. Click **OK** to start the reassign operation
-5. The process will:
+4. Click :guilabel:`Ok` to start the reassign operation
+5. The operation will:
 
-   * Process each rule that is not set to <Skip> in order from top to bottom
+   * Apply each rule that is not set to <Skip> in order from top to bottom
    * Select features matching the rule's WHERE clause
    * Copy the selected features to the target layer
    * Delete the selected features from the active layer
@@ -1192,7 +1250,7 @@ Before using the Reassign Features operation, you must configure one or more rea
     * Features are permanently moved between layers - undo is not available
 
 .. note::
-    * Rules are processed sequentially in the order shown
+    * Rules are applied sequentially in the order shown
     * Once a feature is moved by a rule, it is no longer available for subsequent rules
     * Features that don't match any rules remain in the source layer
     * All moves are performed within a transaction - if any error occurs, all changes are rolled back
@@ -1200,5 +1258,5 @@ Before using the Reassign Features operation, you must configure one or more rea
 .. tip::
     * Use the feature count for each rule to verify your WHERE clauses are correct
     * If a rule shows 0 features then no features match that rule's WHERE clause
-    * Reorder rules in the Options if the processing sequence needs to change
+    * Reorder rules in the Options if the apply sequence needs to change
     * Use ``<Skip>`` to temporarily ignore a rule without deleting it from your configuration
