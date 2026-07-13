@@ -1397,7 +1397,7 @@ Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon
 
 .. _figFRF:
 
-.. figure:: figures/ReasignFeaturesDialog.png
+.. figure:: figures/ReassignFeaturesDialog.png
 	:align: center
 
 	Reassign Features Window

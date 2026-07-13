@@ -658,7 +658,7 @@ Opens the Reassign Features window, allowing users to move features from the act
 	* Reassign rules are configured in the application options (see :ref:`options_reassign`).
 
 .. seealso::
-	See :ref:`feature_reassign_window` and :ref:`reassign_features_function` for more information.
+	See :ref:`reassign_features_window` and :ref:`reassign_features_function` for more information.
 
 .. raw:: latex
 

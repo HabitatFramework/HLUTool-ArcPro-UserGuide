@@ -1226,7 +1226,7 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 .. _figFRW:
 
-.. figure:: figures/ReasignFeaturesWarning.png
+.. figure:: figures/ReassignFeaturesWarning.png
 	:align: center
 
 	Reassign Features Warning
@@ -1235,7 +1235,7 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 .. _figFRF:
 
-.. figure:: figures/ReasignFeaturesDialog.png
+.. figure:: figures/ReassignFeaturesDialog.png
 	:align: center
 
 	Reassign Features Window
