@@ -759,7 +759,7 @@ To filter proposed OSMM Updates:
 .. note::
 	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
-	.. _figFUIOU:
+.. _figFUIOU:
 
 .. figure:: figures/UserInterfaceReviewOSMMUpdates.png
 	:align: center
@@ -837,7 +837,7 @@ To filter pending OSMM Updates:
 .. note::
 	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
-	.. _figFUIBOU:
+.. _figFUIBOU:
 
 .. figure:: figures/UserInterfaceBulkOSMMUpdate.png
 	:align: center
@@ -1038,7 +1038,7 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 3. Select **Bulk Load** from the drop-down menu
 4. In the Bulk Load dialog:
 
-.. _figFBLS:
+.. _figFBL:
 
 .. figure:: figures/BulkLoadDialog.png
 	:align: center
@@ -1218,13 +1218,17 @@ Before using the Reassign Features operation, you must configure one or more rea
 .. seealso::
 	For details on configuring reassign rules see :ref:`options_reassign`.
 
+.. raw:: latex
+
+	\newpage
+
 **Using Reassign Features:**
 
 1. Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon
 
 	If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear and the reassign operation cannot continue.
 
-.. _figRFW:
+.. _figFRFW:
 
 .. figure:: figures/ReassignFeaturesWarning.png
 	:align: center
@@ -1233,7 +1237,7 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 2. In the Reassign Features dialog:
 
-.. _figRF:
+.. _figFRF:
 
 .. figure:: figures/ReassignFeaturesDialog.png
 	:align: center
@@ -1241,34 +1245,34 @@ Before using the Reassign Features operation, you must configure one or more rea
 	Reassign Features Window
 
 
-   * The **Source Layer** shows the currently active HLU layer
-   * Each configured rule is shown with:
+* The **Source Layer** shows the currently active HLU layer
+* Each configured rule is shown with:
 
-     * Rule name and WHERE clause
-     * Feature count - number of features in the source layer matching this rule
-     * Target layer - drop-down to select which layer matched features should be moved to
+	* Rule name and WHERE clause
+	* Feature count - number of features in the source layer matching this rule
+	* Target layer - drop-down to select which layer matched features should be moved to
 
-   * Choose ``<Skip>`` for any rule you don't want to apply in this operation
+* Choose ``<Skip>`` for any rule you don't want to apply in this operation
 
 3. For each rule:
 
-   * Review the feature count
-   * Select the appropriate target layer from the drop-down
-   * Or select ``<Skip>`` to not apply this rule
+* Review the feature count
+* Select the appropriate target layer from the drop-down
+* Or select ``<Skip>`` to not apply this rule
 
 4. Click :guilabel:`Ok` to start the reassign operation
 5. The operation will:
 
-   * Apply each rule that is not set to <Skip> in order from top to bottom
-   * Select features matching the rule's WHERE clause
-   * Copy the selected features to the target layer
-   * Delete the selected features from the active layer
+* Apply each rule that is not set to <Skip> in order from top to bottom
+* Select features matching the rule's WHERE clause
+* Copy the selected features to the target layer
+* Delete the selected features from the active layer
 
 6. Monitor the progress indicator during the operation
 7. Review the completion message showing:
 
-   * How many features were reassigned and how many rules were applied
-   * Any errors encountered
+* How many features were reassigned and how many rules were applied
+* Any errors encountered
 
 .. warning::
     * Ensure your WHERE clauses are correct before running reassign operations
