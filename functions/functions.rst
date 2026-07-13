@@ -78,7 +78,7 @@
 	:height: 16px
 	:width: 16px
 
-.. |reassign| image:: ../icons/ReassignFeatures.png
+.. |reassign| image:: ../icons/Reassign.png
 	:height: 16px
 	:width: 16px
 
