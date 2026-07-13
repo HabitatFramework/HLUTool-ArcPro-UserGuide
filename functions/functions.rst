@@ -1091,7 +1091,32 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 	Bulk Load - Staging Layer - Shapefile Window
 
-7. The bulk load operation will:
+7. The OSMM Attribute Preview window will appear showing a summary of the OSMM attribute matching results:
+
+.. _figFBLOAP:
+
+.. figure:: figures/BulkLoadOSMMAttributePreview.png
+	:align: center
+
+	Bulk Load - OSMM Attribute Preview Window
+
+	* The window displays a table showing:
+
+		* Source OSMM attributes (Make, Descriptive Group, Descriptive Term, Theme, Feature Code)
+		* Matched primary and secondary habitat codes
+		* The number of features for each unique combination
+
+	* Review the matches to ensure the OSMM attributes are being correctly translated to the required habitat codes
+
+	* Optionally, click :guilabel:`Export CSV` to save the match results to a CSV file. This can be useful for:
+
+		* Reviewing the matches offline
+		* Identifying OSMM attribute combinations that did not match any habitat codes
+		* Updating the ``lut_osmm_habitat_xref`` table with new or corrected mappings
+
+	* Click :guilabel:`Proceed` to continue with the bulk load operation or :guilabel:`Cancel` to abort
+
+8. The bulk load operation will:
 
 	* Create a staging layer in the specified location
 	* Copy the selected features from the input layer to the staging layer
@@ -1099,14 +1124,14 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 	* Create new INCID records in the database for each feature with the matched habitat codes
 	* Update the staging layer features with the new INCID, fragment identifiers and habitat codes
 
-8. Monitor the progress indicator during the operation
-9. Review the completion message showing:
+9. Monitor the progress indicator during the operation
+10. Review the completion message showing:
 
 	* Number of features successfully loaded
 	* Number of new INCIDs created
 	* Any errors or warnings
 
-10. Once the bulk load operation has finished you may choose to:
+11. Once the bulk load operation has finished you may choose to:
 
 	* Apply bulk updates (see :ref:`bulk_update`) to the new features in the staging layer, e.g. to set the boundary and digitisation maps, determination and interpretation qualities, and source(s)
 	* Reassign the new features from the staging layer to other layers (see :ref:`reassign_features_function` for details)

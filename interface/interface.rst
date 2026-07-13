@@ -1228,7 +1228,7 @@ Allows users to remove selected registered features from the active HLU layer an
 
 Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and select **Bulk Unload** from the drop-down menu to open the Bulk Unload - Select Layers window.
 
-.. _figFBLS:
+.. _figFBUSL:
 
 .. figure:: figures/BulkUnloadSelectLayersDialog.png
 	:align: center
@@ -1302,7 +1302,7 @@ Feature Code
 	Allows the user to select the OSMM Feature Code field in the source layer.
 
 Staging Output Type
-	Allows the user to select the required staging layeroutput type; a file geodatabase feature class or a shaepfile.
+	Allows the user to select the required staging layer output type; a file geodatabase feature class or a shapefile.
 
 OK
 	Click :guilabel:`OK` to proceed with the bulk load.
@@ -1310,11 +1310,131 @@ OK
 Cancel
 	Click :guilabel:`Cancel` to cancel the bulk load.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
-	single: Windows; Bulk Apply OSMM Updates Confirmation Window
+	single: Bulk Load
+	single: Windows; OSMM Attribute Preview Window
 
-.. _bulk_osmm_update_confirmation_window:
+.. _osmm_attribute_preview_window:
 
-Bulk OSMM Update Confirmation Window
-------------------------------------
+OSMM Attribute Preview Window
+=============================
+
+The OSMM Attribute Preview window appears during the bulk load operation after the staging layer path has been selected. It displays a summary of how the OSMM attributes from the source layer will be matched against the OSMM cross-reference table.
+
+.. _figFBLOAP:
+
+.. figure:: figures/BulkLoadOSMMAttributePreview.png
+	:align: center
+
+	OSMM Attribute Preview Window
+
+OSMM Attribute Matches
+	Displays a table showing the results of matching the source OSMM attributes against the ``lut_osmm_habitat_xref`` table. Each row represents a unique combination of OSMM attributes found in the source layer and shows:
+
+	Make
+		The OSMM Make attribute value from the source features.
+
+	Descriptive Group
+		The OSMM Descriptive Group attribute value from the source features.
+
+	Descriptive Term
+		The OSMM Descriptive Term attribute value from the source features.
+
+	Theme
+		The OSMM Theme attribute value from the source features (may be blank if not provided).
+
+	Feature Code
+		The OSMM Feature Code attribute value from the source features (may be blank if not provided).
+
+	Primary
+		The primary habitat code that will be assigned based on the matched OSMM attributes. Will be blank if no match was found in the cross-reference table.
+
+	Secondary
+		The secondary habitat code(s) that will be assigned based on the matched OSMM attributes. Will be blank if no match was found or if no secondary codes apply.
+
+	Features
+		The number of features in the source layer with this combination of OSMM attributes.
+
+	.. note::
+		Rows where the Primary column is blank indicate that no match was found in the OSMM cross-reference table. Features with these attribute combinations will be loaded to the staging layer but their habitat codes will remain null and must be assigned manually.
+
+Export CSV
+	Click :guilabel:`Export CSV` to save the attribute matching results to a CSV file. This is useful for:
+
+	* Reviewing the matches offline
+	* Identifying OSMM attribute combinations that did not match any habitat codes
+	* Updating the ``lut_osmm_habitat_xref`` table with new or corrected mappings
+
+	.. note::
+		The CSV export will include all rows from the preview table, including those without matches.
+
+OK
+	Click :guilabel:`OK` to proceed with the bulk load operation using the displayed attribute matches.
+
+Cancel
+	Click :guilabel:`Cancel` to abort the bulk load operation.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Reassign Features
+	single: Windows; Reassign Features Window
+
+.. _reassign_features_window:
+
+Reassign Features Window
+========================
+
+Allows users to move features from the active HLU layer to one or more target HLU layers based on configurable rules.
+
+Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon to open the Reassign Features window.
+
+.. _figFRF:
+
+.. figure:: figures/ReasignFeaturesDialog.png
+	:align: center
+
+	Reassign Features Window
+
+Source Layer
+	Displays the name of the currently active HLU layer.
+
+Total features
+	Displays the total number of features in the source layer.
+
+Total in rules
+	Displays the total number of features represented by all rules. When any rule is still counting features this will show "Counting…".
+
+	.. note::
+		If the total in rules does not match the total features in the source layer, a warning message will be displayed indicating the difference. This means some features will not be moved by any rule.
+
+Reassign Rules
+	Displays a table of all configured reassign rules with the following columns:
+
+	Rule
+		The name of the rule.
+
+	Where Clause
+		The SQL WHERE clause that selects features for this rule.
+
+	Features
+		The number of features in the source layer that match this rule's WHERE clause. Shows "Counting…" while the count is being calculated.
+
+	Target Layer
+		A drop-down list allowing the user to select which HLU layer the matched features should be moved to. Select **<Skip>** to not apply this rule in the current operation.
+
+	.. note::
+		Rules are applied sequentially from top to bottom. Once a feature is moved by a rule, it is no longer available for subsequent rules.
+
+OK
+	Click :guilabel:`OK` to start the reassign operation. All rules not set to <Skip> will be applied in order.
+
+Cancel
+	Click :guilabel:`Cancel` to cancel the reassign operation and close the window.
 
