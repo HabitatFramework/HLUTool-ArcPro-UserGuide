@@ -14,6 +14,14 @@
 	:height: 16px
 	:width: 16px
 
+.. |bulkload| image:: ../icons/BulkLoad.png
+	:height: 16px
+	:width: 16px
+
+.. |reassign| image:: ../icons/Reassign.png
+	:height: 16px
+	:width: 16px
+
 
 **********
 Interfaces
@@ -1228,7 +1236,7 @@ Allows users to remove selected registered features from the active HLU layer an
 
 Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and select **Bulk Unload** from the drop-down menu to open the Bulk Unload - Select Layers window.
 
-.. _figFBUSL:
+.. _figBUSL:
 
 .. figure:: figures/BulkUnloadSelectLayersDialog.png
 	:align: center
@@ -1264,7 +1272,7 @@ Allows users to register new features against new INCIDs using OSMM (Ordnance Su
 
 Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and select **Bulk Load** from the drop-down menu to open the Bulk Load window.
 
-.. _figFBLS:
+.. _figBL:
 
 .. figure:: figures/BulkLoadDialog.png
 	:align: center
@@ -1325,7 +1333,7 @@ OSMM Attribute Preview Window
 
 The OSMM Attribute Preview window appears during the bulk load operation after the staging layer path has been selected. It displays a summary of how the OSMM attributes from the source layer will be matched against the OSMM cross-reference table.
 
-.. _figFBLOAP:
+.. _figBLOAP:
 
 .. figure:: figures/BulkLoadOSMMAttributePreview.png
 	:align: center
@@ -1395,7 +1403,7 @@ Allows users to move features from the active HLU layer to one or more target HL
 
 Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon to open the Reassign Features window.
 
-.. _figFRF:
+.. _figRF:
 
 .. figure:: figures/ReassignFeaturesDialog.png
 	:align: center
@@ -1437,4 +1445,3 @@ OK
 
 Cancel
 	Click :guilabel:`Cancel` to cancel the reassign operation and close the window.
-

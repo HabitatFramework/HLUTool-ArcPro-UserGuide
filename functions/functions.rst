@@ -1224,7 +1224,7 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 	If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear and the reassign operation cannot continue.
 
-.. _figFRW:
+.. _figRFW:
 
 .. figure:: figures/ReassignFeaturesWarning.png
 	:align: center
@@ -1233,7 +1233,7 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 2. In the Reassign Features dialog:
 
-.. _figFRF:
+.. _figRF:
 
 .. figure:: figures/ReassignFeaturesDialog.png
 	:align: center
