@@ -1240,6 +1240,7 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 	Reassign Features Window
 
+
    * The **Source Layer** shows the currently active HLU layer
    * Each configured rule is shown with:
 
