@@ -1091,6 +1091,7 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 	Bulk Load - Staging Layer - Shapefile Window
 
+
 7. The OSMM Attribute Preview window will appear showing a summary of the OSMM attribute matching results:
 
 .. _figFBLOAP:
