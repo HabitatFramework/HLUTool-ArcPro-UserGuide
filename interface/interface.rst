@@ -56,36 +56,6 @@ The following sections summarise the different sections of the dockpane.
 .. note::
 	The dockpane header displays **[READONLY]** when the tool is in read-only mode, as shown in the figure :ref:`figUITB`. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
 
-.. _osmm_update_section:
-
-OSMM Updates Section
---------------------
-
-The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
-
-.. note::
-	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_window`.
-
-.. _figUIOUS:
-
-.. figure:: figures/UserInterfaceOSMMUpdateSection.png
-	:align: center
-	:scale: 85
-
-	Main Window - OSMM Updates Section
-
-
-For a description of the fields see :ref:`review_osmm_section`.
-
-When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section. Clicking :guilabel:`Adopt` immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
-
-.. note::
-	The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
-
-.. raw:: latex
-
-	\newpage
-
 .. _incid_section:
 
 INCID Section
@@ -122,6 +92,36 @@ Modified/By
 
 .. note::
 	If the created or modified users are not configured, the 'By' fields will display their Windows login instead of their user name. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+.. raw:: latex
+
+	\newpage
+
+.. _osmm_update_section:
+
+OSMM Updates Section
+--------------------
+
+The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
+
+.. note::
+	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
+
+.. _figUIOUS:
+
+.. figure:: figures/UserInterfaceOSMMUpdateSection.png
+	:align: center
+	:scale: 85
+
+	Main Window - OSMM Updates Section
+
+
+For a description of the fields see :ref:`review_osmm_section`.
+
+When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section. Clicking :guilabel:`Adopt` immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+
+.. note::
+	The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
 
 .. raw:: latex
 
@@ -258,8 +258,7 @@ Mandatory
 
 	.. note::
 		Missing mandatory secondary codes are flagged as warnings or
-		errors depending on the validation settings (see
-		:ref:`options_validation`).
+		errors depending on the validation settings (see :ref:`options_validation`).
 
 Optional
 	[Read only]. A comma-separated list of any secondary codes
@@ -348,6 +347,8 @@ Click on :guilabel:`IHS` to display the IHS tab as shown in the figure :ref:`fig
 
 	Main Window - IHS Tab
 
+.. note::
+	The IHS details will be blank for features added since the conversion from IHS, or if the 'When To Clear IHS Codes After Update' option is set to clear when certain attribute updates are applied (see :ref:`options_updates`).
 
 Habitat
 	[Read only]. Displays the IHS Habitat code prior to conversion to UKHab.
@@ -618,6 +619,7 @@ Click |zoomtable| adjacent to the Priority Habitats table on the Priority tab to
 
 .. figure:: figures/UserInterfacePriorityHabitatsWindow.png
 	:align: center
+	:scale: 85
 
 	Priority Habitats Window
 
@@ -641,6 +643,7 @@ Click |zoomtable| adjacent to the Potential Priority Habitats table on the Prior
 
 .. figure:: figures/UserInterfacePotentialPriorityHabitatsWindow.png
 	:align: center
+	:scale: 85
 
 	Potential Priority Habitats Window
 
@@ -663,7 +666,7 @@ The main window will transform into the bulk update window when the bulk update 
 
 .. figure:: figures/UserInterfaceBulkUpdate.png
 	:align: center
-	:scale: 60
+	:scale: 85
 
 	Bulk Update Window
 
@@ -793,7 +796,7 @@ The main window will transform into the OSMM review updates window when the revi
 
 .. figure:: figures/UserInterfaceReviewOSMMUpdates.png
 	:align: center
-	:scale: 60
+	:scale: 85
 
 	Review OSMM Updates Window
 
@@ -854,8 +857,21 @@ Status
 		* Ignored = the INCID was manually updated when an OSMM update was still proposed or pending and hence the OSMM update was ignored
 		* Rejected = the OSMM update has been rejected
 
-Summary
-	Concatenation of the proposed primary and secondary habitat codes based on the new OSMM attributes.
+Primary
+	The proposed primary habitat code based on the new OSMM attributes.
+
+Secondary
+	Concatenation of the proposed secondary habitat codes based on the new OSMM attributes.
+
+Adopt
+	Immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+
+	.. note::
+		The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
+
+.. raw:: latex
+
+	\newpage
 
 INCID Status Section
 --------------------
@@ -969,6 +985,9 @@ To open the advanced filter window:
 	* Close the standard OSMM Updates Filter window.
 	* Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` and then select the advanced option to open the Advanced Query Builder window.
 
+.. seealso::
+	See :ref:`advanced_query_builder_window` for more information.
+
 .. raw:: latex
 
 	\newpage
@@ -988,7 +1007,7 @@ The main window will transform into the bulk OSMM update window when the bulk OS
 
 .. figure:: figures/UserInterfaceBulkOSMMUpdate.png
 	:align: center
-	:scale: 60
+	:scale: 85
 
 	Bulk OSMM Update Window
 
@@ -1072,6 +1091,7 @@ Click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` of the 
 
 .. figure:: figures/AdvancedQueryBuilder.png
 	:align: center
+	:scale: 90
 
 	Advanced Query Builder Window
 
@@ -1189,4 +1209,112 @@ Selected Only
 	Allows the user to choose if only the selected features in the active GIS layer will be exported or if all features from the active GIS layer associated with the INCIDs in the active filter will be exported.
 
 	.. note::
-		If the database records have been filtered the 'Selected only' checkbox is automatically ticked and the number of selected GIS features is shown (as seen in :ref:`figED`). Only the records related to the selected INCIDs and associated GIS features from the active GIS layer will be exported. Untick this checkbox to export all features from the active GIS layer associated with the INCIDs in the active filter. For details on how to filter records see :ref:`filter_by_attributes`.
+		If the database records have been filtered the 'Selected Only' checkbox is automatically ticked and the number of selected GIS features is shown (as seen in :ref:`figED`). Only the records related to the selected INCIDs and associated GIS features from the active GIS layer will be exported. Untick this checkbox to export all features from the active GIS layer associated with the INCIDs in the active filter. For details on how to filter records see :ref:`filter_by_attributes`.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Bulk Unload
+	single: Windows; Bulk Unload Window
+
+.. _bulk_unload_window:
+
+Bulk Unload Window
+==================
+
+Allows users to remove selected registered features from the active HLU layer and cleans up their associated database records.
+
+Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and select **Bulk Unload** from the drop-down menu to open the Bulk Unload - Select Layers window.
+
+.. _figFBLS:
+
+.. figure:: figures/BulkUnloadSelectLayersDialog.png
+	:align: center
+
+	Bulk Unload - Select Layers Window
+
+Select HLU Layer(s) to unload
+	Allows the user to select one or more HLU layers whose selected features are to be removed from the layers and the database.
+
+	.. note::
+		Only layers with one or more selected features can be chosen.
+
+OK
+	Click :guilabel:`OK` to execute the bulk unload.
+
+Cancel
+	Click :guilabel:`Cancel` to cancel the bulk unload.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Bulk Load
+	single: Windows; Bulk Load Window
+
+.. _bulk_load_window:
+
+Bulk Load Window
+================
+
+Allows users to register new features against new INCIDs using OSMM (Ordnance Survey MasterMap) attributes matched against the OSMM cross-reference table.
+
+Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and select **Bulk Load** from the drop-down menu to open the Bulk Load window.
+
+.. _figFBLS:
+
+.. figure:: figures/BulkLoadDialog.png
+	:align: center
+
+	Bulk Load Window
+
+Source layer
+	Allows the user to select the OSMM source layer.
+
+Selected Only
+	Allows the user to choose if only the selected features in the source layer will be loaded or if all features from the source layer will be loaded.
+
+	.. note::
+		If one or more features in the source layer have been selected the 'Selected Only' checkbox is automatically ticked and the number of selected GIS features is shown (as seen in :ref:`figED`). Only the selected features from the source layer will be loaded. Untick this checkbox to load all features from the source layer.
+
+TOID (optional)
+	Allows the user to optionally select the topographic identifier field in the source layer (if present). Select **<None>** to ignore this field mapping.
+
+	.. note::
+		If a TOID field is not mapped then all features loaded into the staging layer will have NULL TOID values.
+
+Make
+	Allows the user to select the OSMM Make field in the source layer.
+
+Descriptive Group
+	Allows the user to select the OSMM Descriptive Group field in the source layer.
+
+Descriptive Term
+	Allows the user to select the OSMM Descriptive Term field in the source layer.
+
+Theme
+	Allows the user to select the OSMM Theme field in the source layer.
+
+Feature Code
+	Allows the user to select the OSMM Feature Code field in the source layer.
+
+Staging Output Type
+	Allows the user to select the required staging layeroutput type; a file geodatabase feature class or a shaepfile.
+
+OK
+	Click :guilabel:`OK` to proceed with the bulk load.
+
+Cancel
+	Click :guilabel:`Cancel` to cancel the bulk load.
+
+.. index::
+	single: Windows; Bulk Apply OSMM Updates Confirmation Window
+
+.. _bulk_osmm_update_confirmation_window:
+
+Bulk OSMM Update Confirmation Window
+------------------------------------
+

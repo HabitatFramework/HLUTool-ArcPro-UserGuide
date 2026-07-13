@@ -22,6 +22,10 @@
 	:height: 16px
 	:width: 16px
 
+.. |reset| image:: ../icons/EditReset.png
+	:height: 16px
+	:width: 16px
+
 .. |filterbyattr| image:: ../icons/FilterByAttributes.png
 	:height: 16px
 	:width: 16px
@@ -152,6 +156,9 @@ Activates **Update** mode — the normal editing mode for viewing and updating t
 
 .. note::
 	This is the default mode when the tool is first opened. To enable editing, the user details must be configured in the database (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details) and the HLU layer must be editable in ArcGIS Pro.
+
+.. seealso::
+	See :ref:`main_window` for more information.
 
 |bulkupdate| Bulk Update
 ------------------------
@@ -287,6 +294,11 @@ Clicking :guilabel:`Paste` will overwrite the existing values in the selected fi
 
 .. note::
 	Only fields that are ticked in the user interface will be pasted into the current INCID record. Unticked fields will remain unchanged.
+
+|reset| Reset
+-------------
+
+Resets the attributes copied by the **Copy** button and clears all of the checkboxes from the user interface.
 
 .. raw:: latex
 
@@ -607,13 +619,13 @@ Opens the **Bulk Load/Unload** drop-down menu, which contains:
 	Removes selected registered features from the active HLU layer and cleans up their database records. Use this to unload features that were incorrectly loaded or will be replaced during a bulk load operation.
 
 	.. seealso::
-		See :ref:`bulk_unload_function` for more information.
+		See :ref:`bulk_unload_window` and :ref:`bulk_unload_function` for more information.
 
 |bulkload| Bulk Load
 	Registers new features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is assigned its own INCID based on habitat codes derived from OSMM descriptive attributes.
 
 	.. seealso::
-		See :ref:`bulk_load_function` for more information.
+		See :ref:`bulk_load_window` and :ref:`bulk_load_function` for more information.
 
 .. raw:: latex
 
@@ -646,7 +658,7 @@ Opens the Reassign Features window, allowing users to move features from the act
 	* Reassign rules are configured in the application options (see :ref:`options_reassign`).
 
 .. seealso::
-	See :ref:`reassign_features_function` for more information.
+	See :ref:`feature_reassign_window` and :ref:`reassign_features_function` for more information.
 
 .. raw:: latex
 
