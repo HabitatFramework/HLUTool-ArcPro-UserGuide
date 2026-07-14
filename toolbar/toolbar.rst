@@ -223,9 +223,6 @@ A drop-down list for selecting the active HLU feature layer in the current ArcGI
 .. note::
 	Only valid HLU layers present in the current ArcGIS Pro map (i.e. layers with the correct attribute names and formats) will appear in the list.
 
-.. tip::
-	The currently active layer is automatically selected in the drop-down list when the HLU Tool is opened or when the map contents change.
-
 .. _reason_section:
 
 Reason
@@ -481,6 +478,9 @@ Selects **all** of the features associated with **all** currently filtered INCID
 
 Toggles automatic selection of all features associated with the current INCID record in the active HLU layer whenever the INCID changes in the dockpane.
 
+.. note::
+	Auto Select only works when browsing records that were **not** filtered using **Get Map Selection**. If you first select features on the map and then click **Get Map Selection**, Auto Select will be disabled while you browse those records since the features are already selected. Auto Select will resume working once you apply a different filter or clear the current filter.
+
 .. raw:: latex
 
 	\newpage
@@ -683,7 +683,7 @@ Export Group
 |export| Export
 ---------------
 
-Opens the Export window, allowing users to export data from the HLU database to a GIS layer using a pre-defined export format.
+Opens the Export window, allowing users to export data from the active layer and the database to a GIS layer using a pre-defined export format.
 
 .. note::
 	Available only when **Update** mode is active.

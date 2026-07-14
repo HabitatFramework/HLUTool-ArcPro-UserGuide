@@ -75,7 +75,7 @@ The 'INCID' section displays summary information for each INCID in the database,
 
 .. figure:: figures/UserInterfaceIncidSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - INCID Section
 
@@ -119,17 +119,22 @@ The 'OSMM Updates' section displays summary information of any proposed or pendi
 
 .. figure:: figures/UserInterfaceOSMMUpdateSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - OSMM Updates Section
 
 
 For a description of the fields see :ref:`review_osmm_section`.
 
-When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section. Clicking :guilabel:`Adopt` immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guilabel:`Adopt` button is displayed at the bottom of the OSMM Updates section.
 
 .. note::
 	The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
+
+	Clicking :guilabel:`Adopt` immediately applies the primary and secondary habitat codes from the pending OSMM update to the current INCID without needing to enter OSMM Bulk Update mode.
+
+.. note::
+	The user still needs to save the changes to the current INCID before the update is applied. The OSMM status is only changed from 'Pending' to 'Applied' after a successful save.
 
 .. raw:: latex
 
@@ -140,20 +145,22 @@ When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guila
 Habitats Tab
 ------------
 
-Click on :guilabel:`Habitats` to display the Habitats tab as shown in
-the figure :ref:`figUIHT`. The Habitats tab displays the primary
-and secondary codes and the legacy habitat for the current INCID record.
-It also assists attribute updates when the original survey source(s) are
-based on a different classification system by providing translations
-from a range of habitat classifications (e.g. JNCC Phase 1, IHS and NVC).
+Click on the :guilabel:`Habitats` tab to display the Habitats tab as shown in
+the figure :ref:`figUIHT`.
 
 .. _figUIHT:
 
 .. figure:: figures/UserInterfaceHabitatsTab.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - Habitats Tab
+
+The Habitats tab displays the primary and secondary codes and the legacy habitat for the current INCID record. It also assists attribute updates when the original survey source(s) are based on a different classification system by providing translations from a range of habitat classifications (e.g. JNCC Phase 1, IHS and NVC).
+
+.. raw:: latex
+
+	\newpage
 
 .. _habitats_classification_overview:
 
@@ -345,18 +352,17 @@ Legacy Habitat
 IHS Tab
 -------
 
-Click on :guilabel:`IHS` to display the IHS tab as shown in the figure :ref:`figUIIT`. The IHS tab displays the former Integrated Habitat System (IHS) details for the current INCID record. All fields are read only.
+Click on the :guilabel:`IHS` tab to display the IHS tab as shown in the figure :ref:`figUIIT`.
 
 .. _figUIIT:
 
 .. figure:: figures/UserInterfaceIHSTab.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - IHS Tab
 
-.. note::
-	The IHS details will be blank for features added since the conversion from IHS, or if the 'When To Clear IHS Codes After Update' option is set to clear when certain attribute updates are applied (see :ref:`options_updates`).
+The IHS tab displays the former Integrated Habitat System (IHS) details for the current INCID record. All fields are read only.
 
 Habitat
 	[Read only]. Displays the IHS Habitat code prior to conversion to UKHab.
@@ -367,6 +373,9 @@ IHS Matrix / Formation / Management / Complex
 IHS Summary
 	[Read only]. Concatenation of the above IHS habitat and multiplex codes.
 
+.. note::
+	The IHS details will be blank for features added since the conversion from IHS, or if the 'When To Clear IHS Codes After Update' option is set to clear when certain attribute updates are applied (see :ref:`options_updates`).
+
 .. raw:: latex
 
 	\newpage
@@ -376,19 +385,25 @@ IHS Summary
 Priority Tab
 ------------
 
-Click on :guilabel:`Priority` to display the Priority tab as shown in the figure :ref:`figUIPT`. The Details tab displays any priority and potential priority habitats for the current INCID.
+Click on the :guilabel:`Priority` tab to display the Priority tab as shown in the figure :ref:`figUIPT`.
 
 .. _figUIPT:
 
 .. figure:: figures/UserInterfacePriorityTab.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - Priority Tab
 
+The Details tab displays any priority and potential priority habitats for the current INCID.
+
+.. raw:: latex
+
+	\newpage
+
 Priority Habitats
 ~~~~~~~~~~~~~~~~~
-	Automatically added based upon the Habitat and multiplex codes selected on the :ref:`habitats_tab`. For new priority habitats, 'Determination Quality' and 'Interpretation Quality' must be entered.
+These are automatically added based upon the Habitat and multiplex codes selected on the :ref:`habitats_tab`. For new priority habitats, 'Determination Quality' and 'Interpretation Quality' must be entered.
 
 Determination
 	Drop-down list allowing the user to select the accuracy with which the priority habitat has been determined.
@@ -403,7 +418,7 @@ Interpretation Comments
 
 Potential Priority Habitats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Allows users to define other priority habitats that may also be present in the future given appropriate management or restoration. An INCID may have one or more potential priority habitats even if no priority habitats are present.
+These are other priority habitats, as defined by users, that may also be present in the future given appropriate management or restoration. An INCID may have one or more potential priority habitats even if no priority habitats are present.
 
 Determination
 	Drop-down list allowing the user to select the accuracy with which the potential priority habitat has been determined.
@@ -428,15 +443,21 @@ Interpretation Comments
 Details Tab
 -----------
 
-Click on :guilabel:`Details` to display the Details tab as shown in the figure :ref:`figUIDT`. The Details tab displays any general comments, maps, site details, condition assessments and quality assessments.
+Click on the :guilabel:`Details` tab to display the Details tab as shown in the figure :ref:`figUIDT`.
 
 .. _figUIDT:
 
 .. figure:: figures/UserInterfaceDetailsTab.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - Details Tab
+
+The Details tab displays any general comments, maps, site details, condition assessments and quality assessments.
+
+.. raw:: latex
+
+	\newpage
 
 General Comments
 	A free-text field which allows users to enter any additional comments up to 254 characters.
@@ -483,21 +504,27 @@ Interpretation Comments
 Sources Tab
 -----------
 
-Click on :guilabel:`Sources` to display the Sources tab as shown in the figure :ref:`figUIST`. The Sources tab shows any sources of information that were used to determine the habitat and boundary of all features relating to the current INCID, plus the priorities that were applied to each source. Up to three sources can be defined for each INCID.
+Click on the :guilabel:`Sources` tab to display the Sources tab as shown in the figure :ref:`figUIST`.
 
 .. _figUIST:
 
 .. figure:: figures/UserInterfaceSourcesTab.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - Sources Tab
+
+The Sources tab shows any sources of information that were used to determine the habitat and boundary of all features relating to the current INCID, plus the priorities that were applied to each source. Up to three sources can be defined for each INCID.
+
+.. raw:: latex
+
+	\newpage
 
 Name
 	Drop-down list containing a list of data sources. For details on adding new sources see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
-	.. note::
-		The following source fields will not be unlocked until a source name has been selected.
+.. note::
+	The following source fields will not be unlocked until a source name has been selected.
 
 Vague Date
 	Allows users to enter the date of the data source. This can be either a precise date e.g. 01/04/2010 or a vague date e.g. Spring 2010-Summer 2010, 1980-2010 or 'Unknown'. For details on configuring vague dates see :ref:`options_dates`.
@@ -533,15 +560,21 @@ Habitat Imp.
 History Tab
 -----------
 
-Click on :guilabel:`History` to display the History tab as shown in the figure :ref:`figUIHistT`. The History tab displays a list of previous modifications made to the current INCID.
+Click on the :guilabel:`History` tab to display the History tab as shown in the figure :ref:`figUIHistT`.
 
 .. _figUIHistT:
 
 .. figure:: figures/UserInterfaceHistoryTab.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - History Tab
+
+The History tab displays a list of previous modifications made to the current INCID.
+
+.. raw:: latex
+
+	\newpage
 
 Each entry details what modifications were made, when and by whom. Entries are shown in **descending** date and time order with the most recent changes at the top. The maximum number of entries to appear in the history tab can be configured in the Options (see :ref:`options_history` for more details).
 
@@ -556,7 +589,7 @@ The 'INCID Status' section contains navigation buttons (:guilabel:`First`, :guil
 
 .. figure:: figures/UserInterfaceIncidStatusSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - INCID Status Section
 
@@ -600,12 +633,12 @@ Errors
 
 .. figure:: figures/UserInterfaceErrorMessages.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Main Window - Warning and Error Messages
 
 .. note::
-	Whilst **any** fields are in error the :guilabel:`Apply` button will not appear.
+	Whilst **any** fields are in error the :guilabel:`Apply` button will not be enabled.
 
 .. raw:: latex
 
@@ -621,19 +654,15 @@ Priority Habitats Window
 
 Allows users to edit any priority habitats as shown in the figure :ref:`figUIPHW`.
 
-Click |zoomtable| adjacent to the Priority Habitats table on the Priority tab to open the window.
-
 .. _figUIPHW:
 
 .. figure:: figures/UserInterfacePriorityHabitatsWindow.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Priority Habitats Window
 
-.. raw:: latex
-
-	\newpage
+Click |zoomtable| adjacent to the Priority Habitats table on the Priority tab to open the window.
 
 .. index::
 	single: Windows; Potential Priority Habitats Window
@@ -645,8 +674,6 @@ Potential Priority Habitats Window
 
 Allows users to add, edit or delete any potential priority habitats as shown in the figure :ref:`figUIPPHW`.
 
-Click |zoomtable| adjacent to the Potential Priority Habitats table on the Priority tab to open the window.
-
 .. _figUIPPHW:
 
 .. figure:: figures/UserInterfacePotentialPriorityHabitatsWindow.png
@@ -654,6 +681,8 @@ Click |zoomtable| adjacent to the Potential Priority Habitats table on the Prior
 	:scale: 85
 
 	Potential Priority Habitats Window
+
+Click |zoomtable| adjacent to the Potential Priority Habitats table on the Priority tab to open the window.
 
 .. raw:: latex
 
@@ -668,15 +697,21 @@ Click |zoomtable| adjacent to the Potential Priority Habitats table on the Prior
 Bulk Update Window
 ==================
 
-The main window will transform into the bulk update window when the bulk update mode is started. The window appears the same as the main window except for the Bulk Update section and the INCID Status section as shown in the figure :ref:`figUIMWBU`. The IHS and History tabs will also be disabled.
+The main window will transform into the bulk update window, as shown in the figure :ref:`figUIMWBU`, when the bulk update mode is started.
 
 .. _figUIMWBU:
 
 .. figure:: figures/UserInterfaceBulkUpdate.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Bulk Update Window
+
+.. raw:: latex
+
+	\newpage
+
+The bulk update window appears the same as the main window except for the Bulk Update section and the INCID Status section. The IHS and History tabs will also be disabled.
 
 .. note::
 	Bulk update mode can only be started when:
@@ -693,7 +728,7 @@ The 'INCID' section displays summary information for all of the INCIDs and GIS f
 
 .. figure:: figures/UserInterfaceBulkUpdateSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Bulk Update Window - INCID Section
 
@@ -722,7 +757,7 @@ The Bulk Update 'INCID Status' section shows the total number of INCIDs and frag
 
 .. figure:: figures/UserInterfaceBulkUpdateStatusSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Bulk Update Window - INCID Status Section
 
@@ -782,7 +817,7 @@ Delete Existing Source Rows
 Create History Records
 	Whether history records will be created when a bulk update is applied.
 
-.. note::
+.. tip::
 	The default values for all of the above fields (except for *Delete Existing Source Rows*) can be set in the options (see :ref:`options_bulk_update` for more details).
 
 .. raw:: latex
@@ -798,15 +833,21 @@ Create History Records
 Review OSMM Updates Window
 ==========================
 
-The main window will transform into the OSMM review updates window when the review OSMM updates mode is started (see :ref:`review_osmm_updates` for more details). The window appears the same as the main window except for the OSMM Updates section and the INCID Status section as shown in the figure :ref:`figUIMWOU`.
+The main window will transform into the OSMM review updates window, as shown in the figure :ref:`figUIMWOU`, when the review OSMM updates mode is started (see :ref:`review_osmm_updates` for more details).
 
 .. _figUIMWOU:
 
 .. figure:: figures/UserInterfaceReviewOSMMUpdates.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Review OSMM Updates Window
+
+.. raw:: latex
+
+	\newpage
+
+The window appears the same as the main window except for the OSMM Updates section and the INCID Status section.
 
 .. note::
 	OSMM review update mode can only be started when:
@@ -825,10 +866,13 @@ The 'OSMM Updates' section displays summary details of any proposed or pending O
 
 .. figure:: figures/UserInterfaceOSMMUpdateSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Review OSMM Updates Window - OSMM Updates Section
 
+
+XRef ID
+	The unique identifier of the row in the ``lut_osmm_habitat_xref`` table. Each row represents a unique combination of OSMM attributes referenced by OSMM updates.
 
 Process Flag
 	Which step in the external OSMM Update process the proposed update was determined. Values represent the type of change in the primary habitat type from the original INCID feature to the new INCID feature, and the number of sources assigned to the original INCID feature, as follows:
@@ -842,6 +886,9 @@ Process Flag
 		* 7 = Natural to Natural (two or more sources)
 		* 8 = Any to Unknown (any number of sources)
 		* 9 = Unknown to any (except unknown) (any number of sources)
+
+		.. note::
+			The meanings of the Process, Change and Spatial flags may change in the future if different methods are used to determine proposed OSMM updates.
 
 Change Flag
 	Assists with prioritising proposed updates by summarising the type of habitat change. Values indicate whether the proposed habitat group (e.g. urban 'u') is the same as the original habitat group and whether it is a higher or lower level in the habitat hierarchy, as follows:
@@ -872,7 +919,7 @@ Secondary
 	Concatenation of the proposed secondary habitat codes based on the new OSMM attributes.
 
 Adopt
-	Immediately accepts and applies the pending OSMM update for the current INCID without needing to enter OSMM Bulk Update mode.
+	Immediately applies the primary and secondary habitat codes from the pending OSMM update to the current INCID without needing to enter OSMM Bulk Update mode. The user still needs to save the changes to the current INCID before the update is applied. The OSMM status is only changed from 'Pending' to 'Applied' after a successful save.
 
 	.. note::
 		The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
@@ -890,7 +937,7 @@ The Review OSMM Updates 'INCID Status' section shows the total number of INCIDs 
 
 .. figure:: figures/UserInterfaceOSMMUpdateStatusSection.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Review OSMM Updates Window - INCID Status Section
 
@@ -913,11 +960,15 @@ Holding down the :guilabel:`Ctrl` key changes the :guilabel:`Reject` and :guilab
 
 .. figure:: figures/UserInterfaceOSMMUpdateStatusSection2.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Review OSMM Updates Window - INCID Status Section 2
 
 For example, figure :ref:`figUIOUIS2` shows the 'INCID Status' section when the :guilabel:`Ctrl` key is pressed.
+
+.. raw:: latex
+
+	\newpage
 
 .. index::
 	single: Windows; OSMM Updates Filter Window
@@ -1015,7 +1066,7 @@ The main window will transform into the bulk OSMM update window when the bulk OS
 
 .. figure:: figures/UserInterfaceBulkOSMMUpdate.png
 	:align: center
-	:scale: 85
+	:scale: 80
 
 	Bulk OSMM Update Window
 
@@ -1024,6 +1075,10 @@ The main window will transform into the bulk OSMM update window when the bulk OS
 
 		* The HLU layer is editable in ArcGIS Pro.
 		* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+.. raw:: latex
+
+	\newpage
 
 INCID Section
 -------------
@@ -1066,10 +1121,10 @@ Habitat Interpretation Quality
 	An assessment of the quality and age of the habitat source, and the relationship between the habitat type and the priority habitat type (e.g. 'Low (5)'). This will apply to all priority habitats created as a result of the OSMM updates.
 
 .. note::
-	The default values for these fields can be set in the options (see :ref:`options_bulk_update` for more details).
-
-.. note::
 	Some of the options cannot be controlled by the user - they are automatically set for bulk OSMM updates.
+
+.. tip::
+	The default values for these fields can be set in the options (see :ref:`options_bulk_update` for more details).
 
 .. raw:: latex
 
@@ -1154,10 +1209,6 @@ Cancel
 .. tip::
 	Whilst the Tables and Where Clause can be entered as free-text by the user, it is recommended that users use the drop-down lists and :guilabel:`Add` buttons to reduce the likelihood of syntax errors.
 
-.. raw:: latex
-
-	\newpage
-
 .. index::
 	single: Filter; Filter by Incid
 
@@ -1240,6 +1291,7 @@ Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and sel
 
 .. figure:: figures/BulkUnloadSelectLayersDialog.png
 	:align: center
+	:scale: 90
 
 	Bulk Unload - Select Layers Window
 
@@ -1276,6 +1328,7 @@ Click the |bulkload| :guilabel:`Bulk Load` button of the HLU Tool ribbon and sel
 
 .. figure:: figures/BulkLoadDialog.png
 	:align: center
+	:scale: 90
 
 	Bulk Load Window
 
@@ -1343,32 +1396,38 @@ The OSMM Attribute Preview window appears during the bulk load operation after t
 OSMM Attribute Matches
 	Displays a table showing the results of matching the source OSMM attributes against the ``lut_osmm_habitat_xref`` table. Each row represents a unique combination of OSMM attributes found in the source layer and shows:
 
-	Make
-		The OSMM Make attribute value from the source features.
+Make
+	The OSMM Make attribute value from the source features.
 
-	Descriptive Group
-		The OSMM Descriptive Group attribute value from the source features.
+Descriptive Group
+	The OSMM Descriptive Group attribute value from the source features.
 
-	Descriptive Term
-		The OSMM Descriptive Term attribute value from the source features.
+Descriptive Term
+	The OSMM Descriptive Term attribute value from the source features.
 
-	Theme
-		The OSMM Theme attribute value from the source features (may be blank if not provided).
+Theme
+	The OSMM Theme attribute value from the source features.
 
-	Feature Code
-		The OSMM Feature Code attribute value from the source features (may be blank if not provided).
+Feature Code
+	The OSMM Feature Code attribute value from the source features.
 
-	Primary
-		The primary habitat code that will be assigned based on the matched OSMM attributes. Will be blank if no match was found in the cross-reference table.
+Count
+	The number of source features with the same combination of OSMM attributes.
 
-	Secondary
-		The secondary habitat code(s) that will be assigned based on the matched OSMM attributes. Will be blank if no match was found or if no secondary codes apply.
-
-	Features
-		The number of features in the source layer with this combination of OSMM attributes.
+XRef ID
+	The unique reference ID of the matching row in the cross-reference table.
 
 	.. note::
-		Rows where the Primary column is blank indicate that no match was found in the OSMM cross-reference table. Features with these attribute combinations will be loaded to the staging layer but their habitat codes will remain null and must be assigned manually.
+		Rows where the XRef ID column is blank indicate that no match was found in the OSMM cross-reference table ``lut_osmm_habitat_xref``. Features with these attribute combinations will be loaded to the staging layer but their habitat codes will remain null and must be assigned manually.
+
+Primary
+	The primary habitat code that will be assigned based on the matched OSMM attributes. Will be blank if no match was found in the cross-reference table.
+
+Secondary
+	The secondary habitat code(s) that will be assigned based on the matched OSMM attributes. Will be blank if no match was found or if no secondary codes apply.
+
+Features
+	The number of features in the source layer with this combination of OSMM attributes.
 
 Export CSV
 	Click :guilabel:`Export CSV` to save the attribute matching results to a CSV file. This is useful for:
@@ -1407,6 +1466,7 @@ Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon
 
 .. figure:: figures/ReassignFeaturesDialog.png
 	:align: center
+	:scale: 90
 
 	Reassign Features Window
 
@@ -1425,20 +1485,20 @@ Total in rules
 Reassign Rules
 	Displays a table of all configured reassign rules with the following columns:
 
-	Rule
-		The name of the rule.
+Rule
+	The name of the rule.
 
-	Where Clause
-		The SQL WHERE clause that selects features for this rule.
+Where Clause
+	The SQL WHERE clause that selects features for this rule.
 
-	Features
-		The number of features in the source layer that match this rule's WHERE clause. Shows "Counting…" while the count is being calculated.
+Features
+	The number of features in the source layer that match this rule's WHERE clause. Shows "Counting…" while the count is being calculated.
 
-	Target Layer
-		A drop-down list allowing the user to select which HLU layer the matched features should be moved to. Select **<Skip>** to not apply this rule in the current operation.
+Target Layer
+	A drop-down list allowing the user to select which HLU layer the matched features should be moved to. Select **<Skip>** to not apply this rule in the current operation.
 
-	.. note::
-		Rules are applied sequentially from top to bottom. Once a feature is moved by a rule, it is no longer available for subsequent rules.
+.. note::
+	Rules are applied sequentially from top to bottom. Once a feature is moved by a rule, it is no longer available for subsequent rules.
 
 OK
 	Click :guilabel:`OK` to start the reassign operation. All rules not set to <Skip> will be applied in order.

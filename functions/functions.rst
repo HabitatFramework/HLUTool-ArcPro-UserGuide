@@ -149,10 +149,6 @@ Split Features
 
 Features can be split logically or physically depending upon the filter active in the tool. If one or more features from a single INCID are present in the current filter then the tool will allow a logical split to be performed. If two or more fragments from the same INCID and with the same Fragment ID are present in the current filter then the tool will allow a physical split to be performed.
 
-.. raw:: latex
-
-	\newpage
-
 .. index::
 	single: Split Features; Logical Split
 
@@ -180,6 +176,10 @@ To perform a logical split:
 	Logical Split – Before (left) and After (right)
 
 
+.. raw:: latex
+
+	\newpage
+
 To display all the features in the INCID of a given feature:
 
 * Select the feature of interest in the GIS layer.
@@ -187,10 +187,6 @@ To display all the features in the INCID of a given feature:
 * Click |selectonmap| :guilabel:`Select Current INCID on Map`.
 
 All the features associated with the current INCID will be displayed as shown in the **left** part of the figure :ref:`figFLSFD`.
-
-.. raw:: latex
-
-	\newpage
 
 .. index::
 	single: Split Features; Physical Split
@@ -226,6 +222,10 @@ To perform a physical split in ArcGIS Pro:
 	:align: center
 
 	Split Features
+
+.. raw:: latex
+
+	\newpage
 
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new fragment identifier will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
@@ -382,6 +382,7 @@ The following columns are recognised:
 .. tabularcolumns:: |L|L|L|
 
 .. table:: GIS attribute columns read during Feature Insert
+	:widths: 20, 30, 50
 
 	+-------------+---------------------------------+--------------------------------------------------------------+
 	| GIS Column  | Attribute                       | Notes                                                        |
@@ -460,29 +461,29 @@ Interpretation Quality Values
 
 .. table:: Valid Interpretation Quality codes
 
-	+------+-------------+
-	| Code | Description |
-	+======+=============+
-	| G1   | Good        |
-	+------+-------------+
-	| A1   | Average     |
-	+------+-------------+
-	| P1   | Poor        |
-	+------+-------------+
-	| H1   | High (1)    |
-	+------+-------------+
-	| M2   | Medium (2)  |
-	+------+-------------+
-	| M3   | Medium (3)  |
-	+------+-------------+
-	| M4   | Medium (4)  |
-	+------+-------------+
-	| L5   | Low (5)     |
-	+------+-------------+
-	| L6   | Low (6)     |
-	+------+-------------+
-	| L7   | Low (7)     |
-	+------+-------------+
+	+------+--------------+
+	| Code | Description  |
+	+======+==============+
+	| G1   | Good         |
+	+------+--------------+
+	| A1   | Average      |
+	+------+--------------+
+	| P1   | Poor         |
+	+------+--------------+
+	| H1   | High (1)     |
+	+------+--------------+
+	| M2   | Medium (2)   |
+	+------+--------------+
+	| M3   | Medium (3)   |
+	+------+--------------+
+	| M4   | Medium (4)   |
+	+------+--------------+
+	| L5   | Low (5)      |
+	+------+--------------+
+	| L6   | Low (6)      |
+	+------+--------------+
+	| L7   | Low (7)      |
+	+------+--------------+
 
 .. _function_insert_feature_post_insert:
 
@@ -545,13 +546,13 @@ To **save** an advanced query:
 
 * Click |filterbyattr| **Filter by Attributes** to open the Advanced Query Builder window.
 * Create a valid query as above.
-* Before executing the query click :guilabel:`Save`. A save dialog will open prompting you to select a folder and file name.
+* Before executing the query click :guilabel:`Save`. A save window will open prompting you to select a folder and file name.
 * Select a destination folder, enter a suitable file name and click :guilabel:`Save`. The query will be saved.
 
 To **load** a previously saved advanced query:
 
 * Click |filterbyattr| **Filter by Attributes** to open the Advanced Query Builder window.
-* Click :guilabel:`Load`. A load dialog will open prompting you to select an existing SQL query (.hsq) file.
+* Click :guilabel:`Load`. A load window will open prompting you to select an existing SQL query (.hsq) file.
 * Select the required file and click :guilabel:`Open`.
 * The query will be loaded into the query window. It can now be verified and then executed.
 
@@ -684,15 +685,6 @@ Bulk Updates
 
 Users can update the attributes for multiple INCID records, and associated features in the active HLU layer, by performing a bulk update. Bulk updates can only be applied to a subset of INCID records by applying a filter. Attribute updates applied in bulk update mode will be applied to all INCIDs in the active filter.
 
-.. warning::
-    Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
-
-.. note::
-	Bulk update mode can only be started when:
-
-	    * A filter is applied to the INCID records and the active HLU layer is editable in ArcGIS Pro.
-		* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
-
 .. _figFUIBU:
 
 .. figure:: figures/UserInterfaceBulkUpdate.png
@@ -701,9 +693,18 @@ Users can update the attributes for multiple INCID records, and associated featu
 
 	Main window - Bulk Update Mode
 
+.. warning::
+    Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
+
 .. raw:: latex
 
 	\newpage
+
+.. note::
+	Bulk update mode can only be started when:
+
+	* A filter is applied to the INCID records and the active HLU layer is editable in ArcGIS Pro.
+	* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
 
 To bulk apply updates:
 
@@ -750,22 +751,27 @@ If the habitat framework has been externally processed against a more recent OS 
 
 	Review OSMM Updates Filter Window
 
+.. raw:: latex
+
+	\newpage
+
 To filter proposed OSMM Updates:
 
 * Click |osmmreview| :guilabel:`OSMM Review` in the :ref:`mode_group` of the HLU Tool ribbon to enter Review OSMM Update mode. The OSMM Updates Filter window will appear as shown in figure :ref:`figFUIOUF`.
-* Select a row in the table or manually select the required values for any or all of the Process, Change, Spatial and Status fields.
-* Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
-
-.. note::
-	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
 .. _figFUIOU:
 
 .. figure:: figures/UserInterfaceReviewOSMMUpdates.png
 	:align: center
-	:scale: 60
+	:scale: 70
 
 	Review OSMM Updates Window
+
+* Select a row in the table or manually select the required values for any or all of the Process, Change, Spatial and Status fields.
+* Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
+
+.. note::
+	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
 
 .. raw:: latex
 
@@ -777,7 +783,6 @@ To apply proposed OSMM Updates:
 * Click :guilabel:`Skip` to skip the proposed update for the current INCID. It can then be reviewed again at a later time.
 * Click :guilabel:`Reject` to reject the proposed update for the current INCID. It will no longer be available for reviewing or applying.
 * Click :guilabel:`Accept` to accept the proposed update for the current INCID. The update will now be 'Pending' and must be applied by bulk applying OSMM Updates (see :ref:`bulk_osmm_update` for details).
-* Click :guilabel:`Adopt` to accept the proposed update for the current INCID **and** immediately apply it in a single step, without needing to perform a separate bulk apply operation.
 
 .. note::
 	Holding down the :guilabel:`Ctrl` key changes the :guilabel:`Reject` and :guilabel:`Accept` buttons to :guilabel:`Reject All` and :guilabel:`Accept All` thereby allowing the user to Reject or Accept all remaining INCIDs in the active filter.
@@ -788,7 +793,7 @@ Once all the INCIDs in the active filter have been applied a message will appear
 
 .. figure:: figures/OSMMUpdatesDone.png
 	:align: center
-	:scale: 60
+	:scale: 80
 
 	Review OSMM Updates - No more records found
 
@@ -812,13 +817,23 @@ Bulk Apply OSMM Updates
 Once proposed OSMM updates have been accepted they become 'Pending' and must be bulk applied in order to apply them.
 
 .. warning::
-    As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for every incid are stored in the same HLU layer.
+    As with Bulk updates, OSMM Bulk updates will only apply changes to selected features in the active HLU layer. So, in the event that some fragments for the selected INCID records are in more than one layer, only the features in the active layer will be updated. To avoid this scenario please ensure that all features for each incid are stored in the same HLU layer.
 
 .. note::
 	Bulk apply OSMM update mode can only be started when:
 
 	* The active HLU layer is editable in ArcGIS Pro.
 	* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+.. raw:: latex
+
+	\newpage
+
+To filter pending OSMM Updates:
+
+* Click |osmmBulkupdate| :guilabel:`OSMM Bulk Update` in the :ref:`mode_group` of the HLU Tool ribbon to enter Bulk OSMM Update mode. The OSMM Updates Filter window will appear as shown in figure :ref:`figFUIBOUF`.
+* Select a row in the table or manually select the required values for any or all of the Process, Change, Spatial and Status fields.
+* Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
 
 .. _figFUIBOUF:
 
@@ -828,14 +843,16 @@ Once proposed OSMM updates have been accepted they become 'Pending' and must be 
 
 	Bulk Apply OSMM Updates Filter Window
 
-To filter pending OSMM Updates:
-
-* Click |osmmBulkupdate| :guilabel:`OSMM Bulk Update` in the :ref:`mode_group` of the HLU Tool ribbon to enter Bulk OSMM Update mode. The OSMM Updates Filter window will appear as shown in figure :ref:`figFUIBOUF`.
-* Select a row in the table or manually select the required values for any or all of the Process, Change, Spatial and Status fields.
-* Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
-
 .. note::
 	To apply another filter at any time click |filterbyattr| **Filter by Attributes** in the :ref:`filter_group` to re-open the OSMM Updates Filter window.
+
+.. raw:: latex
+
+	\newpage
+
+To bulk apply OSMM updates:
+
+* Once a filter has been applied an empty form is displayed as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
 
 .. _figFUIBOU:
 
@@ -845,16 +862,13 @@ To filter pending OSMM Updates:
 
 	Bulk OSMM Update Window
 
+* The Habitats tab will be disabled as changes to the habitat attributes are determined by the pending OSMM update for each INCID.
+
 .. raw:: latex
 
 	\newpage
 
-To bulk apply OSMM updates:
-
-* Once a filter has been applied an empty form is displayed as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
-* The Habitats tab will be disabled as changes to the habitat attributes are determined by the pending OSMM update for each INCID.
 * Enter any required update details in the Details and Sources tabs, then click :guilabel:`Apply`. The Bulk Update confirmation window will appear as shown in the figure :ref:`figFUIBOUC`.
-* Select the required options for the bulk update and click :guilabel:`OK`. The INCIDs in the active filter will be updated.
 
 .. _figFUIBOUC:
 
@@ -863,6 +877,8 @@ To bulk apply OSMM updates:
 	:scale: 85
 
 	Bulk Update Confirmation Window
+
+* Select the required options for the bulk update and click :guilabel:`OK`. The INCIDs in the active filter will be updated.
 
 .. note::
 	If a default OSMM Source Name has been set (see :ref:`options_bulk_update` for details) this will automatically appear in the Sources tab.
@@ -888,6 +904,12 @@ Exports
 
 Exporting allows users to combine spatial geometries from a HLU GIS layer and attribute data from the HLU database into a combined GIS layer using a pre-defined export format.
 
+To perform an export:
+
+* Select the required INCID and GIS features to be exported (either by selecting the features in the map and clicking :guilabel:`Get Map Selection`, or by performing a **Filter by Attributes**) and then clicking :guilabel:`Select All Filtered INCIDs`.
+* Click |export| **Export** in the :ref:`export_group` of the HLU Tool ribbon to open the Export window.
+* The Export window will appear as shown in the figure :ref:`figFED`.
+
 .. _figFED:
 
 .. figure:: figures/ExportDialog.png
@@ -895,19 +917,15 @@ Exporting allows users to combine spatial geometries from a HLU GIS layer and at
 
 	Export Window
 
-To perform an export:
-
-	* Select the required INCID and GIS features to be exported (either by selecting the features in the map and clicking :guilabel:`Get Map Selection`, or by performing a **Filter by Attributes**) and then clicking :guilabel:`Select All Filtered INCIDs`.
-	* Click |export| **Export** in the :ref:`export_group` of the HLU Tool ribbon to open the Export window.
-	* Select one of the pre-defined export formats from the 'Export Format' drop-down list.
-	* Select the required output format in the 'Output Type' drop-down list.
-	* Tick the 'Selected only' checkbox to export **only** the selected features or clear the checkbox to export **all** of the features in the active HLU layer as required.
+* Select one of the pre-defined export formats from the 'Export Format' drop-down list.
+* Select the required output format in the 'Output Type' drop-down list.
+* Tick the 'Selected only' checkbox to export **only** the selected features or clear the checkbox to export **all** of the features in the active HLU layer as required.
 
 	.. note::
 		If a filter is active based on the features selected in the active HLU layer then the 'Selected only' checkbox is automatically ticked and the number of selected features is shown (as seen in :ref:`figFED`). Only the selected INCIDs and associated features will be exported. Untick this checkbox to export all records. For details on how to filter records see :ref:`filter_by_attributes`.
 
-	* Click :guilabel:`Ok` to start the export. Select a destination folder and suitable file name for the new GIS layer when prompted.
-	* A pop-up message will appear informing when the export has completed and informing the user that the exported layer has been loaded to the active ArcGIS Pro map.
+* Click :guilabel:`Ok` to start the export. Select a destination folder and suitable file name for the new GIS layer when prompted.
+* A pop-up message will appear informing when the export has completed and informing the user that the exported layer has been loaded to the active ArcGIS Pro map.
 
 .. note::
 	The default export folder destination can be set in the Export Options (see :ref:`options_export` for more details).
@@ -950,25 +968,23 @@ The Bulk Unload function removes selected registered features from the active HL
 
 **Steps:**
 
-1. Select the features you wish to unload in the active HLU layer
-2. Click the |bulkunload| :guilabel:`Bulk Unload` button in the HLU Tool ribbon
-3. Select **Bulk Unload** from the drop-down menu
-4. A Backup Reminder window will appear. Click :guilabel:`No` to perform a backup before the unload operation. Click :guilabel:`Yes` to proceed with the unload operation
+1. Select the features you wish to unload in the active HLU layer.
+2. Click the |bulkunload| :guilabel:`Bulk Unload` button in the HLU Tool ribbon and select **Bulk Unload** from the drop-down menu.
+3. A Backup Reminder window will appear as shown in the figure :ref:`figFBUBR`. Click :guilabel:`No` to cancel and perform a backup before the unload operation. Click :guilabel:`Yes` to proceed with the unload operation.
 
 .. _figFBUBR:
 
 .. figure:: figures/BulkUnloadBackupReminder.png
 	:align: center
+	:scale: 75
 
 	Bulk Unload - Backup Reminder Window
 
-5. In the Bulk Unload dialog:
+.. raw:: latex
 
-   * Review the list of valid HLU layers and the number of features to be unloaded from each layer
-   * Check the boxes next to the layers from which you want to unload features
+	\newpage
 
-	.. note::
-		The active layer is pre-checked by default. Only layers with selected features can be checked
+5. The Bulk Unload window will appear as shown in the figure :ref:`figFBUBR`.
 
 .. _figFBUSL:
 
@@ -977,9 +993,13 @@ The Bulk Unload function removes selected registered features from the active HL
 
 	Bulk Unload - Select Layers Window
 
-6. Click :guilabel:`Ok` to proceed with the unload, or :guilabel:`Cancel` to abort.
-7. Wait for the operation to complete - a progress indicator will be shown
-8. Review the completion message showing:
+	.. note::
+		The active layer is pre-checked by default. Only layers with selected features can be checked
+
+6. Review the list of valid HLU layers and the number of features to be unloaded from each layer and check the boxes next to the layers from which you want to unload features.
+7. Click :guilabel:`Ok` to proceed with the unload, or :guilabel:`Cancel` to abort.
+8. Wait for the operation to complete - a progress indicator will be shown.
+9. Review the completion message showing:
 
    * Number of features successfully unloaded
    * Number of INCIDs cleaned up
@@ -1013,66 +1033,69 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 * A source layer containing OSMM features with the required attributes:
 
-  * TOID (optional but recommended)
-  * Make
-  * Descriptive Group
-  * Descriptive Term
-  * Theme (optional)
-  * Feature Code (optional)
+	* **TOID** (optional but recommended)
+	* **Make**
+	* **Descriptive Group**
+	* **Descriptive Term**
+	* **Theme**
+	* **Feature Code**
 
 * The OSMM cross-reference table (``lut_osmm_habitat_xref``) must be populated in the database
 * The active HLU layer must be editable in ArcGIS Pro
 * A staging layer directory must be configured (or will be prompted for)
 
 .. note::
-	* Each feature in the input layer will be assigned to its own new INCID
+	Each feature in the input layer will be assigned to its own new INCID
 
 **Steps:**
 
 1. Prepare your source data:
 
-* Load the OSMM feature layer into the current ArcGIS Pro map
-* Optionally select specific features to load (otherwise all features will be loaded)
+	* Load the OSMM feature layer into the current ArcGIS Pro map
+	* Optionally select specific features to load (otherwise all features will be loaded)
 
-2. Click the |bulkload| :guilabel:`Bulk Load` button in the HLU Tool ribbon
-3. Select **Bulk Load** from the drop-down menu
-4. In the Bulk Load dialog:
+2. Click the |bulkload| :guilabel:`Bulk Load` button in the HLU Tool ribbon and select **Bulk Load** from the drop-down menu.
+
+.. raw:: latex
+
+	\newpage
+
+3. The Bulk Load window will appear as shown in the figure :ref:`figFBL`.
 
 .. _figFBL:
 
 .. figure:: figures/BulkLoadDialog.png
 	:align: center
+	:scale: 95
 
 	Bulk Load Window
 
-	**Step 1: Select Source Layer**
+4. Select the input OSMM source layer from the **Source Layer** drop-down list. The window will update the number of selected features and total features.
+5. Optionally check **Selected only** to load only selected features or uncheck to load all features.
+6. Map each OSMM attribute to the corresponding field in your source layer:
 
-	* Choose the OSMM source layer from the **Layer** drop-down list
-	* The dialog shows the number of selected features and total features
+	* **TOID** - The topographic identifier (optional)
+	* **Make** - The OSMM Make attribute (required)
+	* **Descriptive Group** - The OSMM Descriptive Group attribute (required)
+	* **Descriptive Term** - The OSMM Descriptive Term attribute (required)
+	* **Theme** - The OSMM Theme attribute (required)
+	* **Feature Code** - The OSMM Feature Code attribute (required)
 
-	**Step 2: Map Fields**
+	.. tip::
+		Use ``<None>`` for optional fields if they are not available in your source layer
 
-	* Map each OSMM attribute to the corresponding field in your source layer:
+7. Choose the staging layer output format type:
 
-		* **TOID** - The topographic identifier (optional)
-		* **Make** - The OSMM Make attribute (required)
-		* **Descriptive Group** - The OSMM Descriptive Group attribute (required)
-		* **Descriptive Term** - The OSMM Descriptive Term attribute (required)
-		* **Theme** - The OSMM Theme attribute (required)
-		* **Feature Code** - The OSMM Feature Code attribute (required)
+	* File Geodatabase Feature Class (recommended)
+	* Shapefile
 
-	* Use ``<None>`` for optional fields if they are not available in your source layer
+8. Click :guilabel:`Ok` to start the bulk load operation.
 
-	**Step 3: Choose Options**
+.. raw:: latex
 
-	* **Selected only** - Check to load only selected features, uncheck to load all features
-	* **Output Type** - Choose the staging layer format:
+	\newpage
 
-		* File Geodatabase Feature Class (recommended)
-		* Shapefile
-
-5. Click :guilabel:`Ok` to start the bulk load operation
-6. When prompted, choose or confirm:
+9. When prompted, choose or confirm the following as shown in figures :ref:`figFBLSLG` and :ref:`figFBLSLS`
 
 	* **Staging Layer Directory** - Where the staging layer will be created
 	* **Staging Layer Name** - Name for the staging layer
@@ -1081,6 +1104,7 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 .. figure:: figures/BulkLoadStagingLayerGDBDialog.png
 	:align: center
+	:scale: 85
 
 	Bulk Load - Staging Layer - Geodatabase Window
 
@@ -1088,11 +1112,19 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 .. figure:: figures/BulkLoadStagingLayerShapefileDialog.png
 	:align: center
+	:scale: 85
 
 	Bulk Load - Staging Layer - Shapefile Window
 
+.. raw:: latex
 
-7. The OSMM Attribute Preview window will appear showing a summary of the OSMM attribute matching results:
+	\newpage
+
+10. The OSMM Attribute Preview window will appear, as shown in the figure :ref:`figFBLOAP`, showing a summary of the OSMM attribute matching results:
+
+	* Source OSMM attributes (Make, Descriptive Group, Descriptive Term, Theme, Feature Code)
+	* Matched primary and secondary habitat codes
+	* The number of features for each unique combination
 
 .. _figFBLOAP:
 
@@ -1101,43 +1133,34 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 	Bulk Load - OSMM Attribute Preview Window
 
-	* The window displays a table showing:
+11. Review the matches to ensure the OSMM attributes are being correctly translated to the required habitat codes.
+12. Optionally, click :guilabel:`Export CSV` to save the match results to a CSV file. This can be useful for:
 
-		* Source OSMM attributes (Make, Descriptive Group, Descriptive Term, Theme, Feature Code)
-		* Matched primary and secondary habitat codes
-		* The number of features for each unique combination
+	* Reviewing the matches offline
+	* Identifying OSMM attribute combinations that did not match any habitat codes
+	* Updating the ``lut_osmm_habitat_xref`` table with new or corrected mappings
 
-	* Review the matches to ensure the OSMM attributes are being correctly translated to the required habitat codes
+13. Click :guilabel:`Proceed` to continue with the bulk load operation or :guilabel:`Cancel` to abort.
 
-	* Optionally, click :guilabel:`Export CSV` to save the match results to a CSV file. This can be useful for:
+While processing the bulk load operation will:
 
-		* Reviewing the matches offline
-		* Identifying OSMM attribute combinations that did not match any habitat codes
-		* Updating the ``lut_osmm_habitat_xref`` table with new or corrected mappings
+* Create a staging layer in the specified location
+* Copy the selected features from the input layer to the staging layer
+* Match the OSMM attributes against the cross-reference table to determine the appropriate habitat codes
+* Create new INCID records in the database for each feature with the matched habitat codes
+* Update the staging layer features with the new INCID, fragment identifiers and habitat codes
 
-	* Click :guilabel:`Proceed` to continue with the bulk load operation or :guilabel:`Cancel` to abort
+Once the bulk load operation has finished you may choose to:
 
-8. The bulk load operation will:
+* Apply bulk updates (see :ref:`bulk_update`) to the new features in the staging layer, e.g. to set the boundary and digitisation maps, determination and interpretation qualities, and source(s)
+* Reassign the new features from the staging layer to other layers (see :ref:`reassign_features_function` for details)
 
-	* Create a staging layer in the specified location
-	* Copy the selected features from the input layer to the staging layer
-	* Match the OSMM attributes against the cross-reference table to determine the appropriate habitat codes
-	* Create new INCID records in the database for each feature with the matched habitat codes
-	* Update the staging layer features with the new INCID, fragment identifiers and habitat codes
+.. raw:: latex
 
-9. Monitor the progress indicator during the operation
-10. Review the completion message showing:
+	\newpage
 
-	* Number of features successfully loaded
-	* Number of new INCIDs created
-	* Any errors or warnings
-
-11. Once the bulk load operation has finished you may choose to:
-
-	* Apply bulk updates (see :ref:`bulk_update`) to the new features in the staging layer, e.g. to set the boundary and digitisation maps, determination and interpretation qualities, and source(s)
-	* Reassign the new features from the staging layer to other layers (see :ref:`reassign_features_function` for details)
-
-**Understanding the OSMM Cross-Reference Table:**
+The OSMM Cross-Reference Table
+------------------------------
 
 The bulk load operation uses the ``lut_osmm_habitat_xref`` table to automatically determine habitat codes. This table contains mappings such as:
 
@@ -1187,30 +1210,38 @@ The Reassign Features operation moves features from the active HLU layer to one 
 * Reassign rules must be configured in the application options
 * The tool must be in **Update** mode
 
-**Configuring Reassign Rules:**
+Configuring Reassign Rules
+--------------------------
 
 Before using the Reassign Features operation, you must configure one or more reassign rules in the Options:
 
-1. Click |options| :guilabel:`Options` in the HLU Tool ribbon
-2. Navigate to **Application > Reassign** in the Options navigation
+1. Click |options| :guilabel:`Options` in the HLU Tool ribbon.
+2. Navigate to **Application > Reassign** in the Options navigation.
 3. Add one or more rules:
 
    * **Rule Name** - A descriptive name (e.g., "Woodland")
    * **WHERE Clause** - A SQL WHERE clause that selects features (e.g., ``habprimary LIKE 'w%'``)
 
-4. Order the rules from top to bottom in the sequence they should be applied
-5. Click **OK** to save the rules
+4. Order the rules from top to bottom in the sequence they should be applied.
+5. Click :guilabel:`OK` to save the rules.
 
-**Example Rules:**
+.. tabularcolumns:: |L|L|
 
-	Rule Name: Water
-	WHERE Clause: habprimary LIKE 'r%'
+.. table:: Example Rules
 
-	Rule Name: Woodland
-	WHERE Clause: habprimary LIKE 'w%'
-
-	Rule Name: Grassland
-	WHERE Clause: habprimary LIKE 'g%'
+	+-------------+-------------------------------------------------------------------------------+
+	| Rule Name   | WHERE Clause                                                                  |
+	+=============+===============================================================================+
+	| Water       | habprimary LIKE 'r%'                                                          |
+	+-------------+-------------------------------------------------------------------------------+
+	| Woodland    | habprimary LIKE 'w%'                                                          |
+	+-------------+-------------------------------------------------------------------------------+
+	| Grassland   | habprimary LIKE 'g%'                                                          |
+	+-------------+-------------------------------------------------------------------------------+
+	| Urban       | habprimary LIKE 'u%' AND (habsecond IS NULL OR habSecond NOT LIKE '%827%')    |
+	+-------------+-------------------------------------------------------------------------------+
+	| Garden      | habprimary LIKE 'r%' AND habSecond LIKE '%827%'                               |
+	+-------------+-------------------------------------------------------------------------------+
 
 .. tip::
     * When applying negative clauses to any fields (e.g. ``habsecond NOT LIKE '%827%'``) remember to include an IS NULL clause (e.g. ``(habsecond NOT LIKE '%827%' OR habsecond IS NULL)``). Otherwise only features with non-NULL values will be selected by the rule.
@@ -1222,20 +1253,20 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 	\newpage
 
-**Using Reassign Features:**
+Reassigning Features
+--------------------
 
-1. Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon
-
-	If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear and the reassign operation cannot continue.
+1. Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon. If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear, as shown in the figure :ref:`figFRFW`, and the reassign operation will be cancelled.
 
 .. _figFRFW:
 
 .. figure:: figures/ReassignFeaturesWarning.png
 	:align: center
+	:scale: 85
 
 	Reassign Features Warning
 
-2. In the Reassign Features dialog:
+2. In the Reassign Features window as shown in the figure :ref:`figFRF`
 
 .. _figFRF:
 
@@ -1244,35 +1275,34 @@ Before using the Reassign Features operation, you must configure one or more rea
 
 	Reassign Features Window
 
+	* The **Source Layer** shows the currently active HLU layer
+	* Counts for **Total features** and **Total in rules** will appear.
 
-* The **Source Layer** shows the currently active HLU layer
-* Each configured rule is shown with:
+	.. note::
+		If the total in rules does not match the total features in the source layer, a warning message will be displayed indicating the difference. This means some features will not be moved by any rule.
 
-	* Rule name and WHERE clause
-	* Feature count - number of features in the source layer matching this rule
-	* Target layer - drop-down to select which layer matched features should be moved to
+	* Each configured rule is shown with:
 
-* Choose ``<Skip>`` for any rule you don't want to apply in this operation
+		* Rule name and WHERE clause
+		* Feature count - number of features in the source layer matching this rule
+		* Target layer - drop-down to select which layer matched features should be moved to
+
+	* Choose ``<Skip>`` for any rule you don't want to apply in this operation
 
 3. For each rule:
 
-* Review the feature count
-* Select the appropriate target layer from the drop-down
-* Or select ``<Skip>`` to not apply this rule
+	* Review the feature count
+	* Select the appropriate target layer from the drop-down
+	* Or select ``<Skip>`` to not apply this rule
 
-4. Click :guilabel:`Ok` to start the reassign operation
-5. The operation will:
+4. Click :guilabel:`Ok` to start the reassign operation or :guilabel:`Cancel` to abort.
 
-* Apply each rule that is not set to <Skip> in order from top to bottom
-* Select features matching the rule's WHERE clause
-* Copy the selected features to the target layer
-* Delete the selected features from the active layer
+The operation will:
 
-6. Monitor the progress indicator during the operation
-7. Review the completion message showing:
-
-* How many features were reassigned and how many rules were applied
-* Any errors encountered
+	* Apply each rule that is not set to <Skip> in order from top to bottom
+	* Select features matching the rule's WHERE clause
+	* Copy the selected features to the target layer
+	* Delete the selected features from the active layer
 
 .. warning::
     * Ensure your WHERE clauses are correct before running reassign operations

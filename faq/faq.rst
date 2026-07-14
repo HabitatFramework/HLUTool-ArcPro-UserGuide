@@ -32,11 +32,11 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 	There are two approaches depending on whether you wish to work with or without an OS MasterMap framework:
 
-	**Without an OS MasterMap framework (direct digitising)**
+	**A. Without an OS MasterMap framework (direct digitising)**
 
 	Features can be created directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function. Each registered feature is assigned a new INCID and fragment identifier and can then be attributed in the dockpane. This approach is simpler to set up but does not bring the positional accuracy or topology benefits of an OS MasterMap framework. See :ref:`function_insert_feature` for details.
 
-	**With an OS MasterMap framework**
+	**B. With an OS MasterMap framework**
 
 	The conversion of one or more existing habitat layers into a state that can be used with the HLU Tool via an OS MasterMap framework is not simple, but the process brings all the benefits of having an OS MasterMap framework, and once completed the benefits of using the HLU Tool. There are up to 3 steps required to convert existing habitat layer(s) so that it can be used by the HLU Tool:
 
@@ -44,7 +44,7 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 		2. Assign the OS MasterMap framework the required attributes to format them to match the required data standards.
 		3. Load the attribute data into the target relational database and save the spatial and minimum attribute data in one or more GIS layers in the required format.
 
-	It is recommended that the conversion is performed by someone familiar with the OS MasterMap framework, expert in the configuration of the HLU Tool, experienced in advanced GIS geospatial processing, and ideally expert in SQL Server and developing data conversion routines. Enquiries can be made via the ALERC forum at `forum.lrcs.org.uk/viewforum.php?id=24 <http://forum.lrcs.org.uk/viewforum.php?id=24>`_.
+	It is recommended that the conversion is performed by someone familiar with the OS MasterMap framework, expert in the configuration of the HLU Tool, experienced in advanced GIS geospatial processing, and ideally expert in SQL Server and developing data conversion routines. Enquiries can be made via the Knowlege Hub Forum **HLU Tool & Habitat Framework** discussion at `khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
 
 **Can I hide habitat types that don't occur in my region from the drop-down lists?**
 
@@ -60,7 +60,7 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 **How do I report a new bug or propose a change in the tool?**
 
-	Please check the existing known issues and change requests on GitHub at `github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_ before reporting/proposing new issues or changes. New issues or proposed changes can be posted on the Knowledge Hub forum at `khub.net/group/association-of-local-environmental-records-centres/group-forum <https://khub.net/group/association-of-local-environmental-records-centres/group-forum>`_
+	Please check the existing known issues and change requests on GitHub at `github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_ before reporting/proposing new issues or changes. New issues or proposed changes can be posted on the Knowledge Hub forum **HLU Tool & Habitat Framework** discussion at `khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
 
 .. raw:: latex
 
@@ -102,8 +102,8 @@ It is essential that the following guidelines are followed to ensure that the to
 
 	* :strong:`DO` use a file geodatabase to store the HLU GIS layers rather than shapefiles.
 	* :strong:`DO` ensure the HLU layer is in an editable state in ArcGIS Pro before attempting to apply any updates, splits or merges.
-	* :strong:`DO` use the **Insert Feature** function to register any newly drawn features against the database before attempting to attribute them (see :ref:`function_insert_feature`).
-	* :strong:`DO` complete a physical split operation in the database immediately after performing it in the map, before commencing any other operations.
+	* :strong:`DO` use the **Insert Feature** function to register any newly created features against the database before attempting to attribute them (see :ref:`function_insert_feature`).
+	* :strong:`DO` complete a physical split operation using the tool immediately after performing it in the map, before commencing any other operations.
 
 **DO NOT's:**
 

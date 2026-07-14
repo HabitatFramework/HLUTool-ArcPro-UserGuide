@@ -90,7 +90,7 @@ Some primary and secondary Habitat codes are equivalent to, or more distinct tha
 However, if priority habitat associated codes are changed or removed in the :ref:`habitats_tab` the tool does **not** automatically remove existing priority habitats from the 'Priority Habitats' section of the :ref:`details_tab`. Instead they are moved to the 'Potential Priority Habitats' section and the :ref:`determination_quality` is set to 'Previously present, but may no longer exist'.
 
 .. note::
-	Existing priority habitats that have been automatically moved to the 'Potential Priority Habitats' section but are no longer required must be deleted by the user (see :ref:`details_tab`.)
+	Existing priority habitats that have been automatically moved to the 'Potential Priority Habitats' section, but are no longer required, must be deleted by the user (see :ref:`details_tab`).
 
 .. [4] Priority habitats are habitats identified as habitats of principle importance for the conservation of biodiversity in England according to Section 41 of the National Environment and Rural Communities (NERC) Act. There are 56 habitats of principle importance (previously called UKBAP priority habitats) included on the S41 list.
 
@@ -106,6 +106,10 @@ Potential Priority Habitats
 If a habitat area is close to, but does not currently meet, the definition of a priority habitat (but may do so with appropriate management or following habitat restoration work) then the appropriate priority habitat can be added to the 'Potential Priority Habitats' section of the :ref:`priority_tab` with the :ref:`determination_quality` set to 'Not present but close to definition'.
 
 If a priority habitat was known to have been present but it may no longer exist then it can be added to the 'Potential Priority Habitats' section of the :ref:`priority_tab` with the :ref:`determination_quality` set to 'Previously present, but may no longer exist'.
+
+.. raw:: latex
+
+	\newpage
 
 .. index::
 	single: Concepts; Determination Quality
@@ -177,6 +181,10 @@ Every priority habitat and potential priority habitat must be assigned an interp
 
 .. [6] An interpretation quality can now also be assigned to the INCID as a whole to assign a quality to the relationship between the primary and secondary codes and the survey type and age of the original habitat source(s).
 
+.. raw:: latex
+
+	\newpage
+
 .. _split:
 
 Splitting Features
@@ -227,6 +235,10 @@ For example, a woodland may appear as a single feature, but compartments within 
 
 .. note::
 	If two or more fragments from the same INCID and with the same Fragment ID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and will inform the user that a physical split can be performed.
+
+.. raw:: latex
+
+	\newpage
 
 .. _merge:
 
@@ -295,8 +307,8 @@ Attribute updates can also be applied in bulk to multiple INCID records at the s
 
 .. _insert_feature:
 
-Feature Insert
-==============
+Feature Inserts
+===============
 
 New features can be added to the active HLU layer at any time using the standard ArcGIS Pro editing tools. Newly drawn features do not initially have an INCID or fragment identifier assigned to them — they must be **registered** against the database before they can be attributed.
 
@@ -308,6 +320,68 @@ TOIDs are **optional**. Features do not need to originate from or be aligned wit
 The HLU layer supports a set of optional attribute columns (``habprimary``, ``habsecond``, ``determqty`` and ``interpqty``) that can be pre-populated before registering new features. When present and valid, the tool reads these columns and uses their values to initialise the corresponding database attributes for the new INCID record, reducing the amount of manual data entry required afterwards. Any values that fail validation are ignored and the GIS columns are updated on success to remove them. Further attributes — such as priority habitats, boundary and digitisation details, site reference, condition, comments and sources — will typically need to be completed in the dockpane after the insert.
 
 See :ref:`function_insert_feature` for full details and step-by-step instructions.
+
+.. index::
+	single: Concepts; Bulk Unload
+	single: Bulk Unload, Concept
+
+.. _bulk_unload:
+
+Bulk Unload
+===========
+
+Bulk unload is used to remove selected registered features from the active HLU layer and clean up their associated database records. This operation is useful for:
+
+* Removing features that were incorrectly loaded
+* Removing features that will be replaced during a bulk load operation
+* Cleaning up test or temporary data
+
+The bulk unload operation permanently removes features from one or more HLU layers and deletes their associated INCID records from the database (if not referenced by any remaining features). This ensures that both the spatial and attribute data remain synchronized.
+
+.. note::
+	Bulk unload rules
+
+		* Only features that are currently selected in one or more HLU layers can be unloaded.
+		* Features are only removed from the layers selected by the user.
+		* Database records (INCIDs) are only deleted if all associated features are removed from all layers.
+		* If an INCID has features in multiple layers, unloading features from one layer will not delete the INCID record unless all features from all layers are unloaded.
+		* The operation cannot be undone — ensure you have selected the correct features before proceeding.
+
+See :ref:`bulk_unload_function` for full details and step-by-step instructions.
+
+.. index::
+	single: Concepts; Bulk Load
+	single: Bulk Load, Concept
+
+.. _bulk_load:
+
+Bulk Load
+=========
+
+Bulk load is used to register multiple new features against new INCIDs in a single operation using OSMM (Ordnance Survey MasterMap) attributes matched against the OSMM cross-reference table. This operation provides a fast and efficient way to load large numbers of features into the habitat framework.
+
+The bulk load operation automatically:
+
+* Creates a staging layer to hold the newly loaded features
+* Copies selected features from an OSMM source layer to the staging layer
+* Matches the OSMM attributes (Make, Descriptive Group, Descriptive Term, Theme, Feature Code) against the cross-reference table to determine appropriate habitat codes
+* Creates new INCID records in the database for each feature with the matched habitat codes
+* Assigns unique fragment identifiers to each feature
+* Updates the staging layer features with the new INCID, fragment identifiers and habitat codes
+
+Each feature in the source layer is assigned to its own new INCID, allowing the features to be independently attributed and maintained. Features can be subsequently reassigned to other layers using the Reassign Features function, or logically merged if they should share the same INCID.
+
+.. note::
+	Bulk load rules
+
+		* Each feature in the input layer is assigned to its own new INCID.
+		* The source layer must contain OSMM features with the required attributes (Make, Descriptive Group, Descriptive Term, Theme, Feature Code).
+		* TOID is optional but recommended for tracking features back to their OS MasterMap origin.
+		* Features that cannot be matched against the OSMM cross-reference table will still be loaded but their habitat attributes will be null and must be assigned manually.
+		* The staging layer is a temporary working layer — features should be moved to permanent layers using the Reassign Features function.
+		* The OSMM cross-reference table (``lut_osmm_habitat_xref``) must be populated in the database with appropriate habitat mappings.
+
+See :ref:`bulk_load_function` for full details and step-by-step instructions.
 
 .. index::
 	single: Concepts; OSMM Updates
