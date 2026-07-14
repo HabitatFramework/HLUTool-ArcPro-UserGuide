@@ -157,10 +157,10 @@ Every priority habitat and potential priority habitat must be assigned an interp
 
 .. tabularcolumns:: |L|C|C|C|
 
-.. table:: Interpretation Quality matrix for different survey types and ages
+.. table:: Interpretation Quality matrix for survey types and ages
 
 	+------------------------------------------+-----------------------------------------+
-	|               Survey Type                | Age of Survey                           |
+	| Survey Type                              | Age of Survey                           |
 	|                                          +---------------+------------+------------+
 	|                                          | < 5 years     | 5-10 years | > 10 years |
 	+==========================================+===============+============+============+
@@ -211,6 +211,8 @@ For example, a group of adjacent permanent pasture features may be 'logically' g
 		* Only if one or more features from a single INCID are present in the current filter will the tool allow a logical split to be performed.
 		* The selected features must all belong to the same INCID.
 
+See :ref:`function_logical_split` for full details and step-by-step instructions.
+
 .. index::
 	single: Concepts; Physical Split
 	single: Split Features; Physical Split, Concept
@@ -236,9 +238,7 @@ For example, a woodland may appear as a single feature, but compartments within 
 .. note::
 	If two or more fragments from the same INCID and with the same Fragment ID are selected in the GIS and **Get Map Selection** is clicked then the tool will recognise that the fragments must have been split by the user in the GIS layer and will inform the user that a physical split can be performed.
 
-.. raw:: latex
-
-	\newpage
+See :ref:`function_logical_split` for full details and step-by-step instructions.
 
 .. _merge:
 
@@ -262,6 +262,8 @@ Logical merge combines all the features selected in the GIS into a single INCID 
 	single: Concepts; Physical Merge
 	single: Merge Features; Physical Merge, Concept
 
+See :ref:`function_logical_merge` for full details and step-by-step instructions.
+
 .. _physical_merge:
 
 Physical Merge
@@ -276,6 +278,8 @@ Physical merge combines fragments of a single feature, that share the same INCID
 		* If fragments for several groups need to be merged, the operation must be repeated for each group.
 		* Physical merge is not available for **point** layers.
 
+See :ref:`function_physical_merge` for full details and step-by-step instructions.
+
 .. index::
 	single: Concepts; Attribute Updates
 	single: Updates; Attribute Updates, Concept
@@ -286,6 +290,8 @@ Attribute Updates
 =================
 
 Attribute updates are the main mechanism for updating existing INCID details. Typically attribute changes can only be applied to one INCID at a time, and any changes attributes applied to the INCID are also held in the GIS layer (e.g. primary and secondary codes) then they are also applied to any features for the current INCID selected in the active GIS layer (or to all features for the current INCID if no features are selected).
+
+See :ref:`function_attribute_update` for full details and step-by-step instructions.
 
 .. index::
 	single: Concepts; Bulk Updates
@@ -300,6 +306,8 @@ Attribute updates can also be applied in bulk to multiple INCID records at the s
 
 .. note::
 	This function is only available to users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+See :ref:`function_bulk_updates` for full details and step-by-step instructions.
 
 .. index::
 	single: Concepts; Feature Insert
@@ -396,3 +404,5 @@ If the habitat framework has been externally processed against a more recent OS 
 
 .. note::
 	This function is only available to configured users who have been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
+
+See :ref:`review_osmm_updates` and :ref:`bulk_osmm_update` for full details and step-by-step instructions.

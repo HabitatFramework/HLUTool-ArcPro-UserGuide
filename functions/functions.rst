@@ -382,7 +382,7 @@ The following columns are recognised:
 .. tabularcolumns:: |L|L|L|
 
 .. table:: GIS attribute columns read during Feature Insert
-	:widths: 20, 30, 50
+	:widths: 17, 28, 55
 
 	+-------------+---------------------------------+--------------------------------------------------------------+
 	| GIS Column  | Attribute                       | Notes                                                        |
@@ -662,6 +662,9 @@ When **Auto Select** is active:
 * Moving to a different INCID using the navigation buttons, or entering a record number directly in the INCID Status section, will automatically select all features associated with that INCID in the active HLU layer.
 * The button appears highlighted to indicate that auto-selection is enabled.
 
+.. note::
+	Auto Select only works when browsing records that were **not** filtered using **Get Map Selection**. If you first select features on the map and then click **Get Map Selection**, Auto Select will be disabled while you browse those records since the features are already selected. Auto Select will resume working once you apply a different filter or clear the current filter.
+
 When **Auto Select** is inactive:
 
 * Changing the current INCID in the dockpane does not change the map selection.
@@ -678,7 +681,7 @@ When **Auto Select** is inactive:
 	single: Bulk Updates; Apply
 	single: Updates; Bulk Updates
 
-.. _bulk_updates:
+.. _function_bulk_updates:
 
 Bulk Updates
 ============
@@ -743,6 +746,10 @@ Review OSMM Updates
 
 If the habitat framework has been externally processed against a more recent OS MasterMap (OSMM) update there may be proposed OSMM updates to review and apply. Proposed updates can either be skipped (so that they can be reviewed again later), accepted (when they become pending updates to be applied later) or rejected (so that they cannot be applied later). They can be reviewed one INCID at a time or all remaining INCIDs in the active filter can be rejected or accepted en-mass.
 
+To filter proposed OSMM Updates:
+
+* Click |osmmreview| :guilabel:`OSMM Review` in the :ref:`mode_group` of the HLU Tool ribbon to enter Review OSMM Update mode. The OSMM Updates Filter window will appear as shown in figure :ref:`figFUIOUF`.
+
 .. _figFUIOUF:
 
 .. figure:: figures/UserInterfaceOSMMUpdatesFilter.png
@@ -750,22 +757,6 @@ If the habitat framework has been externally processed against a more recent OS 
 	:scale: 85
 
 	Review OSMM Updates Filter Window
-
-.. raw:: latex
-
-	\newpage
-
-To filter proposed OSMM Updates:
-
-* Click |osmmreview| :guilabel:`OSMM Review` in the :ref:`mode_group` of the HLU Tool ribbon to enter Review OSMM Update mode. The OSMM Updates Filter window will appear as shown in figure :ref:`figFUIOUF`.
-
-.. _figFUIOU:
-
-.. figure:: figures/UserInterfaceReviewOSMMUpdates.png
-	:align: center
-	:scale: 70
-
-	Review OSMM Updates Window
 
 * Select a row in the table or manually select the required values for any or all of the Process, Change, Spatial and Status fields.
 * Click :guilabel:`Ok` to apply the selected filter to the INCID records in the dockpane.
@@ -777,9 +768,18 @@ To filter proposed OSMM Updates:
 
 	\newpage
 
+Once a filter has been applied the main interface appears as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
+
+.. _figFUIOU:
+
+.. figure:: figures/UserInterfaceReviewOSMMUpdates.png
+	:align: center
+	:scale: 70
+
+	Review OSMM Updates Window
+
 To apply proposed OSMM Updates:
 
-* Once a filter has been applied the main interface appears as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
 * Click :guilabel:`Skip` to skip the proposed update for the current INCID. It can then be reviewed again at a later time.
 * Click :guilabel:`Reject` to reject the proposed update for the current INCID. It will no longer be available for reviewing or applying.
 * Click :guilabel:`Accept` to accept the proposed update for the current INCID. The update will now be 'Pending' and must be applied by bulk applying OSMM Updates (see :ref:`bulk_osmm_update` for details).
@@ -850,9 +850,7 @@ To filter pending OSMM Updates:
 
 	\newpage
 
-To bulk apply OSMM updates:
-
-* Once a filter has been applied an empty form is displayed as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update.
+Once a filter has been applied an empty form is displayed as shown in the figure :ref:`figFUIBOU` and the 'Bulk Update' section displays the number of INCIDs and fragments that will be affected by the update. The Habitats tab will be disabled as changes to the habitat attributes are determined by the pending OSMM update for each INCID.
 
 .. _figFUIBOU:
 
@@ -862,11 +860,11 @@ To bulk apply OSMM updates:
 
 	Bulk OSMM Update Window
 
-* The Habitats tab will be disabled as changes to the habitat attributes are determined by the pending OSMM update for each INCID.
-
 .. raw:: latex
 
 	\newpage
+
+To bulk apply OSMM updates:
 
 * Enter any required update details in the Details and Sources tabs, then click :guilabel:`Apply`. The Bulk Update confirmation window will appear as shown in the figure :ref:`figFUIBOUC`.
 
@@ -1091,10 +1089,6 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 8. Click :guilabel:`Ok` to start the bulk load operation.
 
-.. raw:: latex
-
-	\newpage
-
 9. When prompted, choose or confirm the following as shown in figures :ref:`figFBLSLG` and :ref:`figFBLSLS`
 
 	* **Staging Layer Directory** - Where the staging layer will be created
@@ -1112,7 +1106,7 @@ The Bulk Load operation registers new features against new INCIDs using OSMM (Or
 
 .. figure:: figures/BulkLoadStagingLayerShapefileDialog.png
 	:align: center
-	:scale: 85
+	:scale: 75
 
 	Bulk Load - Staging Layer - Shapefile Window
 
@@ -1249,14 +1243,14 @@ Before using the Reassign Features operation, you must configure one or more rea
 .. seealso::
 	For details on configuring reassign rules see :ref:`options_reassign`.
 
-.. raw:: latex
-
-	\newpage
-
 Reassigning Features
 --------------------
 
-1. Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon. If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear, as shown in the figure :ref:`figFRFW`, and the reassign operation will be cancelled.
+**Steps:**
+
+1. Select the HLU layer you want to move features from as the active layer.
+
+2. Click the |reassign| :guilabel:`Reassign Features` button in the HLU Tool ribbon. If there are no other HLU layers in the active map that match the geometry of the active layer a warning will appear, as shown in the figure :ref:`figFRFW`, and the reassign operation will be cancelled.
 
 .. _figFRFW:
 
@@ -1266,7 +1260,11 @@ Reassigning Features
 
 	Reassign Features Warning
 
-2. In the Reassign Features window as shown in the figure :ref:`figFRF`
+.. raw:: latex
+
+	\newpage
+
+3. Tthe Reassign Features window will appear as shown in the figure :ref:`figFRF`.
 
 .. _figFRF:
 
@@ -1275,21 +1273,19 @@ Reassigning Features
 
 	Reassign Features Window
 
-	* The **Source Layer** shows the currently active HLU layer
-	* Counts for **Total features** and **Total in rules** will appear.
+4. Confirm the **Source Layer** shows the layer you want to move features from (}the currently active HLU layer).
+5. Check the counts for **Total features** and **Total in rules**.
 
-	.. note::
-		If the total in rules does not match the total features in the source layer, a warning message will be displayed indicating the difference. This means some features will not be moved by any rule.
+.. note::
+	If the total in rules does not match the total features in the source layer, a warning message will be displayed indicating the difference. This means some features will not be moved by any rule.
 
-	* Each configured rule is shown with:
+Each configured rule is shown with:
 
-		* Rule name and WHERE clause
-		* Feature count - number of features in the source layer matching this rule
-		* Target layer - drop-down to select which layer matched features should be moved to
+	* Rule name and WHERE clause
+	* Feature count - number of features in the source layer matching this rule
+	* Target layer - drop-down to select which layer matched features should be moved to
 
-	* Choose ``<Skip>`` for any rule you don't want to apply in this operation
-
-3. For each rule:
+5. For each rule:
 
 	* Review the feature count
 	* Select the appropriate target layer from the drop-down

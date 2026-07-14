@@ -54,15 +54,17 @@ Records can be viewed or updated through the HLU Tool dockpane. Missing or inval
 
 The following sections summarise the different sections of the dockpane.
 
+Header
+------
+
+The dockpane header displays **[READONLY]** when the tool is in read-only mode, as shown in the figure :ref:`figUITB`. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
+
 .. _figUITB:
 
 .. figure:: figures/UserInterfaceTitleBar.png
 	:align: center
 
 	Main Window - Dockpane Title Bar
-
-.. note::
-	The dockpane header displays **[READONLY]** when the tool is in read-only mode, as shown in the figure :ref:`figUITB`. See 'Why does the tool show [READ ONLY]?' in :doc:`FAQ <../faq/faq>` for more information.
 
 .. _incid_section:
 
@@ -112,9 +114,6 @@ OSMM Updates Section
 
 The 'OSMM Updates' section displays summary information of any proposed or pending OSMM updates for each INCID in the database, including the update process flag, change flag, spatial flag, status and proposed new primary and secondary codes as shown in the figure :ref:`figUIOUS`.
 
-.. note::
-	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
-
 .. _figUIOUS:
 
 .. figure:: figures/UserInterfaceOSMMUpdateSection.png
@@ -122,7 +121,6 @@ The 'OSMM Updates' section displays summary information of any proposed or pendi
 	:scale: 80
 
 	Main Window - OSMM Updates Section
-
 
 For a description of the fields see :ref:`review_osmm_section`.
 
@@ -133,8 +131,11 @@ When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guila
 
 	Clicking :guilabel:`Adopt` immediately applies the primary and secondary habitat codes from the pending OSMM update to the current INCID without needing to enter OSMM Bulk Update mode.
 
-.. note::
+.. warning::
 	The user still needs to save the changes to the current INCID before the update is applied. The OSMM status is only changed from 'Pending' to 'Applied' after a successful save.
+
+.. tip::
+	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
 
 .. raw:: latex
 
@@ -414,7 +415,7 @@ Interpretation
 Interpretation Comments
 	A free text field which allows the user to provide additional reasoning behind the habitat interpretation.
 
-	Click |zoomtable| to open the Priority Habitats window.
+To edit the priority habitats click |zoomtable| to open the Priority Habitats window.
 
 Potential Priority Habitats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -429,7 +430,7 @@ Interpretation
 Interpretation Comments
 	A free text field which allows the user to provide additional reasoning behind the habitat interpretation.
 
-	Click |zoomtable| to open the Potential Priority Habitats window.
+To edit the potential priority habitats click |zoomtable| to open the Potential Priority Habitats window.
 
 .. note::
 	To delete a potential priority habitat click on the grey box to the left of the potential priority habitat to select the row, then press the keyboard :kbd:`Delete` key to remove it.
@@ -570,13 +571,11 @@ Click on the :guilabel:`History` tab to display the History tab as shown in the 
 
 	Main Window - History Tab
 
-The History tab displays a list of previous modifications made to the current INCID.
+The History tab displays a list of previous modifications made to the current INCID. Each entry details what modifications were made, when and by whom. Entries are shown in **descending** date and time order with the most recent changes at the top. The maximum number of entries to appear in the history tab can be configured in the Options (see :ref:`options_history` for more details).
 
 .. raw:: latex
 
 	\newpage
-
-Each entry details what modifications were made, when and by whom. Entries are shown in **descending** date and time order with the most recent changes at the top. The maximum number of entries to appear in the history tab can be configured in the Options (see :ref:`options_history` for more details).
 
 .. _incid_status_section:
 
@@ -621,13 +620,7 @@ This section also contains the :guilabel:`Apply` button which is used to apply a
 Warning and Error Messages
 --------------------------
 
-Any fields that either have a warning associated with them or are in error will be highlighted
-
-Warnings
-	Warnings will be highlighted with an orange border and exclamation mark in a triangle (as seen in the figure :ref:`figUIWEM`). Hovering over a field with a warning will display a *tooltip* message indicating the nature of the warning.
-
-Errors
-	Errors will be highlighted with a red border and exclamation mark in a circle (as seen in the figure :ref:`figUIWEM`). The appropriate tab header for any invalid fields will also be highlighted to help users locate any errors in fields currently hidden on an inactive tab. Hovering over a field with an error will display a *tooltip* message indicating the nature of the error.
+Any fields that either have a warning associated with them or are in error will be highlighted as shown in the figure :ref:`figUIWEM`.
 
 .. _figUIWEM:
 
@@ -636,6 +629,16 @@ Errors
 	:scale: 80
 
 	Main Window - Warning and Error Messages
+
+.. raw:: latex
+
+	\newpage
+
+Warnings
+	Warnings will be highlighted with an orange border and exclamation mark in a triangle (as seen in the figure :ref:`figUIWEM`). Hovering over a field with a warning will display a *tooltip* message indicating the nature of the warning.
+
+Errors
+	Errors will be highlighted with a red border and exclamation mark in a circle (as seen in the figure :ref:`figUIWEM`). The appropriate tab header for any invalid fields will also be highlighted to help users locate any errors in fields currently hidden on an inactive tab. Hovering over a field with an error will display a *tooltip* message indicating the nature of the error.
 
 .. note::
 	Whilst **any** fields are in error the :guilabel:`Apply` button will not be enabled.
@@ -707,11 +710,11 @@ The main window will transform into the bulk update window, as shown in the figu
 
 	Bulk Update Window
 
+The bulk update window appears the same as the main window except for the Bulk Update section and the INCID Status section. The IHS and History tabs will also be disabled.
+
 .. raw:: latex
 
 	\newpage
-
-The bulk update window appears the same as the main window except for the Bulk Update section and the INCID Status section. The IHS and History tabs will also be disabled.
 
 .. note::
 	Bulk update mode can only be started when:
@@ -732,7 +735,6 @@ The 'INCID' section displays summary information for all of the INCIDs and GIS f
 
 	Bulk Update Window - INCID Section
 
-
 Database INCIDs
 	Displays the number of INCIDs in the database for the active filter that the bulk update will be applied to.
 
@@ -748,6 +750,10 @@ Map Fragments
 .. note::
 	Any discrepancies between the **Database** and **Map** counts will be highlighted with warning messages. This indicates that not all INCIDs or fragments in the database are held within the active GIS layer.
 
+.. raw:: latex
+
+	\newpage
+
 INCID Status Section
 --------------------
 
@@ -762,10 +768,6 @@ The Bulk Update 'INCID Status' section shows the total number of INCIDs and frag
 	Bulk Update Window - INCID Status Section
 
 For example, figure :ref:`figUIBUS` indicates that the active filter currently contains 47 INCIDs and 58 fragments.
-
-.. raw:: latex
-
-	\newpage
 
 .. index::
 	single: Windows; Bulk Updates Confirmation Window
@@ -843,11 +845,11 @@ The main window will transform into the OSMM review updates window, as shown in 
 
 	Review OSMM Updates Window
 
+The window appears the same as the main window except for the OSMM Updates section and the INCID Status section.
+
 .. raw:: latex
 
 	\newpage
-
-The window appears the same as the main window except for the OSMM Updates section and the INCID Status section.
 
 .. note::
 	OSMM review update mode can only be started when:
@@ -923,10 +925,6 @@ Adopt
 
 	.. note::
 		The :guilabel:`Adopt` button is only available when the active HLU layer is editable in ArcGIS Pro, the user has bulk update permissions, and the current INCID has a pending OSMM update.
-
-.. raw:: latex
-
-	\newpage
 
 INCID Status Section
 --------------------
@@ -1060,7 +1058,7 @@ To open the advanced filter window:
 Bulk OSMM Update Window
 =======================
 
-The main window will transform into the bulk OSMM update window when the bulk OSMM update mode is started. The window appears the same as the main window except for the Bulk Update section and the INCID Status section as shown in the figure :ref:`figUIMWBOU`. The Habitats tab and History tab will also be disabled.
+The main window will transform into the bulk OSMM update window when the bulk OSMM update mode is started as shown in the figure :ref:`figUIMWBOU`.
 
 .. _figUIMWBOU:
 
@@ -1070,15 +1068,17 @@ The main window will transform into the bulk OSMM update window when the bulk OS
 
 	Bulk OSMM Update Window
 
+The window appears the same as the main window except for the Bulk Update section and the INCID Status section, and the Habitats tab and History tab will also be disabled.
+
+.. raw:: latex
+
+	\newpage
+
 .. note::
 	Bulk OSMM update mode can only be started when:
 
 		* The HLU layer is editable in ArcGIS Pro.
 		* The user has been given bulk update permissions. For details on configuring users see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.
-
-.. raw:: latex
-
-	\newpage
 
 INCID Section
 -------------
@@ -1249,6 +1249,7 @@ Click |export| **Export** in the :ref:`export_group` of the HLU Tool ribbon to o
 
 .. figure:: figures/ExportDialog.png
 	:align: center
+	:scale: 90
 
 	Export Window
 
@@ -1393,8 +1394,7 @@ The OSMM Attribute Preview window appears during the bulk load operation after t
 
 	OSMM Attribute Preview Window
 
-OSMM Attribute Matches
-	Displays a table showing the results of matching the source OSMM attributes against the ``lut_osmm_habitat_xref`` table. Each row represents a unique combination of OSMM attributes found in the source layer and shows:
+The window displays a table showing the results of matching the source OSMM attributes against the ``lut_osmm_habitat_xref`` table. Each row represents a unique combination of OSMM attributes found in the source layer and shows:
 
 Make
 	The OSMM Make attribute value from the source features.
@@ -1479,7 +1479,7 @@ Total features
 Total in rules
 	Displays the total number of features represented by all rules. When any rule is still counting features this will show "Counting…".
 
-	.. note::
+	.. warning::
 		If the total in rules does not match the total features in the source layer, a warning message will be displayed indicating the difference. This means some features will not be moved by any rule.
 
 Reassign Rules
@@ -1497,11 +1497,11 @@ Features
 Target Layer
 	A drop-down list allowing the user to select which HLU layer the matched features should be moved to. Select **<Skip>** to not apply this rule in the current operation.
 
-.. note::
-	Rules are applied sequentially from top to bottom. Once a feature is moved by a rule, it is no longer available for subsequent rules.
-
 OK
 	Click :guilabel:`OK` to start the reassign operation. All rules not set to <Skip> will be applied in order.
 
 Cancel
 	Click :guilabel:`Cancel` to cancel the reassign operation and close the window.
+
+.. note::
+	Rules are applied sequentially from top to bottom. Once a feature is moved by a rule, it is no longer available for subsequent rules.

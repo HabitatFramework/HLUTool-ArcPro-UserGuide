@@ -14,7 +14,11 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 **How do I get a copy of the tool?**
 
-	The source code can be downloaded from GitHub at `github.com/HabitatFramework/HLUTool-ArcPro <https://github.com/HabitatFramework/HLUTool-ArcPro>`_ and the latest add-in installer for ArcGIS Pro can be downloaded from GitHub at `github.com/HabitatFramework/HLUTool-ArcPro/releases <https://github.com/HabitatFramework/HLUTool-ArcPro/releases>`_.
+	The source code can be downloaded from GitHub at:
+	`github.com/HabitatFramework/HLUTool-ArcPro <https://github.com/HabitatFramework/HLUTool-ArcPro>`_
+
+	The latest add-in installer for ArcGIS Pro can be downloaded from GitHub at:
+	`github.com/HabitatFramework/HLUTool-ArcPro/releases <https://github.com/HabitatFramework/HLUTool-ArcPro/releases>`_.
 
 **Do I have to use UKHab with the tool?**
 
@@ -22,33 +26,37 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 **Why does the tool title bar show [READONLY]?**
 
-	This shows that the data cannot currently be edited. This is either because your userid has not been added to the database or has been added incorrectly (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details), or an edit session has not been started in ArcGIS Pro, or the active HLU layer is not editable. To enable editing, go to the ArcGIS Pro **Edit** tab and click :guilabel:`Edit` (if editing is not configured to be automatic). Once all conditions have been met the [READONLY] indicator in the dockpane header should disappear.
+	This shows that the data cannot currently be edited. This is either because your userid has not been added to the database or has been added incorrectly (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details), or an edit session has not been started in ArcGIS Pro, or the active HLU layer is not editable.
+
+	To enable editing, go to the ArcGIS Pro **Edit** tab and click :guilabel:`Edit` (if editing is not configured to be automatic). Once all conditions have been met the [READONLY] indicator in the dockpane header should disappear.
 
 **Can I use data that isn't snapped to OS MasterMap?**
 
-	Yes, TOIDs are now **optional** - features do not need to originate from or be aligned with OS MasterMap. New features can be drawn directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function (see :ref:`function_insert_feature`). Fragment identifiers are still assigned to all features, but they relate to the INCID rather than a TOID. Using OS MasterMap still brings benefits such as improved positional accuracy and a consistent national framework, but it is no longer a requirement. See :ref:`habitat_framework` and :ref:`insert_feature` for more details.
+	Yes, TOIDs are now **optional** - features do not need to originate from or be aligned with OS MasterMap. New features can be drawn directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function (see :ref:`function_insert_feature`). Fragment identifiers are still assigned to all features, but they relate to the INCID rather than a TOID.
+
+	Using OS MasterMap still brings benefits such as improved positional accuracy and a consistent national framework, but it is no longer a requirement. See :ref:`habitat_framework` and :ref:`insert_feature` for more details.
 
 **How do I convert my existing data into the required format?**
 
 	There are two approaches depending on whether you wish to work with or without an OS MasterMap framework:
 
-	**A. Without an OS MasterMap framework (direct digitising)**
+		**A. Without an OS MasterMap framework (direct digitising)**
 
-	Features can be created directly in the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function. Each registered feature is assigned a new INCID and fragment identifier and can then be attributed in the dockpane. This approach is simpler to set up but does not bring the positional accuracy or topology benefits of an OS MasterMap framework. See :ref:`function_insert_feature` for details.
+		Features can be copied or created directly into the active HLU layer using the standard ArcGIS Pro editing tools and then **registered** against the database using the **Insert Feature** function. Each registered feature is assigned a new INCID and fragment identifier and can then be attributed in the dockpane. This approach is simpler to set up but does not bring the positional accuracy or topology benefits of an OS MasterMap framework. See :ref:`function_insert_feature` for details.
 
-	**B. With an OS MasterMap framework**
+		**B. With an OS MasterMap framework**
 
-	The conversion of one or more existing habitat layers into a state that can be used with the HLU Tool via an OS MasterMap framework is not simple, but the process brings all the benefits of having an OS MasterMap framework, and once completed the benefits of using the HLU Tool. There are up to 3 steps required to convert existing habitat layer(s) so that it can be used by the HLU Tool:
+		The conversion of one or more existing habitat layers into a state that can be used with the HLU Tool via an OS MasterMap framework is not simple, but the process brings all the benefits of having an OS MasterMap framework, and once completed the benefits of using the HLU Tool. There are up to 3 steps required to convert existing habitat layer(s) so that it can be used by the HLU Tool:
 
-		1. Create an OS MasterMap framework for your habitat data.
-		2. Assign the OS MasterMap framework the required attributes to format them to match the required data standards.
-		3. Load the attribute data into the target relational database and save the spatial and minimum attribute data in one or more GIS layers in the required format.
+			1. Create an OS MasterMap framework for your habitat data.
+			2. Assign the OS MasterMap framework the required attributes to format them to match the required data standards.
+			3. Load the attribute data into the target relational database and save the spatial and minimum attribute data in one or more GIS layers in the required format.
 
-	It is recommended that the conversion is performed by someone familiar with the OS MasterMap framework, expert in the configuration of the HLU Tool, experienced in advanced GIS geospatial processing, and ideally expert in SQL Server and developing data conversion routines. Enquiries can be made via the Knowlege Hub Forum **HLU Tool & Habitat Framework** discussion at `khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
+		It is recommended that the conversion is performed by someone familiar with the OS MasterMap framework, expert in the configuration of the HLU Tool, experienced in advanced GIS geospatial processing, and ideally expert in SQL Server and developing data conversion routines. Enquiries can be made via the Knowlege Hub Forum **HLU Tool & Habitat Framework** discussion at `khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
 
 **Can I hide habitat types that don't occur in my region from the drop-down lists?**
 
-	You can currently hide primary and secondary habitats from all of the habitat-related lists in the dockpane (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details).
+	You can hide primary and secondary habitats from all of the habitat-related lists in the dockpane by setting them as not ``local``. Many lists based on other lookup tables can similarly be shown or hidden using the ```local`` column (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details).
 
 **Can several people use the tool at the same time?**
 
@@ -60,11 +68,11 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 **How do I report a new bug or propose a change in the tool?**
 
-	Please check the existing known issues and change requests on GitHub at `github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_ before reporting/proposing new issues or changes. New issues or proposed changes can be posted on the Knowledge Hub forum **HLU Tool & Habitat Framework** discussion at `khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
+	Please check the existing known issues and change requests before reporting/proposing new issues or changes on GitHub at:
+	`github.com/HabitatFramework/HLUTool-ArcPro/issues <https://github.com/HabitatFramework/HLUTool-ArcPro/issues>`_ .
 
-.. raw:: latex
-
-	\newpage
+	New issues or proposed changes can be posted on the Knowledge Hub forum **HLU Tool & Habitat Framework** discussion at:
+	`khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
 
 .. index::
 	single: What Happened?

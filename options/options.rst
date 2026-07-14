@@ -17,6 +17,10 @@ The window is organised into two categories in a navigation sidebar:
 * **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults, reassign rules).
 * **User** — settings specific to the current user (interface, GIS, updates, bulk load, SQL, history, export).
 
+.. raw:: latex
+
+	\newpage
+
 .. |options| image:: ../icons/Options.png
 	:height: 16px
 	:width: 16px
@@ -27,12 +31,7 @@ The window is organised into two categories in a navigation sidebar:
 Application Options
 ===================
 
-.. note::
-	Application options are stored in a **HLUTool.xml** file in the same folder as the tool add-in **.esriAddinX** file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
-
-.. raw:: latex
-
-	\newpage
+Application options are stored in a **HLUTool.xml** file in the same folder as the tool add-in **.esriAddinX** file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
 
 .. _options_database:
 
@@ -53,10 +52,14 @@ The following options relate to how the HLU Tool interacts with the underlying d
 	Options Window - Database
 
 Timeout
-	Sets the amount of time the tool will wait (in seconds) for the database to respond. The default value is 15. This value should be increased if an error occurs such as 'The connection to the database timed out' or if the network and/or database connection is known to be slow.
+	Sets the amount of time the tool will wait (in seconds) for the database to respond. The default value is 60. This value should be increased if an error occurs such as 'The connection to the database timed out'.
 
 Incid Table Page Size
-	Sets how many rows are retrieved from the database and stored in memory. The default value is 100. Increasing this value can improve performance when browsing records, however this will increase the amount of RAM required by the application and significant increases in the page size value could cause the tool to stop responding.
+	Sets how many rows are retrieved from the database and stored in memory. The default value is 100. Increasing this value can improve performance when browsing records but will also increase the amount of RAM required by the application.
+
+.. raw:: latex
+
+	\newpage
 
 Reset Database Connection
 	Clears the saved database connection settings. You will be prompted to choose a new connection the next time the HLU Tool is loaded. Use this option if the database server has moved, the database name has changed, or the connection is no longer valid.
@@ -316,11 +319,7 @@ To reorder reassign rules:
 User Options
 ============
 
-User options are stored in a ``user.config`` file in the user's roaming folder, e.g. ``%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]`` where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
-
-.. raw:: latex
-
-	\newpage
+User options are stored in a **user.config** file in the user's roaming folder, e.g. **%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]** where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
 
 .. _options_interface:
 
@@ -403,12 +402,12 @@ Display Area Units
 Display Distance Units
 	Sets the units used to display the perimeter length of the current INCID in the dockpane and in history records (e.g. metres or kilometres).
 
+Warn Before Selecting Features
+	Sets the maximum number of features that may be selected in ArcGIS Pro before a warning is shown, as large selections may take some time. Set to zero to disable warnings.
+
 .. raw:: latex
 
 	\newpage
-
-Warn Before Selecting Features
-	Sets the maximum number of features that may be selected in ArcGIS Pro before a warning is shown, as large selections may take some time. Set to zero to disable warnings.
 
 Working File Geodatabase Directory
 	Sets the folder path for a working File Geodatabase used when performing large or complex GIS queries.
@@ -450,12 +449,12 @@ Default Habitat Class
 Default Secondary Group
 	Allows the user to choose which Secondary Group in the Habitats tab (see :ref:`habitats_tab` for more details) is automatically selected each time the HLU Tool is opened.
 
+Secondary Table Order
+	Allows the user to choose the order that any secondary habitats appear in the secondary table.
+
 .. raw:: latex
 
 	\newpage
-
-Secondary Table Order
-	Allows the user to choose the order that any secondary habitats appear in the secondary table.
 
 Notify After Completing Split/Merge
 	Allows users to specify if a pop-up message should be displayed following the completion of any of the split or merge operations.
@@ -523,10 +522,6 @@ The following options relate to the advanced query builder used to filter INCID 
 
 Get Values Count
 	Allows the user to select the maximum number of unique field values that will be retrieved each time the :guilabel:`Get Values` button is pressed when using the 'Advanced Query Builder' (see :ref:`advanced_query_builder_window` for details). The maximum number of rows that can be retrieved at any time cannot exceed 100,000. This number should be reduced if performance issues are experienced when the :guilabel:`Get Values` button is pressed or when the drop-down list is used on the 'Advanced Query Builder'.
-
-.. raw:: latex
-
-	\newpage
 
 Default Query Directory
 	Enables users to set a default folder path that will be used when saving or loading queries with the 'Advanced Query Builder' (see :ref:`advanced_query_builder_window` for details). A different path to the default can also be selected during the save and load process.
