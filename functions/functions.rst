@@ -556,10 +556,6 @@ To **load** a previously saved advanced query:
 * Select the required file and click :guilabel:`Open`.
 * The query will be loaded into the query window. It can now be verified and then executed.
 
-.. raw:: latex
-
-	\newpage
-
 .. index::
 	single: Filter; Filter by Incid
 
@@ -638,7 +634,7 @@ To select all features associated with every INCID in the active filter:
 * Click |selectallonmap| :guilabel:`Select All Filtered INCIDs`. All features associated with every INCID in the active filter will be selected in the active HLU layer.
 
 .. warning::
-	This operation may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message will appear before the selection is made, as shown in the figure :ref:`figFGSWD`, if the expected number of features to be selected exceeds the configured threshold.
+	This operation may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before the selection is made, as shown in the figure :ref:`figFGSWD`.
 
 .. _figFGSWD:
 
@@ -982,7 +978,7 @@ The Bulk Unload function removes selected registered features from the active HL
 
 	\newpage
 
-5. The Bulk Unload window will appear as shown in the figure :ref:`figFBUBR`.
+4. The Bulk Unload window will appear as shown in the figure :ref:`figFBUBR`.
 
 .. _figFBUSL:
 
@@ -994,14 +990,8 @@ The Bulk Unload function removes selected registered features from the active HL
 	.. note::
 		The active layer is pre-checked by default. Only layers with selected features can be checked
 
-6. Review the list of valid HLU layers and the number of features to be unloaded from each layer and check the boxes next to the layers from which you want to unload features.
-7. Click :guilabel:`Ok` to proceed with the unload, or :guilabel:`Cancel` to abort.
-8. Wait for the operation to complete - a progress indicator will be shown.
-9. Review the completion message showing:
-
-   * Number of features successfully unloaded
-   * Number of INCIDs cleaned up
-   * Any errors encountered
+5. Review the list of valid HLU layers and the number of features to be unloaded from each layer and check the boxes next to the layers from which you want to unload features.
+6. Click :guilabel:`Ok` to proceed with the unload, or :guilabel:`Cancel` to abort.
 
 The selected features will be removed from the GIS layer and their associated database records will be cleaned up.
 
@@ -1144,14 +1134,12 @@ While processing the bulk load operation will:
 * Create new INCID records in the database for each feature with the matched habitat codes
 * Update the staging layer features with the new INCID, fragment identifiers and habitat codes
 
-Once the bulk load operation has finished you may choose to:
+.. tip::
+	Once the bulk load operation has finished you may wish to:
 
-* Apply bulk updates (see :ref:`bulk_update`) to the new features in the staging layer, e.g. to set the boundary and digitisation maps, determination and interpretation qualities, and source(s)
-* Reassign the new features from the staging layer to other layers (see :ref:`reassign_features_function` for details)
-
-.. raw:: latex
-
-	\newpage
+	* Apply bulk updates (see :ref:`bulk_update`) to the new features in the staging layer, e.g. to set the boundary and digitisation maps, determination and interpretation qualities, and source(s)
+	* Logically merge features if they should share the same INCID
+	* Reassign the new features from the staging layer to other layers (see :ref:`reassign_features_function` for details)
 
 The OSMM Cross-Reference Table
 ------------------------------
@@ -1174,7 +1162,6 @@ The bulk Load operation matches your OSMM attributes against this table to autom
 	* The staging layer will be added to the current map after the bulk load operation is complete
 
 .. tip::
-    * Features can be logically merged after loading if they should share the same INCID
     * Review the OSMM cross-reference table before bulk loading to ensure appropriate habitat mappings exist
     * Start with a small test load to verify the mappings are correct
     * Use the Bulk Unload function to remove incorrectly loaded features
@@ -1264,7 +1251,7 @@ Reassigning Features
 
 	\newpage
 
-3. Tthe Reassign Features window will appear as shown in the figure :ref:`figFRF`.
+3. The Reassign Features window will appear as shown in the figure :ref:`figFRF`.
 
 .. _figFRF:
 

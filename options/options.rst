@@ -14,8 +14,17 @@ Click |options| **Options** in the :ref:`help_group` of the HLU Tool ribbon to o
 
 The window is organised into two categories in a navigation sidebar:
 
-* **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults, reassign rules).
-* **User** — settings specific to the current user (interface, GIS, updates, bulk load, SQL, history, export).
+**Application**
+	Settings shared across all users (database, dates, validation, updates, bulk update defaults, reassign rules).
+
+.. note::
+	Application options are stored in a **HLUTool.xml** file in the same folder as the tool add-in **.esriAddinX** file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
+
+**User**
+	Settings specific to the current user (interface, GIS, updates, bulk load, SQL, history, export).
+
+.. note::
+	User options are stored in a **user.config** file in the user's roaming folder, e.g. **%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]** where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
 
 .. raw:: latex
 
@@ -31,8 +40,6 @@ The window is organised into two categories in a navigation sidebar:
 Application Options
 ===================
 
-Application options are stored in a **HLUTool.xml** file in the same folder as the tool add-in **.esriAddinX** file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
-
 .. _options_database:
 
 .. index::
@@ -41,7 +48,7 @@ Application options are stored in a **HLUTool.xml** file in the same folder as t
 Database Options
 ----------------
 
-The following options relate to how the HLU Tool interacts with the underlying database.
+The following options relate to how the HLU Tool interacts with the underlying database. These are application-wide settings found under **Application > Database** in the Options navigation.
 
 .. _figOWD:
 
@@ -264,7 +271,7 @@ OSMM Source Name
 Reassign Options
 ----------------
 
-The following options relate to configuring rules for the Reassign Features function. These are application-wide settings found under **Application > Reassign** in the Options navigation. Reassign Features moves features from the active HLU layer to one or more target HLU layers based on configurable rules. Each rule consists of a descriptive name and a SQL WHERE clause that determines which features should be moved.
+The following options relate to configuring rules for the Reassign Features function which moves features from the active HLU layer to one or more target HLU layers based on configurable rules. Each rule consists of a descriptive name and a SQL WHERE clause that determines which features should be moved. These are application-wide settings found under **Application > Reassign** in the Options navigation.
 
 .. _figOWR:
 
@@ -318,8 +325,6 @@ To reorder reassign rules:
 
 User Options
 ============
-
-User options are stored in a **user.config** file in the user's roaming folder, e.g. **%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]** where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
 
 .. _options_interface:
 
@@ -452,10 +457,6 @@ Default Secondary Group
 Secondary Table Order
 	Allows the user to choose the order that any secondary habitats appear in the secondary table.
 
-.. raw:: latex
-
-	\newpage
-
 Notify After Completing Split/Merge
 	Allows users to specify if a pop-up message should be displayed following the completion of any of the split or merge operations.
 
@@ -482,14 +483,10 @@ The following options relate to the Bulk Load function. These are user-specific 
 	Options Window - Bulk Load
 
 Default Staging Layer Directory
-	Sets the default folder path where the staging layer will be created during the bulk load process. The staging layer is a temporary layer used to stage features before they are moved to a permanent HLU layer. A different path can still be selected during the bulk load process.
+	Sets the default folder path where the staging layer will be created during the bulk load process. The staging layer is a temporary layer for features before they are moved to an HLU layer. A different path can still be selected during the bulk load process.
 
 	.. note::
-		The path is validated when the folder path window is closed. If the specified folder does not exist or is not accessible, an error will be shown and the setting will not be saved until a valid path is provided.
-
-.. raw:: latex
-
-	\newpage
+		The path is validated when the folder path window is closed. If the specified folder does not exist or is not accessible, an error will be shown.
 
 Default Staging Layer Name
 	Sets the default name for the staging layer that will be created during the bulk load process. This name will be used to create the staging layer in the configured staging layer directory. A different name can still be selected during the bulk load process.
