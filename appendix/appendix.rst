@@ -11,8 +11,18 @@ Appendix
 Change Log
 ==========
 
+**1.2.1**
+(28rd July 2026)
+
+    * :guilabel:New GIS feature selection now automatically switches strategy based on the number of INCIDs being selected — small selections use chunked SQL IN clauses, while large selections use a temporary geodatabase table join. The crossover point is configurable in GIS options
+    * :guilabel:Improved Navigating between INCID records is now faster
+    * :guilabel:Improved Status bar messages during operations are now more specific
+    * :guilabel:Changed Tooltip text for the **Select Current INCID** and **Select Filtered INCIDs** ribbon buttons updated for clarity
+    * :guilabel:Changed The **Warn Before Selecting Features** option in GIS user options has been replaced by **Select By SQL Threshold** — this value now controls the selection strategy switchover point as well as triggering a warning dialog
+    * :guilabel:Fixed Info button on the OSMM Source field in the Bulk OSMM Options window now displays correctly
+
 **1.2.0**
-(30th July 2026)
+(14th July 2026)
 
     * :guilabel:`New` Added **Bulk Load/Unload** dynamic menu button to the HLU Tool tab with two commands:
 
@@ -61,7 +71,6 @@ Change Log
     * :guilabel:`Improved` Updated user guide links launched from the About and Options windows
     * :guilabel:`Improved` Updated ribbon group labels and cross-references
 
-
 **1.0.0**
 (16th April 2026)
 
@@ -91,7 +100,6 @@ First release of the HLU Tool as an ArcGIS Pro add-in.
     * :guilabel:`Fixed` Rollback of both database and GIS layer on update error — previously only one side was rolled back
     * :guilabel:`Fixed` Physical split now creates history records for all split features
     * :guilabel:`Fixed` Area and length are now included in the history table for attribute updates
-
 
 .. raw:: latex
 
@@ -568,4 +576,3 @@ included in the Appendix section.
     recommend releasing these examples in parallel under your choice of
     free software license, such as the GNU General Public License,
     to permit their use in free software.
-

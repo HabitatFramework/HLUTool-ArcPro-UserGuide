@@ -40,7 +40,7 @@ The window is organised into two categories in a navigation sidebar:
 Application Options
 ===================
 
-.. _options_database:
+.. _options_app_database:
 
 .. index::
 	single: Options; Database
@@ -81,7 +81,7 @@ Reset Database Connection
 .. index::
 	single: Options; Dates
 
-.. _options_dates:
+.. _options_app_dates:
 
 Dates Options
 -------------
@@ -112,7 +112,7 @@ Vague Date Delimiter
 .. index::
 	single: Options; Validation
 
-.. _options_validation:
+.. _options_app_validation:
 
 Validation Options
 ------------------
@@ -166,7 +166,7 @@ Potential Priority Habitat Determination Quality Validation
 .. index::
 	single: Options; Updates
 
-.. _options_updates:
+.. _options_app_updates:
 
 Update Options
 --------------
@@ -216,7 +216,7 @@ Secondary Code Delimiter
 .. index::
 	single: Options; Bulk Update
 
-.. _options_bulk_update:
+.. _options_app_bulk_update:
 
 Bulk Update Options
 -------------------
@@ -266,7 +266,7 @@ OSMM Source Name
 .. index::
 	single: Options; Reassign
 
-.. _options_reassign:
+.. _options_app_reassign:
 
 Reassign Options
 ----------------
@@ -326,7 +326,7 @@ To reorder reassign rules:
 User Options
 ============
 
-.. _options_interface:
+.. _options_user_interface:
 
 .. index::
 	single: Options; Interface
@@ -380,7 +380,7 @@ Show OSMM Update Attributes
 .. index::
 	single: Options; GIS
 
-.. _options_gis:
+.. _options_user_gis:
 
 GIS Options
 -----------
@@ -407,8 +407,11 @@ Display Area Units
 Display Distance Units
 	Sets the units used to display the perimeter length of the current INCID in the dockpane and in history records (e.g. metres or kilometres).
 
-Warn Before Selecting Features
-	Sets the maximum number of features that may be selected in ArcGIS Pro before a warning is shown, as large selections may take some time. Set to zero to disable warnings.
+Select By SQL Threshold
+	Sets the number of features above which the GIS selection will use a temporary table join instead of a SQL clause. Lower values favour the join approach; higher values favour the SQL clause approach.
+
+.. note::
+	A warning will be shown when selecting all features for the current filter if the expected number of features exceeds the threshold.
 
 .. raw:: latex
 
@@ -467,7 +470,7 @@ Notify After Completing Split/Merge
 .. index::
 	single: Options; Bulk Load
 
-.. _options_bulk_load:
+.. _options_user_bulk_load:
 
 Bulk Load Options
 -----------------
@@ -502,7 +505,7 @@ Default Staging Layer Name
 	single: Options; SQL
 	single: Options; Filter
 
-.. _options_filter:
+.. _options_user_filter:
 
 SQL Options
 -----------
@@ -533,7 +536,7 @@ Default Query Directory
 .. index::
 	single: Options; History
 
-.. _options_history:
+.. _options_user_history:
 
 History Options
 ---------------
@@ -561,7 +564,7 @@ Display History Rows
 .. index::
 	single: Options; Export
 
-.. _options_export:
+.. _options_user_export:
 
 Export Options
 --------------

@@ -109,6 +109,9 @@ Glossary
 	Reject
 		Reject the proposed outstanding Ordnance Survey MasterMap update for the current INCID. See :ref:`review_osmm_window` for more information.
 
+	Ribbon
+		The 'HLU Tool' ribbon is a dedicated tab that appears in the ArcGIS Pro interface when the HLU Tool add-in is active. It provides all the controls needed to view, filter, and update habitat and land use (HLU) data.
+
 	Skip
 		Skip the proposed outstanding Ordnance Survey MasterMap update for the current INCID so it can be reviewed again later. See :ref:`review_osmm_window` for more information.
 

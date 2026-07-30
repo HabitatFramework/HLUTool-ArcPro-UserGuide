@@ -346,7 +346,7 @@ To insert new features under the same INCID:
 * A new INCID will be created and all selected features will be registered against it with sequential fragment identifiers. The new INCID will be displayed as the current record in the dockpane and details of the insert will be added to the History tab.
 
 .. seealso::
-	See :ref:`feature_insert_group` for toolbar details.
+	See :ref:`feature_insert_group` for more information.
 
 .. index::
 	single: Insert Feature; Separate INCIDs
@@ -365,7 +365,7 @@ To insert new features each under a separate INCID:
 * A new INCID will be created for each selected feature. The first new INCID will be displayed as the current record in the dockpane and details of all inserts will be added to the History tab.
 
 .. seealso::
-	See :ref:`feature_insert_group` for toolbar details.
+	See :ref:`feature_insert_group` for more information.
 
 .. index::
 	single: Insert Feature; GIS Attribute Columns
@@ -516,6 +516,9 @@ Filter by Attributes
 ====================
 
 Users can select which subset of INCID records are available for display in the dockpane, and correspondingly which features are selected in the active HLU layer, by applying a filter. The filter is performed by building a SQL query that selects one or more INCIDs based on a chosen set of criteria, or by entering a single INCID value using the **Find Incid** text box in the :ref:`filter_group`.
+
+.. note::
+	Filtering only selects a subset of INCID records in the dockpane, it does not change the feature selection in the active layer. Once the filter has been applied click |selectallonmap| **Select Filtered INCIDs** in the :ref:`selection_group` of the HLU Tool ribbon to select all features for the selected INCID records in the active layer.
 
 .. index::
 	single: Filter; Advanced Query Builder
@@ -682,7 +685,10 @@ When **Auto Select** is inactive:
 Bulk Updates
 ============
 
-Users can update the attributes for multiple INCID records, and associated features in the active HLU layer, by performing a bulk update. Bulk updates can only be applied to a subset of INCID records by applying a filter. Attribute updates applied in bulk update mode will be applied to all INCIDs in the active filter.
+Users can update the attributes for multiple INCID records, and associated features in the active HLU layer, by performing a bulk update. Bulk updates can only be applied to a subset of INCID records by applying a filter before starting Bulk Update mode.
+
+.. note::
+	Attribute updates applied in bulk update mode will be applied to all INCIDs in the active filter. However, only attributes that are entered in the dockpane will be applied - attributes left blank in the dockpane won't be applied and hence won't be cleared in the INCID records.
 
 .. _figFUIBU:
 

@@ -111,29 +111,29 @@
 	:width: 16px
 
 
-*******
-Toolbar
-*******
+******
+Ribbon
+******
 
-The HLU Tool is an ArcGIS Pro add-in. All of its functions are accessed through a dedicated **HLU Tool** tab that appears on the ArcGIS Pro ribbon when the add-in is loaded. The tab is organised into functional groups, each described in the sections below.
+The HLU Tool is an ArcGIS Pro add-in. All of its functions are accessed through a dedicated **HLU Tool** ribbon that appears on the ArcGIS Pro ribbon when the add-in is loaded. The ribbon is organised into functional groups, each described in the sections below.
 
-.. _figUITab:
+.. _figUIRibbon:
 
-.. figure:: figures/Toolbar.png
+.. figure:: figures/Ribbon.png
 	:align: center
 
-	HLU Tool Ribbon - Tab
+	HLU Tool Ribbon
 
 .. note::
-	The **HLU Tool** tab is only visible when a map view is open and the add-in has been activated. To open the HLU Tool dockpane click the :guilabel:`HLU Tool` button on the **HLU Tool** group of the ArcGIS Pro **Data** tab.
+	The **HLU Tool** ribbon is only visible when a map view is open and the add-in has been activated. To open the HLU Tool dockpane click the :guilabel:`HLU Tool` button on the **HLU Tool** group of the ArcGIS Pro **Data** ribbon.
 
 .. raw:: latex
 
 	\newpage
 
 .. index::
-	single: Toolbar; Mode Group
-	see: Mode Group; Toolbar
+	single: Ribbon; Mode Group
+	see: Mode Group; Ribbon
 
 .. _mode_group:
 
@@ -142,12 +142,12 @@ Mode Group
 
 .. _figUIGMode:
 
-.. figure:: figures/ToolbarModeGroup.png
+.. figure:: figures/RibbonModeGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Mode Group
 
-The **Mode** group controls which editing mode is currently active. Only one mode can be active at a time. The group contains the following buttons:
+The **Mode** group controls which editing mode is active. Only one mode can be active at a time. The group contains the following toggle buttons:
 
 |update| Update
 ---------------
@@ -189,12 +189,12 @@ Activates **OSMM Bulk Update** mode, which allows all accepted (pending) OSMM up
 	\newpage
 
 .. index::
-	single: Toolbar; Updates Group
+	single: Ribbon; Updates Group
 	single: Active Layer
 	single: Switch GIS Layer
 	single: Reason
 	single: Process
-	see: Updates Group; Toolbar
+	see: Updates Group; Ribbon
 
 .. _updates_group:
 
@@ -203,7 +203,7 @@ Updates Group
 
 .. _figUIGUpdates:
 
-.. figure:: figures/ToolbarUpdatesGroup.png
+.. figure:: figures/RibbonUpdatesGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Updates Group
@@ -213,7 +213,7 @@ The **Updates** group provides controls for configuring the active layer and rec
 .. note::
 	The reason and process fields are required values for all update actions (attribute updates, splits, merges and bulk updates) and are recorded in the History table to indicate **why** the record was updated. The selected values are **sticky** — they are retained for all subsequent actions in the current session until changed.
 
-The **Updates** group contains the following controls:
+The **Updates** group contains the following drop-down lists:
 
 Active Layer
 ------------
@@ -247,8 +247,8 @@ A drop-down list for selecting the process associated with the updates about to 
 	\newpage
 
 .. index::
-	single: Toolbar; Copy/Paste Group
-	see: Copy/Paste Group; Toolbar
+	single: Ribbon; Copy/Paste Group
+	see: Copy/Paste Group; Ribbon
 
 .. _copy_paste_group:
 
@@ -257,12 +257,12 @@ Copy/Paste Group
 
 .. _figUIGCopyPaste:
 
-.. figure:: figures/ToolbarCopyPasteGroup.png
+.. figure:: figures/RibbonCopyPasteGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Copy/Paste Group
 
-The **Copy/Paste** group contains the following buttons:
+The **Copy/Paste** group supports copying and reusing attribute values between INCIDs with the following buttons:
 
 |copy| Copy
 -----------
@@ -302,8 +302,8 @@ Resets the attributes copied by the **Copy** button and clears all of the checkb
 	\newpage
 
 .. index::
-	single: Toolbar; Map Tools Group
-	see: Map Tools Group; Toolbar
+	single: Ribbon; Map Tools Group
+	see: Map Tools Group; Ribbon
 
 .. _map_tools_group:
 
@@ -312,12 +312,12 @@ Map Tools Group
 
 .. _figUIGMapTools:
 
-.. figure:: figures/ToolbarMapToolsGroup.png
+.. figure:: figures/RibbonMapToolsGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Map Tools Group
 
-The **Map Tools** group exposes standard ArcGIS Pro tools used in conjunction with the HLU Tool. It contains the following controls:
+The **Map Tools** group exposes standard ArcGIS Pro map interaction tools. It contains the following controls:
 
 Select Tool Palette
 -------------------
@@ -339,8 +339,8 @@ Zooms to the selected features of all layers in the active map (standard ArcGIS 
 	\newpage
 
 .. index::
-	single: Toolbar; Geometry Group
-	see: Geometry Group; Toolbar
+	single: Ribbon; Geometry Group
+	see: Geometry Group; Ribbon
 
 .. _geometry_group:
 
@@ -349,12 +349,12 @@ Geometry Group
 
 .. _figUIGGeometry:
 
-.. figure:: figures/ToolbarGeometryGroup.png
+.. figure:: figures/RibbonGeometryGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Geometry Group
 
-The **Geometry** group exposes standard ArcGIS Pro editing tools used in conjunction with the HLU Tool. It contains the following controls:
+The **Geometry** group exposes standard ArcGIS Pro editing tools for modifying feature geometry. It contains the following controls:
 
 Create Features
 ---------------
@@ -392,8 +392,8 @@ Merges two or more selected features into a single feature using the standard Ar
 	\newpage
 
 .. index::
-	single: Toolbar; Filter Group
-	see: Filter Group; Toolbar
+	single: Ribbon; Filter Group
+	see: Filter Group; Ribbon
 
 .. _filter_group:
 
@@ -402,7 +402,7 @@ Filter Group
 
 .. _figUIGFilter:
 
-.. figure:: figures/ToolbarFilterGroup.png
+.. figure:: figures/RibbonFilterGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Filter Group
@@ -435,8 +435,8 @@ A text box for filtering the records to a single INCID. Enter an INCID value in 
 	\newpage
 
 .. index::
-	single: Toolbar; Selection Group
-	see: Selection Group; Toolbar
+	single: Ribbon; Selection Group
+	see: Selection Group; Ribbon
 
 .. _selection_group:
 
@@ -445,12 +445,12 @@ Selection Group
 
 .. _figUIGSelection:
 
-.. figure:: figures/ToolbarSelectionGroup.png
+.. figure:: figures/RibbonSelectionGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Selection Group
 
-The **Selection** group provides controls for selecting features on the map based on the INCID filter and vice versa. It contains the following buttons:
+The **Selection** group controls the relationship between the map selection and the filtered INCIDs by selecting features on the map based on the INCID filter and vice versa. It contains the following buttons:
 
 |getmapselection| Get Map Selection
 ------------------------------------
@@ -465,8 +465,8 @@ Filters the database records to retrieve the attributes associated with the feat
 
 Selects **all** of the features associated with only the **current** INCID record in the active HLU layer.
 
-|selectallonmap| Select All Filtered INCIDs
---------------------------------------------
+|selectallonmap| Select Filtered INCIDs
+---------------------------------------
 
 Selects **all** of the features associated with **all** currently filtered INCID records in the active HLU layer.
 
@@ -486,8 +486,8 @@ Toggles automatic selection of all features associated with the current INCID re
 	\newpage
 
 .. index::
-	single: Toolbar; Topology Group
-	see: Topology Group; Toolbar
+	single: Ribbon; Topology Group
+	see: Topology Group; Ribbon
 
 .. _topology_group:
 
@@ -496,7 +496,7 @@ Topology Group
 
 .. _figUIGTopology:
 
-.. figure:: figures/ToolbarTopologyGroup.png
+.. figure:: figures/RibbonTopologyGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Topology Group
@@ -504,7 +504,7 @@ Topology Group
 .. note::
 	All buttons in this group are disabled until database records have been filtered and a **Reason** and **Process** have been selected in the **Updates** group. For details see :ref:`updates_group`.
 
-The **Topology** group contains two drop-down menus:
+The **Topology** group enables split and merge operations that act on HLU data records, not just geometry. It contains two drop-down buttons:
 
 |split| Split
 -------------
@@ -553,8 +553,8 @@ Opens the **Merge** drop-down menu, which contains:
 	\newpage
 
 .. index::
-	single: Toolbar; Feature Insert Group
-	see: Feature Insert Group; Toolbar
+	single: Ribbon; Feature Insert Group
+	see: Feature Insert Group; Ribbon
 
 .. _feature_insert_group:
 
@@ -563,13 +563,15 @@ Feature Insert Group
 
 .. _figUIGFeatureInsert:
 
-.. figure:: figures/ToolbarFeatureInsertGroup.png
+.. figure:: figures/RibbonFeatureInsertGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Feature Insert Group
 
 .. note::
 	All buttons in this group are disabled until a **Reason** and **Process** have been selected in the **Updates** group and the selected features have no INCID assigned. For details see :ref:`updates_group`.
+
+The **Feature Insert** group enables newly drawn features to be registered in the HLU database. It contains a drop-down button with two options:
 
 |insertfeature| Insert Feature
 ------------------------------
@@ -593,8 +595,8 @@ Opens the **Insert Feature** drop-down menu, which contains:
 	\newpage
 
 .. index::
-	single: Toolbar; Bulk Load/Unload Group
-	see: Bulk Load/Unload Group; Toolbar
+	single: Ribbon; Bulk Load/Unload Group
+	see: Bulk Load/Unload Group; Ribbon
 
 .. _bulk_load_unload_group:
 
@@ -603,12 +605,12 @@ Bulk Load/Unload Group
 
 .. _figUIGBulkLoadUnload:
 
-.. figure:: figures/ToolbarBulkLoadGroup.png
+.. figure:: figures/RibbonBulkLoadGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Bulk Load/Unload Group
 
-The **Bulk Load/Unload** group provides functions for bulk unloading and loading OSMM features.
+The **Bulk Load/Unload** group provides functions for bulk unloading and loading OSMM features. It contains a drop-down button with two options:
 
 |bulkload| Bulk Load
 --------------------
@@ -632,8 +634,8 @@ Opens the **Bulk Load/Unload** drop-down menu, which contains:
 	\newpage
 
 .. index::
-	single: Toolbar; Reassign Group
-	see: Reassign Group; Toolbar
+	single: Ribbon; Reassign Group
+	see: Reassign Group; Ribbon
 
 .. _reassign_group:
 
@@ -642,10 +644,12 @@ Reassign Group
 
 .. _figUIGReassign:
 
-.. figure:: figures/ToolbarReassignGroup.png
+.. figure:: figures/RibbonReassignGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Reassign Group
+
+The **Reassign** group enables features to be moved to the correct HLU layer based on their primary and secondary habitat codes. It contains one button:
 
 |reassign| Reassign Features
 ----------------------------
@@ -665,8 +669,8 @@ Opens the Reassign Features window, allowing users to move features from the act
 	\newpage
 
 .. index::
-	single: Toolbar; Export Group
-	see: Export Group; Toolbar
+	single: Ribbon; Export Group
+	see: Export Group; Ribbon
 
 .. _export_group:
 
@@ -675,10 +679,12 @@ Export Group
 
 .. _figUIGExport:
 
-.. figure:: figures/ToolbarExportGroup.png
+.. figure:: figures/RibbonExportGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Export Group
+
+The **Export** group enables data to be exported in a pre-defined format. It contains one button:
 
 |export| Export
 ---------------
@@ -696,8 +702,8 @@ Opens the Export window, allowing users to export data from the active layer and
 	\newpage
 
 .. index::
-	single: Toolbar; Help Group
-	see: Help Group; Toolbar
+	single: Ribbon; Help Group
+	see: Help Group; Ribbon
 
 .. _help_group:
 
@@ -706,12 +712,12 @@ Help Group
 
 .. _figUIGInfo:
 
-.. figure:: figures/ToolbarHelpGroup.png
+.. figure:: figures/RibbonHelpGroup.png
 	:align: center
 
 	HLU Tool Ribbon - Help Group
 
-The **Help** group provides access to tool configuration and version information:
+The **Help** group provides access to tool configuration and version information. It contains two buttons:
 
 |options| Options
 -----------------
