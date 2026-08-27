@@ -78,10 +78,6 @@ The example in the table below shows the effect of separating the spatial and at
 
 The attribute data is stored in a 'normalised' relational structure which enables the attributes to be retrieved and maintained in a very logical way whilst simultaneously reducing the data storage requirements and improving the data structure and integrity.
 
-.. raw:: latex
-
-	\newpage
-
 .. index::
 	single: Introduction; Benefits of HLU Tool
 	single: Benefits of HLU Tool

@@ -31,7 +31,7 @@ Contents
    preface/preface
    introduction/introduction
    concepts/concepts
-   toolbar/toolbar
+   ribbon/ribbon
    interface/interface
    functions/functions
    options/options

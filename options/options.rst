@@ -8,17 +8,31 @@ Options
 	single: Windows; Options Window
 	single: Options
 
-The Options window allows users to configure the HLU Tool. The window is organised into two categories in a navigation sidebar:
+The Options window allows users to configure the HLU Tool.
 
-* **Application** — settings shared across all users (database, dates, validation, updates, bulk update defaults).
-* **User** — settings specific to the current user (interface, GIS, updates, SQL, history, export).
+Click |options| **Options** in the :ref:`help_group` of the HLU Tool ribbon to open the Options window.
+
+The window is organised into two categories in a navigation sidebar:
+
+**Application**
+	Settings shared across all users (database, dates, validation, updates, bulk update defaults, reassign rules).
+
+.. note::
+	Application options are stored in a **HLUTool.xml** file in the same folder as the tool add-in **.esriAddinX** file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
+
+**User**
+	Settings specific to the current user (interface, GIS, updates, bulk load, SQL, history, export).
+
+.. note::
+	User options are stored in a **user.config** file in the user's roaming folder, e.g. **%AppData%\\Esri\\ArcGISPro_StrongName_[hash]\\[version]** where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
+
+.. raw:: latex
+
+	\newpage
 
 .. |options| image:: ../icons/Options.png
 	:height: 16px
 	:width: 16px
-
-Click |options| **Options** in the :ref:`help_group` of the HLU Tool ribbon to open the Options window.
-
 
 .. index::
 	single: Options; Application Options
@@ -26,32 +40,33 @@ Click |options| **Options** in the :ref:`help_group` of the HLU Tool ribbon to o
 Application Options
 ===================
 
+.. _options_app_database:
+
 .. index::
 	single: Options; Database
-
-.. _options_database:
-
-.. note::
-	Application options are stored in a ``HLUTool.xml`` file in the same folder as the tool add-in ``.esriAddinX`` file loaded in ArcGIS Pro. These options are shared across all users who load the same add-in file.
 
 Database Options
 ----------------
 
-The following options relate to how the HLU Tool interacts with the underlying database.
+The following options relate to how the HLU Tool interacts with the underlying database. These are application-wide settings found under **Application > Database** in the Options navigation.
 
 .. _figOWD:
 
 .. figure:: figures/OptionsWindowAppDatabase.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Database
 
 Timeout
-	Sets the amount of time the tool will wait (in seconds) for the database to respond. The default value is 15. This value should be increased if an error occurs such as 'The connection to the database timed out' or if the network and/or database connection is known to be slow.
+	Sets the amount of time the tool will wait (in seconds) for the database to respond. The default value is 60. This value should be increased if an error occurs such as 'The connection to the database timed out'.
 
 Incid Table Page Size
-	Sets how many rows are retrieved from the database and stored in memory. The default value is 100. Increasing this value can improve performance when browsing records, however this will increase the amount of RAM required by the application and significant increases in the page size value could cause the tool to stop responding.
+	Sets how many rows are retrieved from the database and stored in memory. The default value is 100. Increasing this value can improve performance when browsing records but will also increase the amount of RAM required by the application.
+
+.. raw:: latex
+
+	\newpage
 
 Reset Database Connection
 	Clears the saved database connection settings. You will be prompted to choose a new connection the next time the HLU Tool is loaded. Use this option if the database server has moved, the database name has changed, or the connection is no longer valid.
@@ -59,10 +74,14 @@ Reset Database Connection
 	.. note::
 		When the HLU Tool connects to the database it validates the database version against the minimum required version. If the database version is below the minimum, a warning will be displayed and the tool will not load until the database has been upgraded.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; Dates
 
-.. _options_dates:
+.. _options_app_dates:
 
 Dates Options
 -------------
@@ -73,10 +92,9 @@ The following options relate to the formatting of vague dates used in the source
 
 .. figure:: figures/OptionsWindowAppDates.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Dates
-
 
 Seasons
 	These fields allow users to define how seasonal dates, such as 'Spring 2009' or 'Winter 2010', are entered so that they can be converted to dates in the HLU database.
@@ -87,10 +105,14 @@ Vague Date Delimiter
 	.. note::
 		The default value for the 'Vague Date Delimiter' is a hyphen ( - ). This can be altered to any character, however, it must not be the same delimiter used by the computer to enter precise dates, such as 01/04/2010. The default delimiter used by Windows for English-format dates is a forward slash ( / ).
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; Validation
 
-.. _options_validation:
+.. _options_app_validation:
 
 Validation Options
 ------------------
@@ -101,7 +123,7 @@ The following options relate to data validation rules applied when attribute upd
 
 .. figure:: figures/OptionsWindowAppValidation.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Validation
 
@@ -111,6 +133,10 @@ Habitat/Secondary Validation
 	* **Ignore** - Missing mandatory secondary codes for the selected source habitat type are ignored.
 	* **Warning** - Missing mandatory secondary codes for the selected source habitat type are flagged with a warning.
 	* **Error** - Missing mandatory secondary codes for the selected source habitat type are flagged with an error.
+
+.. raw:: latex
+
+	\newpage
 
 Primary/Secondary Validation
 	Allows users to select whether secondary codes for the selected primary habitat are validated, i.e. have been added to the secondary table. The available actions are:
@@ -133,10 +159,14 @@ Potential Priority Habitat Determination Quality Validation
 	.. note::
 		Ignoring the validation for potential priority habitats enables the user to select determination quality values that indicate that the habitat **is** or **probably is** in the associated feature(s). Otherwise determination quality values can **ONLY** be 'Not present but close to definition' or 'Previously present, but may no longer exist'.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; Updates
 
-.. _options_updates:
+.. _options_app_updates:
 
 Update Options
 --------------
@@ -147,7 +177,7 @@ The following options relate to what happens when attribute updates are applied.
 
 .. figure:: figures/OptionsWindowAppUpdates.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Updates
 
@@ -157,6 +187,10 @@ Action to Take When Updating Subset
 	* **Prompt** - Always prompt the user when attempting to update a subset of INCID features (see :ref:`attribute_update` for an example of the prompt dialog).
 	* **Split** - Always perform a logical split before applying the attribute updates.
 	* **All** - Always apply the attribute update to **all** features belonging to the INCID regardless of which features of the INCID are currently selected.
+
+.. raw:: latex
+
+	\newpage
 
 When To Clear IHS Codes After Update
 	Allows users to select when existing IHS Codes should be cleared when attribute updates are applied. The available options are:
@@ -175,10 +209,14 @@ Secondary Code Delimiter
 	.. warning::
 		This option will also affect the concatenated secondary codes summary saved in the active HLU layer so changes should be applied with caution.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; Bulk Update
 
-.. _options_bulk_update:
+.. _options_app_bulk_update:
 
 Bulk Update Options
 -------------------
@@ -189,7 +227,7 @@ The following options relate to the **default** values to use when applying bulk
 
 .. figure:: figures/OptionsWindowAppBulkUpdates.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Bulk Update
 
@@ -199,11 +237,15 @@ Delete Orphan Priority Habitats
 Delete Potential Priority Habitats
 	The default option for whether existing potential priority habitats (those added manually by a user) should be deleted following during a bulk update. If unchecked, any existing potential priority habitats will be retained.
 
+.. raw:: latex
+
+	\newpage
+
 Delete Existing IHS Codes
 	The default option for whether existing IHS habitat and multiplex (matrix, formation, management and complex) codes should be deleted following a change to the habitat during a bulk update. If checked, any existing multiplex codes will be deleted, otherwise they will be retained.
 
 Delete Existing Secondary Codes
-	The default option for whether existing secondary codes should be deleted following a change to the primary habitat during a bulk update. If checked, any existing secondary codes will be deleted, otherwise they will be retained and may not be compatible with the new primary habitat (see :ref:`options_updates` for more details).
+	The default option for whether existing secondary codes should be deleted following a change to the primary habitat during a bulk update. If checked, any existing secondary codes will be deleted, otherwise they will be retained and may not be compatible with the new primary habitat (see :ref:`options_user_updates` for more details).
 
 Create History Records
 	The default option for whether history records will be created when a bulk update is applied.
@@ -222,18 +264,72 @@ OSMM Source Name
 	\newpage
 
 .. index::
+	single: Options; Reassign
+
+.. _options_app_reassign:
+
+Reassign Options
+----------------
+
+The following options relate to configuring rules for the Reassign Features function which moves features from the active HLU layer to one or more target HLU layers based on configurable rules. Each rule consists of a descriptive name and a SQL WHERE clause that determines which features should be moved. These are application-wide settings found under **Application > Reassign** in the Options navigation.
+
+.. _figOWR:
+
+.. figure:: figures/OptionsWindowAppReassign.png
+	:align: center
+	:scale: 80
+
+	Options Window - Reassign Rules
+
+.. note::
+	Reassign rules are processed in order from top to bottom. Once a feature matches a rule and is moved, it will not be available for subsequent rules.
+
+To add a new reassign rule:
+
+* Click on the last row to create a new empty rule row.
+* Enter a descriptive **Rule Name** for the rule (e.g., "Water Layer").
+* Enter a SQL **WHERE Clause** that selects the features to be moved (e.g., ``habprimary LIKE 'r%'`` to select all features with primary habitat codes starting with 'r').
+* The rule will be saved automatically when you navigate away from it or close the Options window.
+
+.. raw:: latex
+
+	\newpage
+
+To edit an existing reassign rule:
+
+* Click on the rule row you wish to edit.
+* Modify the **Rule Name** or **WHERE Clause** as required.
+* The changes will be saved automatically when you navigate away from the rule or close the Options window.
+
+To delete a reassign rule:
+
+* Select the rule row you wish to delete.
+* Click the **Delete** button or press the :kbd:`Delete` key.
+* The rule will be removed from the list.
+
+To reorder reassign rules:
+
+* Select the rule row you wish to move.
+* Use the **Move Up** and **Move Down** buttons to change the order of the rules.
+* Remember that rules are processed in order from top to bottom, so the order matters.
+
+.. seealso::
+	For details on using the Reassign Features function see :ref:`reassign_features_function`.
+
+.. raw:: latex
+
+	\newpage
+
+.. index::
 	single: Options; User Options
 
 User Options
 ============
 
+.. _options_user_interface:
+
 .. index::
 	single: Options; Interface
-
-.. _options_interface:
-
-.. note::
-	User options are stored in a ``user.config`` file in the user's roaming folder, e.g. ``%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]`` where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
 
 Interface Options
 -----------------
@@ -244,7 +340,7 @@ The following options relate to how the HLU Tool dockpane appears. These are use
 
 .. figure:: figures/OptionsWindowUserInterface.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Interface
 
@@ -256,6 +352,10 @@ Show IHS Tab
 
 Show Source Habitat
 	Allows the user to choose if the Source Habitat group, containing the Habitat Class and Habitat Type lists, will be shown or hidden in the dockpane. The group can be hidden if the source habitat data is in the same classification system as the target, so primary and secondary habitats are being entered directly without any need to assist the user with translating from other classifications.
+
+.. raw:: latex
+
+	\newpage
 
 Show Secondary Suggestions
 	Allows the user to choose if any suggested secondary habitats related to the source habitat type and selected primary habitat are shown.
@@ -273,10 +373,14 @@ Show OSMM Update Attributes
 	* **When Outstanding** - Only show the OSMM Updates section when the update is outstanding (the status is 'Proposed' or 'Pending').
 	* **Always** - Always show the OSMM Updates section.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; GIS
 
-.. _options_gis:
+.. _options_user_gis:
 
 GIS Options
 -----------
@@ -287,7 +391,7 @@ The following options relate to how the HLU Tool interacts with ArcGIS Pro. Thes
 
 .. figure:: figures/OptionsWindowUserGIS.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - GIS
 
@@ -303,8 +407,15 @@ Display Area Units
 Display Distance Units
 	Sets the units used to display the perimeter length of the current INCID in the dockpane and in history records (e.g. metres or kilometres).
 
-Warn Before Selecting Features
-	Sets the maximum number of features that may be selected in ArcGIS Pro before a warning is shown, as large selections may take some time. Set to zero to disable warnings.
+Select By SQL Threshold
+	Sets the number of features above which the GIS selection will use a temporary table join instead of a SQL clause. Lower values favour the join approach; higher values favour the SQL clause approach.
+
+.. note::
+	A warning will be shown when selecting all features for the current filter if the expected number of features exceeds the threshold.
+
+.. raw:: latex
+
+	\newpage
 
 Working File Geodatabase Directory
 	Sets the folder path for a working File Geodatabase used when performing large or complex GIS queries.
@@ -312,13 +423,17 @@ Working File Geodatabase Directory
 	.. note::
 		The path is validated when the Options window is closed. If the specified folder does not exist or is not accessible, an error will be shown and the setting will not be saved until a valid path is provided.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; User Updates
 
 .. _options_user_updates:
 
-Update Options
---------------
+Updates Options
+---------------
 
 The following options relate to default values and preferences for update operations. These are user-specific settings found under **User > Updates** in the Options navigation.
 
@@ -326,7 +441,7 @@ The following options relate to default values and preferences for update operat
 
 .. figure:: figures/OptionsWindowUserUpdates.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - User Updates
 
@@ -348,11 +463,49 @@ Secondary Table Order
 Notify After Completing Split/Merge
 	Allows users to specify if a pop-up message should be displayed following the completion of any of the split or merge operations.
 
+.. raw:: latex
+
+	\newpage
+
+.. index::
+	single: Options; Bulk Load
+
+.. _options_user_bulk_load:
+
+Bulk Load Options
+-----------------
+
+The following options relate to the Bulk Load function. These are user-specific settings found under **User > Bulk Load** in the Options navigation.
+
+.. _figOWBulkLoad:
+
+.. figure:: figures/OptionsWindowUserBulkLoad.png
+	:align: center
+	:scale: 80
+
+	Options Window - Bulk Load
+
+Default Staging Layer Directory
+	Sets the default folder path where the staging layer will be created during the bulk load process. The staging layer is a temporary layer for features before they are moved to an HLU layer. A different path can still be selected during the bulk load process.
+
+	.. note::
+		The path is validated when the folder path window is closed. If the specified folder does not exist or is not accessible, an error will be shown.
+
+Default Staging Layer Name
+	Sets the default name for the staging layer that will be created during the bulk load process. This name will be used to create the staging layer in the configured staging layer directory. A different name can still be selected during the bulk load process.
+
+.. seealso::
+	For details on using the Bulk Load function see :ref:`bulk_load_function`.
+
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; SQL
 	single: Options; Filter
 
-.. _options_filter:
+.. _options_user_filter:
 
 SQL Options
 -----------
@@ -363,7 +516,7 @@ The following options relate to the advanced query builder used to filter INCID 
 
 .. figure:: figures/OptionsWindowUserSQL.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - SQL
 
@@ -374,12 +527,16 @@ Default Query Directory
 	Enables users to set a default folder path that will be used when saving or loading queries with the 'Advanced Query Builder' (see :ref:`advanced_query_builder_window` for details). A different path to the default can also be selected during the save and load process.
 
 .. note::
-	The threshold for warning before selecting features in ArcGIS Pro is now configured in the **GIS Options** (see :ref:`options_gis`).
+	The threshold for warning before selecting features in ArcGIS Pro is now configured in the **User GIS Options** (see :ref:`options_user_gis`).
+
+.. raw:: latex
+
+	\newpage
 
 .. index::
 	single: Options; History
 
-.. _options_history:
+.. _options_user_history:
 
 History Options
 ---------------
@@ -390,7 +547,7 @@ The following options relate to how history records are displayed in the HLU Too
 
 .. figure:: figures/OptionsWindowUserHistory.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - History
 
@@ -400,13 +557,17 @@ History Display Columns
 Display History Rows
 	Sets the number of entries displayed in the 'History' tab of the main window. For more details on the 'History' tab see :ref:`history_tab`.
 
+.. raw:: latex
+
+	\newpage
+
 .. index::
 	single: Options; Export
 
-.. _options_export:
+.. _options_user_export:
 
-Export Options (User)
----------------------
+Export Options
+--------------
 
 The following options relate to exporting data. These are user-specific settings found under **User > Export** in the Options navigation.
 
@@ -414,7 +575,7 @@ The following options relate to exporting data. These are user-specific settings
 
 .. figure:: figures/OptionsWindowUserExport.png
 	:align: center
-	:scale: 90
+	:scale: 80
 
 	Options Window - Export
 

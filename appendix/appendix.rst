@@ -11,75 +11,95 @@ Appendix
 Change Log
 ==========
 
+**1.2.1**
+(27th August 2026)
+
+    * **New:** GIS feature selection now automatically switches strategy based on the number of INCIDs being selected — small selections use chunked SQL IN clauses, while large selections use a temporary geodatabase table join. The crossover point is configurable in the User GIS Options
+    * **Improved:** Navigating between INCID records is now faster
+    * **Improved:** Status bar messages during operations are now more specific
+    * **Changed:** Tooltip text for the **Select Current INCID** and **Select Filtered INCIDs** ribbon buttons updated for clarity
+    * **Changed:** The **Warn Before Selecting Features** option in User GIS Options has been replaced by **Select By SQL Threshold** — this value now controls the selection strategy switchover point as well as triggering a warning dialog
+    * **Fixed:** Info button on the OSMM Source field in the Application Bulk OSMM Options now displays correctly
+
+**1.2.0**
+(14th July 2026)
+
+    * **New:** Added **Bulk Load/Unload** dynamic menu button to the HLU Tool tab with two commands:
+
+        * **Bulk Unload** — removes selected registered features from the active HLU layer and cleans up their database records. Use this to unload features that were incorrectly loaded or will be replaced during a bulk load operation.
+        * **Bulk Load** — registers new features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is assigned its own INCID based on habitat codes derived from OSMM descriptive attributes.
+
+    * **New:** Added **Reassign Features** button to the HLU Tool tab — reassigns features from the active HLU layer to target layers based on configurable rules that match primary and secondary habitat codes. Use this to move features that belong in different layers after habitat updates
+    * **New:** Added **Bulk Load Options** to the user options — configure default staging layer directory and default staging layer name used during bulk load operations
+    * **New:** Added **Reassign Options** to application options — configure reassign rules that determine which features should be moved to which target layers based on SQL WHERE clauses
+
 **1.1.1**
 (9th July 2026)
 
-    * :guilabel:`New` Added ``ihs_summary`` field to incid table to support IHS summary queries
-    * :guilabel:`Improved` Improved query performance when filtering and navigating INCID records
-    * :guilabel:`Fixed` Navigating to an invalid INCID number no longer causes the tool to display the incorrect record counter
-    * :guilabel:`Fixed` Primary habitat code is no longer incorrectly cleared when selecting a habitat type where the current code is still valid
+    * **New:** Added ``ihs_summary`` field to incid table to support IHS summary queries
+    * **Improved:** Improved query performance when filtering and navigating INCID records
+    * **Fixed:** Navigating to an invalid INCID number no longer causes the tool to display the incorrect record counter
+    * **Fixed:** Primary habitat code is no longer incorrectly cleared when selecting a habitat type where the current code is still valid
 
 **1.1.0**
 (30th June 2026)
 
-    * :guilabel:`New` Added support for polyline and point GIS layers in addition to the existing polygon layer support
-    * :guilabel:`New` Added **Insert Feature** ribbon group to the HLU Tool tab with two new commands:
+    * **New:** Added support for polyline and point GIS layers in addition to the existing polygon layer support
+    * **New:** Added **Insert Feature** ribbon group to the HLU Tool tab with two new commands:
 
         * **Same INCID** — registers all selected newly created features (features with no INCID assigned) under a single new INCID. Use this when the new features represent fragments of the same habitat record.
         * **Separate INCIDs** — registers each selected newly created feature under its own new INCID. Use this when each new feature represents a distinct habitat record.
 
-    * :guilabel:`New` Added ``Feature Insert`` operation to the history log when new features are added
-    * :guilabel:`Changed` Only INCIDs with feature geometry types the same as in the active layer are now shown in the INCID selector
-    * :guilabel:`Changed` Primary code list is now filtered by geometry type (polygon, line, or point) so only codes applicable to the active layer type are shown
-    * :guilabel:`Changed` Area and length metrics are now calculated as per geometry type
-    * :guilabel:`Improved` Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle where features do not have Ordnance Survey TOID references
-    * :guilabel:`Improved` Merge and split operations now support line and point geometry types in addition to polygons. Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
-    * :guilabel:`Fixed` The ``No`` button in the ``Warn on Subset Update`` dialog no longer incorrectly splits the subset features regardless
+    * **New:** Added ``Feature Insert`` operation to the history log when new features are added
+    * **Improved:** Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle where features do not have Ordnance Survey TOID references
+    * **Improved:** Merge and split operations now support line and point geometry types in addition to polygons. Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
+    * **Changed:** Only INCIDs with feature geometry types the same as in the active layer are now shown in the INCID selector
+    * **Changed:** Primary code list is now filtered by geometry type (polygon, line, or point) so only codes applicable to the active layer type are shown
+    * **Changed:** Area and length metrics are now calculated as per geometry type
+    * **Fixed:** The ``No`` button in the ``Warn on Subset Update`` dialog no longer incorrectly splits the subset features regardless
 
 **1.0.1**
 (27th April 2026)
 
-    * :guilabel:`Fixed` Corrected application version number in compiled add-in
-    * :guilabel:`Fixed` Corrected minimum required database version checked on startup
-    * :guilabel:`Fixed` Bug when changing the working file geodatabase path in GIS options
-    * :guilabel:`Fixed` Bug when a new primary code was not valid for the current habitat type when pasting
-    * :guilabel:`New` Added validation of the working file geodatabase directory path in GIS options
-    * :guilabel:`New` Added **Adopt** button to the Review OSMM Updates window — accepts and immediately applies the pending OSMM update for the current INCID without requiring a separate bulk apply step
-    * :guilabel:`New` Added validation of the selected export format before an export is started
-    * :guilabel:`Improved` Updated user guide links launched from the About and Options windows
-    * :guilabel:`Improved` Updated ribbon group labels and cross-references
-
+    * **New:** Added validation of the working file geodatabase directory path in GIS options
+    * **New:** Added **Adopt** button to the Review OSMM Updates window — accepts and immediately applies the pending OSMM update for the current INCID without requiring a separate bulk apply step
+    * **New:** Added validation of the selected export format before an export is started
+    * **Improved:** Updated user guide links launched from the About and Options windows
+    * **Improved:** Updated ribbon group labels and cross-references
+    * **Fixed:** Corrected application version number in compiled add-in
+    * **Fixed:** Corrected minimum required database version checked on startup
+    * **Fixed:** Bug when changing the working file geodatabase path in GIS options
+    * **Fixed:** Bug when a new primary code was not valid for the current habitat type when pasting
 
 **1.0.0**
 (16th April 2026)
 
 First release of the HLU Tool as an ArcGIS Pro add-in.
 
-    * :guilabel:`New` Rebuilt as an ArcGIS Pro add-in — complete rewrite from a standalone ArcMap/MapInfo desktop application to an ArcGIS Pro dockable pane
-    * :guilabel:`New` Fully async UI — navigation, GIS selection, SQL queries and export operations are all async/await, preventing UI freezing
-    * :guilabel:`New` Reason and Process controls moved to the ArcGIS Pro ribbon, freeing space in the dockable pane
-    * :guilabel:`New` Active layer selector on the ribbon — users can switch HLU layers without reopening the tool; handles layers being added or removed dynamically
-    * :guilabel:`New` Preferred primary habitat codes shown at the top of the Primary list with a visual separator from non-preferred codes
-    * :guilabel:`New` Mandatory and optional secondary codes displayed separately as aids when selecting habitats
-    * :guilabel:`New` Configurable area and distance display units shown in the dockpane and in history entries
-    * :guilabel:`New` History entries now include modified area and perimeter, with a user option to show or hide geometry columns
-    * :guilabel:`New` Message queue system replacing modal message dialogs with inline dismissible info, warning and error messages with optional auto-dismiss
-    * :guilabel:`New` Toolbar controls disabled while the tool is processing an operation
-    * :guilabel:`New` Configurable default Reason and Process settings
-    * :guilabel:`New` Reset database connection option
-    * :guilabel:`Improved` Navigation and seek performance
-    * :guilabel:`Improved` Export performance with a configurable warning threshold for large feature counts
-    * :guilabel:`Changed` OSMM Update mode renamed to OSMM Review mode
-    * :guilabel:`Changed` Settings split into application-level (stored as XML in the .esriAddInX folder) and user-level (stored in the user's roaming profile)
-    * :guilabel:`Changed` Field ``toidfragid`` renamed to ``fragid`` as groundwork for future point and line support
-    * :guilabel:`Removed` ArcMap and MapInfo support
-    * :guilabel:`Removed` Microsoft Access backend (incompatible with ArcGIS Pro)
-    * :guilabel:`Removed` ODBC and OLE DB connection types
-    * :guilabel:`Removed` Standalone window management options (side-by-side GIS window, keep on top, reset tool window, preferred GIS selection)
-    * :guilabel:`Fixed` Rollback of both database and GIS layer on update error — previously only one side was rolled back
-    * :guilabel:`Fixed` Physical split now creates history records for all split features
-    * :guilabel:`Fixed` Area and length are now included in the history table for attribute updates
-
+    * **New:** Rebuilt as an ArcGIS Pro add-in — complete rewrite from a standalone ArcMap/MapInfo desktop application to an ArcGIS Pro dockable pane
+    * **New:** Fully async UI — navigation, GIS selection, SQL queries and export operations are all async/await, preventing UI freezing
+    * **New:** Reason and Process controls moved to the ArcGIS Pro ribbon, freeing space in the dockable pane
+    * **New:** Active layer selector on the ribbon — users can switch HLU layers without reopening the tool; handles layers being added or removed dynamically
+    * **New:** Preferred primary habitat codes shown at the top of the Primary list with a visual separator from non-preferred codes
+    * **New:** Mandatory and optional secondary codes displayed separately as aids when selecting habitats
+    * **New:** Configurable area and distance display units shown in the dockpane and in history entries
+    * **New:** History entries now include modified area and perimeter, with a user option to show or hide geometry columns
+    * **New:** Message queue system replacing modal message dialogs with inline dismissible info, warning and error messages with optional auto-dismiss
+    * **New:** Toolbar controls disabled while the tool is processing an operation
+    * **New:** Configurable default Reason and Process settings
+    * **New:** Reset database connection option
+    * **Improved:** Navigation and seek performance
+    * **Improved:** Export performance with a configurable warning threshold for large feature counts
+    * **Changed:** OSMM Update mode renamed to OSMM Review mode
+    * **Changed:** Settings split into application-level (stored as XML in the .esriAddInX folder) and user-level (stored in the user's roaming profile)
+    * **Changed:** Field ``toidfragid`` renamed to ``fragid`` as groundwork for future point and line support
+    * **Removed:** ArcMap and MapInfo support
+    * **Removed:** Removed` Microsoft Access backend (incompatible with ArcGIS Pro)
+    * **Removed:** Removed` ODBC and OLE DB connection types
+    * **Removed:** Removed` Standalone window management options (side-by-side GIS window, keep on top, reset tool window, preferred GIS selection)
+    * **Fixed:** Rollback of both database and GIS layer on update error — previously only one side was rolled back
+    * **Fixed:** Physical split now creates history records for all split features
+    * **Fixed:** Area and length are now included in the history table for attribute updates
 
 .. raw:: latex
 
@@ -556,4 +576,3 @@ included in the Appendix section.
     recommend releasing these examples in parallel under your choice of
     free software license, such as the GNU General Public License,
     to permit their use in free software.
-
