@@ -223,6 +223,10 @@ To perform a physical split in ArcGIS Pro:
 
 	Split Features
 
+.. raw:: latex
+
+	\newpage
+
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new fragment identifier will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
 
