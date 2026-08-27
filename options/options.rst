@@ -24,7 +24,7 @@ The window is organised into two categories in a navigation sidebar:
 	Settings specific to the current user (interface, GIS, updates, bulk load, SQL, history, export).
 
 .. note::
-	User options are stored in a **user.config** file in the user's roaming folder, e.g. **%AppData%\Esri\ArcGISPro_StrongName_[hash]\[version]** where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
+	User options are stored in a **user.config** file in the user's roaming folder, e.g. **%AppData%\\Esri\\ArcGISPro_StrongName_[hash]\\[version]** where ``[version]`` relates to the version of ArcGIS Pro installed (such as ``3.4.0.0``).
 
 .. raw:: latex
 
