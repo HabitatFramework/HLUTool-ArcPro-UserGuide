@@ -659,7 +659,7 @@ Opens the Reassign Features window, allowing users to move features from the act
 .. note::
 	* Available only when **Update** mode is active.
 	* The active HLU layer and all target layers must be editable in ArcGIS Pro.
-	* Reassign rules are configured in the application options (see :ref:`options_reassign`).
+	* Reassign rules are configured in the application options (see :ref:`options_app_reassign`).
 
 .. seealso::
 	See :ref:`reassign_features_window` and :ref:`reassign_features_function` for more information.

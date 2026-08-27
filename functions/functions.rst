@@ -129,7 +129,7 @@ To update the attributes of an INCID:
 		* There are no fields in error.
 
 .. warning::
-	If changes are made to an INCID and applied when only a subset of the features for that INCID are selected in the map the user may be notified (depending upon their user Options) as shown in the figure :ref:`figFAUWD`. See :ref:`options_user_updates` for more details.
+	If changes are made to an INCID, and applied when only a subset of the features for that INCID are selected in the map, the user may be notified (depending upon their user Options) as shown in the figure :ref:`figFAUWD`. See :ref:`options_app_updates` for more details.
 
 .. _figFAUWD:
 
@@ -621,7 +621,7 @@ To select all features associated with the current INCID in the active HLU layer
 * Click |selectonmap| :guilabel:`Select Current INCID on Map`. All features for the current INCID will be selected in the active HLU layer.
 
 .. note::
-	Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before executing the query if the expected number of features to be selected exceeds the configured threshold.
+	Depending on the **Warn Before Selecting Features** setting in the User GIS Options (see :ref:`options_user_gis`), a warning message may appear before executing the query if the expected number of features to be selected exceeds the configured threshold.
 
 .. index::
 	single: Select; Select all filtered INCIDs
@@ -637,7 +637,7 @@ To select all features associated with every INCID in the active filter:
 * Click |selectallonmap| :guilabel:`Select All Filtered INCIDs`. All features associated with every INCID in the active filter will be selected in the active HLU layer.
 
 .. warning::
-	This operation may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before the selection is made, as shown in the figure :ref:`figFGSWD`.
+	This operation may take a long time depending upon the number of INCIDs in the active filter and the size of the HLU layer. Depending on the **Warn Before Selecting Features** setting in the User GIS Options (see :ref:`options_user_gis`), a warning message may appear before the selection is made, as shown in the figure :ref:`figFGSWD`.
 
 .. _figFGSWD:
 
@@ -670,7 +670,7 @@ When **Auto Select** is inactive:
 * Use |getmapselection| :guilabel:`Get Map Selection` or |selectonmap| :guilabel:`Select Current INCID on Map` to update the selection manually.
 
 .. note::
-	Depending on the **Warn Before Selecting Features** setting in the GIS Options (see :ref:`options_gis`), a warning message may appear before each automatic selection if the expected number of features to be selected exceeds the configured threshold.
+	Depending on the **Warn Before Selecting Features** setting in the User GIS Options (see :ref:`options_user_gis`), a warning message may appear before each automatic selection if the expected number of features to be selected exceeds the configured threshold.
 
 .. raw:: latex
 
@@ -881,7 +881,7 @@ To bulk apply OSMM updates:
 * Select the required options for the bulk update and click :guilabel:`OK`. The INCIDs in the active filter will be updated.
 
 .. note::
-	If a default OSMM Source Name has been set (see :ref:`options_bulk_update` for details) this will automatically appear in the Sources tab.
+	If a default OSMM Source Name has been set in the Application Bulk Update Options (see :ref:`options_app_bulk_update` for details) this will automatically appear in the Sources tab.
 
 .. warning::
 	Performing bulk OSMM updates should be used with caution as unexpected results may occur if users do not understand the implications of any update details or the options applied.
@@ -928,7 +928,7 @@ To perform an export:
 * A pop-up message will appear informing when the export has completed and informing the user that the exported layer has been loaded to the active ArcGIS Pro map.
 
 .. note::
-	The default export folder destination can be set in the Export Options (see :ref:`options_export` for more details).
+	The default export folder destination can be set in the User Export Options (see :ref:`options_user_export` for more details).
 
 .. warning::
 	Exporting all features or a large number of features can take a long time depending upon the number of features and the configuration of the HLU Tool and database system.
@@ -1164,7 +1164,7 @@ The bulk Load operation matches your OSMM attributes against this table to autom
 
 .. note::
 	* The match between the OSMM attributes and the cross-reference table can be saved as a CSV file to assist with updating and populating the cross-reference table
-	* The default staging layer directory and staging layer name can be configured in the Bulk Load Options (see :ref:`options_bulk_load` for more details)
+	* The default staging layer directory and staging layer name can be configured in the Application Bulk Load Options (see :ref:`options_app_bulk_load` for more details)
 	* The staging layer will be added to the current map after the bulk load operation is complete
 
 .. tip::
@@ -1234,7 +1234,7 @@ Before using the Reassign Features operation, you must configure one or more rea
     * When applying negative clauses to any fields (e.g. ``habsecond NOT LIKE '%827%'``) remember to include an IS NULL clause (e.g. ``(habsecond NOT LIKE '%827%' OR habsecond IS NULL)``). Otherwise only features with non-NULL values will be selected by the rule.
 
 .. seealso::
-	For details on configuring reassign rules see :ref:`options_reassign`.
+	For more details on configuring reassign rules see :ref:`options_app_reassign`.
 
 Reassigning Features
 --------------------

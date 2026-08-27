@@ -245,7 +245,7 @@ Delete Existing IHS Codes
 	The default option for whether existing IHS habitat and multiplex (matrix, formation, management and complex) codes should be deleted following a change to the habitat during a bulk update. If checked, any existing multiplex codes will be deleted, otherwise they will be retained.
 
 Delete Existing Secondary Codes
-	The default option for whether existing secondary codes should be deleted following a change to the primary habitat during a bulk update. If checked, any existing secondary codes will be deleted, otherwise they will be retained and may not be compatible with the new primary habitat (see :ref:`options_updates` for more details).
+	The default option for whether existing secondary codes should be deleted following a change to the primary habitat during a bulk update. If checked, any existing secondary codes will be deleted, otherwise they will be retained and may not be compatible with the new primary habitat (see :ref:`options_user_updates` for more details).
 
 Create History Records
 	The default option for whether history records will be created when a bulk update is applied.
@@ -527,7 +527,7 @@ Default Query Directory
 	Enables users to set a default folder path that will be used when saving or loading queries with the 'Advanced Query Builder' (see :ref:`advanced_query_builder_window` for details). A different path to the default can also be selected during the save and load process.
 
 .. note::
-	The threshold for warning before selecting features in ArcGIS Pro is now configured in the **GIS Options** (see :ref:`options_gis`).
+	The threshold for warning before selecting features in ArcGIS Pro is now configured in the **User GIS Options** (see :ref:`options_user_gis`).
 
 .. raw:: latex
 

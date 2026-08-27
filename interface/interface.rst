@@ -86,10 +86,10 @@ INCID
 	The unique reference for the current record.
 
 Area
-	The total area of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. For line layers this field shows the total length. Not shown for point layers.
+	The total area of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_user_gis`. For line layers this field shows the total length. Not shown for point layers.
 
 Length
-	The total perimeter length of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_gis`. Not shown for point layers.
+	The total perimeter length of all the selected features for the current INCID. Displayed in the units configured in :ref:`options_user_gis`. Not shown for point layers.
 
 Created/By
 	The date the current INCID was first created and the name of the user that created it. For most INCIDs this will relate to when the data was first loaded into the framework. For INCIDs that have been created as a result of a logical split this relate to when the split was performed.
@@ -135,7 +135,7 @@ When an INCID has a pending OSMM update (i.e. the status is 'Pending') an :guila
 	The user still needs to save the changes to the current INCID before the update is applied. The OSMM status is only changed from 'Pending' to 'Applied' after a successful save.
 
 .. tip::
-	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_interface`.
+	If/when the OSMM Update section appears can be configured in the user options. For details see :ref:`options_user_interface`.
 
 .. raw:: latex
 
@@ -274,7 +274,7 @@ Mandatory
 
 	.. note::
 		Missing mandatory secondary codes are flagged as warnings or
-		errors depending on the validation settings (see :ref:`options_validation`).
+		errors depending on the validation settings (see :ref:`options_app_validation`).
 
 Optional
 	[Read only]. A comma-separated list of any secondary codes
@@ -375,7 +375,7 @@ IHS Summary
 	[Read only]. Concatenation of the above IHS habitat and multiplex codes.
 
 .. note::
-	The IHS details will be blank for features added since the conversion from IHS, or if the 'When To Clear IHS Codes After Update' option is set to clear when certain attribute updates are applied (see :ref:`options_updates`).
+	The IHS details will be blank for features added since the conversion from IHS, or if the 'When To Clear IHS Codes After Update' option is set to clear when certain attribute updates are applied (see :ref:`options_app_updates`).
 
 .. raw:: latex
 
@@ -528,7 +528,7 @@ Name
 	The following source fields will not be unlocked until a source name has been selected.
 
 Vague Date
-	Allows users to enter the date of the data source. This can be either a precise date e.g. 01/04/2010 or a vague date e.g. Spring 2010-Summer 2010, 1980-2010 or 'Unknown'. For details on configuring vague dates see :ref:`options_dates`.
+	Allows users to enter the date of the data source. This can be either a precise date e.g. 01/04/2010 or a vague date e.g. Spring 2010-Summer 2010, 1980-2010 or 'Unknown'. For details on configuring vague dates see :ref:`options_app_dates`.
 
 	.. note::
 		If a default date for the selected data source has been defined in the lut_sources table, the 'Vague Date' field will be set to the default date. If a default date has not been defined, then the 'Vague Date' field must be updated manually. See 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details of how to define default source dates.
@@ -571,7 +571,7 @@ Click on the :guilabel:`History` tab to display the History tab as shown in the 
 
 	Main Window - History Tab
 
-The History tab displays a list of previous modifications made to the current INCID. Each entry details what modifications were made, when and by whom. Entries are shown in **descending** date and time order with the most recent changes at the top. The maximum number of entries to appear in the history tab can be configured in the Options (see :ref:`options_history` for more details).
+The History tab displays a list of previous modifications made to the current INCID. Each entry details what modifications were made, when and by whom. Entries are shown in **descending** date and time order with the most recent changes at the top. The maximum number of entries to appear in the history tab can be configured in the Options (see :ref:`options_user_history` for more details).
 
 .. raw:: latex
 
@@ -820,7 +820,7 @@ Create History Records
 	Whether history records will be created when a bulk update is applied.
 
 .. tip::
-	The default values for all of the above fields (except for *Delete Existing Source Rows*) can be set in the options (see :ref:`options_bulk_update` for more details).
+	The default values for all of the above fields (except for *Delete Existing Source Rows*) can be set in the options (see :ref:`options_app_bulk_update` for more details).
 
 .. raw:: latex
 
@@ -1124,7 +1124,7 @@ Habitat Interpretation Quality
 	Some of the options cannot be controlled by the user - they are automatically set for bulk OSMM updates.
 
 .. tip::
-	The default values for these fields can be set in the options (see :ref:`options_bulk_update` for more details).
+	The default values for these fields can be set in the options (see :ref:`options_app_bulk_update` for more details).
 
 .. raw:: latex
 
@@ -1195,13 +1195,13 @@ Verify
 	Click :guilabel:`Verify` to determine if the query is valid by checking the syntax of the text boxes and hence will execute successfully on the HLU Tool database. If the syntax is valid it will also determine if any records will be returned by the query.
 
 Load
-	Click :guilabel:`Load` to copy an existing query file into the text boxes. Users will be prompted for the source path and file name of an existing **.hsq** file. The default folder path can be set in the Options (see :ref:`options_filter` for more details).
+	Click :guilabel:`Load` to copy an existing query file into the text boxes. Users will be prompted for the source path and file name of an existing **.hsq** file. The default folder path can be set in the Options (see :ref:`options_user_filter` for more details).
 
 Save
-	Click :guilabel:`Save` to copy the text boxes to a query file. Users will be prompted for the destination path and file name of the **.hsq** file to save the query to. The default folder path can be set in the Options (see :ref:`options_filter` for more details).
+	Click :guilabel:`Save` to copy the text boxes to a query file. Users will be prompted for the destination path and file name of the **.hsq** file to save the query to. The default folder path can be set in the Options (see :ref:`options_user_filter` for more details).
 
 OK
-	Click :guilabel:`OK` to execute the query and close the query window. If the number of features to be selected exceeds the threshold configured in the GIS Options (see :ref:`options_gis`) a pop-up message will appear advising how many features will be selected.
+	Click :guilabel:`OK` to execute the query and close the query window. If the number of features to be selected exceeds the threshold configured in the GIS Options (see :ref:`options_user_gis`) a pop-up message will appear advising how many features will be selected.
 
 Cancel
 	Click :guilabel:`Cancel` to close the 'Advanced Query Builder' window without applying a new filter.

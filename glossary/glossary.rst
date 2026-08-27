@@ -17,7 +17,7 @@ Glossary
 		The relative importance of each source when determining the boundary location of all the features in an INCID (e.g. of 'Primary' or 'Secondary' importance).
 
 	Bulk Update
-		Enables updates to the attributes for multiple selected INCIDs simultaneously. See :ref:`bulk_update_window` and :ref:`bulk_updates` for more details.
+		Enables updates to the attributes for multiple selected INCIDs simultaneously. See :ref:`bulk_update_window` and :ref:`bulk_update` for more details.
 
 	Bulk Load
 		Registers new GIS features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is automatically assigned its own INCID based on habitat codes derived from OSMM descriptive attributes (Make, Descriptive Group, Descriptive Term, Theme, and Feature Code). See :ref:`bulk_load_function` for more details.

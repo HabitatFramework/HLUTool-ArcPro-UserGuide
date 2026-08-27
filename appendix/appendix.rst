@@ -12,7 +12,7 @@ Change Log
 ==========
 
 **1.2.1**
-(28rd July 2026)
+(27th August 2026)
 
     * :guilabel:New GIS feature selection now automatically switches strategy based on the number of INCIDs being selected — small selections use chunked SQL IN clauses, while large selections use a temporary geodatabase table join. The crossover point is configurable in GIS options
     * :guilabel:Improved Navigating between INCID records is now faster

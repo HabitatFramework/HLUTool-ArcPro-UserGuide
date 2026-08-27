@@ -42,7 +42,7 @@ This Preface explains a little about the HLU Tool, the community of people who d
 
 :doc:`../concepts/concepts` \ is a brief outline of the key concepts of the HLU Tool.
 
-:doc:`../toolbar/toolbar` \ describes all the toolbar items on the HLU Tool toolbar.
+:doc:`../ribbon/ribbon` \ describes all the ribbon controls on the HLU Tool ribbon.
 
 :doc:`../interface/interface` \ describes all the user interface windows and components of the HLU Tool.
 
