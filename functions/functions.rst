@@ -1164,7 +1164,7 @@ The bulk Load operation matches your OSMM attributes against this table to autom
 
 .. note::
 	* The match between the OSMM attributes and the cross-reference table can be saved as a CSV file to assist with updating and populating the cross-reference table
-	* The default staging layer directory and staging layer name can be configured in the Application Bulk Load Options (see :ref:`options_app_bulk_load` for more details)
+	* The default staging layer directory and staging layer name can be configured in the Application Bulk Load Options (see :ref:`options_user_bulk_load` for more details)
 	* The staging layer will be added to the current map after the bulk load operation is complete
 
 .. tip::
