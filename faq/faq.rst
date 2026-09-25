@@ -54,6 +54,17 @@ This is a list of Frequently Asked Questions about the HLU Tool. Feel free to su
 
 		It is recommended that the conversion is performed by someone familiar with the OS MasterMap framework, expert in the configuration of the HLU Tool, experienced in advanced GIS geospatial processing, and ideally expert in SQL Server and developing data conversion routines. Enquiries can be made via the Knowlege Hub Forum **HLU Tool & Habitat Framework** discussion at `khub.net/group/association-of-local-environmental-records-centres/group-discussion <https://khub.net/group/association-of-local-environmental-records-centres/group-discussion>`_
 
+**Why has some of the history for an INCID disappeared after a merge?**
+
+	This is expected behaviour. When features are logically or physically merged, one or more INCIDs cease to exist and their features are reassigned to a single surviving INCID.
+
+	* For a **physical merge**, the merged fragments already belong to the same INCID, so all existing history is retained and continues to be shown against that INCID.
+	* For a **logical merge**, only a single new entry recording the merge (and which INCID(s) it was merged from) is added to the surviving INCID. The pre-existing history of the INCID(s) that no longer exist is **not** copied across to the surviving INCID.
+
+	This is deliberate: carrying forward the full history of a merged-away INCID would combine two previously independent histories into a single timeline, which could be confusing or misleading (for example, showing two unrelated split events for what is now a single fragment). By contrast, when a feature is split, its existing history is always carried forward to the new INCID or fragment, because it is still the same fragment, simply given a new identity.
+
+	See :ref:`function_split` and :ref:`function_merge` for more details.
+
 **Can I hide habitat types that don't occur in my region from the drop-down lists?**
 
 	You can hide primary and secondary habitats from all of the habitat-related lists in the dockpane by setting them as not ``local``. Many lists based on other lookup tables can similarly be shown or hidden using the ```local`` column (see 'Lookup Tables' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_ for details).
