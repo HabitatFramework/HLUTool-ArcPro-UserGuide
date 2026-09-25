@@ -13,8 +13,9 @@ Change Log
 
 **1.2.1**
 (27th August 2026)
+Improvements to GIS feature selection, INCID navigation and user interface, and bug fixes.
 
-    * **New:** GIS feature selection now automatically switches strategy based on the number of INCIDs being selected — small selections use chunked SQL IN clauses, while large selections use a temporary geodatabase table join. The crossover point is configurable in the User GIS Options
+    * **New:** GIS feature selection now automatically switches method based on the number of INCIDs being selected — small selections use chunked SQL IN clauses, while large selections use a temporary geodatabase table join. The crossover point is configurable in the User GIS Options
     * **Improved:** Navigating between INCID records is now faster
     * **Improved:** Status bar messages during operations are now more specific
     * **Changed:** Tooltip text for the **Select Current INCID** and **Select Filtered INCIDs** ribbon buttons updated for clarity
@@ -23,18 +24,18 @@ Change Log
 
 **1.2.0**
 (14th July 2026)
+Added support for bulk load/unload and feature reassignment operations, and related configuration options.
 
     * **New:** Added **Bulk Load/Unload** dynamic menu button to the HLU Tool tab with two commands:
-
         * **Bulk Unload** — removes selected registered features from the active HLU layer and cleans up their database records. Use this to unload features that were incorrectly loaded or will be replaced during a bulk load operation.
         * **Bulk Load** — registers new features against new INCIDs using OSMM attributes matched against the OSMM cross-reference table. Each feature is assigned its own INCID based on habitat codes derived from OSMM descriptive attributes.
-
     * **New:** Added **Reassign Features** button to the HLU Tool tab — reassigns features from the active HLU layer to target layers based on configurable rules that match primary and secondary habitat codes. Use this to move features that belong in different layers after habitat updates
     * **New:** Added **Bulk Load Options** to the user options — configure default staging layer directory and default staging layer name used during bulk load operations
     * **New:** Added **Reassign Options** to application options — configure reassign rules that determine which features should be moved to which target layers based on SQL WHERE clauses
 
 **1.1.1**
 (9th July 2026)
+Improvements to the INCID table and query performance, and bug fixes.
 
     * **New:** Added ``ihs_summary`` field to incid table to support IHS summary queries
     * **Improved:** Improved query performance when filtering and navigating INCID records
@@ -43,13 +44,12 @@ Change Log
 
 **1.1.0**
 (30th June 2026)
+Added support for line and point geometry types, a number of improvements to the feature insert, split and merge operations, and bug fixes.
 
     * **New:** Added support for polyline and point GIS layers in addition to the existing polygon layer support
     * **New:** Added **Insert Feature** ribbon group to the HLU Tool tab with two new commands:
-
         * **Same INCID** — registers all selected newly created features (features with no INCID assigned) under a single new INCID. Use this when the new features represent fragments of the same habitat record.
         * **Separate INCIDs** — registers each selected newly created feature under its own new INCID. Use this when each new feature represents a distinct habitat record.
-
     * **New:** Added ``Feature Insert`` operation to the history log when new features are added
     * **Improved:** Fragment ID generation in split and insert operations now based on INCID rather than TOID to handle where features do not have Ordnance Survey TOID references
     * **Improved:** Merge and split operations now support line and point geometry types in addition to polygons. Physical split and merge are disabled for point layers, where splitting/merging geometry is not applicable
@@ -60,6 +60,7 @@ Change Log
 
 **1.0.1**
 (27th April 2026)
+Introduced a number of minor improvements and bug fixes to the initial release of the HLU Tool.
 
     * **New:** Added validation of the working file geodatabase directory path in GIS options
     * **New:** Added **Adopt** button to the Review OSMM Updates window — accepts and immediately applies the pending OSMM update for the current INCID without requiring a separate bulk apply step
@@ -73,7 +74,6 @@ Change Log
 
 **1.0.0**
 (16th April 2026)
-
 First release of the HLU Tool as an ArcGIS Pro add-in.
 
     * **New:** Rebuilt as an ArcGIS Pro add-in — complete rewrite from a standalone ArcMap/MapInfo desktop application to an ArcGIS Pro dockable pane
