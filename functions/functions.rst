@@ -168,6 +168,9 @@ To perform a logical split:
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |split| :guilabel:`Split` and then |logicalsplit| :guilabel:`Logical Split`. A new INCID will be created and displayed as the current record and details of the split will be added to the History tab for the INCID.
 
+.. note::
+	Any history already recorded against the split fragment(s) is carried forward to the new INCID, alongside the new entry recording the split itself. The original INCID retains its own history for any features that were not part of the split.
+
 .. _figFLSFD:
 
 .. figure:: figures/LogicalSplitDiagram.png
@@ -230,6 +233,9 @@ To perform a physical split in ArcGIS Pro:
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |split| :guilabel:`Split` and then |physicalsplit| :guilabel:`Physical Split`. A new fragment identifier will be assigned to one of the fragments and details of the split will be added to the History tab for the INCID.
 
+.. note::
+	Since both fragments remain part of the same INCID, existing history continues to be displayed unchanged for that INCID; it is simply now associated with whichever fragment identifier the history relates to. A new entry recording the physical split is also added.
+
 .. raw:: latex
 
 	\newpage
@@ -270,6 +276,9 @@ To perform a logical merge:
 .. note::
 	If the merged features are all fragments of the same INCID then a message will be displayed informing the user that a physical merge is possible.
 
+.. note::
+	The pre-existing history of any INCID that stops existing as a result of the merge is **not** carried forward to the surviving INCID. Only a single new entry recording the logical merge (including a reference to the INCID(s) it was merged from) is added to the surviving INCID's history. This avoids combining two unrelated histories into a single, potentially misleading, timeline.
+
 .. raw:: latex
 
 	\newpage
@@ -296,6 +305,9 @@ To perform a physical merge:
 * Select two or more fragments from the same INCID in the map as shown in the **left** part of the figure :ref:`figFPMD`.
 * Click |getmapselection| :guilabel:`Get Map Selection`.
 * Click |merge| :guilabel:`Merge` and then |physicalmerge| :guilabel:`Physical Merge`. The features will be combined in the map as shown in the **right** part of the figure :ref:`figFPMD` and details of the merge will be added to the History tab for the INCID.
+
+.. note::
+	Since the merged fragments already belong to the same INCID, any existing history for those fragments is retained and continues to be displayed against the INCID, now associated with the single remaining fragment identifier. A new entry recording the physical merge is also added.
 
 .. _figFPMD:
 

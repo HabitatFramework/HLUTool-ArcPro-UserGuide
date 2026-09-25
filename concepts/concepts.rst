@@ -392,26 +392,6 @@ Each feature in the source layer is assigned to its own new INCID, allowing the 
 See :ref:`bulk_load_function` for full details and step-by-step instructions.
 
 .. index::
-	single: Concepts; Feature Insert
-	single: Feature Insert, Concept
-
-.. _insert_feature:
-
-Feature Insert
-==============
-
-New features can be added to the active HLU layer at any time using the standard ArcGIS Pro editing tools. Newly drawn features do not initially have an INCID or fragment identifier assigned to them — they must be **registered** against the database before they can be attributed.
-
-TOIDs are **optional**. Features do not need to originate from or be aligned with OS MasterMap. Once drawn and selected, new features are registered using the **Insert Feature** function in the :ref:`feature_insert_group` of the HLU Tool ribbon, which creates new INCID and fragment identifier records in the database. Two modes are available:
-
-* **Same INCID** — all selected new features are assigned to a single new INCID, each with a sequential fragment identifier. Use this when the features represent multiple fragments of the same habitat record.
-* **Separate INCIDs** — each selected new feature receives its own new INCID. Use this when each feature represents a distinct, independent habitat record.
-
-The HLU layer supports a set of optional attribute columns (``habprimary``, ``habsecond``, ``determqty`` and ``interpqty``) that can be pre-populated before registering new features. When present and valid, the tool reads these columns and uses their values to initialise the corresponding database attributes for the new INCID record, reducing the amount of manual data entry required afterwards. Any values that fail validation are ignored and the GIS columns are updated on success to remove them. Further attributes — such as priority habitats, boundary and digitisation details, site reference, condition, comments and sources — will typically need to be completed in the dockpane after the insert.
-
-See :ref:`function_insert_feature` for full details and step-by-step instructions.
-
-.. index::
 	single: Concepts; OSMM Updates
 	single: Updates; OSMM Updates, Concept
 

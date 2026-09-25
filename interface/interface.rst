@@ -573,6 +573,17 @@ Click on the :guilabel:`History` tab to display the History tab as shown in the 
 
 The History tab displays a list of previous modifications made to the current INCID. Each entry details what modifications were made, when and by whom. Entries are shown in **descending** date and time order with the most recent changes at the top. The maximum number of entries to appear in the history tab can be configured in the Options (see :ref:`options_user_history` for more details).
 
+.. note::
+	History is displayed for the current **INCID as a whole**, not just for whichever features happen to be selected in the map. If an INCID has several fragments, entries relating to all of those fragments will appear together in the same list.
+
+.. note::
+	Splitting or merging features can affect which history entries appear against an INCID:
+
+		* **Splitting** a feature (logically or physically) keeps its existing history attached to the fragment, so that history follows the fragment to its new INCID or fragment identifier as applicable.
+		* **Merging** features does **not** carry forward the pre-existing history of any INCID that stops existing as a result of the merge - only a new entry recording the merge itself is added to the surviving INCID.
+
+	See :ref:`function_split` and :ref:`function_merge` for full details of how each operation affects history.
+
 .. raw:: latex
 
 	\newpage
