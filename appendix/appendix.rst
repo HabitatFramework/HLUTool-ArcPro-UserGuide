@@ -13,6 +13,7 @@ Change Log
 
 **1.2.1**
 (27th August 2026)
+
 Improvements to GIS feature selection, INCID navigation and user interface, and bug fixes.
 
     * **New:** GIS feature selection now automatically switches method based on the number of INCIDs being selected — small selections use chunked SQL IN clauses, while large selections use a temporary geodatabase table join. The crossover point is configurable in the User GIS Options
@@ -24,6 +25,7 @@ Improvements to GIS feature selection, INCID navigation and user interface, and 
 
 **1.2.0**
 (14th July 2026)
+
 Added support for bulk load/unload and feature reassignment operations, and related configuration options.
 
     * **New:** Added **Bulk Load/Unload** dynamic menu button to the HLU Tool tab with two commands:
@@ -35,6 +37,7 @@ Added support for bulk load/unload and feature reassignment operations, and rela
 
 **1.1.1**
 (9th July 2026)
+
 Improvements to the INCID table and query performance, and bug fixes.
 
     * **New:** Added ``ihs_summary`` field to incid table to support IHS summary queries
@@ -44,6 +47,7 @@ Improvements to the INCID table and query performance, and bug fixes.
 
 **1.1.0**
 (30th June 2026)
+
 Added support for line and point geometry types, a number of improvements to the feature insert, split and merge operations, and bug fixes.
 
     * **New:** Added support for polyline and point GIS layers in addition to the existing polygon layer support
@@ -60,6 +64,7 @@ Added support for line and point geometry types, a number of improvements to the
 
 **1.0.1**
 (27th April 2026)
+
 Introduced a number of minor improvements and bug fixes to the initial release of the HLU Tool.
 
     * **New:** Added validation of the working file geodatabase directory path in GIS options
@@ -74,6 +79,7 @@ Introduced a number of minor improvements and bug fixes to the initial release o
 
 **1.0.0**
 (16th April 2026)
+
 First release of the HLU Tool as an ArcGIS Pro add-in.
 
     * **New:** Rebuilt as an ArcGIS Pro add-in — complete rewrite from a standalone ArcMap/MapInfo desktop application to an ArcGIS Pro dockable pane
