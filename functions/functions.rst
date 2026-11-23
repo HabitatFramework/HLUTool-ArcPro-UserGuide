@@ -945,7 +945,12 @@ To perform an export:
 .. warning::
 	Exporting all features or a large number of features can take a long time depending upon the number of features and the configuration of the HLU Tool and database system.
 
-During the export operation checks and validation are performed to avoid potential errors. The selected export format is validated before the export begins — if no valid format is selected an error will be shown and the export will not proceed. A warning may also appear if the export contains a large number of INCIDs and hence may take a long time to complete, or if a shapefile export format is used and the format contains field names that exceed 10 characters (as this will result in the field names being automatically truncated or renamed by ArcGIS Pro).
+During the export operation checks and validation are performed to avoid potential errors. The selected export format is validated before the export begins — if no valid format is selected an error will be shown and the export will not proceed. A warning may also appear if the export contains a large number of INCIDs and hence may take a long time to complete, or if a shapefile export format is used and:
+
+	* the format contains field names that exceed 10 characters, or that would be duplicated once truncated to 10 characters (as this will result in the field names being automatically truncated or renamed by ArcGIS Pro).
+	* the estimated size of the .dbf file exceeds the 2 GB shapefile limit, or the number of features is large enough that the .shp file may exceed the 2 GB limit.
+
+In each case the user can choose to continue or cancel the export. Consider exporting to a file geodatabase instead where these limits may be reached.
 
 .. seealso::
 	For details on defining export formats see 'Configuring Exports' in the HLU Tool Technical Guide at `readthedocs.org/projects/hlutool-arcpro-technicalguide <https://readthedocs.org/projects/hlutool-arcpro-technicalguide/>`_.

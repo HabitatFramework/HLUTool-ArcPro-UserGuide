@@ -11,6 +11,15 @@ Appendix
 Change Log
 ==========
 
+**1.2.2**
+(23rd November 2026)
+
+Improvements to GIS selection performance and export warnings, and bug fixes.
+
+    * **New:** Shapefile exports now warn if field names will be truncated or duplicated, or the estimated .dbf or .shp files may exceed the 2 GB limit
+    * **Improved:** The GIS selection is no longer re-read unnecessarily before exports, bulk load/unload and other operations when the map selection has not changed
+    * **Improved:** Error handling when validating the database version on start-up
+
 **1.2.1**
 (27th August 2026)
 
